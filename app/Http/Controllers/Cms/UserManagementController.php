@@ -11,6 +11,14 @@ use Spatie\Permission\Models\Role;
 
 class UserManagementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:user-list|user-create|user-update|user-delete', ['only' => ['index','addUserData']]);
+        $this->middleware('permission:user-create', ['only' => ['addUser','addUserData']]);
+        $this->middleware('permission:user-update', ['only' => ['updateUser','updateUserData']]);
+        $this->middleware('permission:user-delete', ['only' => ['deleteUser']]);
+    }
+
     public function index()
     {
         $users = User::with('roles')->get();

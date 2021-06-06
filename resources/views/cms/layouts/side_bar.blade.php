@@ -7,14 +7,16 @@
                 <a href="/admin/dashboard">
                     <i class="icon-rocket"></i> Dashboard</a>
             </li>
-            @can('user-list')
-                <li class="dropdown"><a href="javascript:void(0);"><i class="fas fa-users"></i></i> User Management</a>
-                    <ul>
+            <li class="dropdown"><a href="javascript:void(0);"><i class="fas fa-users"></i></i> User Management</a>
+                <ul>
+                    @can('user-list')
                         <li><a href="/admin/manage-users"><i class="fas fa-user"></i> Users</a></li>
+                    @endcan
+                    @can('role-list')
                         <li><a href="/admin/manage-roles"><i class="fas fa-user-tag"></i> Roles</a></li>
-                    </ul>
-                </li>
-            @endcan
+                    @endcan
+                </ul>
+            </li>
             <li class="dropdown"><a href="javascript:void(0);"><i class="fas fa-book-open"></i> Submitted Projects</a>
                 <ul>
                     @can('research-project-list')
@@ -27,13 +29,13 @@
                 <li><a href="/admin/notifications"><i class="icon-bag mr-1"></i> Notifications</a></li>
             @endcan
             @can('upload-sample-list')
-            <li><a href="/admin/upload-samples"><i class="fas fa-book-open"></i> Upload Projects</a>
-                <ul>
-                    <li><a class="text-nowrap" href="/admin/student/add-research-project-template"><i
-                                    class="fas fa-grid"></i>
-                            Research Project</a></li>
-                </ul>
-            </li>
+                <li><a href="/admin/upload-samples"><i class="fas fa-book-open"></i> Upload Projects</a>
+                    <ul>
+                        <li><a class="text-nowrap" href="/admin/student/add-research-project-template"><i
+                                        class="fas fa-grid"></i>
+                                Research Project</a></li>
+                    </ul>
+                </li>
             @endcan
             <li class="dropdown"><a href="javascript:void(0);"><i class="icon-bag mr-1"></i> Website Content
                     Management</a>

@@ -15,28 +15,6 @@ class RoleController extends Controller
         $this->middleware('permission:role-create', ['only' => ['addRole','addRoleData']]);
         $this->middleware('permission:role-update', ['only' => ['updateRole','updateRoleData']]);
         $this->middleware('permission:role-delete', ['only' => ['deleteRole']]);
-
-        $this->middleware('permission:user-list|user-create|user-update|user-delete', ['only' => ['index','addUserData']]);
-        $this->middleware('permission:user-create', ['only' => ['addUser','addUserData']]);
-        $this->middleware('permission:user-update', ['only' => ['updateUser','updateUserData']]);
-        $this->middleware('permission:user-delete', ['only' => ['deleteUser']]);
-
-        $this->middleware('permission:research-project-list|research-project-create|research-project-update', ['only' => ['index','addResearchData']]);
-        $this->middleware('permission:research-project-create', ['only' => ['addResearch','addResearchData']]);
-        $this->middleware('permission:research-project-update', ['only' => ['updateResearch','updateResearchData']]);
-
-        $this->middleware('permission:notification-list|notification-delete|notification-detail', ['only' => ['index','detailNotification']]);
-        $this->middleware('permission:notification-delete', ['only' => ['deleteNotification']]);
-        $this->middleware('permission:notification-detail', ['only' => ['detailNotification']]);
-
-        $this->middleware('permission:student-notification-list|student-notification-detail', ['only' => ['index','detailNotification']]);
-        $this->middleware('permission:student-notification-detail', ['only' => ['detailNotification']]);
-
-        $this->middleware('permission:upload-sample-list|upload-sample-delete', ['only' => ['index']]);
-        $this->middleware('permission:upload-sample-delete', ['only' => ['deleteUpload']]);
-
-        $this->middleware('permission:student-research-project-list|student-research-project-create', ['only' => ['index','addStudentResearchData']]);
-        $this->middleware('permission:student-research-project-create', ['only' => ['addStudentResearch','addStudentResearchData']]);
     }
 
     public function index()

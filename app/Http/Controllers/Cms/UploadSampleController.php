@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class UploadSampleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:upload-sample-list|upload-sample-delete', ['only' => ['index']]);
+        $this->middleware('permission:upload-sample-delete', ['only' => ['deleteUpload']]);
+    }
+
     public function index(){
         $uploads = UploadSample::latest()->get();
         return view('cms.upload-content.index',compact('uploads'));

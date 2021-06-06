@@ -8,11 +8,17 @@ use App\Models\Notification;
 use App\Models\ResearchProject;
 use App\Models\UploadSample;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class ResearchProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:research-project-list|research-project-create|research-project-update', ['only' => ['index','addResearchData']]);
+        $this->middleware('permission:research-project-create', ['only' => ['addResearch','addResearchData']]);
+        $this->middleware('permission:research-project-update', ['only' => ['updateResearch','updateResearchData']]);
+    }
+
     public function index()
     {
         $projects = ResearchProject::all();

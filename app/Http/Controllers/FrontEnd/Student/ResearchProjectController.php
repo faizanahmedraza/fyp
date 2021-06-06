@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ResearchProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:student-research-project-list|student-research-project-create', ['only' => ['index', 'addStudentResearchData']]);
+        $this->middleware('permission:student-research-project-create', ['only' => ['addStudentResearch', 'addStudentResearchData']]);
+    }
+
     public function index()
     {
         $projects = ResearchProject::all();
@@ -65,16 +71,17 @@ class ResearchProjectController extends Controller
             'message' => ' is send approval request of research project.'
         ]);
 
-        event(new \App\Events\FormSubmitted('apply',$admin));
+        event(new \App\Events\FormSubmitted('apply', $admin));
 
-        return redirect('/student/research-projects')->with('success','Successfully submitted.');
+        return redirect('/student/research-projects')->with('success', 'Successfully submitted.');
     }
 
-    public function downloadTemplate(){
+    public function downloadTemplate()
+    {
         $template = $path = '';
-        if(!empty(UploadSample::latest()->first()->name)){
+        if (!empty(UploadSample::latest()->first()->name)) {
             $template = UploadSample::latest()->first()->name;
-            $path = Storage::url('uploads/'.!empty($template) ? $template : 'research-project.pdf');
+            $path = Storage::url('uploads/' . !empty($template) ? $template : 'research-project.pdf');
         } else {
             abort(404);
         }

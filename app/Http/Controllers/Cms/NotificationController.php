@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:notification-list|notification-delete|notification-detail', ['only' => ['index','detailNotification']]);
+        $this->middleware('permission:notification-delete', ['only' => ['deleteNotification']]);
+        $this->middleware('permission:notification-detail', ['only' => ['detailNotification']]);
+    }
+
     public function index(){
         $notifications = Notification::latest()->get();
         return view('cms.notifications.index',compact('notifications'));
