@@ -17,7 +17,7 @@
     @stack('styles')
 </head>
 
-<body id="main-container" class="default horizontal-menu semi-dark">
+<body id="main-container" class="default semi-dark">
 <div class="se-pre-con" style="display: none;">
     <div class="loader"></div>
 </div>

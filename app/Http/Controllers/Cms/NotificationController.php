@@ -16,7 +16,7 @@ class NotificationController extends Controller
     }
 
     public function index(){
-        $notifications = Notification::latest()->get();
+        $notifications = Notification::with('getUser')->latest()->get();
         return view('cms.notifications.index',compact('notifications'));
     }
 

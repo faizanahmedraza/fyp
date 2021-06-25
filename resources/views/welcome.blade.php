@@ -12,8 +12,6 @@
 </head>
 <body>
 <div class="container">
-    <h1>Laravel Broadcast Redis Socket io Tutorial - ItSolutionStuff.com</h1>
-
     <div id="notification"></div>
 </div>
 </body>

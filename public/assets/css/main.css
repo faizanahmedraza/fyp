@@ -104,10 +104,10 @@ File: Main Style
     --sidebarbg: #fff;
     --sidebarcolor: #6c757d;
     --sidebarbordercolor: rgba(72, 94, 144, 0.16);
-    --sidebaractivecolor: #4c75f2;
+    --sidebaractivecolor: #fff;
     --sidebarheadingcolor: #6c757d;
     --sidebarheadingbackground: #fff;
-    --logobg: #fff;
+    --logobg: #0690cd;
     --logocolor: #4c75f2;
     --headerbackground: #fff;
     --headercolor: #292b3a;
@@ -127,13 +127,13 @@ File: Main Style
 }
 
 .semi-dark {
-    --sidebarbg: #060818;
-    --sidebarcolor: rgba(255,255,255,0.8);
+    --sidebarbg: #0690cd;
+    --sidebarcolor: #fff;
     --sidebarbordercolor: rgba(255,255,255,0.1);
-    --sidebaractivecolor: #4c75f2;
+    --sidebaractivecolor: #fff;
     --sidebarheadingcolor: #fff;
     --sidebarheadingbackground: rgba(59, 63, 92, 0.35);
-    --logobg: #060818;
+    --logobg: #0690cd;
     --logocolor: rgba(255,255,255,0.8);
 }
 
@@ -269,7 +269,7 @@ File: Main Style
 
 @media (max-width: 440px) {
     #header-fix .logo-bar {
-        width: 55px !important;
+        width: 100px !important;
     }
 
     #header-fix .logo-bar span {
@@ -551,6 +551,17 @@ File: Main Style
 
 .sidebar .sidebar-menu > li a:hover {
     color: var(--sidebaractivecolor);
+    font-weight: bold;
+}
+
+.sidebar .sidebar-menu > li .active{
+    color: var(--sidebaractivecolor);
+    background-color: #e33b34;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 6px;
+    display: block;
+    padding: 8px 0px 8px 2px;
+    margin: 10px 0px 5px 10px;
 }
 
 .sidebar .sidebar-menu > li .active > a {
@@ -595,6 +606,7 @@ File: Main Style
     display: block;
     font-size: 13px;
     font-weight: 500;
+    margin: 0 0 0 15px;
 }
 
 .sidebar .sidebar-menu > li ul li a i {

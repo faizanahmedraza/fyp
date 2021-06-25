@@ -8,14 +8,7 @@
 @section('content')
     <main>
         <div class="container-fluid site-width">
-            <!-- START: Breadcrumbs-->
-            <div class="row ">
-                <div class="col-12  align-self-center">
-                    <div class="sub-header mt-3 py-3 align-self-center d-sm-flex w-100 rounded">
-                    </div>
-                </div>
-            </div>
-            <!-- END: Breadcrumbs-->
+
 
             <!-- START: Card Data-->
             <div class="row">
@@ -52,7 +45,7 @@
                                         @foreach($notifications as $key => $notification)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $notification->getUser->full_name }}</td>
+                                                <td>{{ $notification->getUser->first_name }}</td>
                                                 <td>{{ $notification->getUser->full_name.' '.$notification->message }}</td>
                                                 <td>
                                                     <a href="javascript:void(0);"

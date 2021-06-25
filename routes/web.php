@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'welcome';
+Route::namespace('website')->group(function () {
+    Route::get('/', 'HomeController@index');
+    Route::get('/research', 'ResearchController@index');
+    Route::get('/our-professors', 'ProfessorController@index');
+    Route::get('/about-us', 'AboutController@index');
+    Route::get('/our-news', 'NewsController@index');
+    Route::get('/contact', 'ContactController@index');
 });
 
 Route::get('/admin', function () {
