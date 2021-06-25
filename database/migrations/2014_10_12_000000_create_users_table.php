@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
                 $table->string('email', 255)->unique();
                 $table->string('password', 255);
                 $table->string('profile_picture', 100)->nullable();
+                $table->text('profile_detail')->nullable();
                 $table->bigInteger('contact')->nullable();
                 $table->string('verification_token', 255)->nullable();
                 $table->string('remember_token', 255)->nullable();
