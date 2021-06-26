@@ -43,6 +43,15 @@
 <script src="{{ url('/js/laravel-echo-setup.js') }}" type="text/javascript"></script>
 
 <script type="text/javascript">
+    setInterval(function () {
+        if ($("div.alert-danger").length > 0 || $("div.alert-success").length > 0) {
+            setTimeout(function () {
+                $("div.alert-danger").remove();
+                $("div.alert-success").remove();
+            }, 8000);
+        }
+    }, 1000);
+
     window.Echo.channel("student-name.{{\Illuminate\Support\Facades\Auth::id()}}")
         .listen('.studentFormSubmitted', (data) => {
             $("#adminNotification").prepend(
@@ -60,15 +69,6 @@
                           `
             );
         });
-
-    setInterval(function () {
-        if ($("div.alert-danger").length > 0 || $("div.alert-success").length > 0) {
-            setTimeout(function () {
-                $("div.alert-danger").remove();
-                $("div.alert-success").remove();
-            }, 8000);
-        }
-    }, 1000);
 </script>
 </body>
 </html>

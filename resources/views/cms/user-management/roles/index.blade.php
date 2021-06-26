@@ -7,8 +7,6 @@
 @section('content')
     <main>
         <div class="container-fluid site-width">
-
-
             <!-- START: Card Data-->
             <div class="row">
                 <div class="col-12 mt-3">

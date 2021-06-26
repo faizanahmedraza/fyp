@@ -32,12 +32,10 @@
                 <nav class="main-menu navbar-expand-md navbar-light">
                     <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                         <ul class="navigation clearfix">
-                            <li class="current dropdown"><a href="#">Home</a>
-
+                            <li class="dropdown"><a href="/">Home</a>
                             </li>
-                            <li class="dropdown"><a href="#">Research</a>
+                            <li class="dropdown"><a href="/research">Research</a>
                                 <ul>
-
                                     <li><a href="research-details.html">Funding Opportunties</a></li>
                                     <li><a href="research-details.html">Funding Projects</a></li>
                                     <li><a href="research-details.html">Call for proposal</a></li>
@@ -45,16 +43,16 @@
                             </li>
                             <li class="dropdown"><a href="#">Media</a>
                                 <ul>
-                                    <li><a href="#">Gallery</a></li>
+                                    <li><a href="#">Events</a></li>
                                     <li><a href="#">Success Stories</a>
                                     <li><a href="#">Timeline</a>
                                     </li>
                                 </ul></li>
-                            <li class="dropdown"><a href="about.html">About Us</a>
+                            <li class="dropdown"><a href="/about-us">About Us</a>
                             </li>
-                            <li><a href="blog.html">Our News</a></li>
+                            <li><a href="/our-news">Our News</a></li>
 
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="/contact">Contact</a></li>
                         </ul>
                     </div>
                 </nav>

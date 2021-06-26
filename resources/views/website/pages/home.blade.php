@@ -4,33 +4,29 @@
     <!-- main-slider -->
     <section class="main-slider">
         <div class="main-slider-carousel owl-carousel owl-theme">
-            <div class="slide" style="background-image:url(images/main-slider/slider-1.jpg)">
-                <div class="container">
-                    <div class="content-box">
-                        <div class="top-text">Researcher & Professors</div>
-                        <h1>No Research is Ever Quite Complete</h1>
-                        <div class="btn-box"><a href="#" class="theme-btn style-one">Discover More</a></div>
+            @if (count($resultSet) > 0)
+                @foreach ($resultSet as $key => $val)
+                    <div class="slide cstmBanner slide{{ $key + 1 }}">
+                        <div class="container">
+                            <div class="content-box">
+                                <div class="top-text">Researcher & Professors</div>
+                                <h1>{{ $val->description }}</h1>
+                                <div class="btn-box"><a href="#" class="theme-btn style-one">Discover More</a></div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="slide" style="background-image:url(images/main-slider/slider-1.jpg)">
+                    <div class="container">
+                        <div class="content-box">
+                            <div class="top-text">Researcher & Professors</div>
+                            <h1>No Research is Ever Quite Complete</h1>
+                            <div class="btn-box"><a href="#" class="theme-btn style-one">Discover More</a></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="slide" style="background-image:url(images/main-slider/slider-2.jpg)">
-                <div class="container">
-                    <div class="content-box">
-                        <div class="top-text">Researcher & Professors</div>
-                        <h1>No Research is Ever Quite Complete</h1>
-                        <div class="btn-box"><a href="#" class="theme-btn style-one">Discover More</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" style="background-image:url(images/main-slider/slider-3.jpg)">
-                <div class="container">
-                    <div class="content-box">
-                        <div class="top-text">Researcher & Professors</div>
-                        <h1>No Research is Ever Quite Complete</h1>
-                        <div class="btn-box"><a href="#" class="theme-btn style-one">Discover More</a></div>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
     </section>
     <!-- main-slider end -->
@@ -45,7 +41,7 @@
                     <div class="content-box">
                         <div class="text"></div>
                         <h3><a href="#">Mission</a></h3>
-                        <p>JUBIC mission is to nurturing the startups by providing them financial support for startups</p>
+                        <p>{{ $aim->mission ?? ''}}</p>
                     </div>
                 </div>
             </div>
@@ -55,7 +51,7 @@
                     <div class="content-box">
                         <div class="text"></div>
                         <h3><a href="#">Vision</a></h3>
-                        <p>To be the foremost producer of successful future women entrepreneurs</p>
+                        <p>{{ $aim->vision ?? '' }}</p>
                     </div>
                 </div>
             </div>
@@ -65,6 +61,7 @@
                     <div class="content-box">
                         <div class="text"></div>
                         <h3><a href="#">Values</a></h3>
+                        <p>{{ $aim->values ?? '' }}</p>
                     </div>
                 </div>
             </div>
@@ -79,8 +76,9 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                     <div class="image-box">
-                        <figure class="image image-1"><img src="images/resource/welcome-1.jpg" alt=""></figure>
-                        <figure class="image image-2 wow fadeInLeft" data-wow-delay="00ms" data-wow-duration="1500ms"><img src="images/resource/welcome-2.jpg" alt=""></figure>
+                        <figure class="image image-1"><img src="/assets/website/images/resource/welcome-1.jpg" alt=""></figure>
+                        <figure class="image image-2 wow fadeInLeft" data-wow-delay="00ms" data-wow-duration="1500ms">
+                            <img src="/assets/website/images/resource/welcome-2.jpg" alt=""></figure>
                         <div class="text-box wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
                             <h1>40</h1>
                             <h3>Years of Research Experience</h3>
@@ -95,14 +93,22 @@
                         </div>
                         <div class="video-box">
                             <div class="video-inner">
-                                <div class="video-btn"><a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s" class="lightbox-image" data-caption=""><i class="flaticon-play-button"></i></a></div>
-                                <h2>Office of Research, Innovation & Commercialization – Jinnah University for Women</h2>
+                                <div class="video-btn"><a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s"
+                                                          class="lightbox-image" data-caption=""><i
+                                                class="flaticon-play-button"></i></a></div>
+                                <h2>Office of Research, Innovation & Commercialization – Jinnah University for
+                                    Women</h2>
                             </div>
                         </div>
-                        <div class="text">ORIC-JUW is an office for the facilitation of researcher; be it the student or faculty, for developing technology solutions to cater the need of society. </div>
+                        <div class="text">ORIC-JUW is an office for the facilitation of researcher; be it the student or
+                            faculty, for developing technology solutions to cater the need of society.
+                        </div>
                         <ul class="list clearfix">
-                            <li>the ideas are transformed into innovative products, services, techniques and processes</li>
-                            <li>We help academia to connect with relevant technology sector for commercialization of research.</li>
+                            <li>the ideas are transformed into innovative products, services, techniques and processes
+                            </li>
+                            <li>We help academia to connect with relevant technology sector for commercialization of
+                                research.
+                            </li>
                             <li>. ORIC helps, academia to connect with industry.</li>
                         </ul>
                         <div class="btn-box"><a href="#" class="theme-btn style-two">Discover More</a></div>
@@ -143,7 +149,9 @@
                         <div class="inner-box">
                             <div class="icon-box"><i class="flaticon-bacteria"></i></div>
                             <h3><a href="research-details.html">Bacteria Research</a></h3>
-                            <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis elit id impedie.</div>
+                            <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis
+                                elit id impedie.
+                            </div>
                             <div class="link-btn"><a href="research-details.html">Learn More</a></div>
                         </div>
                     </div>
@@ -153,7 +161,9 @@
                         <div class="inner-box">
                             <div class="icon-box"><i class="flaticon-molecular"></i></div>
                             <h3><a href="research-details.html">Medicale Research</a></h3>
-                            <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis elit id impedie.</div>
+                            <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis
+                                elit id impedie.
+                            </div>
                             <div class="link-btn"><a href="research-details.html">Learn More</a></div>
                         </div>
                     </div>
@@ -163,7 +173,9 @@
                         <div class="inner-box">
                             <div class="icon-box"><i class="flaticon-dna-structure"></i></div>
                             <h3><a href="research-details.html">Dna Structure Research</a></h3>
-                            <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis elit id impedie.</div>
+                            <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis
+                                elit id impedie.
+                            </div>
                             <div class="link-btn"><a href="research-details.html">Learn More</a></div>
                         </div>
                     </div>
@@ -185,26 +197,30 @@
                             <div class="col-lg-2 col-md-12 col-sm-12 thumb-column">
                                 <div class="slider-pager">
                                     <ul class="thumb-box">
+                                        @foreach($testimonials as $key => $val)
                                         <li>
-                                            <a class="active" data-slide-index="0" href="#"><figure><img src="images/resource/testimonial-thumb-1.jpg" alt=""></figure></a>
+                                            <a class="active" data-slide-index="{{$key}}" href="#">
+                                                <figure><img src="/assets/images/uploads/pages/{{$val->profile_picture}}" alt="">
+                                                </figure>
+                                            </a>
                                         </li>
-                                        <li>
-                                            <a data-slide-index="1" href="#"><figure><img src="images/resource/testimonial-thumb-2.jpg" alt=""></figure></a>
-                                        </li>
-                                        <li>
-                                            <a data-slide-index="2" href="#"><figure><img src="images/resource/testimonial-thumb-3.jpg" alt=""></figure></a>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-10 col-md-12 col-sm-12 inner-column">
                                 <div class="inner-box">
-                                    <figure class="image-box"><img src="images/resource/testimonial-1.jpg" alt=""></figure>
+                                    <figure class="image-box"><img src="/assets/images/uploads/pages/{{$testimonials[0]->profile_picture}}" alt="">
+                                    </figure>
                                     <div class="content-box">
-                                        <div class="text">This is due to their excellent service, competitive pricing and customer support. It’s throughly refresing get such a personal touch. Duis aute irure dolor in repreh enderit in voluptate velit esse cillum eu fugiat nulla pariatur.</div>
+                                        <div class="text">This is due to their excellent service, competitive pricing
+                                            and customer support. It’s throughly refresing get such a personal touch.
+                                            Duis aute irure dolor in repreh enderit in voluptate velit esse cillum eu
+                                            fugiat nulla pariatur.
+                                        </div>
                                         <div class="author-info">
-                                            <h5 class="name">John Doe</h5>
-                                            <span class="designation">CEO Brezok</span>
+                                            <h5 class="name">{{ $testimonials[0]->name }}</h5>
+                                            <span class="designation">{{ $testimonials[0]->designation }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -216,26 +232,30 @@
                             <div class="col-lg-2 col-md-12 col-sm-12 thumb-column">
                                 <div class="slider-pager">
                                     <ul class="thumb-box">
-                                        <li>
-                                            <a class="active" data-slide-index="0" href="#"><figure><img src="images/resource/testimonial-thumb-1.jpg" alt=""></figure></a>
-                                        </li>
-                                        <li>
-                                            <a data-slide-index="1" href="#"><figure><img src="images/resource/testimonial-thumb-2.jpg" alt=""></figure></a>
-                                        </li>
-                                        <li>
-                                            <a data-slide-index="2" href="#"><figure><img src="images/resource/testimonial-thumb-3.jpg" alt=""></figure></a>
-                                        </li>
+                                        @foreach($testimonials as $key => $val)
+                                            <li>
+                                                <a class="active" data-slide-index="{{$key}}" href="#">
+                                                    <figure><img src="/assets/images/uploads/pages/{{$val->profile_picture}}" alt="">
+                                                    </figure>
+                                                </a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-10 col-md-12 col-sm-12 inner-column">
                                 <div class="inner-box">
-                                    <figure class="image-box"><img src="images/resource/testimonial-2.jpg" alt=""></figure>
+                                    <figure class="image-box"><img src="/assets/images/uploads/pages/{{$testimonials[1]->profile_picture}}" alt="">
+                                    </figure>
                                     <div class="content-box">
-                                        <div class="text">This is due to their excellent service, competitive pricing and customer support. It’s throughly refresing get such a personal touch. Duis aute irure dolor in repreh enderit in voluptate velit esse cillum eu fugiat nulla pariatur.</div>
+                                        <div class="text">This is due to their excellent service, competitive pricing
+                                            and customer support. It’s throughly refresing get such a personal touch.
+                                            Duis aute irure dolor in repreh enderit in voluptate velit esse cillum eu
+                                            fugiat nulla pariatur.
+                                        </div>
                                         <div class="author-info">
-                                            <h5 class="name">Mike Albert</h5>
-                                            <span class="designation">CEO Brezok</span>
+                                            <h5 class="name">{{ $testimonials[1]->name }}</h5>
+                                            <span class="designation">{{ $testimonials[1]->designation }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -247,26 +267,30 @@
                             <div class="col-lg-2 col-md-12 col-sm-12 thumb-column">
                                 <div class="slider-pager">
                                     <ul class="thumb-box">
-                                        <li>
-                                            <a class="active" data-slide-index="0" href="#"><figure><img src="images/resource/testimonial-thumb-1.jpg" alt=""></figure></a>
-                                        </li>
-                                        <li>
-                                            <a data-slide-index="1" href="#"><figure><img src="images/resource/testimonial-thumb-2.jpg" alt=""></figure></a>
-                                        </li>
-                                        <li>
-                                            <a data-slide-index="2" href="#"><figure><img src="images/resource/testimonial-thumb-3.jpg" alt=""></figure></a>
-                                        </li>
+                                        @foreach($testimonials as $key => $val)
+                                            <li>
+                                                <a class="active" data-slide-index="{{$key}}" href="#">
+                                                    <figure><img src="/assets/images/uploads/pages/{{$val->profile_picture}}" alt="">
+                                                    </figure>
+                                                </a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-10 col-md-12 col-sm-12 inner-column">
                                 <div class="inner-box">
-                                    <figure class="image-box"><img src="images/resource/testimonial-3.jpg" alt=""></figure>
+                                    <figure class="image-box"><img src="/assets/images/uploads/pages/{{$testimonials[2]->profile_picture}}" alt="">
+                                    </figure>
                                     <div class="content-box">
-                                        <div class="text">This is due to their excellent service, competitive pricing and customer support. It’s throughly refresing get such a personal touch. Duis aute irure dolor in repreh enderit in voluptate velit esse cillum eu fugiat nulla pariatur.</div>
+                                        <div class="text">This is due to their excellent service, competitive pricing
+                                            and customer support. It’s throughly refresing get such a personal touch.
+                                            Duis aute irure dolor in repreh enderit in voluptate velit esse cillum eu
+                                            fugiat nulla pariatur.
+                                        </div>
                                         <div class="author-info">
-                                            <h5 class="name">Sarah Eve</h5>
-                                            <span class="designation">CEO Brezok</span>
+                                            <h5 class="name">{{ $testimonials[2]->name }}</h5>
+                                            <span class="designation">{{ $testimonials[2]->designation }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -291,7 +315,8 @@
                 <div class="inner-content clearfix">
                     <div class="single-item wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="image-box"><a href="research-details.html"><img src="images/resource/research-1.jpg" alt=""></a></figure>
+                            <figure class="image-box"><a href="research-details.html"><img
+                                            src="images/resource/research-1.jpg" alt=""></a></figure>
                             <div class="lower-content">
                                 <h4><a href="research-details.html">Chemical Formula</a></h4>
                             </div>
@@ -299,7 +324,8 @@
                     </div>
                     <div class="single-item wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="image-box"><a href="research-details.html"><img src="images/resource/research-2.jpg" alt=""></a></figure>
+                            <figure class="image-box"><a href="research-details.html"><img
+                                            src="images/resource/research-2.jpg" alt=""></a></figure>
                             <div class="lower-content">
                                 <h4><a href="research-details.html">Human Body</a></h4>
                             </div>
@@ -307,7 +333,8 @@
                     </div>
                     <div class="single-item wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="image-box"><a href="research-details.html"><img src="images/resource/research-3.jpg" alt=""></a></figure>
+                            <figure class="image-box"><a href="research-details.html"><img
+                                            src="images/resource/research-3.jpg" alt=""></a></figure>
                             <div class="lower-content">
                                 <h4><a href="research-details.html">Cancer Therapies</a></h4>
                             </div>
@@ -315,7 +342,8 @@
                     </div>
                     <div class="single-item wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="image-box"><a href="research-details.html"><img src="images/resource/research-4.jpg" alt=""></a></figure>
+                            <figure class="image-box"><a href="research-details.html"><img
+                                            src="images/resource/research-4.jpg" alt=""></a></figure>
                             <div class="lower-content">
                                 <h4><a href="research-details.html">Blood Cells</a></h4>
                             </div>
@@ -323,7 +351,8 @@
                     </div>
                     <div class="single-item wow fadeInUp" data-wow-delay="1200ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="image-box"><a href="research-details.html"><img src="images/resource/research-5.jpg" alt=""></a></figure>
+                            <figure class="image-box"><a href="research-details.html"><img
+                                            src="images/resource/research-5.jpg" alt=""></a></figure>
                             <div class="lower-content">
                                 <h4><a href="research-details.html">Pathology Research</a></h4>
                             </div>
@@ -355,12 +384,15 @@
                             <h2 class="name">Dr. Kevin Martin</h2>
                             <span class="designation">Researcher & Professor</span>
                         </div>
-                        <div class="text">Lorem ipsum dolor sit amet, con adipiscing elit tiam convallis elit id impedie. Quisq commodo simply free ornare tortor.</div>
+                        <div class="text">Lorem ipsum dolor sit amet, con adipiscing elit tiam convallis elit id
+                            impedie. Quisq commodo simply free ornare tortor.
+                        </div>
                         <div class="progress-content">
                             <div class="single-progress-box">
                                 <h5>Research in Science</h5>
                                 <div class="progress" data-value="98">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="98" aria-valuemin="0"
+                                         aria-valuemax="100">
                                         <div class="value-holder"><span class="value"></span>%</div>
                                     </div>
                                 </div>
@@ -368,7 +400,8 @@
                             <div class="single-progress-box">
                                 <h5>Research in Cancer</h5>
                                 <div class="progress" data-value="66">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="66" aria-valuemin="0"
+                                         aria-valuemax="100">
                                         <div class="value-holder"><span class="value"></span>%</div>
                                     </div>
                                 </div>
@@ -389,7 +422,8 @@
                         <div class="single-team-block wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <div class="inner-box">
                                 <div class="image-holder">
-                                    <figure class="image"><a href="team-details.html"><img src="images/resource/team-1.jpg" alt=""></a></figure>
+                                    <figure class="image"><a href="team-details.html"><img
+                                                    src="images/resource/team-1.jpg" alt=""></a></figure>
                                     <ul class="social-links clearfix">
                                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
@@ -407,7 +441,8 @@
                         <div class="single-team-block wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
                             <div class="inner-box">
                                 <div class="image-holder">
-                                    <figure class="image"><a href="team-details.html"><img src="images/resource/team-2.jpg" alt=""></a></figure>
+                                    <figure class="image"><a href="team-details.html"><img
+                                                    src="images/resource/team-2.jpg" alt=""></a></figure>
                                     <ul class="social-links clearfix">
                                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
@@ -425,7 +460,8 @@
                         <div class="single-team-block wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
                             <div class="inner-box">
                                 <div class="image-holder">
-                                    <figure class="image"><a href="team-details.html"><img src="images/resource/team-3.jpg" alt=""></a></figure>
+                                    <figure class="image"><a href="team-details.html"><img
+                                                    src="images/resource/team-3.jpg" alt=""></a></figure>
                                     <ul class="social-links clearfix">
                                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
@@ -443,7 +479,8 @@
                         <div class="single-team-block wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
                             <div class="inner-box">
                                 <div class="image-holder">
-                                    <figure class="image"><a href="team-details.html"><img src="images/resource/team-4.jpg" alt=""></a></figure>
+                                    <figure class="image"><a href="team-details.html"><img
+                                                    src="images/resource/team-4.jpg" alt=""></a></figure>
                                     <ul class="social-links clearfix">
                                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
@@ -468,7 +505,9 @@
     <section class="video-section centred" style="background-image: url(images/background/video-bg.jpg);">
         <div class="container">
             <div class="inner-box">
-                <div class="video-btn"><a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s" class="lightbox-image" data-caption=""><i class="flaticon-play-button"></i></a></div>
+                <div class="video-btn"><a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s"
+                                          class="lightbox-image" data-caption=""><i
+                                class="flaticon-play-button"></i></a></div>
                 <h1>One Of The Best Leading Research Center</h1>
             </div>
         </div>
@@ -532,7 +571,8 @@
                     <div class="news-block-one wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="inner-box">
                             <div class="image-holder">
-                                <figure class="image"><a href="blog-details.html"><img src="images/resource/news-1.jpg" alt=""></a></figure>
+                                <figure class="image"><a href="blog-details.html"><img src="images/resource/news-1.jpg"
+                                                                                       alt=""></a></figure>
                                 <div class="date-box"><span>25</span>Oct</div>
                             </div>
                             <div class="lower-content">
@@ -541,7 +581,8 @@
                                     <li><a href="#"><i class="far fa-comments"></i>3 Comments</a></li>
                                 </ul>
                                 <h2><a href="blog-details.html">Equipping researchers in the developing world</a></h2>
-                                <div class="link-btn"><a href="blog-details.html"><i class="flaticon-right-arrow"></i></a></div>
+                                <div class="link-btn"><a href="blog-details.html"><i
+                                                class="flaticon-right-arrow"></i></a></div>
                             </div>
                         </div>
                     </div>
@@ -550,7 +591,8 @@
                     <div class="news-block-one wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
                         <div class="inner-box">
                             <div class="image-holder">
-                                <figure class="image"><a href="blog-details.html"><img src="images/resource/news-2.jpg" alt=""></a></figure>
+                                <figure class="image"><a href="blog-details.html"><img src="images/resource/news-2.jpg"
+                                                                                       alt=""></a></figure>
                                 <div class="date-box"><span>24</span>Oct</div>
                             </div>
                             <div class="lower-content">
@@ -559,7 +601,8 @@
                                     <li><a href="#"><i class="far fa-comments"></i>5 Comments</a></li>
                                 </ul>
                                 <h2><a href="blog-details.html">Best Research Center in the developing world</a></h2>
-                                <div class="link-btn"><a href="blog-details.html"><i class="flaticon-right-arrow"></i></a></div>
+                                <div class="link-btn"><a href="blog-details.html"><i
+                                                class="flaticon-right-arrow"></i></a></div>
                             </div>
                         </div>
                     </div>
@@ -584,3 +627,16 @@
     </section>
     <!-- clients-section end -->
 @endsection
+
+@push('scripts')
+    <script>
+        var jsonEncoded = @json($resultSet);
+        var publicpath = "{{ asset('assets/images/uploads/pages') }}"
+        $.each(jsonEncoded, function(k, v) {
+            k += 1;
+            if (v.banner) {
+                $(".slide" + k + "").css("background", "url(" + publicpath + "/" + v.banner + ")");
+            }
+        });
+    </script>
+@endpush

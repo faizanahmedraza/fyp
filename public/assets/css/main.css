@@ -107,7 +107,7 @@ File: Main Style
     --sidebaractivecolor: #fff;
     --sidebarheadingcolor: #6c757d;
     --sidebarheadingbackground: #fff;
-    --logobg: #0690cd;
+    --logobg: #0C8484;
     --logocolor: #4c75f2;
     --headerbackground: #fff;
     --headercolor: #292b3a;
@@ -127,13 +127,13 @@ File: Main Style
 }
 
 .semi-dark {
-    --sidebarbg: #0690cd;
+    --sidebarbg: #0C8484;
     --sidebarcolor: #fff;
     --sidebarbordercolor: rgba(255,255,255,0.1);
     --sidebaractivecolor: #fff;
     --sidebarheadingcolor: #fff;
     --sidebarheadingbackground: rgba(59, 63, 92, 0.35);
-    --logobg: #0690cd;
+    --logobg: #0C8484;
     --logocolor: rgba(255,255,255,0.8);
 }
 
@@ -560,7 +560,7 @@ File: Main Style
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     border-radius: 6px;
     display: block;
-    padding: 8px 0px 8px 2px;
+    padding: 8px 6px 8px 2px;
     margin: 10px 0px 5px 10px;
 }
 

@@ -75,13 +75,111 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::post('/update-research-project/{researchId}', 'ResearchProjectController@updateResearchData');
             Route::get('/research-project-detail/{researchId}', 'ResearchProjectController@researchDetail');
             Route::get('/research-project-change-status/{researchId}/{status}', 'ResearchProjectController@changeStatus');
-            Route::get('/add-research-project-template', 'ResearchProjectController@uploadResearchTemplate');
-            Route::post('/add-research-project-template', 'ResearchProjectController@uploadResearchTemplateData');
+            Route::get('/add-rp-template', 'ResearchProjectController@uploadResearchTemplate');
+            Route::post('/add-rp-template', 'ResearchProjectController@uploadResearchTemplateData');
+        });
+
+        Route::namespace('FrontEnd')->prefix('website/pages')->name('website.')->group(function () {
+            Route::get('/main-home', 'HomeController@index')->name('page.home');
+            Route::get('/main-home/create', 'HomeController@addHome')->name('page.home.add');
+            Route::post('/main-home/create', 'HomeController@addHomeData')->name('page.home.add.data');
+            Route::get('/main-home/update/{cmsHomeId}', 'HomeController@updateHome')->name('page.home.update');
+            Route::put('/main-home/update/{cmsHomeId}', 'HomeController@updateHomeData')->name('page.home.update.data');
+            Route::get('/main-home/delete/{cmsHomeId}', 'HomeController@deleteHome');
+
+            Route::get('/home/oric-member', 'ORICMemeberController@index')->name('page.home.oric-member');
+            Route::get('/home/oric-member/create', 'ORICMemeberController@addMember')->name('page.home.oric-member.add');
+            Route::post('/home/oric-member/create', 'ORICMemeberController@addMemberData')->name('page.home.oric-member.add.data');
+            Route::get('/home/oric-member/update/{cmsMemberId}', 'ORICMemeberController@updateMember')->name('page.home.oric-member.update');
+            Route::put('/home/oric-member/update/{cmsMemberId}', 'ORICMemeberController@updateMemberData')->name('page.home.oric-member.update.data');
+            Route::get('/home/oric-member/delete/{cmsMemberId}', 'ORICMemeberController@deleteMember');
+
+            Route::get('/home/testimonial', 'TestimonialController@index')->name('page.home.testimonial');
+            Route::get('/home/testimonial/create', 'TestimonialController@addTestimonial')->name('page.home.testimonial.add');
+            Route::post('/home/testimonial/create', 'TestimonialController@addTestimonialData')->name('page.home.testimonial.add.data');
+            Route::get('/home/testimonial/update/{cmsTestimonialId}', 'TestimonialController@updateTestimonial')->name('page.home.testimonial.update');
+            Route::put('/home/testimonial/update/{cmsTestimonialId}', 'TestimonialController@updateTestimonialData')->name('page.home.testimonial.update.data');
+            Route::get('/home/testimonial/delete/{cmsTestimonialId}', 'TestimonialController@deleteTestimonial');
+
+            Route::get('/home/aim-intro', 'CMSHomeIntroController@index')->name('page.home.aim-intro');
+            Route::get('/home/aim-intro/create', 'CMSHomeIntroController@addIntro')->name('page.home.aim-intro.add');
+            Route::post('/home/aim-intro/create', 'CMSHomeIntroController@addIntroData')->name('page.home.aim-intro.add.data');
+            Route::get('/home/aim-intro/update/{cmsIntroId}', 'CMSHomeIntroController@updateIntro')->name('page.home.aim-intro.update');
+            Route::put('/home/aim-intro/update/{cmsIntroId}', 'CMSHomeIntroController@updateIntroData')->name('page.home.aim-intro.update.data');
+            Route::get('/home/aim-intro/delete/{cmsIntroId}', 'CMSHomeIntroController@deleteIntro');
+
+            Route::get('/home/testimonial', 'TestimonialController@index')->name('page.home.testimonial');
+            Route::get('/home/testimonial/create', 'TestimonialController@addTestimonial')->name('page.home.testimonial.add');
+            Route::post('/home/testimonial/create', 'TestimonialController@addTestimonialData')->name('page.home.testimonial.add.data');
+            Route::get('/home/testimonial/update/{cmsTestimonialId}', 'TestimonialController@updateTestimonial')->name('page.home.testimonial.update');
+            Route::put('/home/testimonial/update/{cmsTestimonialId}', 'TestimonialController@updateTestimonialData')->name('page.home.testimonial.update.data');
+            Route::get('/home/testimonial/delete/{cmsTestimonialId}', 'TestimonialController@deleteTestimonial');
+
+            Route::get('/industry', 'IndustryController@index')->name('page.industry');
+            Route::get('/industry/create', 'IndustryController@addIndustry')->name('page.industry.add');
+            Route::post('/industry/create', 'IndustryController@addIndustryData')->name('page.industry.add.data');
+            Route::get('/industry/update/{cmsIndustryId}', 'IndustryController@updateIndustry')->name('page.industry.update');
+            Route::put('/industry/update/{cmsIndustryId}', 'IndustryController@updateIndustryData')->name('page.industry.update.data');
+            Route::get('/industry/delete/{cmsIndustryId}', 'IndustryController@deleteIndustry');
+
+
+            Route::get('/investor', 'InvestorController@index')->name('page.investor');
+            Route::get('/investor/create', 'InvestorController@addInvestor')->name('page.investor.add');
+            Route::post('/investor/create', 'InvestorController@addInvestorData')->name('page.investor.add.data');
+            Route::get('/investor/update/{cmsInvestorId}', 'InvestorController@updateInvestor')->name('page.investor.update');
+            Route::put('/investor/update/{cmsInvestorId}', 'InvestorController@updateInvestorData')->name('page.investor.update.data');
+            Route::get('/investor/delete/{cmsInvestorId}', 'InvestorController@deleteInvestor');
+
+
+            Route::get('/about-us', 'AboutUsController@index')->name('page.about-us');
+            Route::get('/about-us/create', 'AboutUsController@addAboutUs')->name('page.about-us.add');
+            Route::post('/about-us/create', 'AboutUsController@addAboutUsData')->name('page.about-us.add.data');
+            Route::get('/about-us/update/{cmsAboutUsId}', 'AboutUsController@updateAboutUs')->name('page.about-us.update');
+            Route::put('/about-us/update/{cmsAboutUsId}', 'AboutUsController@updateAboutUsData')->name('page.about-us.update.data');
+            Route::get('/about-us/delete/{cmsAboutUsId}', 'AboutUsController@deleteAboutUs');
+
+
+            Route::get('/contact-us', 'ContactUsController@index')->name('page.contact-us');
+            Route::get('/contact-us/create', 'ContactUsController@addContactUs')->name('page.contact-us.add');
+            Route::post('/contact-us/create', 'ContactUsController@addContactUsData')->name('page.contact-us.add.data');
+            Route::get('/contact-us/update/{cmsContactUsId}', 'ContactUsController@updateContactUs')->name('page.contact-us.update');
+            Route::put('/contact-us/update/{cmsContactUsId}', 'ContactUsController@updateContactUsData')->name('page.contact-us.update.data');
+            Route::get('/contact-us/delete/{cmsContactUsId}', 'ContactUsController@deleteContactUs');
+
+            Route::get('/career', 'CareerController@index')->name('page.career');
+            Route::get('/career/create', 'CareerController@addCareer')->name('page.career.add');
+            Route::post('/career/create', 'CareerController@addCareerData')->name('page.career.add.data');
+            Route::get('/career/update/{cmsCareerId}', 'CareerController@updateCareer')->name('page.career.update');
+            Route::put('/career/update/{cmsCareerId}', 'CareerController@updateCareerData')->name('page.career.update.data');
+            Route::get('/career/delete/{cmsAboutUsId}', 'CareerController@deleteCareer');
+
+            Route::get('/career/jobs', 'JobController@index')->name('page.career.jobs');
+            Route::get('/career/add-job', 'JobController@addJob')->name('page.career.job.add');
+            Route::post('/career/add-job', 'JobController@addJobData')->name('page.career.job.add.data');
+            Route::get('/career/update-job/{cmsJobId}', 'JobController@updateJob')->name('page.career.job.update');
+            Route::put('/career/update-job/{cmsJobId}', 'JobController@updateJobData')->name('page.career.job.update.data');
+            Route::get('/career/active-inactive-job/{cmsJobId}', 'JobController@activeInactiveJob');
+
+            Route::get('/applicant', 'ApplicantController@index')->name('page.applicant');
+            Route::get('/applicant-detail/{applicantId}', 'ApplicantController@applicantDetail')->name('page.applicant.detail');
+
+            Route::get('/election', 'ElectionController@index')->name('page.election');
+            Route::get('/election/create', 'ElectionController@addElection')->name('page.election.add');
+            Route::post('/election/create', 'ElectionController@addElectionData')->name('page.election.add.data');
+            Route::get('/election/update/{cmsElectionId}', 'ElectionController@updateElection')->name('page.election.update');
+            Route::post('/election/update/{cmsElectionId}', 'ElectionController@updateElectionData')->name('page.election.update.data');
+            Route::get('/election/delete/{cmsElectionId}', 'ElectionController@deleteElection');
+
+            Route::get('/member', 'MemberController@index')->name('page.member');
+            Route::get('/member/create', 'MemberController@addMember')->name('page.member.add');
+            Route::post('/member/create', 'MemberController@addMemberData')->name('page.member.add.data');
+            Route::get('/member/update/{cmsMemberId}', 'MemberController@updateMember')->name('page.member.update');
+            Route::put('/member/update/{cmsMemberId}', 'MemberController@updateMemberData')->name('page.member.update.data');
+            Route::get('/member/delete/{cmsMemberId}', 'MemberController@deleteMember');
         });
 
     });
 });
-
 
 Route::namespace('FrontEnd')->group(function () {
     Route::middleware('UnAuthentic')->group(function () {
