@@ -10,7 +10,7 @@ class FundingOpportunityController extends Controller
 {
     public function index()
     {
-        $opportunities = FundingOpportunity::get();
+        $opportunities = FundingOpportunity::where('amount',NULL)->get();
         return view('website.pages.funding-opportunity',compact('opportunities'));
     }
 }

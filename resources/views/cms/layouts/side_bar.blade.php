@@ -70,11 +70,22 @@
                             <li class="{{ getActiveClass(request()->segment(5),['gallery']) }}"><a href="/admin/website/pages/event/gallery"><i class="icon-grid"></i> Gallery </a></li>
                         </ul>
                     </li>
+                    <li class="{{ getActiveClass(request()->segment(4),['news']) }}"><a href="/admin/website/pages/news"><i class="icon-grid"></i> Our News Page </a></li>
                     <li class="{{getActiveClass(request()->segment(4),['blog'])}}"><a href="/admin/website/pages/blog"><i class="icon-grid"></i> BLog </a></li>
+
+                    <li class="dropdown @if(getActiveClass(request()->segment(4),['research']) == "active") {{ getActiveClass(request()->segment(4),['research']) }}  @else {{ getActiveClass(request()->segment(5),['funding','funded','proposal']) }} @endif"><a href="javascript:void(0);"><i class="icon-grid"></i> Research </a>
+                        <ul class="sub-menu">
+                            <li class="{{getActiveClass(request()->segment(4),['research'])}}"><a href="/admin/website/pages/research"><i class="icon-grid"></i> Research Page</a></li>
+                            <li class="{{ getActiveClass(request()->segment(5),['funding']) }}"><a href="/admin/website/pages/res/funding-opportunity"><i class="icon-grid"></i> Funding Opportunity </a></li>
+                            <li class="{{ getActiveClass(request()->segment(5),['funded']) }}"><a href="/admin/website/pages/res/funded-project"><i class="icon-grid"></i> Funded Project </a></li>
+                            <li class="{{ getActiveClass(request()->segment(5),['proposal']) }}"><a href="/admin/website/pages/res/call-for-proposal"><i class="icon-grid"></i> Call For Proposal </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="{{getActiveClass(request()->segment(4),['blog'])}}"><a href="/admin/website/pages/research/funding-opportunity"><i class="icon-grid"></i> BLog </a></li>
                     <li class="{{ getActiveClass(request()->segment(4),['contact']) }}"><a href="/admin/website/pages/contact"><i class="icon-grid"></i> Contact </a></li>
                     <li class="{{ getActiveClass(request()->segment(4),['research']) }}"><a href="/admin/website/pages/research"><i class="icon-grid"></i> Research </a></li>
                     <li class="{{ getActiveClass(request()->segment(4),['about-us']) }}"><a href="/admin/website/pages/about-us"><i class="icon-grid"></i> About Us </a></li>
-                    <li class="{{ getActiveClass(request()->segment(4),['news']) }}"><a href="/admin/website/pages/news"><i class="icon-grid"></i> Our News </a></li>
                     <li class="{{ getActiveClass(request()->segment(4),['our-professors']) }}"><a href="/admin/website/pages/our-professors"><i class="icon-grid"></i> Our Professors </a></li>
                 </ul>
             </li>

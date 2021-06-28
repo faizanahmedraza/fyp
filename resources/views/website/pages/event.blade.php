@@ -39,7 +39,7 @@
                                         <li><a href="#">{{ $val->title ?? '' }}</a>
                                         </li>
                                     </ul>
-                                    <h2><a href="/event/{{$val->slug}}/gallery">{{ Str::limit($val->description,20) ?? '' }}</a></h2>
+                                    <h2><a href="/events/{{$val->slug}}/gallery">{{ Str::limit($val->description,20) ?? '' }}</a></h2>
                                     <div class="link-btn"><a href="blog-details.html"><i
                                                     class="flaticon-right-arrow"></i></a></div>
                                 </div>

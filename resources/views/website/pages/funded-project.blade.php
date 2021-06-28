@@ -32,7 +32,8 @@
                         <th data-priority="1">S.No.</th>
                         <th data-priority="3">Project Title</th>
                         <th data-priority="3">Principle Investigator</th>
-                        <th data-priority="3">Department</th>
+                        <th data-priority="3">Funding Agency</th>
+                        <th data-priority="3">Amount</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,7 +43,8 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ Str::limit($val->title,25) }}</td>
                                 <td>{{ $val->principle_investigator }}</td>
-                                <td>{{ $val->department, 20 }}</td>
+                                <td>{{ $val->funding_agency }}</td>
+                                <td>{{ $val->amount }}</td>
                             </tr>
                         @endforeach
                     @endif

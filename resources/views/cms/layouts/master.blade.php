@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/assets/vendors/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/vendors/flags-icon/css/flag-icon.min.css">
     <link rel="stylesheet" href="/assets/css/main.css">
-    @stack('styles')
+        @stack('styles')
 </head>
 
 <body id="main-container" class="default semi-dark">
