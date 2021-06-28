@@ -14,8 +14,8 @@
             <div class="content-box">
                 <h1>{{ $resultSet->title }}</h1>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="index-2.html">Home</a></li>
-                    <li>News Details</li>
+                    <li><a href="/">Home</a></li>
+                    <li>News List</li>
                 </ul>
             </div>
         </div>
@@ -63,7 +63,7 @@
         var jsonEncoded = @json($resultSet);
         var publicpath = "{{ asset('assets/images/uploads/pages') }}";
         if (jsonEncoded.banner) {
-            $(".banner").css("background", "url(" + publicpath + "/" + jsonEncoded.banner + ")");
+            $(".banner").css("background-image", "url(" + publicpath + "/" + jsonEncoded.banner + ")");
         }
     </script>
 @endpush

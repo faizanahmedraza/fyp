@@ -36,9 +36,9 @@
                             </li>
                             <li class="dropdown"><a href="/research">Research</a>
                                 <ul>
-                                    <li><a href="research-details.html">Funding Opportunties</a></li>
-                                    <li><a href="research-details.html">Funding Projects</a></li>
-                                    <li><a href="research-details.html">Call for proposal</a></li>
+                                    <li><a href="/research/funding-opportunities">Funding Opportunties</a></li>
+                                    <li><a href="/research/funded-projects">Funding Projects</a></li>
+                                    <li><a href="#">Call for proposal</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#">Media</a>

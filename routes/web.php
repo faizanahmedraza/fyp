@@ -17,11 +17,14 @@ Route::namespace('website')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::get('/research', 'ResearchController@index');
     Route::get('/our-professors', 'ProfessorController@index');
-    Route::get('/about-us', 'AboutController@index');
     Route::get('/our-news', 'NewsController@index');
-    Route::get('/contact', 'ContactController@index');
-//    Route::get('/blogs', 'BlogController@index');
     Route::get('/news/detail/{slug}', 'BlogController@blogDetail');
+    Route::get('/about-us', 'AboutController@index');
+    Route::get('/contact', 'ContactController@index');
+    Route::get('/events', 'EventController@index');
+    Route::get('/event/{slug}/gallery', 'GalleryController@index');
+    Route::get('/research/funding-opportunities', 'FundingOpportunityController@index');
+    Route::get('/research/funded-projects', 'FundedProjectController@index');
 });
 
 Route::get('/admin', function () {

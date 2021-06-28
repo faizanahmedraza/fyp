@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 @foreach($blogs as $key => $val)
-                    <div class="col-lg-4 col-md-6 col-sm-12 news-block">
+                    <div class="col-lg-3 col-md-6 col-sm-12 news-block">
                         <div class="news-block-one wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <div class="inner-box">
                                 <div class="image-holder">

@@ -83,7 +83,7 @@
     <div class="modal fade" id="viewImage" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; right: -10px; top: -10px;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; right: -32px; top: -32px;">
                     <i class="icon-close" style="color:red;"></i>
                 </button>
                 <img class="imgClass" src="" alt="gallery-image"/>
