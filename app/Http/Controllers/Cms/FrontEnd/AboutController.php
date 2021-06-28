@@ -3,32 +3,29 @@
 namespace App\Http\Controllers\Cms\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use App\Models\CMSNews;
-use Carbon\Carbon;
+use App\Models\CMSAboutUs;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
 
-class NewsController extends Controller
+class AboutController extends Controller
 {
     public function index()
     {
-        $resultSet = CMSNews::all();
-        return view('cms.website.pages.news.index', compact('resultSet'));
+        $resultSet = CMSAboutUs::all();
+        return view('admin.frontend.pages.about-us.index', compact('resultSet'));
     }
 
-    public function addNews()
+    public function addAboutUs()
     {
-        return view('cms.website.pages.news.add');
+        return view('admin.frontend.pages.about-us.add');
     }
 
-    public function addNewsData()
+    public function addAboutUsData()
     {
         request()->validate([
             'title' => ['required'],
             'banner' => ['required', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
+            'vision' => ['required','max:150'],
+            'mission' => ['required','max:500'],
             'description' => ['required']
         ]);
 
@@ -38,8 +35,8 @@ class NewsController extends Controller
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/images/uploads/pages';
-            $destination = givePath() . '/assets/images/uploads/pages/' . $newFileName;
+            $purposePath = givePath() . '/assets/frontend/uploads/pages';
+            $destination = givePath() . '/assets/frontend/uploads/pages/' . $newFileName;
 
             if (File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -48,34 +45,38 @@ class NewsController extends Controller
             $check = $img->save($destination);
 
             if ($check) {
-                CMSNews::create([
+                CMSAboutUs::create([
                     'title' => request()->title,
                     'banner' => $newFileName,
+                    'vision' => request()->vision,
+                    'mission' => request()->mission,
                     'description' => request()->description,
                     'created_by' => Auth::id()
                 ]);
             } else {
                 return back()->with('error', 'File not Saved in Database!');
             }
-            return redirect()->route('website.page.news')->with('success', 'Your data is successfully added!');
+            return redirect()->route('frontend.page.about-us')->with('success', 'Your data is successfully added!');
         }
     }
 
-    public function updateNews($newsId)
+    public function updateAboutUs($cmsAboutUsId)
     {
-        $updateNews = CMSNews::findOrFail($newsId);
-        return view('cms.website.pages.news.update', compact('updateNews'));
+        $updateAboutUs = CMSAboutUs::findOrFail($cmsAboutUsId);
+        return view('admin.frontend.pages.about-us.update', compact('updateAboutUs'));
     }
 
-    public function updateNewsData($newsId)
+    public function updateAboutUsData($cmsAboutUsId)
     {
 
-        $updateHome = CMSNews::findOrFail($newsId);
+        $updateContact = CMSAboutUs::findOrFail($cmsAboutUsId);
 
         if (request()->banner) {
             request()->validate([
                 'title' => ['required'],
                 'banner' => ['required', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
+                'vision' => ['required','max:150'],
+                'mission' => ['required','max:500'],
                 'description' => ['required']
             ]);
             $img = Image::make(request()->file('banner'));
@@ -83,8 +84,8 @@ class NewsController extends Controller
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/images/uploads/pages';
-            $destination = givePath() . '/assets/images/uploads/pages/' . $newFileName;
+            $purposePath = givePath() . '/assets/frontend/uploads/pages';
+            $destination = givePath() . '/assets/frontend/uploads/pages/' . $newFileName;
 
             if(File::isDirectory($purposePath)){
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -92,9 +93,11 @@ class NewsController extends Controller
             $check = $img->save($destination);
 
             if ($check) {
-                $updateHome->update([
+                $updateContact->update([
                     'title' => request()->title,
                     'banner' => $newFileName,
+                    'vision' => request()->vision,
+                    'mission' => request()->mission,
                     'description' => request()->description,
                     'updated_by' => Auth::id()
                 ]);
@@ -104,28 +107,30 @@ class NewsController extends Controller
         } else {
             request()->validate([
                 'title' => ['required'],
+                'vision' => ['required','max:150'],
+                'mission' => ['required','max:500'],
                 'description' => ['required']
             ]);
-            $updateHome->update([
+            $updateContact->update([
                 'title' => request()->title,
-                'banner' => $updateHome->banner,
+                'banner' => $updateContact->banner,
                 'description' => request()->description,
                 'updated_by' => Auth::id()
             ]);
         }
-        return redirect()->route('website.page.news')->with('success', 'Your data is successfully updated!');
+        return redirect()->route('frontend.page.about-us')->with('success', 'Your data is successfully updated!');
     }
 
-    public function deleteNews($newsId)
+    public function deleteContactUs($cmsAboutUsId)
     {
         $msg = "Some thing went wrong!";
         $code = 400;
-        $records = CMSNews::all();
-        $updateHome = CMSNews::findOrFail($newsId);
+        $records = CMSAboutUs::all();
+        $updateContact = CMSAboutUs::findOrFail($cmsAboutUsId);
         if (count($records) > 1) {
-            if (!empty($updateHome)) {
-                unlink(givePath() .'/assets/images/uploads/pages/'. $updateHome->banner);
-                $updateHome->delete();
+            if (!empty($updateContact)) {
+                unlink(givePath() .'/assets/frontend/uploads/pages/'. $updateContact->banner);
+                $updateContact->delete();
                 $msg = "Successfully Delete record!";
                 $code = 200;
             }

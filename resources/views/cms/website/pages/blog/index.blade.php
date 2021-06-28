@@ -1,6 +1,7 @@
 @extends('cms.layouts.master')
 
 @push('styles')
+    <link rel="stylesheet" type="text/css" href="/assets/css/toggle-switch.css">
     <link rel="stylesheet" href="/assets/vendors/datatable/css/dataTables.bootstrap4.min.css">
 @endpush
 
@@ -14,10 +15,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">News Page</h4>
+                                    <h4 class="card-title">Blogs</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ route('website.page.news.add') }}" class="btn btn-primary float-right">Add +</a>
+                                    <a href="{{ route('website.page.blog.add') }}" class="btn btn-primary float-right">Add +</a>
                                 </div>
                             </div>
                         </div>
@@ -35,24 +36,36 @@
                                     <thead>
                                     <tr>
                                         <th data-priority="1">#ID</th>
+                                        <th data-priority="3">Author</th>
                                         <th data-priority="3">Title</th>
                                         <th data-priority="3">Description</th>
+                                        <th>In-Active/Active</th>
                                         <th data-priority="1">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @if (count($resultSet) > 0)
-                                        @foreach ($resultSet as $key => $home)
+                                        @foreach ($resultSet as $key => $blog)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $home->title }}</td>
-                                                <td>{{ \Illuminate\Support\Str::limit($home->description, 20) }}
+                                                <td>{{ $blog->author }}</td>
+                                                <td>{{ $blog->title }}</td>
+                                                <td>{{ \Illuminate\Support\Str::limit($blog->description, 20) }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('website.page.news.update', ['newsId' => $home->id]) }}"
+                                                    <label class="switch">
+                                                        <input type="checkbox" name="is_active" class="is_active"
+                                                               value="1"
+                                                               onchange="changeStatus(this, '{{ $blog->id }}')"
+                                                                {{ !empty($blog->is_active) ? 'checked' : '' }}>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('website.page.blog.update', ['blogId' => $blog->id]) }}"
                                                        class="btn btn-success btn-primary">Update</a>
                                                     <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $home->id }}')">Delete</a>
+                                                       onclick="deleteRecord(this, '{{ $blog->id }}')">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -71,6 +84,7 @@
 @endsection
 
 @push('scripts')
+    <script src="/assets/js/bootstrap4-toggle.min.js"></script>
     <script src="/assets/js/axios.min.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>
     <script src="/assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
@@ -80,7 +94,41 @@
             $('.table').DataTable();
         });
 
-        function deleteRecord(input, newsId) {
+        function changeStatus(input, blogId) {
+            swal({
+                title: "Are you sure?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                closeOnClickOutside: false
+            }).then((willDelete) => {
+                if (willDelete) {
+                    axios.get(`/admin/website/pages/blog/change-status/${blogId}`).then(function(response) {
+                        swal(response.data.msg);
+                        swal({
+                            title: response.data.msg,
+                            icon: "success",
+                            closeOnClickOutside: false
+                        }).then((successBtn) => {
+                            if (successBtn) {
+                                location.reload();
+                                $(input).prop("checked", input.checked ? false : true);
+                            }
+                        });
+
+                    }).catch(function(error) {
+                        swal({
+                            title: error.response.data.msg,
+                            icon: "error",
+                            dangerMode: true
+                        });
+                    });
+                }
+            });
+            $(input).prop("checked", input.checked ? false : true);
+        }
+
+        function deleteRecord(input, blogId) {
             let tr = $(input).parent().parent();
             swal({
                 title: "Are you sure?",
@@ -90,7 +138,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/news/delete/${newsId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/blog/delete/${blogId}`).then(function(response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,

@@ -1,6 +1,7 @@
 @extends('cms.layouts.master')
 
 @push('styles')
+    <link rel="stylesheet" type="text/css" href="/assets/css/toggle-switch.css">
     <link rel="stylesheet" href="/assets/vendors/datatable/css/dataTables.bootstrap4.min.css">
 @endpush
 
@@ -14,10 +15,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">News Page</h4>
+                                    <h4 class="card-title">Events</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ route('website.page.news.add') }}" class="btn btn-primary float-right">Add +</a>
+                                    <a href="{{ route('website.page.event.add') }}" class="btn btn-primary float-right">Add +</a>
                                 </div>
                             </div>
                         </div>
@@ -42,17 +43,17 @@
                                     </thead>
                                     <tbody>
                                     @if (count($resultSet) > 0)
-                                        @foreach ($resultSet as $key => $home)
+                                        @foreach ($resultSet as $key => $event)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $home->title }}</td>
-                                                <td>{{ \Illuminate\Support\Str::limit($home->description, 20) }}
+                                                <td>{{ $event->title }}</td>
+                                                <td>{{ \Illuminate\Support\Str::limit($event->description, 20) }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('website.page.news.update', ['newsId' => $home->id]) }}"
+                                                    <a href="{{ route('website.page.event.update', ['eventId' => $event->id]) }}"
                                                        class="btn btn-success btn-primary">Update</a>
                                                     <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $home->id }}')">Delete</a>
+                                                       onclick="deleteRecord(this, '{{ $event->id }}')">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -71,6 +72,7 @@
 @endsection
 
 @push('scripts')
+    <script src="/assets/js/bootstrap4-toggle.min.js"></script>
     <script src="/assets/js/axios.min.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>
     <script src="/assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
@@ -80,7 +82,7 @@
             $('.table').DataTable();
         });
 
-        function deleteRecord(input, newsId) {
+        function deleteRecord(input, eventId) {
             let tr = $(input).parent().parent();
             swal({
                 title: "Are you sure?",
@@ -90,7 +92,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/news/delete/${newsId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/event/delete/${eventId}`).then(function(response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,

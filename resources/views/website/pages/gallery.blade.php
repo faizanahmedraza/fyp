@@ -1,7 +1,7 @@
 @extends('website.layouts.master')
 
 @push('styles')
-   <style></style>
+    <style></style>
 @endpush
 
 @section('content')

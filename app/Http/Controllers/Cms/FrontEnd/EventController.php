@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Cms\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -11,24 +11,23 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
-class BlogController extends Controller
+class EventController extends Controller
 {
     public function index()
     {
-        $resultSet = Blog::get();
-        return view('cms.website.pages.blog.index',compact('resultSet'));
+        $resultSet = Event::get();
+        return view('cms.website.pages.event.index',compact('resultSet'));
     }
 
-    public function addBlog()
+    public function addEvent()
     {
-        return view('cms.website.pages.blog.add');
+        return view('cms.website.pages.event.add');
     }
 
-    public function addBlogData(){
+    public function addEventData(){
         request()->validate([
             'image' => ['required','image','mimes:jpeg,jpg,png,svg','max:2048'],
-            'author' => ['required','max:55'],
-            'title' => ['required','unique:blog,title,NULL,id,deleted_at,NULL','max:100'],
+            'title' => ['required','unique:event,title,NULL,id,deleted_at,NULL','max:100'],
             'description' => ['required','max:200']
         ]);
 
@@ -38,8 +37,8 @@ class BlogController extends Controller
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random.'-'.$dt.'.'.$extension;
-            $purposePath = givePath().'/assets/images/uploads/pages/blog';
-            $destination = givePath().'/assets/images/uploads/pages/blog/'.$newFileName;
+            $purposePath = givePath().'/assets/images/uploads/pages/event';
+            $destination = givePath().'/assets/images/uploads/pages/event/'.$newFileName;
 
             if(!File::isDirectory($purposePath)){
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -47,9 +46,8 @@ class BlogController extends Controller
 
             $check = $img->save($destination);
             if ($check) {
-                Blog::create([
+                Event::create([
                     'image' => $newFileName,
-                    'author' => request()->author,
                     'title' => request()->title,
                     'slug' => Str::slug(request()->title),
                     'description' => request()->description,
@@ -59,39 +57,38 @@ class BlogController extends Controller
             } else {
                 return back()->with('error', 'File not Saved in Database!');
             }
-            return redirect()->route('website.page.blog')->with('success', 'Your data is successfully added!');
+            return redirect()->route('website.page.event')->with('success', 'Your data is successfully added!');
         }
     }
 
-    public function updateBlog($blogId){
-        $updateBlog = Blog::where('id',$blogId)->first();
-        return view('cms.website.pages.blog.update',compact('updateBlog'));
+    public function updateEvent($eventId){
+        $updateEvent = Event::where('id',$eventId)->first();
+        return view('cms.website.pages.event.update',compact('updateEvent'));
     }
 
-    public function updateBlogData($blogId){
-        $updateBlog = Blog::where('id',$blogId)->first();
+    public function updateEventData($eventId){
+        $updateEvent = Event::where('id',$eventId)->first();
 
-        if(empty($updateBlog->image) && empty(request()->image))
+        if(empty($updateEvent->image) && empty(request()->image))
         {
             return back()->withErrors(['error' => 'The image is required'])->withInput();
         }
 
         request()->validate([
             'image' => ['sometimes','nullable','image','mimes:jpeg,jpg,png,svg','max:2048'],
-            'author' => ['required','max:55'],
-            'title' => ['required','unique:blog,title,'.$blogId.',id,deleted_at,NULL','max:100'],
+            'title' => ['required','unique:event,title,'.$eventId.',id,deleted_at,NULL','max:100'],
             'description' => ['required','max:200']
         ]);
 
         if(!empty(request()->file('image'))){
-            unlink(givePath() . '/assets/images/uploads/pages/blog/' . $updateBlog->image);
+            unlink(givePath() . '/assets/images/uploads/pages/event/' . $updateEvent->image);
             $img = Image::make(request()->file('image'));
             $extension = request()->file('image')->extension();
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random.'-'.$dt.'.'.$extension;
-            $purposePath = givePath().'/assets/images/uploads/pages/blog';
-            $destination = givePath().'/assets/images/uploads/pages/blog/'.$newFileName;
+            $purposePath = givePath().'/assets/images/uploads/pages/event';
+            $destination = givePath().'/assets/images/uploads/pages/event/'.$newFileName;
 
             if(!File::isDirectory($purposePath)){
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -99,9 +96,8 @@ class BlogController extends Controller
             $check = $img->save($destination);
 
             if ($check) {
-                $updateBlog->update([
+                $updateEvent->update([
                     'image' => $newFileName,
-                    'author' => request()->author,
                     'title' => request()->title,
                     'slug' => Str::slug(request()->title),
                     'description' => request()->description,
@@ -112,43 +108,26 @@ class BlogController extends Controller
             }
 
         } else {
-            $updateBlog->update([
-                'image' => $updateBlog->image,
-                'author' => request()->author,
+            $updateEvent->update([
+                'image' => $updateEvent->image,
                 'title' => request()->title,
                 'slug' => Str::slug(request()->title),
                 'description' => request()->description,
                 'updated_by' => Auth::id()
             ]);
         }
-        return redirect()->route('website.page.blog')->with('success', 'Your data is successfully updated!');
+        return redirect()->route('website.page.event')->with('success', 'Your data is successfully updated!');
     }
 
-    public function changeBlogStatus($blogId)
-    {
-        $msg = 'Something went wrong.';
-        $code = 400;
-        $blog = Blog::where('id',$blogId)->first();
-
-        if (!empty($blog)) {
-            $msgText = $blog->is_active ? "in-active" : "active";
-            $blog->update(['is_active' => $blog->is_active ? 0 : 1]);
-            $msg = "Blog successfully {$msgText}!";
-            $code = 200;
-        }
-
-        return response()->json(['msg' => $msg], $code);
-    }
-
-    public function deleteBlog($blogId){
+    public function deleteEvent($eventId){
         $msg = "Some thing went wrong!";
         $code = 400;
-        $records = Blog::all();
-        $updateBlog = Blog::where('id',$blogId)->first();
+        $records = Event::all();
+        $updateEvent = Event::where('id',$eventId)->first();
         if (count($records) > 2) {
-            if (!empty($updateBlog)) {
-                unlink(givePath().'/assets/images/uploads/pages/blog/'.$updateBlog->image);
-                $updateBlog->delete();
+            if (!empty($updateEvent)) {
+                unlink(givePath().'/assets/images/uploads/pages/event/'.$updateEvent->image);
+                $updateEvent->delete();
                 $msg = "Successfully Delete record!";
                 $code = 200;
             }

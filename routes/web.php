@@ -20,6 +20,8 @@ Route::namespace('website')->group(function () {
     Route::get('/about-us', 'AboutController@index');
     Route::get('/our-news', 'NewsController@index');
     Route::get('/contact', 'ContactController@index');
+//    Route::get('/blogs', 'BlogController@index');
+    Route::get('/news/detail/{slug}', 'BlogController@blogDetail');
 });
 
 Route::get('/admin', function () {
@@ -115,21 +117,34 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::put('/home/testimonial/update/{cmsTestimonialId}', 'TestimonialController@updateTestimonialData')->name('page.home.testimonial.update.data');
             Route::get('/home/testimonial/delete/{cmsTestimonialId}', 'TestimonialController@deleteTestimonial');
 
-            Route::get('/industry', 'IndustryController@index')->name('page.industry');
-            Route::get('/industry/create', 'IndustryController@addIndustry')->name('page.industry.add');
-            Route::post('/industry/create', 'IndustryController@addIndustryData')->name('page.industry.add.data');
-            Route::get('/industry/update/{cmsIndustryId}', 'IndustryController@updateIndustry')->name('page.industry.update');
-            Route::put('/industry/update/{cmsIndustryId}', 'IndustryController@updateIndustryData')->name('page.industry.update.data');
-            Route::get('/industry/delete/{cmsIndustryId}', 'IndustryController@deleteIndustry');
+            Route::get('/blog', 'BlogController@index')->name('page.blog');
+            Route::get('/blog/create', 'BlogController@addBlog')->name('page.blog.add');
+            Route::post('/blog/create', 'BlogController@addBlogData')->name('page.blog.add.data');
+            Route::get('/blog/update/{blogId}', 'BlogController@updateBlog')->name('page.blog.update');
+            Route::put('/blog/update/{blogId}', 'BlogController@updateBlogData')->name('page.blog.update.data');
+            Route::get('/blog/delete/{blogId}', 'BlogController@deleteBlog');
+            Route::get('/blog/change-status/{slug}', 'BlogController@changeBlogStatus');
 
+            Route::get('/events', 'EventController@index')->name('page.event');
+            Route::get('/event/create', 'EventController@addEvent')->name('page.event.add');
+            Route::post('/event/create', 'EventController@addEventData')->name('page.event.add.data');
+            Route::get('/event/update/{eventId}', 'EventController@updateEvent')->name('page.event.update');
+            Route::put('/event/update/{eventId}', 'EventController@updateEventData')->name('page.event.update.data');
+            Route::get('/event/delete/{eventId}', 'EventController@deleteEvent');
 
-            Route::get('/investor', 'InvestorController@index')->name('page.investor');
-            Route::get('/investor/create', 'InvestorController@addInvestor')->name('page.investor.add');
-            Route::post('/investor/create', 'InvestorController@addInvestorData')->name('page.investor.add.data');
-            Route::get('/investor/update/{cmsInvestorId}', 'InvestorController@updateInvestor')->name('page.investor.update');
-            Route::put('/investor/update/{cmsInvestorId}', 'InvestorController@updateInvestorData')->name('page.investor.update.data');
-            Route::get('/investor/delete/{cmsInvestorId}', 'InvestorController@deleteInvestor');
+            Route::get('/event/gallery', 'GalleryController@index')->name('page.event.gallery');
+            Route::get('/event/gallery/create', 'GalleryController@addGallery')->name('page.event.gallery.add');
+            Route::post('/event/gallery/create', 'GalleryController@addGalleryData')->name('page.event.gallery.add.data');
+            Route::get('/event/gallery/update/{galleryId}', 'GalleryController@updateGallery')->name('page.event.gallery.update');
+            Route::put('/event/gallery/update/{galleryId}', 'GalleryController@updateGalleryData')->name('page.event.gallery.update.data');
+            Route::get('/event/gallery/delete/{galleryId}', 'GalleryController@deleteGallery');
 
+            Route::get('/news', 'NewsController@index')->name('page.news');
+            Route::get('/news/create', 'NewsController@addNews')->name('page.news.add');
+            Route::post('/news/create', 'NewsController@addNewsData')->name('page.news.add.data');
+            Route::get('/news/update/{newsId}', 'NewsController@updateNews')->name('page.news.update');
+            Route::put('/news/update/{newsId}', 'NewsController@updateNewsData')->name('page.news.update.data');
+            Route::get('/news/delete/{newsId}', 'InvestorController@deleteInvestor');
 
             Route::get('/about-us', 'AboutUsController@index')->name('page.about-us');
             Route::get('/about-us/create', 'AboutUsController@addAboutUs')->name('page.about-us.add');
@@ -137,7 +152,6 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::get('/about-us/update/{cmsAboutUsId}', 'AboutUsController@updateAboutUs')->name('page.about-us.update');
             Route::put('/about-us/update/{cmsAboutUsId}', 'AboutUsController@updateAboutUsData')->name('page.about-us.update.data');
             Route::get('/about-us/delete/{cmsAboutUsId}', 'AboutUsController@deleteAboutUs');
-
 
             Route::get('/contact-us', 'ContactUsController@index')->name('page.contact-us');
             Route::get('/contact-us/create', 'ContactUsController@addContactUs')->name('page.contact-us.add');
@@ -159,23 +173,6 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::get('/career/update-job/{cmsJobId}', 'JobController@updateJob')->name('page.career.job.update');
             Route::put('/career/update-job/{cmsJobId}', 'JobController@updateJobData')->name('page.career.job.update.data');
             Route::get('/career/active-inactive-job/{cmsJobId}', 'JobController@activeInactiveJob');
-
-            Route::get('/applicant', 'ApplicantController@index')->name('page.applicant');
-            Route::get('/applicant-detail/{applicantId}', 'ApplicantController@applicantDetail')->name('page.applicant.detail');
-
-            Route::get('/election', 'ElectionController@index')->name('page.election');
-            Route::get('/election/create', 'ElectionController@addElection')->name('page.election.add');
-            Route::post('/election/create', 'ElectionController@addElectionData')->name('page.election.add.data');
-            Route::get('/election/update/{cmsElectionId}', 'ElectionController@updateElection')->name('page.election.update');
-            Route::post('/election/update/{cmsElectionId}', 'ElectionController@updateElectionData')->name('page.election.update.data');
-            Route::get('/election/delete/{cmsElectionId}', 'ElectionController@deleteElection');
-
-            Route::get('/member', 'MemberController@index')->name('page.member');
-            Route::get('/member/create', 'MemberController@addMember')->name('page.member.add');
-            Route::post('/member/create', 'MemberController@addMemberData')->name('page.member.add.data');
-            Route::get('/member/update/{cmsMemberId}', 'MemberController@updateMember')->name('page.member.update');
-            Route::put('/member/update/{cmsMemberId}', 'MemberController@updateMemberData')->name('page.member.update.data');
-            Route::get('/member/delete/{cmsMemberId}', 'MemberController@deleteMember');
         });
 
     });

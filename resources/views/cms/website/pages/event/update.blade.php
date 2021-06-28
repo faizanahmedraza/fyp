@@ -10,10 +10,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Update News</h4>
+                                    <h4 class="card-title">Update Event</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ route('website.page.news') }}" class="btn btn-primary float-right">← Back</a>
+                                    <a href="{{ route('website.page.event') }}" class="btn btn-primary float-right">← Back</a>
                                 </div>
                             </div>
                         </div>
@@ -21,7 +21,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
-                                        <form method="POST" action="{{ route('website.page.news.update.data',['newsId' => $updateNews->id]) }}"
+                                        <form method="POST" action="{{ route('website.page.event.update.data',['eventId' => $updateEvent->id]) }}"
                                               enctype="multipart/form-data">
                                             @method('PUT')
                                             @csrf
@@ -39,42 +39,41 @@
                                                 </div>
                                             @endif
 
-                                            <div class="row">
-                                                <div class="form-group col-md-12">
-                                                    <label>Title <span class="required-class">*</span></label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" name="title" placeholder="Enter Title of Page" maxlength="50" value="{{ old('title',$updateNews->title) }}">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div><label>Banner Image <span class="required-class">*</span></label></div>
-                                            @if($updateNews->banner)
+                                            @if(!empty($updateEvent->image))
                                                 <div class="row">
                                                     <div class="form-group col-md-12">
                                                         <div class="input-group">
-                                                            <img src="{{ asset('assets/images/uploads/pages/'.$updateNews->banner) }}"
+                                                            <img src="{{ asset('assets/images/uploads/pages/event/'.$updateEvent->image) }}"
                                                                  height="70" width="70">
                                                         </div>
                                                     </div>
                                                 </div>
                                             @endif
+
                                             <div class="row">
                                                 <div class="form-group col-md-12">
+                                                    <label>Image <span class="required-class">*</span></label>
                                                     <div class="input-group">
-                                                        <input type="file" name="banner" accept=".jpg, .jpeg, .svg, .png"
-                                                               value="">
+                                                        <input type="file" name="image" accept=".jpg, .jpeg, .svg, .png">
                                                     </div>
                                                 </div>
                                             </div>
 
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="cnic">Title</label>
+                                                    <input type="text" class="form-control rounded allowNumberOnly"
+                                                           id="title" name="title" placeholder="Enter CNIC"
+                                                           value="{{ old('title',$updateEvent->title) }}">
+                                                </div>
+                                            </div>
 
                                             <div class="row">
                                                 <div class="form-group col-md-12">
                                                     <label> Description <span class="required-class">*</span></label>
                                                     <div class="input-group">
                                             <textarea name="description" id="description" class="form-control"
-                                                      placeholder="Enter Description" rows="3" maxlength="800">{{ old('description',$updateNews->description) }}</textarea>
+                                                      placeholder="Enter Description" rows="3">{{ old('description',$updateEvent->description) }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

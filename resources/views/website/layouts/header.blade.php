@@ -43,7 +43,7 @@
                             </li>
                             <li class="dropdown"><a href="#">Media</a>
                                 <ul>
-                                    <li><a href="#">Events</a></li>
+                                    <li><a href="/events">Events</a></li>
                                     <li><a href="#">Success Stories</a>
                                     <li><a href="#">Timeline</a>
                                     </li>

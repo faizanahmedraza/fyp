@@ -76,7 +76,8 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                     <div class="image-box">
-                        <figure class="image image-1"><img src="/assets/website/images/resource/welcome-1.jpg" alt=""></figure>
+                        <figure class="image image-1"><img src="/assets/website/images/resource/welcome-1.jpg" alt="">
+                        </figure>
                         <figure class="image image-2 wow fadeInLeft" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <img src="/assets/website/images/resource/welcome-2.jpg" alt=""></figure>
                         <div class="text-box wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
@@ -198,29 +199,30 @@
                                 <div class="slider-pager">
                                     <ul class="thumb-box">
                                         @foreach($testimonials as $key => $val)
-                                        <li>
-                                            <a class="active" data-slide-index="{{$key}}" href="#">
-                                                <figure><img src="/assets/images/uploads/pages/{{$val->profile_picture}}" alt="">
-                                                </figure>
-                                            </a>
-                                        </li>
+                                            <li>
+                                                <a class="active" data-slide-index="{{$key}}" href="#">
+                                                    <figure><img
+                                                                src="/assets/images/uploads/pages/{{$val->profile_picture}}"
+                                                                alt="">
+                                                    </figure>
+                                                </a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-10 col-md-12 col-sm-12 inner-column">
                                 <div class="inner-box">
-                                    <figure class="image-box"><img src="/assets/images/uploads/pages/{{$testimonials[0]->profile_picture}}" alt="">
+                                    <figure class="image-box"><img
+                                                src="/assets/images/uploads/pages/{{$testimonials[0]->profile_picture}}"
+                                                alt="">
                                     </figure>
                                     <div class="content-box">
-                                        <div class="text">This is due to their excellent service, competitive pricing
-                                            and customer support. It’s throughly refresing get such a personal touch.
-                                            Duis aute irure dolor in repreh enderit in voluptate velit esse cillum eu
-                                            fugiat nulla pariatur.
+                                        <div class="text">{{ $testimonials[0]->description ?? '' }}
                                         </div>
                                         <div class="author-info">
-                                            <h5 class="name">{{ $testimonials[0]->name }}</h5>
-                                            <span class="designation">{{ $testimonials[0]->designation }}</span>
+                                            <h5 class="name">{{ $testimonials[0]->name ?? '' }}</h5>
+                                            <span class="designation">{{ $testimonials[0]->designation ?? '' }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -235,7 +237,9 @@
                                         @foreach($testimonials as $key => $val)
                                             <li>
                                                 <a class="active" data-slide-index="{{$key}}" href="#">
-                                                    <figure><img src="/assets/images/uploads/pages/{{$val->profile_picture}}" alt="">
+                                                    <figure><img
+                                                                src="/assets/images/uploads/pages/{{$val->profile_picture}}"
+                                                                alt="">
                                                     </figure>
                                                 </a>
                                             </li>
@@ -245,17 +249,16 @@
                             </div>
                             <div class="col-lg-10 col-md-12 col-sm-12 inner-column">
                                 <div class="inner-box">
-                                    <figure class="image-box"><img src="/assets/images/uploads/pages/{{$testimonials[1]->profile_picture}}" alt="">
+                                    <figure class="image-box"><img
+                                                src="/assets/images/uploads/pages/{{$testimonials[1]->profile_picture}}"
+                                                alt="">
                                     </figure>
                                     <div class="content-box">
-                                        <div class="text">This is due to their excellent service, competitive pricing
-                                            and customer support. It’s throughly refresing get such a personal touch.
-                                            Duis aute irure dolor in repreh enderit in voluptate velit esse cillum eu
-                                            fugiat nulla pariatur.
+                                        <div class="text">{{ $testimonials[1]->description ?? '' }}
                                         </div>
                                         <div class="author-info">
-                                            <h5 class="name">{{ $testimonials[1]->name }}</h5>
-                                            <span class="designation">{{ $testimonials[1]->designation }}</span>
+                                            <h5 class="name">{{ $testimonials[1]->name ?? '' }}</h5>
+                                            <span class="designation">{{ $testimonials[1]->designation ?? '' }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -270,7 +273,9 @@
                                         @foreach($testimonials as $key => $val)
                                             <li>
                                                 <a class="active" data-slide-index="{{$key}}" href="#">
-                                                    <figure><img src="/assets/images/uploads/pages/{{$val->profile_picture}}" alt="">
+                                                    <figure><img
+                                                                src="/assets/images/uploads/pages/{{$val->profile_picture}}"
+                                                                alt="">
                                                     </figure>
                                                 </a>
                                             </li>
@@ -280,17 +285,16 @@
                             </div>
                             <div class="col-lg-10 col-md-12 col-sm-12 inner-column">
                                 <div class="inner-box">
-                                    <figure class="image-box"><img src="/assets/images/uploads/pages/{{$testimonials[2]->profile_picture}}" alt="">
+                                    <figure class="image-box"><img
+                                                src="/assets/images/uploads/pages/{{$testimonials[2]->profile_picture}}"
+                                                alt="">
                                     </figure>
                                     <div class="content-box">
-                                        <div class="text">This is due to their excellent service, competitive pricing
-                                            and customer support. It’s throughly refresing get such a personal touch.
-                                            Duis aute irure dolor in repreh enderit in voluptate velit esse cillum eu
-                                            fugiat nulla pariatur.
+                                        <div class="text">{{ $testimonials[2]->description ?? '' }}
                                         </div>
                                         <div class="author-info">
-                                            <h5 class="name">{{ $testimonials[2]->name }}</h5>
-                                            <span class="designation">{{ $testimonials[2]->designation }}</span>
+                                            <h5 class="name">{{ $testimonials[2]->name ?? '' }}</h5>
+                                            <span class="designation">{{ $testimonials[2]->designation ?? '' }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -376,16 +380,16 @@
             <div class="team-details">
                 <div class="inner-box">
                     <div class="image-box">
-                        <figure class="image"><img src="images/resource/team-details-1.jpg" alt=""></figure>
+                        <figure class="image"><img src="/assets/images/uploads/pages/{{$orics[0]->profile_picture}}"
+                                                   alt=""></figure>
                         <div class="link"><a href="team-details.html">View More Details</a></div>
                     </div>
                     <div class="content-box">
                         <div class="info">
-                            <h2 class="name">Dr. Kevin Martin</h2>
-                            <span class="designation">Researcher & Professor</span>
+                            <h2 class="name">{{ $orics[0]->name ?? '' }}</h2>
+                            <span class="designation">{{ $orics[0]->designation ?? '' }}</span>
                         </div>
-                        <div class="text">Lorem ipsum dolor sit amet, con adipiscing elit tiam convallis elit id
-                            impedie. Quisq commodo simply free ornare tortor.
+                        <div class="text">{{ $orics[0]->description ?? '' }}
                         </div>
                         <div class="progress-content">
                             <div class="single-progress-box">
@@ -418,82 +422,29 @@
             </div>
             <div class="team-block-area">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-12 team-block">
-                        <div class="single-team-block wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <div class="image-holder">
-                                    <figure class="image"><a href="team-details.html"><img
-                                                    src="images/resource/team-1.jpg" alt=""></a></figure>
-                                    <ul class="social-links clearfix">
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="lower-content">
-                                    <h4><a href="team-details.html">Aleesha Brown</a></h4>
-                                    <div class="designation">Professor</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 team-block">
-                        <div class="single-team-block wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <div class="image-holder">
-                                    <figure class="image"><a href="team-details.html"><img
-                                                    src="images/resource/team-2.jpg" alt=""></a></figure>
-                                    <ul class="social-links clearfix">
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="lower-content">
-                                    <h4><a href="team-details.html">Mike Harward</a></h4>
-                                    <div class="designation">Professor</div>
+                    @foreach($orics as $key => $val)
+                        <div class="col-lg-3 col-md-6 col-sm-12 team-block">
+                            <div class="single-team-block wow fadeInUp" data-wow-delay="00ms"
+                                 data-wow-duration="1500ms">
+                                <div class="inner-box">
+                                    <div class="image-holder">
+                                        <figure class="image"><a href="team-details.html"><img
+                                                        src="/assets/images/uploads/pages/{{$val->profile_picture}}"
+                                                        alt=""></a></figure>
+                                        <ul class="social-links clearfix">
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="lower-content">
+                                        <h4><a href="team-details.html">{{ $val->name ?? '' }}</a></h4>
+                                        <div class="designation">{{ $val->designation ?? '' }}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 team-block">
-                        <div class="single-team-block wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <div class="image-holder">
-                                    <figure class="image"><a href="team-details.html"><img
-                                                    src="images/resource/team-3.jpg" alt=""></a></figure>
-                                    <ul class="social-links clearfix">
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="lower-content">
-                                    <h4><a href="team-details.html">Adelia Lorene</a></h4>
-                                    <div class="designation">Professor</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 team-block">
-                        <div class="single-team-block wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <div class="image-holder">
-                                    <figure class="image"><a href="team-details.html"><img
-                                                    src="images/resource/team-4.jpg" alt=""></a></figure>
-                                    <ul class="social-links clearfix">
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="lower-content">
-                                    <h4><a href="team-details.html">Let’s Join Our</a></h4>
-                                    <div class="designation">Professor</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -567,46 +518,27 @@
                 <h1>Latest Blog Posts</h1>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 news-block">
-                    <div class="news-block-one wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                        <div class="inner-box">
-                            <div class="image-holder">
-                                <figure class="image"><a href="blog-details.html"><img src="images/resource/news-1.jpg"
-                                                                                       alt=""></a></figure>
-                                <div class="date-box"><span>25</span>Oct</div>
-                            </div>
-                            <div class="lower-content">
-                                <ul class="info-box clearfix">
-                                    <li><a href="#"><i class="far fa-user-circle"></i>Admin</a></li>
-                                    <li><a href="#"><i class="far fa-comments"></i>3 Comments</a></li>
-                                </ul>
-                                <h2><a href="blog-details.html">Equipping researchers in the developing world</a></h2>
-                                <div class="link-btn"><a href="blog-details.html"><i
-                                                class="flaticon-right-arrow"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 news-block">
-                    <div class="news-block-one wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
-                        <div class="inner-box">
-                            <div class="image-holder">
-                                <figure class="image"><a href="blog-details.html"><img src="images/resource/news-2.jpg"
-                                                                                       alt=""></a></figure>
-                                <div class="date-box"><span>24</span>Oct</div>
-                            </div>
-                            <div class="lower-content">
-                                <ul class="info-box clearfix">
-                                    <li><a href="#"><i class="far fa-user-circle"></i>Admin</a></li>
-                                    <li><a href="#"><i class="far fa-comments"></i>5 Comments</a></li>
-                                </ul>
-                                <h2><a href="blog-details.html">Best Research Center in the developing world</a></h2>
-                                <div class="link-btn"><a href="blog-details.html"><i
-                                                class="flaticon-right-arrow"></i></a></div>
+                @foreach($blogs as $key => $val)
+                    <div class="col-lg-6 col-md-6 col-sm-12 news-block">
+                        <div class="news-block-one wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                            <div class="inner-box">
+                                <div class="image-holder">
+                                    <figure class="image"><a href="blog-details.html"><img src="/assets/images/uploads/pages/blog/{{$val->image}}"
+                                                                                           alt=""></a></figure>
+                                    <div class="date-box"><span>{{\Carbon\Carbon::parse($val->created_at,'UTC')->isoFormat('Do') }}</span>{{ Str::upper(\Carbon\Carbon::parse($val->created_at,'UTC')->isoFormat('MMMM')) }}</div>
+                                </div>
+                                <div class="lower-content">
+                                    <ul class="info-box clearfix">
+                                        <li><a href="#"><i class="far fa-user-circle"></i>{{ $val->author }}</a></li>
+                                    </ul>
+                                    <h2><a href="/blog/detail/{{ $val->slug }}">{{ $val->title }}</a></h2>
+                                    <div class="link-btn"><a href="blog-details.html"><i
+                                                    class="flaticon-right-arrow"></i></a></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -632,7 +564,7 @@
     <script>
         var jsonEncoded = @json($resultSet);
         var publicpath = "{{ asset('assets/images/uploads/pages') }}"
-        $.each(jsonEncoded, function(k, v) {
+        $.each(jsonEncoded, function (k, v) {
             k += 1;
             if (v.banner) {
                 $(".slide" + k + "").css("background", "url(" + publicpath + "/" + v.banner + ")");
