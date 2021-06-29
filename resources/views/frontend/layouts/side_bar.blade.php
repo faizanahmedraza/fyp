@@ -3,20 +3,29 @@
 
         <!-- START: Menu-->
         <ul id="side-menu" class="sidebar-menu">
-            <li class="active">
-                <a href="/student/dashboard">
-                    <i class="icon-rocket"></i> Dashboard</a>
+            <li class="dropdown"><a href="javascript:void(0);"> Dashboard</a>
+                <ul>
+                    <li class="{{ getActiveClass(request()->segment(2),['dashboard']) }}">
+                        <a href="/student/dashboard">
+                            <i class="icon-rocket fa-fw"></i> Dashboard</a>
+                    </li>
+                </ul>
             </li>
             <li class="dropdown"><a href="javascript:void(0);"><i class="fas fa-book-open"></i> Submitted Projects</a>
                 <ul>
                     @can('student-research-project-list')
-                        <li><a class="text-nowrap" href="/student/research-projects"><i class="fas fa-grid"></i>
+                        <li class="{{ getActiveClass(request()->segment(2),['research']) }}"><a class="text-nowrap" href="/student/research-projects"><i
+                                        class="fas fa-scroll fa-fw"></i>
                                 Research Project</a></li>
                     @endcan
                 </ul>
             </li>
             @can('student-notification-list')
-                <li><a href="/student/notifications"><i class="icon-bag mr-1"></i> Notifications</a></li>
+                <li class="dropdown"><a href="javascript:void(0);"> Notifications</a>
+                    <ul>
+                        <li class="{{ getActiveClass(request()->segment(2),['notifications']) }}"><a href="/student/notifications"><i class="icon-bag fa-fw"></i> Notifications</a></li>
+                    </ul>
+                </li>
             @endcan
         </ul>
         <!-- END: Menu-->

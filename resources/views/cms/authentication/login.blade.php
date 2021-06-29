@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <title>{{ env('APP_NAME') }}</title>
 
-    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="/assets/website/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/admin/css/icons.css">
     <link rel="stylesheet" type="text/css" href="/assets/admin/css/style.css">
@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="text-center mt-0 mb-3">
                             <a href="/admin/login" class="logo logo-admin">
-                                <img src="/assets/images/logo-sm.png" class="mt-3" alt="" height="80"></a>
+                                <img src="/assets/website/images/logo.png" class="mt-3" alt="" height="80"></a>
                             <p class="text-muted w-75 mx-auto mb-4 mt-4">Enter your email address and password to access admin panel.</p>
                         </div>
 

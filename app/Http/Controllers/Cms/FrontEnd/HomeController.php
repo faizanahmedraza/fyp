@@ -111,8 +111,8 @@ class HomeController extends Controller
         $msg = "Some thing went wrong!";
         $code = 400;
         $records = CMSHome::all();
-        $updateHome = CMSHome::findOrFail($cmsHomeId)->first();
-        if (count($records) > 3) {
+        $updateHome = CMSHome::where('id',$cmsHomeId)->first();
+        if (count($records) > 2) {
             if (!empty($updateHome)) {
                 unlink(givePath().'/assets/images/uploads/pages/'.$updateHome->banner);
                 $updateHome->delete();

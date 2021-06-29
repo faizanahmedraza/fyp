@@ -9,6 +9,7 @@
             <div class="navbar-header h4 mb-0 text-center h-100 collapse-menu-bar">
                 <a href="#" class="sidebarCollapse" id="collapse"><i class="icon-menu"></i></a>
             </div>
+            <div class="pl-3"><h4>{{ strtoupper('juw oric management portal') }}</h4></div>
             <div class="navbar-right ml-auto h-100">
                 <ul class="ml-auto p-0 m-0 list-unstyled d-flex top-icon h-100">
                     <li class="dropdown align-self-center d-inline-block">

@@ -90,7 +90,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/home/delete/${cmsHomeId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/main-home/delete/${cmsHomeId}`).then(function(response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,

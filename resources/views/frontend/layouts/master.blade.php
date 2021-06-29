@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 
-    <title>{{env('APP_NAME')}}</title>
-    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <title>{{env('APP_NAME','JUW ORIC')}}</title>
+    <link rel="shortcut icon" href="/assets/website/images/favicon.ico">
     <link rel="stylesheet" href="/assets/vendors/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/vendors/jquery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="/assets/vendors/jquery-ui/jquery-ui.theme.min.css">
@@ -17,7 +17,7 @@
     @stack('styles')
 </head>
 
-<body id="main-container" class="default horizontal-menu semi-dark">
+<body id="main-container" class="default semi-dark">
 <div class="se-pre-con" style="display: none;">
     <div class="loader"></div>
 </div>
