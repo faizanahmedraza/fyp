@@ -14,10 +14,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Home Page List</h4>
+                                    <h4 class="card-title">Funded Project</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ route('website.page.home.add') }}" class="btn btn-primary float-right">Add +</a>
+                                    <a href="{{ route('website.page.research.funded-project.add') }}" class="btn btn-primary float-right">Add +</a>
                                 </div>
                             </div>
                         </div>
@@ -35,24 +35,27 @@
                                     <thead>
                                     <tr>
                                         <th data-priority="1">#ID</th>
-                                        <th data-priority="3">Banner Name</th>
-                                        <th data-priority="3">Description</th>
+                                        <th data-priority="3">Title</th>
+                                        <th data-priority="3">Principle Investigator</th>
+                                        <th data-priority="3">Funding Agency</th>
+                                        <th data-priority="3">Amount</th>
                                         <th data-priority="1">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @if (count($resultSet) > 0)
-                                        @foreach ($resultSet as $key => $home)
+                                        @foreach ($resultSet as $key => $val)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $home->banner }}</td>
-                                                <td>{{ \Illuminate\Support\Str::limit($home->description, 10) }}
-                                                </td>
+                                                <td>{{ Str::limit($val->title,20) }}</td>
+                                                <td>{{ $val->principle_investigator }}</td>
+                                                <td>{{ $val->funding_agency }}</td>
+                                                <td>{{ $val->amount }}</td>
                                                 <td>
-                                                    <a href="{{ route('website.page.home.update', ['cmsHomeId' => $home->id]) }}"
+                                                    <a href="{{ route('website.page.research.funded-project.update', ['fundedProjectId' => $val->id]) }}"
                                                        class="btn btn-success btn-primary">Update</a>
                                                     <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $home->id }}')">Delete</a>
+                                                       onclick="deleteRecord(this, '{{ $val->id }}')">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -80,7 +83,7 @@
             $('.table').DataTable();
         });
 
-        function deleteRecord(input, cmsHomeId) {
+        function deleteRecord(input, fundedProjectId) {
             let tr = $(input).parent().parent();
             swal({
                 title: "Are you sure?",
@@ -90,7 +93,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/main-home/delete/${cmsHomeId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/res/funded-project/delete/${fundedProjectId}`).then(function(response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,

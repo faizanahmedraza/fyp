@@ -12,19 +12,6 @@ if (!function_exists('getActiveClass')) {
     }
 }
 
-if (!function_exists('getActiveClassStyle')) {
-    function getActiveClassStyle($segment, $matchValue)
-    {
-        if ($res = array_intersect($matchValue,explode('-', $segment))) {
-            if(count($res) > 0)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-}
-
 if(!function_exists('givePath')){
     function givePath(){
         if(env('APP_ENV') === "production"){

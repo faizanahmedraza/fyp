@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('website')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::get('/research', 'ResearchController@index');
+    Route::get('/research/funding-opportunities', 'FundingOpportunityController@index');
+    Route::get('/research/funded-projects', 'FundedProjectController@index');
     Route::get('/our-professors', 'ProfessorController@index');
     Route::get('/our-news', 'NewsController@index');
-    Route::get('/news/detail/{slug}', 'BlogController@blogDetail');
+    Route::get('/our-news/{slug}/detail', 'NewsController@newsDetail');
     Route::get('/about-us', 'AboutController@index');
     Route::get('/contact', 'ContactController@index');
     Route::get('/events', 'EventController@index');
-    Route::get('/event/{slug}/gallery', 'GalleryController@index');
-    Route::get('/research/funding-opportunities', 'FundingOpportunityController@index');
-    Route::get('/research/funded-projects', 'FundedProjectController@index');
+    Route::get('/events/{slug}/gallery', 'GalleryController@index');
 });
 
 Route::get('/admin', function () {
@@ -148,6 +148,34 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::get('/news/update/{newsId}', 'NewsController@updateNews')->name('page.news.update');
             Route::put('/news/update/{newsId}', 'NewsController@updateNewsData')->name('page.news.update.data');
             Route::get('/news/delete/{newsId}', 'InvestorController@deleteInvestor');
+
+            Route::get('/research', 'ResearchController@index')->name('page.research');
+            Route::get('/research/create', 'ResearchController@addResearch')->name('page.research.add');
+            Route::post('/research/create', 'ResearchController@addResearchData')->name('page.research.add.data');
+            Route::get('/research/update/{researchId}', 'ResearchController@updateResearch')->name('page.research.update');
+            Route::put('/research/update/{researchId}', 'ResearchController@updateResearchData')->name('page.research.update.data');
+            Route::get('/research/delete/{researchId}', 'ResearchController@deleteResearch');
+
+            Route::get('/res/funding-opportunity', 'FundingOpportunityController@index')->name('page.research.funding-opportunity');
+            Route::get('/res/funding-opportunity/create', 'FundingOpportunityController@addFundingOpportunity')->name('page.research.funding-opportunity.add');
+            Route::post('/res/funding-opportunity/create', 'FundingOpportunityController@addFundingOpportunityData')->name('page.research.funding-opportunity.add.data');
+            Route::get('/res/funding-opportunity/update/{fundingOpportunityId}', 'FundingOpportunityController@updateFundingOpportunity')->name('page.research.funding-opportunity.update');
+            Route::put('/res/funding-opportunity/update/{fundingOpportunityId}', 'FundingOpportunityController@updateFundingOpportunityData')->name('page.research.funding-opportunity.update.data');
+            Route::get('/res/funding-opportunity/delete/{fundingOpportunityId}', 'FundingOpportunityController@deleteFundingOpportunity');
+
+            Route::get('/res/funded-project', 'FundedProjectController@index')->name('page.research.funded-project');
+            Route::get('/res/funded-project/create', 'FundedProjectController@addFundedProject')->name('page.research.funded-project.add');
+            Route::post('/res/funded-project/create', 'FundedProjectController@addFundedProjectData')->name('page.research.funded-project.add.data');
+            Route::get('/res/funded-project/update/{fundedProjectId}', 'FundedProjectController@updateFundedProject')->name('page.research.funded-project.update');
+            Route::put('/res/funded-project/update/{fundedProjectId}', 'FundedProjectController@updateFundedProjectData')->name('page.research.funded-project.update.data');
+            Route::get('/res/funded-project/delete/{fundedProjectId}', 'FundedProjectController@deleteFundedProject');
+
+            Route::get('/res/call-for-proposal', 'CallForProposalController@index')->name('page.research.call-for-proposal');
+            Route::get('/res/call-for-proposal/create', 'CallForProposalController@addCallForProposal')->name('page.research.call-for-proposal.add');
+            Route::post('/res/call-for-proposal/create', 'CallForProposalController@addCallForProposalData')->name('page.research.call-for-proposal.add.data');
+            Route::get('/res/call-for-proposal/update/{callForProposalId}', 'CallForProposalController@updateCallForProposal')->name('page.research.call-for-proposal.update');
+            Route::put('/res/call-for-proposal/update/{callForProposalId}', 'CallForProposalController@updateCallForProposalData')->name('page.research.call-for-proposal.update.data');
+            Route::get('/res/call-for-proposal/delete/{callForProposalId}', 'CallForProposalController@deleteCallForProposal');
 
             Route::get('/about-us', 'AboutUsController@index')->name('page.about-us');
             Route::get('/about-us/create', 'AboutUsController@addAboutUs')->name('page.about-us.add');

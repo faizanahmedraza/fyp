@@ -32,12 +32,12 @@
                             <div class="lower-content">
                                 <div class="inner">
                                     <ul class="info-box clearfix">
-                                        <li><a href="javascript:void(0);"><i class="far fa-user-circle"></i>{{ $blog->author }}</a></li>
+                                        <li><a href="javascript:void(0);"><i class="far fa-user-circle"></i>{{ $blog->author ?? '' }}</a></li>
                                         <li><a href="#"><i class="far fa-comments"></i>3 Comments</a></li>
                                     </ul>
-                                    <h1>{{ $blog->title }}</h1>
+                                    <h1>{{ $blog->title ?? ''}}</h1>
                                     <div class="text">
-                                        <p>{{ $blog->description }}</p>
+                                        <p>{{ $blog->description ?? ''}}</p>
                                     </div>
                                 </div>
                                 <div class="post-share-option clearfix">

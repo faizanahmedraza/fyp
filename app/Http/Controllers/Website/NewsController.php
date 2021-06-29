@@ -16,4 +16,14 @@ class NewsController extends Controller
         $blogs = Blog::where('is_active',1)->get();
         return view('website.pages.news',compact('resultSet','blogs'));
     }
+
+    public function newsDetail($slug)
+    {
+        $blog = Blog::where('slug',$slug)->first();
+        if(empty($blog))
+        {
+            abort(404);
+        }
+        return view('website.pages.news-detail',compact('blog'));
+    }
 }

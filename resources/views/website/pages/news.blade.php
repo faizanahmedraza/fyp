@@ -1,9 +1,5 @@
 @extends('website.layouts.master')
 
-@push('styles')
-   <style></style>
-@endpush
-
 @section('content')
     <!--Page Title-->
     <section class="page-title banner">
@@ -12,7 +8,7 @@
         </div>
         <div class="container">
             <div class="content-box">
-                <h1>{{ $resultSet->title }}</h1>
+                <h1>{{ $resultSet->title ?? '' }}</h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="/">Home</a></li>
                     <li>News List</li>
@@ -31,7 +27,7 @@
                         <div class="news-block-one wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <div class="inner-box">
                                 <div class="image-holder">
-                                    <figure class="image"><a href="/news/detail/{{$val->slug}}"><img
+                                    <figure class="image"><a href="/our-news/{{$val->slug}}/detail"><img
                                                     src="/assets/images/uploads/pages/blog/{{$val->image}}"
                                                     alt=""></a></figure>
                                     <div class="date-box">
@@ -44,7 +40,7 @@
                                         </li>
                                         <li><a href="#"><i class="far fa-comments"></i>3 Comments</a></li>
                                     </ul>
-                                    <h2><a href="/news/detail/{{$val->slug}}">{{ $val->author }}</a></h2>
+                                    <h2><a href="/our-news/{{$val->slug}}/detail">{{ $val->title ?? '' }}</a></h2>
                                     <div class="link-btn"><a href="blog-details.html"><i
                                                     class="flaticon-right-arrow"></i></a></div>
                                 </div>

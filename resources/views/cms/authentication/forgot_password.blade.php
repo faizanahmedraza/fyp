@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="text-center mt-0 mb-3">
                             <a href="/admin/login" class="logo logo-admin">
-                                <img src="/assets/website/images/logo-sm.png" class="mt-3" alt="" height="80"></a>
+                                <img src="/assets/website/images/logo.png" class="mt-3" alt="" height="80"></a>
                         </div>
                         <form class="form-horizontal mt-4" action="/admin/forgot-password" method="post">
                             @csrf

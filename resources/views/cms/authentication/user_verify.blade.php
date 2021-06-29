@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="text-center mt-0 mb-3">
                             <a href="/admin/login" class="logo logo-admin">
-                            <img src="/assets/website/images/logo-sm.png" class="mt-3" alt="" height="80"></a>
+                            <img src="/assets/website/images/logo.png" class="mt-3" alt="" height="80"></a>
                             <p class="text-muted w-75 mx-auto mb-4 mt-4">Welcome, Please set new password to access admin panel.</p>
                         </div>
 
