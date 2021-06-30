@@ -68,8 +68,10 @@
                                                         </label>
                                                     </td>
                                                     <td>
+                                                        @if($user->is_block === 0)
                                                         <a href="/admin/update-user/{{$user->id}}"
                                                            class="btn btn-info btn-sm">Update</a>
+                                                        @endif
                                                         <a href="/admin/user-detail/{{$user->id}}"
                                                            class="btn btn-success btn-sm">Detail</a>
                                                     </td>
@@ -117,6 +119,7 @@
                             closeOnClickOutside: false
                         }).then((successBtn) => {
                             if (successBtn) {
+                                location.reload();
                                 $(input).prop("checked", input.checked ? false : true);
                             }
                         });

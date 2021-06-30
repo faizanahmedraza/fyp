@@ -583,7 +583,7 @@ File: Main Style
 
 .sidebar .sidebar-menu > li .active{
     color: var(--sidebaractivecolor);
-    background-color: #e33b34;
+    background-color: #e33b34!important;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     border-radius: 6px;
     display: block;
@@ -595,9 +595,14 @@ File: Main Style
     color: var(--sidebaractivecolor);
 }
 
+.dashboard {
+    padding: 10px!important;
+    margin: 6px 0px!important;
+}
+
 .sidebar .sidebar-menu > li > a {
     font-weight: 600;
-    pointer-events: none;
+    /*pointer-events: none;*/
     font-size: 12px;
     text-transform: uppercase;
     background: var(--sidebarheadingbackground);
@@ -759,7 +764,7 @@ a:hover {
 }
 
 .pointer-event-none {
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 .color-primary, .text-primary, .btn-link {
