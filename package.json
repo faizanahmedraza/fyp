@@ -20,7 +20,7 @@
         "vue-template-compiler": "^2.6.13"
     },
     "dependencies": {
-        "laravel-echo": "^1.10.0",
+        "laravel-echo": "^1.11.0",
         "socket.io-client": "^4.1.2"
     }
 }

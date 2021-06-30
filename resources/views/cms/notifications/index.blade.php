@@ -45,13 +45,16 @@
                                         @foreach($notifications as $key => $notification)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $notification->getUser->first_name }}</td>
+                                                <td>{{ $notification->getUser->full_name }}</td>
                                                 <td>{{ $notification->getUser->full_name.' '.$notification->message }}</td>
                                                 <td>
                                                     <a href="javascript:void(0);"
-                                                       class="btn btn-info btn-sm" onclick="deleteNotification(this, '{{$notification->id}}')">Dismiss</a>
-                                                    <a href="/admin/notification-detail/{{$notification->id}}"
-                                                       class="btn btn-success btn-sm">Detail</a>
+                                                       class="btn btn-info btn-sm"
+                                                       onclick="deleteNotification(this, '{{$notification->id}}')">Dismiss</a>
+                                                    @if($notification->type === 'project-proposal')
+                                                        <a href="/admin/student/research-projects"
+                                                                   class="btn btn-success btn-sm">Detail</a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

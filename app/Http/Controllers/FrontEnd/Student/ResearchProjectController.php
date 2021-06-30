@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,6 +25,12 @@ class ResearchProjectController extends Controller
     public function index()
     {
         $projects = ResearchProject::all();
+        if (session()->has('notification')) {
+            $notify = session()->get('notification');
+            $notify->update([
+                'is_read' => 1
+            ]);
+        }
         return view('frontend.student.research-project.index', compact('projects'));
     }
 
@@ -40,7 +47,7 @@ class ResearchProjectController extends Controller
             'investigator_details' => 'required|max:150',
             'abstract' => 'required|max:250',
             'agency' => 'required|max:250',
-            'amount' => 'required|max:250',
+            'amount' => 'required|digits_between:1,8',
             'submission_date' => 'required|date',
             'upload_research' => 'required|file|mimes:doc,pdf,docx'
         ]);
@@ -56,8 +63,11 @@ class ResearchProjectController extends Controller
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
-            $newResearchName = 'research-project-' . Carbon::now()->timestamp . '.' . $upload_research->getClientOriginalExtension();
-            $upload_research->storeAs('uploads', $newResearchName);
+            $newResearchName = uniqid('research-project-') . '.' . $upload_research->getClientOriginalExtension();
+            if(!File::isDirectory(storage_path('app/public/uploads'))){
+                File::makeDirectory(storage_path('app/public/uploads'),0755, true);
+            }
+            Storage::putFileAs('public/uploads',$upload_research,$newResearchName);
             $studentData['upload_research'] = $newResearchName;
         }
 
@@ -74,6 +84,12 @@ class ResearchProjectController extends Controller
         event(new \App\Events\FormSubmitted('apply', $admin));
 
         return redirect('/student/research-projects')->with('success', 'Successfully submitted.');
+    }
+
+    public function detailStudentResearch($researchId)
+    {
+        $research = ResearchProject::findOrFail($researchId);
+        return view('frontend.student.research-project.detail', compact('research'));
     }
 
     public function downloadTemplate()

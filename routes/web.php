@@ -235,8 +235,8 @@ Route::namespace('FrontEnd')->group(function () {
             Route::get('/research-projects', 'ResearchProjectController@index');
             Route::get('/add-research-project', 'ResearchProjectController@addStudentResearch');
             Route::post('/add-research-project', 'ResearchProjectController@addStudentResearchData');
+            Route::get('/research-project/detail/{researchId}', 'ResearchProjectController@detailStudentResearch');
             Route::get('/research-project-template', 'ResearchProjectController@downloadTemplate');
-            Route::get('/notification-detail/{notificationId}', 'ResearchProjectController@detailNotification');
         });
     });
 });

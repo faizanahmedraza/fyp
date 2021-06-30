@@ -16,7 +16,7 @@ class NotificationController extends Controller
     }
 
     public function index(){
-        $notifications = Notification::with('getUser')->orderBy('created_by','desc')->get();
+        $notifications = Notification::with('getUser')->orderBy('created_at','desc')->get();
         foreach ($notifications as $val){
             $val->update([
                 'is_read' => 1
