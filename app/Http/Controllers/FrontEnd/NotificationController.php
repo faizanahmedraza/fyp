@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
@@ -15,7 +16,12 @@ class NotificationController extends Controller
     }
 
     public function index(){
-        $notifications = Notification::latest()->get();
+        $notifications = Notification::where('user_id',Auth::id())->whereIn('type',['status-project-proposal'])->latest()->get();
+        foreach ($notifications as $val){
+            $val->update([
+                'is_read' => 1
+            ]);
+        }
         return view('frontend.notifications.index',compact('notifications'));
     }
 
@@ -36,10 +42,14 @@ class NotificationController extends Controller
     public function detailNotification($notificationId){
         $notify = Notification::where('id',$notificationId)->first();
 
-        if($notify->type === "apply-scholarship"){
-            return redirect('/student/apply-for-scholarship');
-        } else {
-            return redirect('/student/claim-for-scholarship');
+        $notify->update([
+            'is_read' => 1,
+        ]);
+
+        session()->forget('notification');
+
+        if($notify->type === "status-project-proposal"){
+            return redirect('/student/research-projects')->with('notification',$notify);
         }
     }
 }

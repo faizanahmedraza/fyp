@@ -11,7 +11,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown"><a href="javascript:void(0);"><i class="fas fa-book-open"></i> Submitted Projects</a>
+            <li class="dropdown"><a href="javascript:void(0);"> Submitted Proposals</a>
                 <ul>
                     @can('student-research-project-list')
                         <li class="{{ getActiveClass(request()->segment(2),['research']) }}"><a class="text-nowrap" href="/student/research-projects"><i

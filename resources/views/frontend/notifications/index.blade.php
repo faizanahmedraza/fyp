@@ -89,7 +89,7 @@
                 closeOnClickOutside: false
             }).then((willDismiss) => {
                 if(willDismiss){
-                    axios.get(`/admin/delete-notification/${notificationId}`).then((response) => {
+                    axios.get(`/student/delete-notification/${notificationId}`).then((response) => {
                         swal({
                             title: response.data.msg,
                             icon: "success",

@@ -67,7 +67,7 @@
                                     <div class="media">
                                         <img src="" alt="" class="d-flex mr-3 img-fluid rounded-circle">
                                         <div class="media-body">
-                                             <p class="mb-0 text-warning"> ${data.data.get_user.first_name} ${data.data.get_user.last_name} ${data.data.message}</p>
+                                             <p class="mb-0 text-primary"> ${data.data.get_user.first_name} ${data.data.get_user.last_name} ${data.data.message}</p>
                                             ${data.minutes}
                                         </div>
                                     </div>

@@ -43,7 +43,6 @@
 <script src="{{ url('/js/laravel-echo-setup.js') }}" type="text/javascript"></script>
 
 <script type="text/javascript">
-    console.clear();
     setInterval(function () {
         if ($("div.alert-danger").length > 0 || $("div.alert-success").length > 0) {
             setTimeout(function () {

@@ -40,6 +40,7 @@
                                         <th>Title</th>
                                         <th>Application Submitted</th>
                                         <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -52,6 +53,10 @@
                                                 <td>
                                                     <button class="btn btn-dark btn-sm"
                                                             disabled>{{ ucfirst($project->status) }}</button>
+                                                </td>
+                                                <td>
+                                                    <a href="/student/research-project/detail/{{$project->id}}"
+                                                       class="btn btn-info btn-sm">Detail</a>
                                                 </td>
                                             </tr>
                                         @endforeach

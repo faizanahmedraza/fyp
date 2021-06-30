@@ -126,40 +126,22 @@ File: Main Style
     --sidebarwidth: 140px;
 }
 
-.slimScrollDiv {
-    height: auto !important;
+.custom-file-alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
 }
 
-.slimScroll-menu {
-    overflow: hidden;
-    width: auto;
-    height: 0px;
+.custom-file-alert-secondary {
+    color: #383d41;
+    text-decoration: underline;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
 }
-.slimScrollBar{
-    background: rgb(158, 165, 171);
-    width: 7px;
-    position: absolute;
-    top: 0px;
-    opacity: 0.4;
-    display: block;
-    border-radius: 7px;
-    z-index: 99;
-    right: 1px;
-    height: 30px;
-
-}
-
-.slimScrollRail{
-    width: 7px;
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    display: none;
-    border-radius: 7px;
-    background: rgb(51, 51, 51);
-    opacity: 0.2;
-    z-index: 90;
-    right: 1px;
+.custom-file-alert-secondary > a {
+    color: #383d41;
 }
 
 .semi-dark {

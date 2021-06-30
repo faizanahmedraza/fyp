@@ -9,6 +9,8 @@ use App\Models\ResearchProject;
 use App\Models\UploadSample;
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ResearchProjectController extends Controller
 {
@@ -22,6 +24,13 @@ class ResearchProjectController extends Controller
     public function index()
     {
         $projects = ResearchProject::all();
+        if(session()->has('notification'))
+        {
+            $notify = session()->get('notification');
+            $notify->update([
+                'is_read' => 1
+            ]);
+        }
         return view('cms.student.research-project.index', compact('projects'));
     }
 
@@ -57,8 +66,11 @@ class ResearchProjectController extends Controller
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
-            $newResearchName = 'research-project-' . Carbon::now()->timestamp . '.' . $upload_research->getClientOriginalExtension();
-            $upload_research->storeAs('/public/uploads', $newResearchName);
+            $newResearchName = uniqid('research-project-') . '.' . $upload_research->getClientOriginalExtension();
+            if(!File::isDirectory(storage_path('app/public/uploads'))){
+                File::makeDirectory(storage_path('app/public/uploads'),0755, true);
+            }
+            Storage::putFileAs('public/uploads',$upload_research,$newResearchName);
             $studentData['upload_research'] = $newResearchName;
         }
 
@@ -97,8 +109,12 @@ class ResearchProjectController extends Controller
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
-            $newResearchName = 'research-project-' . Carbon::now()->timestamp . '.' . $upload_research->getClientOriginalExtension();
-            $upload_research->storeAs('/public/uploads', $newResearchName);
+            Storage::disk('local')->delete('public/uploads/'.$project->upload_research);
+            $newResearchName = uniqid('research-project-') . '.' . $upload_research->getClientOriginalExtension();
+            if(!File::isDirectory(storage_path('app/public/uploads'))){
+                File::makeDirectory(storage_path('app/public/uploads'),0755, true);
+            }
+            Storage::putFileAs('public/uploads',$upload_research,$newResearchName);
             $studentData['upload_research'] = $newResearchName;
         } else {
             $studentData['upload_research'] = $project->upload_research;
@@ -166,7 +182,7 @@ class ResearchProjectController extends Controller
     }
 
     public function uploadResearchTemplateData(){
-        \request()->validate([
+        request()->validate([
             'template' => 'required|file|mimes:doc,pdf,docx',
         ]);
 

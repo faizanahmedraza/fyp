@@ -8,15 +8,6 @@
 @section('content')
     <main>
         <div class="container-fluid site-width">
-            <!-- START: Breadcrumbs-->
-            <div class="row">
-                <div class="col-12  align-self-center">
-                    <div class="sub-header mt-3 py-3 align-self-center d-sm-flex w-100 rounded">
-                    </div>
-                </div>
-            </div>
-            <!-- END: Breadcrumbs-->
-
             <!-- START: Card Data-->
             <div class="row">
                 <div class="col-12 mt-3">
@@ -24,7 +15,7 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Add Research Project</h4>
+                                    <h4 class="card-title">Add Research Project Proposal</h4>
                                 </div>
                                 <div class="col-md-6">
                                     <a href="/student/research-projects" class="btn btn-primary float-right">← Back</a>
@@ -86,7 +77,8 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="abstract">Abstract </label>
+                                                    <label for="abstract">Abstract <span
+                                                                class="required-class">*</span></label>
                                                     <input type="text" class="form-control rounded"
                                                            id="abstract" name="abstract"
                                                            placeholder="Enter Abstract"
@@ -94,7 +86,8 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="agency">Agency where project
-                                                        submitted </label>
+                                                        submitted <span
+                                                                class="required-class">*</span></label>
                                                     <input type="text" class="form-control rounded"
                                                            id="agency" name="agency"
                                                            placeholder="Enter Agency Where Project Submitted"
@@ -104,14 +97,16 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="amount">Amount Requested </label>
+                                                    <label for="amount">Amount Requested <span
+                                                                class="required-class">*</span></label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="amount" name="amount"
                                                            placeholder="Enter Account Requested"
                                                            value="{{ old('amount') }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="submission_date">Date of submission </label>
+                                                    <label for="submission_date">Date of submission <span
+                                                                class="required-class">*</span></label>
                                                     <input type="text" name="submission_date"
                                                            id="submission_date_id" value=""
                                                            class="form-control read-only-background"
@@ -121,7 +116,8 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="upload_research">Upload Project </label>
+                                                    <label for="upload_research">Upload Project <span
+                                                                class="required-class">*</span></label>
                                                     <input type="file" name="upload_research"
                                                            class="form-control"
                                                            accept=".docx,.pdf" id="upload_project"
@@ -155,7 +151,7 @@
                 }
             });
 
-            $('input[name="submission_date"]').val();
+            $('input[name="submission_date"]').val(oldSubmissionDate);
 
 
             $('input[name="submission_date"]').datepicker({

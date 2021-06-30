@@ -87,6 +87,10 @@
                                     <div class="float-left">
                                         <a href="/forgot-password" class="text-muted"><i class="fa fa-lock mr-1"></i> Forgot your password?</a>
                                     </div>
+                                    <div class="float-right">
+                                        <span class="text-dark">New to ORIC?</span>
+                                        <a href="/register" class="text-muted"><i class="fa fa-user mr-1"></i> Join Now </a>
+                                    </div>
                                 </div>
                             </div>
                         </form>
