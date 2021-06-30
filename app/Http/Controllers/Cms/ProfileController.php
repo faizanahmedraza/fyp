@@ -24,7 +24,7 @@ class ProfileController extends Controller
         request()->validate([
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
-            'email' => 'required|max:255|unique:users,email,' . $profile->id,
+            'email' => 'required|email:rfc|max:255|unique:users,email,' . $profile->id,
             'cnic' => 'sometimes|nullable|digits_between:1,13',
             'contact' => 'sometimes|nullable|digits_between:1,13',
             'profile_picture' => 'sometimes|nullable|image|mimes:jpeg,jpg,png|max:2048',

@@ -5151,6 +5151,15 @@ path.domain {
         flex: 0 0 50%;
         max-width: 50%;
     }
+    #orgName > h4{
+        font-size: 16px!important;
+    }
+}
+
+@media (max-width: 622px) {
+    #orgName > h4{
+        font-size: 12px!important;
+    }
 }
 
 @media (max-width: 575px) {
@@ -5158,6 +5167,9 @@ path.domain {
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
         max-width: 100%;
+    }
+    #orgName > h4{
+        display: none!important;
     }
 }
 

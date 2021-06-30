@@ -56,7 +56,7 @@
                                                 <td>
                                                     <button href="javascript:void(0);"
                                                             class="btn btn-dark btn-sm"
-                                                            disabled>{{ $project->status }}</button>
+                                                            disabled>{{ ucfirst($project->status) }}</button>
                                                 </td>
                                                 <td>
                                                     @if($project->status === 'pending')

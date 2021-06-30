@@ -43,8 +43,24 @@
 <script src="{{ url('/js/laravel-echo-setup.js') }}" type="text/javascript"></script>
 
 <script type="text/javascript">
+    console.clear();
+    setInterval(function(){
+        if($("div.alert-danger").length > 0 || $("div.alert-success").length > 0){
+            setTimeout(function (){
+                $("div.alert-danger").remove();
+                $("div.alert-success").remove();
+            },8000);
+        }
+    }, 1000);
+
     window.Echo.channel("student-name.{{\Illuminate\Support\Facades\Auth::id()}}")
         .listen('.studentFormStatus', (data) => {
+            playAudio();
+            $("#statusNotification").prev().append(
+                `<span class="badge badge-default"> <span class="ring">
+                                        </span><span class="ring-point">
+                                        </span> </span>`
+            );
             $("#statusNotification").prepend(
                 `<li >
                                 <a class="dropdown-item px-2 py-2 border border-top-0 border-left-0 border-right-0" href="/student/notification-detail/${data.data.id}">
@@ -60,15 +76,11 @@
                           `
             );
         });
+    function playAudio() {
+        var audio = new Audio('/assets/media/success.mp3');
+        audio.play();
+    }
 
-    setInterval(function(){
-        if($("div.alert-danger").length > 0 || $("div.alert-success").length > 0){
-            setTimeout(function (){
-                $("div.alert-danger").remove();
-                $("div.alert-success").remove();
-            },8000);
-        }
-    }, 1000);
 </script>
 </body>
 </html>

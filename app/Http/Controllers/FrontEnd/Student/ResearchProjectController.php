@@ -67,7 +67,7 @@ class ResearchProjectController extends Controller
 
         Notification::create([
             'user_id' => Auth::id(),
-            'type' => 'research-project',
+            'type' => 'project-proposal',
             'message' => ' is send approval request of research project.'
         ]);
 

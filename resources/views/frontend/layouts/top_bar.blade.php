@@ -9,17 +9,15 @@
             <div class="navbar-header h4 mb-0 text-center h-100 collapse-menu-bar">
                 <a href="#" class="sidebarCollapse" id="collapse"><i class="icon-menu"></i></a>
             </div>
-            <div class="pl-3"><h4>{{ strtoupper('juw oric management portal') }}</h4></div>
+            <div class="pl-3" id="orgName"><h4>{{ strtoupper('juw oric management portal') }}</h4></div>
             <div class="navbar-right ml-auto h-100">
                 <ul class="ml-auto p-0 m-0 list-unstyled d-flex top-icon h-100">
                     <li class="dropdown align-self-center d-inline-block">
                         <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false"><i class="icon-bell h4"></i>
-                            <span class="badge badge-default"> <span class="ring">
-                                        </span><span class="ring-point">
-                                        </span> </span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right border  py-0" id="statusNotification">
-                            <li><a class="dropdown-item text-center py-2" href="#"> Read All Message
+                            @include('partials.notifications.student')
+                            <li><a class="dropdown-item text-center py-2" href="/student/notifications"> Read All Message
                                     <i class="icon-arrow-right pl-2 small"></i></a></li>
                         </ul>
                     </li>

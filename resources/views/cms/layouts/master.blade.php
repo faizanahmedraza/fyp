@@ -43,6 +43,7 @@
 <script src="{{ url('/js/laravel-echo-setup.js') }}" type="text/javascript"></script>
 
 <script type="text/javascript">
+    console.clear();
     setInterval(function () {
         if ($("div.alert-danger").length > 0 || $("div.alert-success").length > 0) {
             setTimeout(function () {
@@ -54,6 +55,12 @@
 
     window.Echo.channel("student-name.{{\Illuminate\Support\Facades\Auth::id()}}")
         .listen('.studentFormSubmitted', (data) => {
+            playAudio();
+            $("#adminNotification").prev().append(
+                `<span class="badge badge-default"> <span class="ring">
+                                        </span><span class="ring-point">
+                                        </span> </span>`
+            );
             $("#adminNotification").prepend(
                 `<li>
                         <a class="dropdown-item px-2 py-2 border border-top-0 border-left-0 border-right-0" href="/admin/notification-detail/${data.data.id}">
@@ -69,6 +76,10 @@
                           `
             );
         });
+    function playAudio() {
+        var audio = new Audio('/assets/media/success.mp3');
+        audio.play();
+    }
 </script>
 </body>
 </html>

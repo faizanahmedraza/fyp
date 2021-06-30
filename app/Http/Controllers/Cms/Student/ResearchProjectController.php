@@ -135,8 +135,8 @@ class ResearchProjectController extends Controller
 
             Notification::create([
                 'user_id' => $research->user_id,
-                'type' => 'status-approved',
-                'message' => ' request has been approved.'
+                'type' => 'status-project-proposal',
+                'message' => ' project proposal request has been approved.'
             ]);
 
             $msg = "Successfully status updated";
@@ -149,15 +149,15 @@ class ResearchProjectController extends Controller
             ]);
             Notification::create([
                 'user_id' => $research->user_id,
-                'type' => 'status-rejected',
-                'message' => ' request has been rejected.'
+                'type' => 'status-project-proposal',
+                'message' => ' project proposal request has been rejected.'
             ]);
             $msg = "Successfully status updated";
             $status = 'Rejected';
             $code = 200;
         }
 
-        event(new StatusChanged('apply',$research));
+        event(new StatusChanged('project-proposal',$research));
         return response()->json(['msg' => $msg, 'status' => $status], $code);
     }
 

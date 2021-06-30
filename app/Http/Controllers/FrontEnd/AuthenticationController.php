@@ -24,7 +24,7 @@ class AuthenticationController extends Controller
     public function loginData()
     {
         $validator = Validator::make(request()->all(), [
-            'email' => 'required|max:255',
+            'email' => 'required|email:rfc|max:255',
             'password' => 'required|max:255',
         ]);
 
@@ -42,15 +42,14 @@ class AuthenticationController extends Controller
             $user = User::where('email', \request()->email)->first();
 
             if (Auth::attempt(['email' => request()->email, 'password' => request()->password], $rememberMe)) {
-                if (in_array('admin', Arr::flatten($user->getRoleNames())) || in_array('super-admin', Arr::flatten($user->getRoleNames()))) {
-                    return redirect('/admin/dashboard');
-                } else {
+                if ('student' == Arr::first($user->getRoleNames())) {
                     return redirect('/student/dashboard');
+                } else {
+                    return redirect('/admin/dashboard');
                 }
             }
         }
-
-        return redirect()->back()->with('error', 'Incorrect email or password.');
+        return back()->with('error', 'Incorrect email or password.')->withInput(request()->except('password'));
     }
 
     public function registerUser()
@@ -63,7 +62,7 @@ class AuthenticationController extends Controller
         request()->validate([
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
-            'email' => 'required|max:255|unique:users,email,NULL,id,first_name,' . request('first_name') . ',last_name,' . request('last_name'),
+            'email' => 'required|email:rfc|max:255|unique:users,email,NULL,id,first_name,' . request('first_name') . ',last_name,' . request('last_name'),
             'password' => 'required|string|max:255|min:8|confirmed',
             'password_confirmation' => 'required|string|max:255|min:8|max:255',
         ]);
@@ -102,7 +101,7 @@ class AuthenticationController extends Controller
         if (!empty($user)) {
             return view('frontend.authentication.user_verify', compact('verificationToken'));
         } else {
-            if (!empty($user) && 'admin' == Arr::first($user->getRoleNames())) {
+            if (!empty($user) && 'student' != Arr::first($user->getRoleNames())) {
                 return redirect('/admin/login');
             } else {
                 return redirect('/login');
@@ -137,13 +136,12 @@ class AuthenticationController extends Controller
 
             Auth::loginUsingId($user->id);
 
-            if ('admin' == Arr::first($user->getRoleNames())) {
-                return redirect('/admin/dashboard');
-            } else {
+            if ('student' == Arr::first($user->getRoleNames())) {
                 return redirect('/student/dashboard');
+            } else {
+                return redirect('/admin/dashboard');
             }
         }
-
         abort(404);
     }
 
@@ -171,7 +169,7 @@ class AuthenticationController extends Controller
                 'verification_token' => Str::random('50')
             ]);
 
-            if (in_array('admin', Arr::flatten($user->getRoleNames())) || in_array('super-admin', Arr::flatten($user->getRoleNames()))) {
+            if (!in_array('student', Arr::flatten($user->getRoleNames())) || in_array('super-admin', Arr::flatten($user->getRoleNames()))) {
                 dispatch(new SendForgotPasswordEmailJob($user));
             } else {
                 dispatch(new SendStudentForgotPasswordEmailJob($user));

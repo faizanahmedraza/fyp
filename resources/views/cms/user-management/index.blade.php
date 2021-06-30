@@ -46,31 +46,35 @@
                                     <tbody>
                                     @if(count($users) > 0)
                                         @foreach($users as $key => $user)
-                                            <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{ $user->full_name }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>
-                                                @foreach($user->roles as $role)
-                                                        <button type="button" class="btn btn-dark btn-sm">{{ $role->name }}</button>
-                                                @endforeach
-                                                </td>
-                                                <td>
-                                                    <label class="switch">
-                                                        <input type="checkbox" name="is_active" class="is_active"
-                                                               value="1"
-                                                               onchange="blockUser(this, '{{ $user->id }}')"
-                                                                {{ !empty($user->is_block) ? 'checked' : '' }}>
-                                                        <span class="slider round"></span>
-                                                    </label>
-                                                </td>
-                                                <td>
-                                                    <a href="/admin/update-user/{{$user->id}}"
-                                                       class="btn btn-info btn-sm">Update</a>
-                                                    <a href="/admin/user-detail/{{$user->id}}"
-                                                       class="btn btn-success btn-sm">Detail</a>
-                                                </td>
-                                            </tr>
+                                            @if(Auth::id() != $user->id || $admin->id != $user->id)
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $user->full_name }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>
+                                                        @foreach($user->roles as $role)
+                                                            <button type="button"
+                                                                    class="btn btn-dark btn-sm">{{ $role->name == 'super-admin' ? 'admin' : $role->name }}</button>
+                                                        @endforeach
+                                                    </td>
+                                                    <td>
+                                                        <label class="switch">
+                                                            <input type="checkbox" name="is_active"
+                                                                   class="is_active"
+                                                                   value="1"
+                                                                   onchange="blockUser(this, '{{ $user->id }}')"
+                                                                    {{ !empty($user->is_block) ? 'checked' : '' }}>
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/admin/update-user/{{$user->id}}"
+                                                           class="btn btn-info btn-sm">Update</a>
+                                                        <a href="/admin/user-detail/{{$user->id}}"
+                                                           class="btn btn-success btn-sm">Detail</a>
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         @endforeach
                                     @endif
                                     </tbody>

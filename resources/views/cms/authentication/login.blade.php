@@ -46,6 +46,11 @@
                                     {{Session::get('success')}}
                                 </div>
                             @endif
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{Session::get('error')}}
+                                </div>
+                            @endif
                             <div class="form-group">
                                 <div class="col-12">
                                     <label for="email">Email <span class="required-class">*</span></label>

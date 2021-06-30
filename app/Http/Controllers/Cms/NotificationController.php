@@ -16,7 +16,12 @@ class NotificationController extends Controller
     }
 
     public function index(){
-        $notifications = Notification::with('getUser')->latest()->get();
+        $notifications = Notification::with('getUser')->orderBy('created_by','desc')->get();
+        foreach ($notifications as $val){
+            $val->update([
+                'is_read' => 1
+            ]);
+        }
         return view('cms.notifications.index',compact('notifications'));
     }
 
@@ -37,10 +42,13 @@ class NotificationController extends Controller
     public function detailNotification($notificationId){
         $notify = Notification::where('id',$notificationId)->first();
 
-        if($notify->type === "apply-scholarship"){
-            return redirect('/admin/apply-for-scoloarships');
-        } else {
-            return redirect('/admin/claim-for-scoloarships');
-        }
+        $notify->update([
+            'is_read' => 1,
+        ]);
+
+        session()->forget('notification');
+
+        return redirect('/admin/student/research-projects')->with('notification',$notify);;
+
     }
 }

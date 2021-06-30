@@ -22,7 +22,8 @@ class UserManagementController extends Controller
     public function index()
     {
         $users = User::with('roles')->get();
-        return view('cms.user-management.index', compact('users'));
+        $admin = User::role('super-admin')->first();
+        return view('cms.user-management.index', compact('users','admin'));
     }
 
     public function addUser()

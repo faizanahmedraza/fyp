@@ -23,7 +23,7 @@
                     @endcan
                 </ul>
             </li>
-            <li class="dropdown"><a href="javascript:void(0);"> Submitted Projects</a>
+            <li class="dropdown"><a href="javascript:void(0);"> Submitted Proposals</a>
                 <ul>
                     @can('research-project-list')
                         <li class="{{ getActiveClass(request()->segment(3),['projects','research']) }}"><a
@@ -36,15 +36,15 @@
             @can('notification-list')
                 <li class="dropdown"><a href="javascript:void(0);"> Notifications</a>
                     <ul>
-                        <li class="{{ getActiveClass(request()->segment(2),['notifications']) }}"><a href="/admin/notifications"><i class="icon-bag fa-fw"></i> Notifications</a></li>
+                        <li class="{{ getActiveClass(request()->segment(2),['notifications']) }}"><a href="/admin/notifications"><i class="icon-bag fa-fw"></i> Notification</a></li>
                     </ul>
                 </li>
             @endcan
             @can('upload-sample-list')
-                <li class="dropdown"><a href="javascript:void(0);"> Upload Projects</a>
+                <li class="dropdown"><a href="javascript:void(0);"> Uploads</a>
                     <ul>
                         <li class="{{ getActiveClass(request()->segment(2),['samples']) }}"><a href="/admin/upload-samples"><i
-                                        class="far fa-upload fa-fw"></i> Upload Projects</a></li>
+                                        class="far fa-upload fa-fw"></i> Upload Proposal</a></li>
                         <li class="{{ getActiveClass(request()->segment(3),['template','rp']) }}"><a
                                     class="text-nowrap" href="/admin/student/add-rp-template"><i
                                         class="far fa-upload fa-fw"></i>
@@ -84,7 +84,6 @@
 
                     <li class="{{getActiveClass(request()->segment(4),['blog'])}}"><a href="/admin/website/pages/research/funding-opportunity"><i class="icon-grid fa-fw"></i> BLog </a></li>
                     <li class="{{ getActiveClass(request()->segment(4),['contact']) }}"><a href="/admin/website/pages/contact"><i class="icon-grid fa-fw"></i> Contact </a></li>
-                    <li class="{{ getActiveClass(request()->segment(4),['research']) }}"><a href="/admin/website/pages/research"><i class="icon-grid fa-fw"></i> Research </a></li>
                     <li class="{{ getActiveClass(request()->segment(4),['about-us']) }}"><a href="/admin/website/pages/about-us"><i class="icon-grid fa-fw"></i> About Us </a></li>
                     <li class="{{ getActiveClass(request()->segment(4),['our-professors']) }}"><a href="/admin/website/pages/our-professors"><i class="icon-grid fa-fw"></i> Our Professors </a></li>
                 </ul>

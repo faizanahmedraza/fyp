@@ -21,7 +21,7 @@ class AuthenticationController extends Controller
     public function loginData()
     {
         $validator = Validator::make(request()->all(), [
-            'email' => 'required|max:255',
+            'email' => 'required|email:rfc|max:255',
             'password' => 'required|max:255',
         ]);
 
@@ -35,18 +35,17 @@ class AuthenticationController extends Controller
         if (!empty(Auth::validate(['email' => request()->email, 'password' => request()->password]))) {
 
             $rememberMe = !empty(request()->remember_me) ?: false;
-            $user = User::where('email', \request()->email)->first();
+            $user = User::where('email', request()->email)->first();
 
             if (Auth::attempt(['email' => request()->email, 'password' => request()->password], $rememberMe)) {
-                if (in_array('admin', Arr::flatten($user->getRoleNames())) || in_array('super-admin', Arr::flatten($user->getRoleNames()))) {
-                    return redirect('/admin/dashboard');
-                } else {
+                if ('student' == Arr::first($user->getRoleNames())) {
                     return redirect('/student/dashboard');
+                } else {
+                    return redirect('/admin/dashboard');
                 }
             }
         }
-
-        return redirect()->back()->with('error', 'Incorrect email or password.');
+        return back()->with('error', 'Incorrect email or password.')->withInput(request()->except('password'));
     }
 
     public function userVerification($verificationToken)
@@ -55,7 +54,7 @@ class AuthenticationController extends Controller
         if (!empty($user)) {
             return view('cms.authentication.user_verify', compact('verificationToken'));
         } else {
-            if (!empty($user) && 'admin' == Arr::first($user->getRoleNames())) {
+            if (!empty($user) && 'student' != Arr::first($user->getRoleNames())) {
                 return redirect('/admin/login');
             } else {
                 return redirect('/login');
@@ -90,10 +89,10 @@ class AuthenticationController extends Controller
 
             Auth::loginUsingId($user->id);
 
-            if ('admin' == Arr::first($user->getRoleNames())) {
-                return redirect('/admin/dashboard');
-            } else {
+            if ('student' == Arr::first($user->getRoleNames())) {
                 return redirect('/student/dashboard');
+            } else {
+                return redirect('/admin/dashboard');
             }
         }
 
@@ -124,7 +123,7 @@ class AuthenticationController extends Controller
                 'verification_token' => Str::random('50')
             ]);
 
-            if (in_array('admin', Arr::flatten($user->getRoleNames())) || in_array('super-admin', Arr::flatten($user->getRoleNames()))) {
+            if (!in_array('student', Arr::flatten($user->getRoleNames())) || in_array('super-admin', Arr::flatten($user->getRoleNames()))) {
                 dispatch(new SendForgotPasswordEmailJob($user));
             } else {
                 dispatch(new SendStudentForgotPasswordEmailJob($user));

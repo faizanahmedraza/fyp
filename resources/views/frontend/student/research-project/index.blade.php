@@ -8,8 +8,6 @@
 @section('content')
     <main>
         <div class="container-fluid site-width">
-
-
             <!-- START: Card Data-->
             <div class="row">
                 <div class="col-12 mt-3">
@@ -53,7 +51,7 @@
                                                 <td>{{ \Carbon\Carbon::parse($project->submission_date,'UTC')->isoFormat('MMMM Do YYYY') }}</td>
                                                 <td>
                                                     <button class="btn btn-dark btn-sm"
-                                                            disabled>{{ $project->status }}</button>
+                                                            disabled>{{ ucfirst($project->status) }}</button>
                                                 </td>
                                             </tr>
                                         @endforeach

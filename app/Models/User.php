@@ -27,6 +27,7 @@ class User extends Authenticatable
         'password',
         'contact',
         'profile_picture',
+        'profile_detail',
         'verification_token',
         'remember_token',
         'is_block',
