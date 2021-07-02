@@ -46,16 +46,14 @@
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $role->name }}</td>
                                                 <td>
-                                                    @if($role->name !== 'super-admin')
-                                                        @can('role-update')
-                                                            <a href="/admin/update-role/{{$role->id}}"
-                                                               class="btn btn-success btn-primary">Update</a>
-                                                        @endcan
-                                                        @can('role-delete')
-                                                                <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                                   onclick="deleteRole(this, '{{ $role->id }}')">Delete</a>
-                                                        @endcan
-                                                    @endif
+                                                    @can('role-update')
+                                                        <a href="/admin/update-role/{{$role->id}}"
+                                                           class="btn btn-success btn-primary">Update</a>
+                                                    @endcan
+                                                    @can('role-delete')
+                                                        <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
+                                                           onclick="deleteRole(this, '{{ $role->id }}')">Delete</a>
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -93,7 +91,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/delete-role/${roleId}`).then(function(response) {
+                    axios.get(`/admin/delete-role/${roleId}`).then(function (response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,
@@ -102,7 +100,7 @@
                         }).then((btn) => {
                             tr.remove();
                         });
-                    }).catch(function(error) {
+                    }).catch(function (error) {
                         swal({
                             title: error.response.data.msg,
                             icon: "error",
