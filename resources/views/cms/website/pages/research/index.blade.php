@@ -1,7 +1,6 @@
 @extends('cms.layouts.master')
 
 @push('styles')
-    <link rel="stylesheet" type="text/css" href="/assets/css/toggle-switch.css">
     <link rel="stylesheet" href="/assets/vendors/datatable/css/dataTables.bootstrap4.min.css">
 @endpush
 
@@ -15,10 +14,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Users</h4>
+                                    <h4 class="card-title">Research Page</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/admin/add-user" class="btn btn-primary float-right">Add +</a>
+                                    <a href="{{ route('website.page.research.add') }}" class="btn btn-primary float-right">Add +</a>
                                 </div>
                             </div>
                         </div>
@@ -35,44 +34,25 @@
                                 <table class="display table dataTable table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>ID#</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th>UnBlock / Block</th>
-                                        <th>Actions</th>
+                                        <th data-priority="1">#ID</th>
+                                        <th data-priority="3">Title</th>
+                                        <th data-priority="3">Description</th>
+                                        <th data-priority="1">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if(count($users) > 0)
-                                        @foreach($users as $key => $user)
+                                    @if (count($resultSet) > 0)
+                                        @foreach ($resultSet as $key => $home)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $user->full_name }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>
-                                                    @foreach($user->roles as $role)
-                                                        <button type="button"
-                                                                class="btn btn-dark btn-sm">{{ $role->name == 'super-admin' ? 'admin' : $role->name }}</button>
-                                                    @endforeach
+                                                <td>{{ $home->title }}</td>
+                                                <td>{{ \Illuminate\Support\Str::limit($home->description, 20) }}
                                                 </td>
                                                 <td>
-                                                    <label class="switch">
-                                                        <input type="checkbox" name="is_active"
-                                                               class="is_active"
-                                                               value="1"
-                                                               onchange="blockUser(this, '{{ $user->id }}')"
-                                                                {{ !empty($user->is_block) ? 'checked' : '' }}>
-                                                        <span class="slider round"></span>
-                                                    </label>
-                                                </td>
-                                                <td>
-                                                    @if($user->is_block === 0)
-                                                        <a href="/admin/update-user/{{$user->id}}"
-                                                           class="btn btn-info btn-sm">Update</a>
-                                                    @endif
-                                                    <a href="/admin/user-detail/{{$user->id}}"
-                                                       class="btn btn-success btn-sm">Detail</a>
+                                                    <a href="{{ route('website.page.research.update', ['researchId' => $home->id]) }}"
+                                                       class="btn btn-success btn-primary">Update</a>
+                                                    <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
+                                                       onclick="deleteRecord(this, '{{ $home->id }}')">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -91,7 +71,6 @@
 @endsection
 
 @push('scripts')
-    <script src="/assets/js/bootstrap4-toggle.min.js"></script>
     <script src="/assets/js/axios.min.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>
     <script src="/assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
@@ -101,7 +80,8 @@
             $('.table').DataTable();
         });
 
-        function blockUser(input, userId) {
+        function deleteRecord(input, researchId) {
+            let tr = $(input).parent().parent();
             swal({
                 title: "Are you sure?",
                 icon: "warning",
@@ -110,18 +90,16 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/block-user/${userId}`).then(function (response) {
+                    axios.get(`/admin/website/pages/research/delete/${researchId}`).then(function(response) {
+                        swal(response.data.msg);
                         swal({
                             title: response.data.msg,
                             icon: "success",
                             closeOnClickOutside: false
-                        }).then((successBtn) => {
-                            if (successBtn) {
-                                location.reload();
-                                $(input).prop("checked", input.checked ? false : true);
-                            }
+                        }).then((btn) => {
+                            tr.remove();
                         });
-                    }).catch(function (error) {
+                    }).catch(function(error) {
                         swal({
                             title: error.response.data.msg,
                             icon: "error",
@@ -130,7 +108,6 @@
                     });
                 }
             });
-            $(input).prop("checked", input.checked ? false : true);
         }
     </script>
 @endpush

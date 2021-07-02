@@ -21,9 +21,10 @@ class UserManagementController extends Controller
 
     public function index()
     {
-        $users = User::with('roles')->get();
-        $admin = User::role('super-admin')->first();
-        return view('cms.user-management.index', compact('users','admin'));
+        $users = User::where('id','!=',Auth::id())->with('roles')->whereHas('roles',function ($query){
+            $query->where('name','!=','super-admin');
+        })->get();
+        return view('cms.user-management.index', compact('users'));
     }
 
     public function addUser()

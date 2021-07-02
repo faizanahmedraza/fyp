@@ -79,7 +79,7 @@ class NewsController extends Controller
 
         request()->validate([
             'title' => ['required'],
-            'banner' => ['required', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
+            'banner' => ['sometimes','nullable', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
             'description' => ['required']
         ]);
 

@@ -41,7 +41,7 @@
                                         <li><a href="#"><i class="far fa-comments"></i>3 Comments</a></li>
                                     </ul>
                                     <h2><a href="/our-news/{{$val->slug}}/detail">{{ $val->title ?? '' }}</a></h2>
-                                    <div class="link-btn"><a href="blog-details.html"><i
+                                    <div class="link-btn"><a href="/our-news/{{$val->slug}}/detail"><i
                                                     class="flaticon-right-arrow"></i></a></div>
                                 </div>
                             </div>
