@@ -70,14 +70,21 @@ class NewsController extends Controller
     public function updateNewsData($newsId)
     {
 
-        $updateHome = CMSNews::findOrFail($newsId);
+        $updateNews = CMSNews::findOrFail($newsId);
 
-        if (request()->banner) {
-            request()->validate([
-                'title' => ['required'],
-                'banner' => ['required', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
-                'description' => ['required']
-            ]);
+        if(empty($updateNews->banner) && empty(request()->banner))
+        {
+            return back()->withErrors(['error' => 'The banner image is required'])->withInput();
+        }
+
+        request()->validate([
+            'title' => ['required'],
+            'banner' => ['required', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
+            'description' => ['required']
+        ]);
+
+        if (!empty(request()->banner)) {
+            unlink(givePath() . '/assets/images/uploads/pages/' . $updateNews->banner);
             $img = Image::make(request()->file('banner'));
             $extension = request()->file('banner')->extension();
             $random = Str::random(30);
@@ -92,7 +99,7 @@ class NewsController extends Controller
             $check = $img->save($destination);
 
             if ($check) {
-                $updateHome->update([
+                $updateNews->update([
                     'title' => request()->title,
                     'banner' => $newFileName,
                     'description' => request()->description,
@@ -102,13 +109,9 @@ class NewsController extends Controller
                 return back()->withErrors(['error' => 'File not Saved in Database!'])->withInput();
             }
         } else {
-            request()->validate([
-                'title' => ['required'],
-                'description' => ['required']
-            ]);
-            $updateHome->update([
+            $updateNews->update([
                 'title' => request()->title,
-                'banner' => $updateHome->banner,
+                'banner' => $updateNews->banner,
                 'description' => request()->description,
                 'updated_by' => Auth::id()
             ]);
@@ -121,11 +124,11 @@ class NewsController extends Controller
         $msg = "Some thing went wrong!";
         $code = 400;
         $records = CMSNews::all();
-        $updateHome = CMSNews::findOrFail($newsId);
+        $updateNews = CMSNews::findOrFail($newsId);
         if (count($records) > 1) {
-            if (!empty($updateHome)) {
-                unlink(givePath() .'/assets/images/uploads/pages/'. $updateHome->banner);
-                $updateHome->delete();
+            if (!empty($updateNews)) {
+                unlink(givePath() .'/assets/images/uploads/pages/'. $updateNews->banner);
+                $updateNews->delete();
                 $msg = "Successfully Delete record!";
                 $code = 200;
             }
