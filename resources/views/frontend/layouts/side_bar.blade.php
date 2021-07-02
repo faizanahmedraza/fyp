@@ -3,11 +3,7 @@
 
         <!-- START: Menu-->
         <ul id="side-menu" class="sidebar-menu">
-{{--            <li class="mb-0 pb-0">--}}
-{{--                <a class="{{ getActiveClass(request()->segment(2),['dashboard']) == 'active' ? 'active dashboard' : '' }}" href="/student/dashboard">--}}
-{{--                    <i class="icon-rocket fa-fw mr-1"></i> Dashboard</a>--}}
-{{--            </li>--}}
-            <li class="dropdown"><a href="javascript:void(0);"> Dashboard</a>
+            <li class="dropdown">
                 <ul>
                     <li class="{{ getActiveClass(request()->segment(2),['dashboard']) }}">
                         <a href="/student/dashboard">
