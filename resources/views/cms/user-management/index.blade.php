@@ -104,7 +104,7 @@
         function blockUser(input, userId, is_block) {
             let status = is_block === '1' ? "unblock" : "block";
             swal({
-                title: "Are you sure to "+ status +"?",
+                title: "Are you sure you want to "+ status +"?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,

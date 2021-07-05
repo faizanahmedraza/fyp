@@ -52,7 +52,7 @@
                                                        class="btn btn-info btn-sm"
                                                        onclick="deleteNotification(this, '{{$notification->id}}')">Dismiss</a>
                                                     @if($notification->type === 'project-proposal')
-                                                        <a href="/admin/student/research-projects"
+                                                        <a href="/admin/user/research-projects"
                                                                    class="btn btn-success btn-sm">Detail</a>
                                                     @endif
                                                 </td>

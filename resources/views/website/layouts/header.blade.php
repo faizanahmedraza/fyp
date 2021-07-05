@@ -59,8 +59,8 @@
             </div>
             <div class="menu-right-content pull-right">
                 <ul class="info-box clearfix">
-                    <li><i class="far fa-paper-plane"></i><a href="#">Join Research</a></li>
-                    <li><i class="far fa-user-circle"></i><a href="#">Future Member</a></li>
+                    <li><i class="far fa-paper-plane"></i><a href="/login">Sign in</a></li>
+                    <li><i class="far fa-user-circle"></i><a href="/register">Sign up</a></li>
                 </ul>
             </div>
         </div>

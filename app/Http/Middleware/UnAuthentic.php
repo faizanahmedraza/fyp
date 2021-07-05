@@ -21,7 +21,7 @@ class UnAuthentic
             if(Str::contains(request()->url(),'admin')){
                 return redirect('/admin/dashboard');
             } else {
-                return redirect('/student/dashboard');
+                return redirect('/user/dashboard');
             }
         }
         return $next($request);

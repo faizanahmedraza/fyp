@@ -38,12 +38,19 @@ class AuthenticationController extends Controller
         if (!empty(Auth::validate(['email' => request()->email, 'password' => request()->password]))) {
 
             $rememberMe = !empty(request()->remember_me) ?: false;
+            $user = User::where('email', request()->email)->first();
 
-            $user = User::where('email', \request()->email)->first();
+            if(!empty($user->is_block)){
+                return redirect()->back()->with('error', 'You are temporary blocked. Kindly contact to your administrator.');
+            }
+
+            if(empty($user->is_verified)){
+                return redirect()->back()->with('error', 'Please verify your account first.');
+            }
 
             if (Auth::attempt(['email' => request()->email, 'password' => request()->password], $rememberMe)) {
                 if ('student' == Arr::first($user->getRoleNames())) {
-                    return redirect('/student/dashboard');
+                    return redirect('/user/dashboard');
                 } else {
                     return redirect('/admin/dashboard');
                 }
@@ -137,7 +144,7 @@ class AuthenticationController extends Controller
             Auth::loginUsingId($user->id);
 
             if ('student' == Arr::first($user->getRoleNames())) {
-                return redirect('/student/dashboard');
+                return redirect('/user/dashboard');
             } else {
                 return redirect('/admin/dashboard');
             }

@@ -8,8 +8,6 @@
 @section('content')
     <main>
         <div class="container-fluid site-width">
-
-
             <!-- START: Card Data-->
             <div class="row">
                 <div class="col-12 mt-3">
@@ -50,7 +48,7 @@
                                                 <td>
                                                     <a href="javascript:void(0);"
                                                        class="btn btn-info btn-sm" onclick="deleteNotification(this, '{{$notification->id}}')">Dismiss</a>
-                                                    <a href="/student/notification-detail/{{$notification->id}}"
+                                                    <a href="/user/notification-detail/{{$notification->id}}"
                                                        class="btn btn-success btn-sm">Detail</a>
                                                 </td>
                                             </tr>
@@ -89,7 +87,7 @@
                 closeOnClickOutside: false
             }).then((willDismiss) => {
                 if(willDismiss){
-                    axios.get(`/student/delete-notification/${notificationId}`).then((response) => {
+                    axios.get(`/user/delete-notification/${notificationId}`).then((response) => {
                         swal({
                             title: response.data.msg,
                             icon: "success",

@@ -1,5 +1,10 @@
 @extends('cms.layouts.master')
 
+@push('styles')
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css">
+@endpush
+
 @section('content')
     <main>
         <div class="container-fluid site-width">
@@ -50,7 +55,13 @@
                                                 </div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group col-md-6">
+                                                    <label for="email">Father Name </label>
+                                                    <input type="text" class="form-control rounded" id="father_name"
+                                                           name="father_name" placeholder="Enter Father Name"
+                                                           value="{{ old('father_name') }}">
+                                                </div>
+                                                <div class="form-group col-md-6">
                                                     <label for="email">Email <span
                                                                 class="required-class">*</span></label>
                                                     <input type="email" class="form-control rounded" id="email"
@@ -63,13 +74,65 @@
                                                     <label for="cnic">CNIC</label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="cnic" name="cnic" placeholder="Enter CNIC"
-                                                           value="{{ old('cnic') }}">
+                                                           value="{{ old('cnic') }}" maxlength="13" minlength="13">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="contact">Contact</label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="contact" name="contact" placeholder="Enter Contact"
-                                                           value="{{ old('contact') }}">
+                                                           value="{{ old('contact') }}" maxlength="13" minlength="11">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="event_name">Department </label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="department" name="department"
+                                                           placeholder="Enter Department"
+                                                           value="{{ old('department') }}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="dob">Designation</label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="designation" name="designation"
+                                                           placeholder="Enter Designation"
+                                                           value="{{ old('designation') }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="">Gender</label>
+                                                    <div class="input-group">
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="exampleRadios1" value="male"
+                                                                    {{ old('gender') === "male" ? "checked" : ""}}>
+                                                            <label class="form-check-label"
+                                                                   for="exampleRadios1">Male</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="exampleRadios1" value="female"
+                                                                    {{ old('gender') === "female" ? "checked" : ""}}>
+                                                            <label class="form-check-label"
+                                                                   for="exampleRadios1">Female</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="exampleRadios1" value="other"
+                                                                    {{ old('gender') === "other" ? "checked" : ""}}>
+                                                            <label class="form-check-label"
+                                                                   for="exampleRadios1">Other</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="dob">Date of Birth</label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="dob" name="dob" value="{{ old('dob') }}"
+                                                           readonly>
                                                 </div>
                                             </div>
 
@@ -81,10 +144,11 @@
                                                     @foreach($roles as $key => $val)
                                                         <div class="form-group col-md-2 role">
                                                             <div class="custom-control custom-checkbox custom-control-inline">
-                                                                <input type="checkbox" class="custom-control-input" id="role_id{{$key}}" name="role"
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                       id="role_id{{$key}}" name="role"
                                                                        value="{{ $val->name }}" {{ old("role") == $val->name ? 'checked' : '' }}>
                                                                 <label class="custom-control-label checkbox-primary outline text-nowrap"
-                                                                       for="role_id{{$key}}" >{{ $val->name }}</label>
+                                                                       for="role_id{{$key}}">{{ $val->name }}</label>
                                                             </div>
                                                         </div>
                                                     @endforeach
@@ -106,16 +170,29 @@
 @endsection
 
 @push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
     <script>
-        $(".allowNumberOnly").keypress(function (e) {
-            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-                return false;
-            }
-        });
+        $(function () {
+            $('input[name="dob"]').val();
 
-        $('input:checkbox').click(function() {
-            $('input:checkbox').not(this).prop('checked', false);
-        });
+            $('input[name="dob"]').datepicker({
+                format: "yyyy-mm-dd",
+                endDate: '2004-01-01',
+                autoclose: true,
+                clearBtn: true,
+            }).on('changeDate', function () {
+                $(".child-div").show();
+            });
 
+            $(".allowNumberOnly").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    return false;
+                }
+            });
+
+            $('input:checkbox').click(function () {
+                $('input:checkbox').not(this).prop('checked', false);
+            });
+        });
     </script>
 @endpush

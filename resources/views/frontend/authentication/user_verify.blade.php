@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-5">
-                <div class="card card-pages shadow-none mt-4">
+                <div class="card card-pages shadow-none mt-4 cstBgAuth">
                     <div class="card-body">
                         <div class="text-center mt-0 mb-3">
                             <a href="/login" class="logo logo-admin">
@@ -29,7 +29,7 @@
                             <p class="text-muted w-75 mx-auto mb-4 mt-4">Welcome, Please set new password to access admin panel.</p>
                         </div>
 
-                        <form class="form-horizontal mt-4" action="/student-password-verification/{{$verificationToken}}" method="post">
+                        <form class="form-horizontal mt-4" action="/user-password-verification/{{$verificationToken}}" method="post">
                             @csrf
                             @if ($errors->any())
                                 <div class="alert alert-danger">

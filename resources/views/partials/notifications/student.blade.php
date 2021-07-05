@@ -1,6 +1,6 @@
 @foreach($student_notifications as $key => $val)
     <li>
-        <a class="dropdown-item px-2 py-2 border border-top-0 border-left-0 border-right-0" href="/student/notification-detail/{{$val->id}}">
+        <a class="dropdown-item px-2 py-2 border border-top-0 border-left-0 border-right-0" href="/user/notification-detail/{{$val->id}}">
             <div class="media">
                 <img src="" alt="" class="d-flex mr-3 img-fluid rounded-circle">
                 <div class="media-body">

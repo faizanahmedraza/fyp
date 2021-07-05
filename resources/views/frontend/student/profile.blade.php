@@ -1,5 +1,10 @@
 @extends('frontend.layouts.master')
 
+@push('styles')
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css">
+@endpush
+
 @section('content')
     <main>
         <div class="container-fluid site-width">
@@ -12,6 +17,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <h4 class="card-title">Your Profile</h4>
+                                    <span>({{Auth::user()->roles()->pluck('name')->first() == 'super-admin' ? 'Admin' : ucfirst(Auth::user()->roles()->pluck('name')->first())}})</span>
                                 </div>
                             </div>
                         </div>
@@ -27,7 +33,7 @@
                                 @endif
                                 <div class="row">
                                     <div class="col-12">
-                                        <form action="/student/manage-profile" method="POST" enctype="multipart/form-data">
+                                        <form action="/user/manage-profile" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @if($errors->any())
                                                 <div class="alert alert-danger">
@@ -86,6 +92,7 @@
                                                            value="{{ old('last_name',$profile->last_name) }}">
                                                 </div>
                                             </div>
+
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="email">Email <span
@@ -95,18 +102,67 @@
                                                            value="{{ old('email',$profile->email) }}">
                                                 </div>
                                             </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="event_name">Department </label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="department" name="department" placeholder="Enter Department" value="{{ old('department',$profile->department) }}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="dob">Designation</label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="designation" name="designation" placeholder="Enter Designation" value="{{ old('designation',$profile->designation) }}">
+                                                </div>
+                                            </div>
+
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="cnic">CNIC</label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="cnic" name="cnic" placeholder="Enter CNIC"
-                                                           value="{{ old('cnic',$profile->cnic) }}">
+                                                           value="{{ old('cnic',$profile->cnic) }}" maxlength="13">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="contact">Contact</label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="contact" name="contact" placeholder="Enter Contact"
-                                                           value="{{ old('contact',$profile->contact) }}">
+                                                           value="{{ old('contact',$profile->contact) }}" maxlength="13">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="">Gender</label>
+                                                    <div class="input-group">
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="exampleRadios1" value="male"
+                                                                    {{ old('gender',$profile->gender) === "male" ? "checked" : ""}}>
+                                                            <label class="form-check-label"
+                                                                   for="exampleRadios1">Male</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="exampleRadios1" value="female"
+                                                                    {{ old('gender',$profile->gender) === "female" ? "checked" : ""}}>
+                                                            <label class="form-check-label"
+                                                                   for="exampleRadios1">Female</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="exampleRadios1" value="other"
+                                                                    {{ old('gender',$profile->gender) === "other" ? "checked" : ""}}>
+                                                            <label class="form-check-label"
+                                                                   for="exampleRadios1">Other</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="dob">Date of Birth</label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="dob" name="dob" value="{{ old('dob',$profile->dob) }}"
+                                                           readonly>
                                                 </div>
                                             </div>
 
@@ -124,3 +180,30 @@
         </div>
     </main>
 @endsection
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        oldSubmissionDate = '{{ old('submission_date') }}';
+        $(function () {
+            $(".allowNumberOnly").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    return false;
+                }
+            });
+
+            $('input[name="dob"]').val();
+
+
+            $('input[name="dob"]').datepicker({
+                format: "yyyy-mm-dd",
+                endDate: new Date(),
+                autoclose: true,
+                clearBtn: true,
+            }).on('changeDate', function () {
+                $(".child-div").show();
+            });
+        });
+    </script>
+@endpush
+

@@ -10,7 +10,7 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Update User</h4>
+                                    <h4 class="card-title">View User</h4>
                                 </div>
                                 <div class="col-md-6">
                                     <a href="/admin/manage-users" class="btn btn-primary float-right">← Back</a>
@@ -35,7 +35,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group col-md-6">
+                                                    <label>Father Name </label>
+                                                    <input type="text" class="form-control rounded"
+                                                           value="{{ $user->father_name }}" readonly>
+                                                </div>
+                                                <div class="form-group col-md-6">
                                                     <label for="email">Email <span class="required-class">*</span></label>
                                                     <input type="email" class="form-control rounded"
                                                            value="{{ $user->email }}" readonly>
@@ -51,6 +56,37 @@
                                                     <label for="contact">Contact </label>
                                                     <input type="text" class="form-control rounded"
                                                            value="{{ $user->contact }}" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Department </label>
+                                                    <input type="text" class="form-control rounded"
+                                                           value="{{ $user->department }}" readonly>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Designation</label>
+                                                    <input type="text" class="form-control rounded"
+                                                           value="{{ $user->designation }}" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Gender</label>
+                                                    <div class="input-group">
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                    {{ $user->gender}} checked disabled>
+                                                            <label class="form-check-label">Male</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Date of Birth</label>
+                                                    <input type="text" class="form-control rounded" value="{{ $user->dob }}"
+                                                           readonly>
                                                 </div>
                                             </div>
 

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class NotStudent
+class NotUser
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class NotStudent
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && in_array(Auth::user()->roles()->pluck('name')->first(),['student','user'])){
-            return redirect('/student/dashboard');
+        if(Auth::check() && in_array(Auth::user()->roles()->pluck('name')->first(),['user'])){
+            return redirect('/user/dashboard');
         }
         return $next($request);
     }

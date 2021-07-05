@@ -2,9 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\UnAuthentic;
-use App\Http\Middleware\UnAuthenticAdmin;
-use App\Http\Middleware\UnAuthenticStudent;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -68,10 +65,10 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
-        'UnAuthentic' => UnAuthentic::class,
+        'UnAuthentic' => \App\Http\Middleware\UnAuthentic::class,
         'AuthenticAdmin' => \App\Http\Middleware\AuthenticAdmin::class,
-        'AuthenticStudent' => \App\Http\Middleware\AuthenticStudent::class,
-        'not_admin' => \App\Http\Middleware\NotAdmin::class,
-        'not_student' => \App\Http\Middleware\NotStudent::class,
+        'AuthenticUser' => \App\Http\Middleware\AuthenticUser::class,
+        'NotAdmin' => \App\Http\Middleware\NotAdmin::class,
+        'NotUser' => \App\Http\Middleware\NotUser::class,
     ];
 }

@@ -23,13 +23,12 @@
                     @endcan
                 </ul>
             </li>
-            <li class="dropdown"><a href="javascript:void(0);"> Submitted Proposals</a>
+            <li class="dropdown"><a href="javascript:void(0);"> Project</a>
                 <ul>
                     @can('research-project-list')
                         <li class="{{ getActiveClass(request()->segment(3),['projects','research']) }}"><a
-                                    class="text-nowrap" href="/admin/student/research-projects"><i
-                                        class="fas fa-scroll fa-fw"></i>
-                                Research Project</a></li>
+                                    class="text-nowrap" href="/admin/user/research-projects"><i
+                                        class="fas fa-scroll fa-fw"></i>Submitted Proposal</a></li>
                     @endcan
                 </ul>
             </li>
@@ -41,14 +40,13 @@
                 </li>
             @endcan
             @can('upload-sample-list')
-                <li class="dropdown"><a href="javascript:void(0);"> Uploads</a>
+                <li class="dropdown"><a href="javascript:void(0);"> Downloadable</a>
                     <ul>
                         <li class="{{ getActiveClass(request()->segment(2),['samples']) }}"><a href="/admin/upload-samples"><i
-                                        class="far fa-upload fa-fw"></i> Upload Proposal</a></li>
+                                        class="far fa-upload fa-fw"></i> Forms</a></li>
                         <li class="{{ getActiveClass(request()->segment(3),['template','rp']) }}"><a
-                                    class="text-nowrap" href="/admin/student/add-rp-template"><i
-                                        class="far fa-upload fa-fw"></i>
-                                Research Project</a></li>
+                                    class="text-nowrap" href="/admin/user/add-rp-template"><i
+                                        class="far fa-upload fa-fw"></i>Upload Form</a></li>
                     </ul>
                 </li>
             @endcan

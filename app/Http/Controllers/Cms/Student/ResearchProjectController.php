@@ -76,7 +76,7 @@ class ResearchProjectController extends Controller
 
         ResearchProject::create($studentData);
 
-        return redirect('/admin/student/research-projects')->with('success','Successfully submitted.');
+        return redirect('/admin/user/research-projects')->with('success','Successfully submitted.');
     }
 
     public function updateResearch($researchId){
@@ -122,7 +122,7 @@ class ResearchProjectController extends Controller
 
         $project->update($studentData);
 
-        return redirect('/admin/student/research-projects')->with('success','Successfully updated.');
+        return redirect('/admin/user/research-projects')->with('success','Successfully updated.');
     }
 
     public function researchDetail($researchId){

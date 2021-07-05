@@ -18,7 +18,7 @@
                                     <h4 class="card-title">Add Research Project Proposal</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/student/research-projects" class="btn btn-primary float-right">← Back</a>
+                                    <a href="/user/research-projects" class="btn btn-primary float-right">← Back</a>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 @endif
                                 <div class="row">
                                     <div class="col-12">
-                                        <form action="/student/add-research-project" method="POST" enctype="multipart/form-data">
+                                        <form action="/user/add-research-project" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @if($errors->any())
                                                 <div class="alert alert-danger">
@@ -49,7 +49,7 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <a href="/student/research-project-template"
+                                                    <a href="/user/research-project-template"
                                                        class="btn btn-outline-primary">Download Template</a>
                                                 </div>
                                             </div>

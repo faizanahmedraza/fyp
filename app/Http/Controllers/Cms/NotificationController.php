@@ -48,7 +48,7 @@ class NotificationController extends Controller
 
         session()->forget('notification');
 
-        return redirect('/admin/student/research-projects')->with('notification',$notify);;
+        return redirect('/admin/user/research-projects')->with('notification',$notify);;
 
     }
 }

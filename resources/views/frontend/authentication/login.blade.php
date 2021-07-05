@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-5">
-                <div class="card card-pages shadow-none mt-4">
+                <div class="card card-pages shadow-none mt-4 cstBgAuth">
                     <div class="card-body">
                         <div class="text-center mt-0 mb-3">
                             <a href="/login" class="logo logo-admin">

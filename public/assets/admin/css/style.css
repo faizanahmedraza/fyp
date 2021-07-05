@@ -3414,12 +3414,19 @@ table.focus-on tbody tr.focused td {
 }
 
 .accountbg {
-  background-color: #0c8484;
+  background-image: url("/assets/images/bg_login.jpg");
   position: absolute;
   background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100%;
   width: 100%;
   top: 0;
+}
+
+.cstBgAuth {
+  border-radius: 25px!important;
+  opacity: 0.8;
 }
 
 .wrapper-page {

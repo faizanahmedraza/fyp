@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class StudentSeeder extends Seeder
+class ResearcherSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,17 +14,17 @@ class StudentSeeder extends Seeder
     public function run()
     {
         $permissions = [
-            'student-project-proposal-list',
-            'student-project-proposal-create',
-            'student-notification-list',
-            'student-notification-detail',
+            'researcher-project-proposal-list',
+            'researcher-project-proposal-create',
+            'researcher-notification-list',
+            'researcher-notification-detail',
         ];
 
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
         }
 
-        $role = Role::create(['name' => 'student']);
+        $role = Role::create(['name' => 'researcher']);
 
         $role->syncPermissions($permissions);
     }

@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-5">
-                <div class="card card-pages shadow-none mt-4">
+                <div class="card card-pages shadow-none mt-4 cstBgAuth">
                     <div class="card-body">
                         <div class="text-center mt-0 mb-3">
                             <a href="/register" class="logo logo-admin">
@@ -82,10 +82,22 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="password">Password <span class="required-class">*</span></label>
+                                    <label for="password">Confirm Password <span class="required-class">*</span></label>
                                     <input type="password" class="form-control rounded" id="password_confirmation"
                                            name="password_confirmation" placeholder="Re Enter Password"
                                            value="{{ old('password_confirmation') }}">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="event_name">User Type <span
+                                                class="required-class">*</span></label>
+                                    <select class="form-control" name="user_type" id="user_type">
+                                        <option value="">Select</option>
+                                        <option value="researcher">Researcher</option>
+                                        <option value="student">Student</option>
+                                    </select>
                                 </div>
                             </div>
 

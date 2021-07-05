@@ -49,7 +49,7 @@ class NotificationController extends Controller
         session()->forget('notification');
 
         if($notify->type === "status-project-proposal"){
-            return redirect('/student/research-projects')->with('notification',$notify);
+            return redirect('/user/research-projects')->with('notification',$notify);
         }
     }
 }

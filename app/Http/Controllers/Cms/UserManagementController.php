@@ -38,19 +38,29 @@ class UserManagementController extends Controller
         request()->validate([
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
+            'father_name' => 'sometimes|nullable|max:255',
             'email' => 'required|max:255|unique:users,email,NULL,id,first_name,'.request('first_name').',last_name,'.request('last_name'),
             'cnic' => 'sometimes|nullable|digits_between:1,13',
             'contact'  => 'sometimes|nullable|digits_between:1,13',
+            'gender' => 'sometimes|nullable|in:male,female,other|max:10',
+            'dob' => 'sometimes|nullable|date',
+            'department' => 'sometimes|nullable|max:55',
+            'designation' => 'sometimes|nullable|max:55',
             'role' => 'required|in:'.implode(',',Role::pluck('name')->toArray())
         ]);
 
         $user = User::create([
             'first_name' => request()->first_name,
             'last_name' => request()->last_name,
+            'father_name' => request()->father_name,
             'email' => request()->email,
             'password' => Str::random('30'),
             'cnic' => request()->cnic,
             'contact'  => request()->contact,
+            'gender' => request()->gender,
+            'dob' => request()->dob,
+            'department' => request()->department,
+            'designation' => request()->designation,
             'verification_token' => Str::random('50'),
             'created_by' => Auth::id()
         ]);
@@ -77,18 +87,28 @@ class UserManagementController extends Controller
         request()->validate([
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
+            'father_name' => 'sometimes|nullable|max:255',
             'email' => 'required|max:255|unique:users,email,'.$userId.',id,first_name,'.request('first_name').',last_name,'.request('last_name'),
             'cnic' => 'sometimes|nullable|digits_between:1,13',
             'contact'  => 'sometimes|nullable|digits_between:1,13',
+            'gender' => 'sometimes|nullable|in:male,female,other|max:10',
+            'dob' => 'sometimes|nullable|date',
+            'department' => 'sometimes|nullable|max:55',
+            'designation' => 'sometimes|nullable|max:55',
             'role' => 'required|in:'.implode(',',Role::pluck('name')->toArray())
         ]);
 
         $user->update([
             'first_name' => request()->first_name,
             'last_name' => request()->last_name,
+            'father_name' => request()->father_name,
             'email' => request()->email,
             'cnic' => request()->cnic,
             'contact'  => request()->contact,
+            'gender' => request()->gender,
+            'dob' => request()->dob,
+            'department' => request()->department,
+            'designation' => request()->designation,
             'updated_by' => Auth::id()
         ]);
 

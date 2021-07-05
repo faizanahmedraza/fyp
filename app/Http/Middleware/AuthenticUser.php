@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class AuthenticStudent
+class AuthenticUser
 {
     /**
      * Handle an incoming request.

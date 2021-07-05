@@ -123,7 +123,7 @@
                                                             <table class="textbutton" border="0" cellspacing="0" cellpadding="0">
                                                                 <tr>
                                                                     <td bgcolor="#6ec8c7" class="btn-link" height="45" style="border-radius:4px;font-family: 'Open sans', Arial, sans-serif; color:#FFFFFF; font-size:14px;padding-left: 15px;padding-right: 15px;">
-                                                                        <a href="{{env('APP_URL')}}/student-password-verification/{{$user->verification_token}}">Please verify</a>
+                                                                        <a href="{{env('APP_URL')}}/user-password-verification/{{$user->verification_token}}">Please verify</a>
                                                                     </td>
                                                                 </tr>
                                                             </table>

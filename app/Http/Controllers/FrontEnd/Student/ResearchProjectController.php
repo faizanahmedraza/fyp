@@ -18,8 +18,8 @@ class ResearchProjectController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:student-research-project-list|student-research-project-create', ['only' => ['index', 'addStudentResearchData']]);
-        $this->middleware('permission:student-research-project-create', ['only' => ['addStudentResearch', 'addStudentResearchData']]);
+        $this->middleware('permission:student-project-proposal-list|student-project-proposal-create', ['only' => ['index', 'addStudentResearchData']]);
+        $this->middleware('permission:student-project-proposal-create', ['only' => ['addStudentResearch', 'addStudentResearchData']]);
     }
 
     public function index()
@@ -83,7 +83,7 @@ class ResearchProjectController extends Controller
 
         event(new \App\Events\FormSubmitted('apply', $admin));
 
-        return redirect('/student/research-projects')->with('success', 'Successfully submitted.');
+        return redirect('/user/research-projects')->with('success', 'Successfully submitted.');
     }
 
     public function detailStudentResearch($researchId)

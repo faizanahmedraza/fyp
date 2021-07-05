@@ -17,7 +17,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right border  py-0" id="statusNotification">
                             @include('partials.notifications.student')
-                            <li><a class="dropdown-item text-center py-2" href="/student/notifications"> Read All Message
+                            <li><a class="dropdown-item text-center py-2" href="/user/notifications"> Read All Message
                                     <i class="icon-arrow-right pl-2 small"></i></a></li>
                         </ul>
                     </li>
@@ -31,10 +31,12 @@
                         </a>
 
                         <div class="dropdown-menu border dropdown-menu-right p-0">
-                            <a class="dropdown-item px-2 text-danger align-self-center d-flex"
-                               href="/student/manage-profile"><i class="fas fa-user-edit mr-1 h6 mb-0"></i> Edit
+                            <a class="dropdown-item px-2 text-dark align-self-center d-flex"
+                               href="javascript:void(0)"><i class="fas fa-user fa-fw mr-1 h6 mb-0"></i> {{Auth::user()->full_name}} ( {{ Auth::user()->roles()->pluck('name')->first() == 'super-admin' ? 'Admin' : ucfirst(Auth::user()->roles()->pluck('name')->first()) }} ) </a>
+                            <a class="dropdown-item px-2 text-dark align-self-center d-flex"
+                               href="/user/manage-profile"><i class="fas fa-user-edit mr-1 h6 mb-0"></i> Edit
                                 Profile</a>
-                            <a href="/student/logout" class="dropdown-item px-2 text-danger align-self-center d-flex">
+                            <a href="/user/logout" class="dropdown-item px-2 text-danger align-self-center d-flex">
                                 <i class="fas fa-sign-out-alt mr-2 h6 mb-0"></i> Sign Out</a>
                         </div>
 

@@ -106,7 +106,7 @@
                                                     <label for="cnic">CNIC</label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="cnic" name="cnic" placeholder="Enter CNIC"
-                                                           value="{{ old('cnic',$profile->cnic) }}">
+                                                           value="{{ old('cnic',$profile->cnic) }}" maxlength="13">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="contact">Contact</label>

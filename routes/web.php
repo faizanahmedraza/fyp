@@ -31,7 +31,7 @@ Route::get('/admin', function () {
     return redirect('/admin/login');
 });
 
-Route::get('/student', function () {
+Route::get('/user', function () {
     return redirect('/login');
 });
 
@@ -45,7 +45,7 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
         Route::post('/forgot-password', 'AuthenticationController@forgotPasswordData');
     });
 
-    Route::middleware(['AuthenticAdmin', 'not_student'])->group(function () {
+    Route::middleware(['AuthenticAdmin', 'NotUser'])->group(function () {
         Route::get('/dashboard', 'HomeController@index');
         Route::get('/logout', 'AuthenticationController@logout');
         Route::get('/manage-profile', 'ProfileController@index');
@@ -72,7 +72,7 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
         Route::get('/upload-samples', 'UploadSampleController@index');
         Route::get('/delete-upload-sample/{uploadId}', 'UploadSampleController@deleteUpload');
 
-        Route::namespace('Student')->prefix('student')->group(function () {
+        Route::namespace('Student')->prefix('user')->group(function () {
             Route::get('/research-projects', 'ResearchProjectController@index');
             Route::get('/add-research-project', 'ResearchProjectController@addResearch');
             Route::post('/add-research-project', 'ResearchProjectController@addResearchData');
@@ -216,13 +216,13 @@ Route::namespace('FrontEnd')->group(function () {
         Route::get('/register', 'AuthenticationController@registerUser');
         Route::post('/register', 'AuthenticationController@registerUserData');
         Route::get('/new-student-verification/{verificationToken}', 'AuthenticationController@userVerification');
-        Route::get('/student-password-verification/{verificationToken}', 'AuthenticationController@userPasswordVerification');
-        Route::post('/student-password-verification/{verificationToken}', 'AuthenticationController@userPasswordVerificationData');
+        Route::get('/user-password-verification/{verificationToken}', 'AuthenticationController@userPasswordVerification');
+        Route::post('/user-password-verification/{verificationToken}', 'AuthenticationController@userPasswordVerificationData');
         Route::get('/forgot-password', 'AuthenticationController@forgotPassword');
         Route::post('/forgot-password', 'AuthenticationController@forgotPasswordData');
     });
 
-    Route::middleware(['AuthenticStudent', 'not_admin'])->prefix('student')->group(function () {
+    Route::middleware(['AuthenticUser', 'NotAdmin'])->prefix('user')->group(function () {
         Route::get('/dashboard', 'HomeController@index');
         Route::get('/logout', 'AuthenticationController@logout');
         Route::get('/manage-profile', 'ProfileController@index');
