@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="/assets/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="/assets/vendors/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/vendors/flags-icon/css/flag-icon.min.css">
+    <!-- START: Custom CSS-->
     <link rel="stylesheet" href="/assets/css/main.css">
-        @stack('styles')
+    <!-- END: Custom CSS-->
+    @stack('styles')
 </head>
 
 <body id="main-container" class="default semi-dark">
