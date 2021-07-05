@@ -61,7 +61,7 @@
                                                         <input type="checkbox" name="is_active"
                                                                class="is_active"
                                                                value="1"
-                                                               onchange="blockUser(this, '{{ $user->id }}')"
+                                                               onchange="blockUser(this, '{{ $user->id }}','{{$user->is_block}}')"
                                                                 {{ !empty($user->is_block) ? 'checked' : '' }}>
                                                         <span class="slider round"></span>
                                                     </label>
@@ -72,7 +72,7 @@
                                                            class="btn btn-info btn-sm">Update</a>
                                                     @endif
                                                     <a href="/admin/user-detail/{{$user->id}}"
-                                                       class="btn btn-success btn-sm">Detail</a>
+                                                       class="btn btn-success btn-sm">View</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -101,9 +101,10 @@
             $('.table').DataTable();
         });
 
-        function blockUser(input, userId) {
+        function blockUser(input, userId, is_block) {
+            let status = is_block === '1' ? "unblock" : "block";
             swal({
-                title: "Are you sure?",
+                title: "Are you sure to "+ status +"?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,

@@ -1,5 +1,10 @@
 @extends('cms.layouts.master')
 
+@push('styles')
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css">
+@endpush
+
 @section('content')
     <main>
         <div class="container-fluid site-width">
@@ -11,6 +16,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <h4 class="card-title">Your Profile</h4>
+                                    <span>({{Auth::user()->roles()->pluck('name')->first() == 'super-admin' ? 'Admin' : ucfirst(Auth::user()->roles()->pluck('name')->first())}})</span>
                                 </div>
                             </div>
                         </div>
@@ -26,7 +32,8 @@
                                 @endif
                                 <div class="row">
                                     <div class="col-12">
-                                        <form action="/admin/manage-profile" method="POST" enctype="multipart/form-data">
+                                        <form action="/admin/manage-profile" method="POST"
+                                              enctype="multipart/form-data">
                                             @csrf
                                             @if($errors->any())
                                                 <div class="alert alert-danger">
@@ -109,6 +116,41 @@
                                                 </div>
                                             </div>
 
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="">Gender</label>
+                                                    <div class="input-group">
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="exampleRadios1" value="male"
+                                                                    {{ old('gender',$profile->gender) === "male" ? "checked" : ""}}>
+                                                            <label class="form-check-label"
+                                                                   for="exampleRadios1">Male</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="exampleRadios1" value="female"
+                                                                    {{ old('gender',$profile->gender) === "female" ? "checked" : ""}}>
+                                                            <label class="form-check-label"
+                                                                   for="exampleRadios1">Female</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="exampleRadios1" value="other"
+                                                                    {{ old('gender',$profile->gender) === "other" ? "checked" : ""}}>
+                                                            <label class="form-check-label"
+                                                                   for="exampleRadios1">Other</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="dob">Date of Birth</label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="dob" name="dob" value="{{ old('dob',$profile->dob) }}"
+                                                           readonly>
+                                                </div>
+                                            </div>
+
                                             <button type="submit" class="btn btn-primary">Save</button>
                                         </form>
                                     </div>
@@ -123,3 +165,29 @@
         </div>
     </main>
 @endsection
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        oldSubmissionDate = '{{ old('submission_date') }}';
+        $(function () {
+            $(".allowNumberOnly").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    return false;
+                }
+            });
+
+            $('input[name="dob"]').val();
+
+
+            $('input[name="dob"]').datepicker({
+                format: "yyyy-mm-dd",
+                endDate: new Date(),
+                autoclose: true,
+                clearBtn: true,
+            }).on('changeDate', function () {
+                $(".child-div").show();
+            });
+        });
+    </script>
+@endpush
