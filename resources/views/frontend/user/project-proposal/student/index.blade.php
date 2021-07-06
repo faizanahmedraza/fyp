@@ -1,14 +1,13 @@
-@extends('cms.layouts.master')
+@extends('frontend.layouts.master')
 
 @push('styles')
+    <link rel="stylesheet" type="text/css" href="/assets/css/toggle-switch.css">
     <link rel="stylesheet" href="/assets/vendors/datatable/css/dataTables.bootstrap4.min.css">
 @endpush
 
 @section('content')
     <main>
         <div class="container-fluid site-width">
-
-
             <!-- START: Card Data-->
             <div class="row">
                 <div class="col-12 mt-3">
@@ -16,7 +15,11 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Notifications</h4>
+                                    <h4 class="card-title">Research Projects</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="/user/student-add-research-proposal" class="btn btn-primary float-right">Add
+                                        +</a>
                                 </div>
                             </div>
                         </div>
@@ -34,26 +37,26 @@
                                     <thead>
                                     <tr>
                                         <th>ID#</th>
-                                        <th>User Name</th>
-                                        <th>Message</th>
-                                        <th>Actions</th>
+                                        <th>Title</th>
+                                        <th>Application Submitted</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if(count($notifications) > 0)
-                                        @foreach($notifications as $key => $notification)
+                                    @if(count($projects) > 0)
+                                        @foreach($projects as $key => $project)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $notification->getUser->full_name }}</td>
-                                                <td>{{ $notification->getUser->full_name.' '.$notification->message }}</td>
+                                                <td>{{ $project->title }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($project->submission_date,'UTC')->isoFormat('MMMM Do YYYY') }}</td>
                                                 <td>
-                                                    <a href="javascript:void(0);"
-                                                       class="btn btn-info btn-sm"
-                                                       onclick="deleteNotification(this, '{{$notification->id}}')">Dismiss</a>
-                                                    @if($notification->type === 'project-proposal')
-                                                        <a href="/admin/user/research-projects"
-                                                                   class="btn btn-success btn-sm">Detail</a>
-                                                    @endif
+                                                    <button class="btn btn-dark btn-sm"
+                                                            disabled>{{ ucfirst($project->status) }}</button>
+                                                </td>
+                                                <td>
+                                                    <a href="/user/student-research-proposal/detail/{{$project->id}}"
+                                                       class="btn btn-info btn-sm">Detail</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -72,43 +75,11 @@
 @endsection
 
 @push('scripts')
-    <script src="/assets/js/axios.min.js"></script>
-    <script src="/assets/js/sweetalert.min.js"></script>
     <script src="/assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
     <script src="/assets/vendors/datatable/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(function () {
             $('.table').DataTable();
         });
-
-        function deleteNotification(input,notificationId) {
-            swal({
-                title: "Are you sure?",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-                closeOnClickOutside: false
-            }).then((willDismiss) => {
-                if(willDismiss){
-                    axios.get(`/admin/delete-notification/${notificationId}`).then((response) => {
-                        swal({
-                            title: response.data.msg,
-                            icon: "success",
-                            closeOnClickOutside: false
-                        }).then((successBtn) => {
-                            if (successBtn) {
-                                $(input).parent().parent().remove();
-                            }
-                        });
-                    }).catch(function (error) {
-                        swal({
-                            title: error.response.data.msg,
-                            icon: "error",
-                            dangerMode: true
-                        });
-                    });
-                }
-            });
-        }
     </script>
 @endpush

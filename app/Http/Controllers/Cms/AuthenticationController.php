@@ -46,10 +46,10 @@ class AuthenticationController extends Controller
             }
 
             if (Auth::attempt(['email' => request()->email, 'password' => request()->password], $rememberMe)) {
-                if ('student' == Arr::first($user->getRoleNames())) {
-                    return redirect('/user/dashboard');
-                } else {
+                if (!in_array(Arr::first($user->getRoleNames()),['student','researcher','faculty','focal-person','oric-member'])) {
                     return redirect('/admin/dashboard');
+                } else {
+                    return redirect('/user/dashboard');
                 }
             }
         }
@@ -62,7 +62,7 @@ class AuthenticationController extends Controller
         if (!empty($user)) {
             return view('cms.authentication.user_verify', compact('verificationToken'));
         } else {
-            if (!empty($user) && 'student' != Arr::first($user->getRoleNames())) {
+            if (!empty($user) && !in_array(Arr::first($user->getRoleNames()), ['student', 'researcher', 'faculty', 'focal-person','oric-member'])) {
                 return redirect('/admin/login');
             } else {
                 return redirect('/login');
@@ -97,10 +97,10 @@ class AuthenticationController extends Controller
 
             Auth::loginUsingId($user->id);
 
-            if ('student' == Arr::first($user->getRoleNames())) {
-                return redirect('/user/dashboard');
-            } else {
+            if (!in_array(Arr::first($user->getRoleNames()), ['student', 'researcher', 'faculty', 'focal-person','oric-member'])) {
                 return redirect('/admin/dashboard');
+            } else {
+                return redirect('/user/dashboard');
             }
         }
 
@@ -131,7 +131,7 @@ class AuthenticationController extends Controller
                 'verification_token' => Str::random('50')
             ]);
 
-            if (!in_array('student', Arr::flatten($user->getRoleNames())) || in_array('super-admin', Arr::flatten($user->getRoleNames()))) {
+            if (!in_array(Arr::first($user->getRoleNames()),['student','researcher','faculty','focal-person','oric-member']) || in_array('super-admin', Arr::flatten($user->getRoleNames()))) {
                 dispatch(new SendForgotPasswordEmailJob($user));
             } else {
                 dispatch(new SendStudentForgotPasswordEmailJob($user));

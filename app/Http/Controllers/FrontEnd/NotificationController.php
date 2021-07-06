@@ -11,8 +11,8 @@ class NotificationController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:student-notification-list|student-notification-detail', ['only' => ['index','detailNotification']]);
-        $this->middleware('permission:student-notification-detail', ['only' => ['detailNotification']]);
+        $this->middleware('permission:user-notification-list|user-notification-detail', ['only' => ['index','detailNotification']]);
+        $this->middleware('permission:user-notification-detail', ['only' => ['detailNotification']]);
     }
 
     public function index(){

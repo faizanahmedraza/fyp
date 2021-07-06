@@ -25,9 +25,9 @@ class UserSeeder extends Seeder
             'research-project-list',
             'research-project-create',
             'research-project-update',
-            'notification-list',
-            'notification-detail',
-            'notification-delete',
+            'admin-notification-list',
+            'admin-notification-detail',
+            'admin-notification-delete',
             'upload-sample-list',
             'upload-sample-delete'
         ];

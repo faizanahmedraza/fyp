@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
          $this->call([
              UserSeeder::class,
-             OricMemberSeeder::class,
              StudentSeeder::class,
+             OricMemberSeeder::class,
              ResearcherSeeder::class,
              FacultySeeder::class,
              FocalPersonSeeder::class

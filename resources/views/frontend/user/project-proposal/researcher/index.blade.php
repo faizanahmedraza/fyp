@@ -18,7 +18,7 @@
                                     <h4 class="card-title">Research Projects</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/user/add-research-project" class="btn btn-primary float-right">Add
+                                    <a href="/user/researcher-add-research-proposal" class="btn btn-primary float-right">Add
                                         +</a>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                                             disabled>{{ ucfirst($project->status) }}</button>
                                                 </td>
                                                 <td>
-                                                    <a href="/user/research-project/detail/{{$project->id}}"
+                                                    <a href="/user/researcher-research-proposal/detail/{{$project->id}}"
                                                        class="btn btn-info btn-sm">Detail</a>
                                                 </td>
                                             </tr>

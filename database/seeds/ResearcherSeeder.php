@@ -16,8 +16,6 @@ class ResearcherSeeder extends Seeder
         $permissions = [
             'researcher-project-proposal-list',
             'researcher-project-proposal-create',
-            'researcher-notification-list',
-            'researcher-notification-detail',
         ];
 
         foreach ($permissions as $permission) {
@@ -26,6 +24,6 @@ class ResearcherSeeder extends Seeder
 
         $role = Role::create(['name' => 'researcher']);
 
-        $role->syncPermissions($permissions);
+        $role->syncPermissions('user-notification-list','user-notification-detail',...$permissions);
     }
 }

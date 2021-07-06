@@ -16,8 +16,8 @@ class StudentSeeder extends Seeder
         $permissions = [
             'student-project-proposal-list',
             'student-project-proposal-create',
-            'student-notification-list',
-            'student-notification-detail',
+            'user-notification-list',
+            'user-notification-detail',
         ];
 
         foreach ($permissions as $permission) {

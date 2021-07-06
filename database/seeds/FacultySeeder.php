@@ -16,8 +16,6 @@ class FacultySeeder extends Seeder
         $permissions = [
             'faculty-project-proposal-list',
             'faculty-project-proposal-create',
-            'faculty-notification-list',
-            'faculty-notification-detail',
         ];
 
         foreach ($permissions as $permission) {
@@ -26,6 +24,6 @@ class FacultySeeder extends Seeder
 
         $role = Role::create(['name' => 'faculty']);
 
-        $role->syncPermissions($permissions);
+        $role->syncPermissions('user-notification-list','user-notification-detail',...$permissions);
     }
 }

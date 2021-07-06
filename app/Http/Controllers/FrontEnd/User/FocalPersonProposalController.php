@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\FrontEnd\Student;
+namespace App\Http\Controllers\FrontEnd\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
@@ -8,18 +8,17 @@ use App\Models\ResearchProject;
 use App\Models\UploadSample;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 
-class ResearchProjectController extends Controller
+class FocalPersonProposalController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:student-project-proposal-list|student-project-proposal-create', ['only' => ['index', 'addStudentResearchData']]);
-        $this->middleware('permission:student-project-proposal-create', ['only' => ['addStudentResearch', 'addStudentResearchData']]);
+        $this->middleware('permission:focal-person-project-proposal-list|focal-person-project-proposal-create', ['only' => ['index', 'addFocalPersonResearchData']]);
+        $this->middleware('permission:focal-person-project-proposal-create', ['only' => ['addFocalPersonResearch', 'addFocalPersonResearchData']]);
     }
 
     public function index()
@@ -31,17 +30,17 @@ class ResearchProjectController extends Controller
                 'is_read' => 1
             ]);
         }
-        return view('frontend.student.research-project.index', compact('projects'));
+        return view('frontend.user.project-proposal.focal-person.index', compact('projects'));
     }
 
-    public function addStudentResearch()
+    public function addFocalPersonResearch()
     {
-        return view('frontend.student.research-project.add');
+        return view('frontend.user.project-proposal.focal-person.add');
     }
 
-    public function addStudentResearchData()
+    public function addFocalPersonResearchData()
     {
-        $studentData = array();
+        $focalPersonData = array();
         request()->validate([
             'title' => 'required|max:150',
             'investigator_details' => 'required|max:150',
@@ -52,14 +51,14 @@ class ResearchProjectController extends Controller
             'upload_research' => 'required|file|mimes:doc,pdf,docx'
         ]);
 
-        $studentData['user_id'] = Auth::id();
-        $studentData['title'] = request()->title;
-        $studentData['investigator_details'] = request()->investigator_details;
-        $studentData['abstract'] = request()->abstract;
-        $studentData['agency'] = request()->agency;
-        $studentData['amount'] = request()->amount;
-        $studentData['submission_date'] = request()->submission_date;
-        $studentData['status'] = 'pending';
+        $focalPersonData['user_id'] = Auth::id();
+        $focalPersonData['title'] = request()->title;
+        $focalPersonData['investigator_details'] = request()->investigator_details;
+        $focalPersonData['abstract'] = request()->abstract;
+        $focalPersonData['agency'] = request()->agency;
+        $focalPersonData['amount'] = request()->amount;
+        $focalPersonData['submission_date'] = request()->submission_date;
+        $focalPersonData['status'] = 'pending';
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
@@ -68,10 +67,10 @@ class ResearchProjectController extends Controller
                 File::makeDirectory(storage_path('app/public/uploads'),0755, true);
             }
             Storage::putFileAs('public/uploads',$upload_research,$newResearchName);
-            $studentData['upload_research'] = $newResearchName;
+            $focalPersonData['upload_research'] = $newResearchName;
         }
 
-        ResearchProject::create($studentData);
+        ResearchProject::create($focalPersonData);
 
         $admin = User::role('super-admin')->first()->id;
 
@@ -83,24 +82,22 @@ class ResearchProjectController extends Controller
 
         event(new \App\Events\FormSubmitted('apply', $admin));
 
-        return redirect('/user/research-projects')->with('success', 'Successfully submitted.');
+        return redirect('/user/focal-person-research-proposals')->with('success', 'Successfully submitted.');
     }
 
-    public function detailStudentResearch($researchId)
+    public function detailFocalPersonResearch($researchId)
     {
         $research = ResearchProject::findOrFail($researchId);
-        return view('frontend.student.research-project.detail', compact('research'));
+        return view('frontend.user.project-proposal.focal-person.detail', compact('research'));
     }
 
     public function downloadTemplate()
     {
-        $template = $path = '';
-        if (!empty(UploadSample::latest()->first()->name)) {
-            $template = UploadSample::latest()->first()->name;
-            $path = Storage::url('uploads/' . !empty($template) ? $template : 'research-project.pdf');
+        $query = UploadSample::latest()->first();
+        if (!empty($query)) {
+            return response()->download(public_path('storage/uploads/'. $query->name));
         } else {
             abort(404);
         }
-        return Response::download($path);
     }
 }

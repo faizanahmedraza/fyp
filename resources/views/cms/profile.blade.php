@@ -92,15 +92,45 @@
                                                            value="{{ old('last_name',$profile->last_name) }}">
                                                 </div>
                                             </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="email">Email <span
-                                                                class="required-class">*</span></label>
-                                                    <input type="email" class="form-control rounded" id="email"
-                                                           name="email" placeholder="Enter Email"
-                                                           value="{{ old('email',$profile->email) }}">
+
+                                            @if(Auth::user()->roles()->first()->name == 'super-admin')
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <label for="email">Email <span
+                                                                    class="required-class">*</span></label>
+                                                        <input type="email" class="form-control rounded" id="email"
+                                                               name="email" placeholder="Enter Email"
+                                                               value="{{ old('email',$profile->email) }}">
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @else
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <label for="email">Email <span
+                                                                    class="required-class">*</span></label>
+                                                        <input type="email" class="form-control rounded" id="email"
+                                                               name="email" placeholder="Enter Email"
+                                                               value="{{ old('email',$profile->email) }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="event_name">Department </label>
+                                                        <input type="text" class="form-control rounded"
+                                                               id="department" name="department"
+                                                               placeholder="Enter Department"
+                                                               value="{{ old('department',$profile->department) }}">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="dob">Designation</label>
+                                                        <input type="text" class="form-control rounded"
+                                                               id="designation" name="designation"
+                                                               placeholder="Enter Designation"
+                                                               value="{{ old('designation',$profile->designation) }}">
+                                                    </div>
+                                                </div>
+                                            @endif
+
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="cnic">CNIC</label>
@@ -123,7 +153,7 @@
                                                         <div class="custom-control custom-radio custom-control-inline">
                                                             <input class="form-check-input" type="radio" name="gender"
                                                                    id="exampleRadios1" value="male"
-                                                                    {{ old('gender',$profile->gender) === "male" ? "checked" : ""}}>
+                                                                    {{ empty(old('gender')) || old('gender',$profile->gender) === "male" ? "checked" : ""}}>
                                                             <label class="form-check-label"
                                                                    for="exampleRadios1">Male</label>
                                                         </div>

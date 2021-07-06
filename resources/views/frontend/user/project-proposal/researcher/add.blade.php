@@ -1,4 +1,4 @@
-@extends('cms.layouts.master')
+@extends('frontend.layouts.master')
 
 @push('styles')
     <link rel="stylesheet" type="text/css"
@@ -18,7 +18,7 @@
                                     <h4 class="card-title">Add Research Project Proposal</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/admin/user/research-projects" class="btn btn-primary float-right">← Back</a>
+                                    <a href="/user/researcher-research-proposals" class="btn btn-primary float-right">← Back</a>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 @endif
                                 <div class="row">
                                     <div class="col-12">
-                                        <form action="/admin/user/add-research-project" method="POST" enctype="multipart/form-data">
+                                        <form action="/user/researcher-add-research-proposal" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @if($errors->any())
                                                 <div class="alert alert-danger">
@@ -48,18 +48,12 @@
                                             @endif
 
                                             <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="user_id">Name <span
-                                                                class="required-class">*</span></label>
-                                                    <select class="form-control" name="user_id" id="user_id">
-                                                        <option value="">Select</option>
-                                                        @foreach($students as $val)
-                                                            <option value="{{$val->id}}"
-                                                                    {{ old('user_id') === $val->id ? "selected" : ""}}>{{$val->full_name}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                <div class="form-group col-md-6">
+                                                    <a href="/user/researcher-research-proposal-template"
+                                                       class="btn btn-outline-primary">Download Template</a>
                                                 </div>
                                             </div>
+
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
@@ -83,7 +77,8 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="abstract">Abstract </label>
+                                                    <label for="abstract">Abstract <span
+                                                                class="required-class">*</span></label>
                                                     <input type="text" class="form-control rounded"
                                                            id="abstract" name="abstract"
                                                            placeholder="Enter Abstract"
@@ -91,7 +86,8 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="agency">Agency where project
-                                                        submitted </label>
+                                                        submitted <span
+                                                                class="required-class">*</span></label>
                                                     <input type="text" class="form-control rounded"
                                                            id="agency" name="agency"
                                                            placeholder="Enter Agency Where Project Submitted"
@@ -101,14 +97,16 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="amount">Amount Requested </label>
+                                                    <label for="amount">Amount Requested <span
+                                                                class="required-class">*</span></label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="amount" name="amount"
                                                            placeholder="Enter Account Requested"
                                                            value="{{ old('amount') }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="submission_date">Date of submission </label>
+                                                    <label for="submission_date">Date of submission <span
+                                                                class="required-class">*</span></label>
                                                     <input type="text" name="submission_date"
                                                            id="submission_date_id" value=""
                                                            class="form-control read-only-background"
@@ -118,35 +116,14 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="upload_research">Upload Project </label>
+                                                    <label for="upload_research">Upload Project <span
+                                                                class="required-class">*</span></label>
                                                     <input type="file" name="upload_research"
                                                            class="form-control"
                                                            accept=".docx,.pdf" id="upload_project"
                                                            value="{{ old('upload_research') }}">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label>This application is ?</label>
-                                                    <br>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="status"
-                                                               id="status_approved"
-                                                               class="custom-control-input"
-                                                               value="approved" {{ old("status") == 'approved' ? 'checked' : '' }}>
-                                                        <label class="custom-control-label checkbox-primary outline"
-                                                               for="status_approved">Approved</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="status"
-                                                               id="status_rejected"
-                                                               class="custom-control-input"
-                                                               value="rejected" {{ old("status") == 'rejected' ? 'checked' : '' }}>
-                                                        <label class="custom-control-label checkbox-primary outline"
-                                                               for="status_rejected">Rejected</label>
-                                                    </div>
-                                                </div>
                                             </div>
-
-
 
                                             <button type="submit" class="btn btn-primary">Save</button>
                                         </form>
@@ -174,7 +151,7 @@
                 }
             });
 
-            $('input[name="submission_date"]').val();
+            $('input[name="submission_date"]').val(oldSubmissionDate);
 
 
             $('input[name="submission_date"]').datepicker({

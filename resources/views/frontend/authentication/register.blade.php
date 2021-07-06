@@ -95,8 +95,9 @@
                                                 class="required-class">*</span></label>
                                     <select class="form-control" name="user_type" id="user_type">
                                         <option value="">Select</option>
-                                        <option value="researcher">Researcher</option>
-                                        <option value="student">Student</option>
+                                        @foreach($roles as $key => $role)
+                                            <option value="{{ $role->id }}" {{ (int)old("user_type") === $role->id ? 'selected' : '' }}>{{ ucfirst($role->name) }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

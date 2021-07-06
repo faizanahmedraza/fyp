@@ -18,7 +18,7 @@
                                     <h4 class="card-title">Research Project Proposal Detail</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/user/research-projects" class="btn btn-primary float-right">← Back</a>
+                                    <a href="/user/oric-member-research-proposals" class="btn btn-primary float-right">← Back</a>
                                 </div>
                             </div>
                         </div>

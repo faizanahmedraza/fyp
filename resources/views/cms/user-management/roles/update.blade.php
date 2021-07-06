@@ -36,7 +36,7 @@
                                             @endif
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="name">Role Name</label>
+                                                    <label for="name">Role Name <span class="required-class">*</span></label>
                                                     <input type="text" class="form-control rounded" id="name"
                                                            name="role_name" placeholder="Enter Role Name"
                                                            value="{{ old('role_name',$role->name) }}">

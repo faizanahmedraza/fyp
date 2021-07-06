@@ -16,8 +16,6 @@ class FocalPersonSeeder extends Seeder
         $permissions = [
             'focal-person-project-proposal-list',
             'focal-person-project-proposal-create',
-            'focal-person-notification-list',
-            'focal-person-notification-detail',
         ];
 
         foreach ($permissions as $permission) {
@@ -26,6 +24,6 @@ class FocalPersonSeeder extends Seeder
 
         $role = Role::create(['name' => 'focal-person']);
 
-        $role->syncPermissions($permissions);
+        $role->syncPermissions('user-notification-list','user-notification-detail',...$permissions);
     }
 }

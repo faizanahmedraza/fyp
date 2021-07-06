@@ -231,12 +231,36 @@ Route::namespace('FrontEnd')->group(function () {
         Route::get('/delete-notification/{notificationId}', 'NotificationController@deleteNotification');
         Route::get('/notification-detail/{notificationId}', 'NotificationController@detailNotification');
 
-        Route::namespace('Student')->group(function () {
-            Route::get('/research-projects', 'ResearchProjectController@index');
-            Route::get('/add-research-project', 'ResearchProjectController@addStudentResearch');
-            Route::post('/add-research-project', 'ResearchProjectController@addStudentResearchData');
-            Route::get('/research-project/detail/{researchId}', 'ResearchProjectController@detailStudentResearch');
-            Route::get('/research-project-template', 'ResearchProjectController@downloadTemplate');
+        Route::namespace('User')->group(function () {
+            Route::get('/student-research-proposals', 'StudentProposalController@index');
+            Route::get('/student-add-research-proposal', 'StudentProposalController@addStudentResearch');
+            Route::post('/student-add-research-proposal', 'StudentProposalController@addStudentResearchData');
+            Route::get('/student-research-proposal/detail/{researchId}', 'StudentProposalController@detailStudentResearch');
+            Route::get('/student-research-proposal-template', 'StudentProposalController@downloadTemplate');
+
+            Route::get('/researcher-research-proposals', 'ResearcherProposalController@index');
+            Route::get('/researcher-add-research-proposal', 'ResearcherProposalController@addResearcherResearch');
+            Route::post('/researcher-add-research-proposal', 'ResearcherProposalController@addResearcherResearchData');
+            Route::get('/researcher-research-proposal/detail/{researchId}', 'ResearcherProposalController@detailResearcherResearch');
+            Route::get('/researcher-research-proposal-template', 'ResearcherProposalController@downloadTemplate');
+
+            Route::get('/faculty-research-proposals', 'FacultyProposalController@index');
+            Route::get('/faculty-add-research-proposal', 'FacultyProposalController@addFacultyResearch');
+            Route::post('/faculty-add-research-proposal', 'FacultyProposalController@addFacultyResearchData');
+            Route::get('/faculty-research-proposal/detail/{researchId}', 'FacultyProposalController@detailFacultyResearch');
+            Route::get('/faculty-research-proposal-template', 'FacultyProposalController@downloadTemplate');
+
+            Route::get('/focal-person-research-proposals', 'FocalPersonProposalController@index');
+            Route::get('/focal-person-add-research-proposal', 'FocalPersonProposalController@addFocalPersonResearch');
+            Route::post('/focal-person-add-research-proposal', 'FocalPersonProposalController@addFocalPersonResearchData');
+            Route::get('/focal-person-research-proposal/detail/{researchId}', 'FocalPersonProposalController@detailFocalPersonResearch');
+            Route::get('/focal-person-research-proposal-template', 'FocalPersonProposalController@downloadTemplate');
+
+            Route::get('/oric-member-research-proposals', 'OricMemberProposalController@index');
+            Route::get('/oric-member-add-research-proposal', 'OricMemberProposalController@addOricMemberResearch');
+            Route::post('/oric-member-add-research-proposal', 'OricMemberProposalController@addOricMemberResearchData');
+            Route::get('/oric-member-research-proposal/detail/{researchId}', 'OricMemberProposalController@detailOricMemberResearch');
+            Route::get('/oric-member-research-proposal-template', 'OricMemberProposalController@downloadTemplate');
         });
     });
 });

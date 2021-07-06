@@ -16,7 +16,7 @@ class ProfileController extends Controller
     public function index()
     {
         $profile = Auth::user();
-        return view('frontend.student.profile', compact('profile'));
+        return view('frontend.user.profile', compact('profile'));
     }
 
     public function updateProfile()
@@ -30,7 +30,6 @@ class ProfileController extends Controller
             'cnic' => 'sometimes|nullable|digits_between:13,13',
             'contact' => 'sometimes|nullable|digits_between:11,13',
             'gender' => 'sometimes|nullable|in:male,female,other|max:10',
-            'dob' => 'sometimes|nullable|date',
             'dob' => 'sometimes|nullable|date',
             'department' => 'sometimes|nullable|max:55',
             'expertise' => 'sometimes|nullable|max:255',

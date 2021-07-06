@@ -17,7 +17,7 @@ class NotAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && (in_array(Auth::user()->roles()->pluck('name')->first(),['super-admin','admin']))){
+        if(Auth::check() && !in_array(Auth::user()->roles()->pluck('name')->first(),['student','researcher','faculty','focal-person','oric-member'])){
             return redirect('/admin/dashboard');
         }
         return $next($request);

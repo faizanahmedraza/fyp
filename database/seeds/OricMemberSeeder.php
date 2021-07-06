@@ -16,8 +16,6 @@ class OricMemberSeeder extends Seeder
         $permissions = [
             'oric-member-project-proposal-list',
             'oric-member-project-proposal-create',
-            'oric-member-notification-list',
-            'oric-member-notification-detail',
         ];
 
         foreach ($permissions as $permission) {
@@ -26,6 +24,6 @@ class OricMemberSeeder extends Seeder
 
         $role = Role::create(['name' => 'oric-member']);
 
-        $role->syncPermissions($permissions);
+        $role->syncPermissions('user-notification-list','user-notification-detail',...$permissions);
     }
 }

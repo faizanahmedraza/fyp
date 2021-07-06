@@ -9,19 +9,38 @@ use App\Models\User;
 class HomeController extends Controller
 {
     public function index(){
-        $activeUsers = User::where('is_block',0)->count();
-        $blockUsers = User::where('is_block',1)->count();
-        $approvedProposals = ResearchProject::where('status','approved')->count();
-        $rejectedProposals = ResearchProject::where('status','rejected')->count();
-        $admins = User::with('roles')->whereHas('roles',function ($query){
-            $query->where('name','admin');
+        $users = User::with('roles')->get();
+        $proposals = ResearchProject::get();
+        $activeUsers = $users->filter(function ($value){
+            return $value->is_block === 0;
         })->count();
-        $students = User::with('roles')->whereHas('roles',function ($query){
-            $query->where('name','student');
+        $blockUsers = $users->filter(function ($value){
+            return $value->is_block === 1;
         })->count();
-        $researchers = User::with('roles')->whereHas('roles',function ($query){
-            $query->where('name','researcher');
+        $admins = $users->filter(function ($value){
+            return $value->roles()->first()->name === 'admin';
         })->count();
-        return view('cms.index',compact('activeUsers','blockUsers','approvedProposals','rejectedProposals','admins','students','researchers'));
+        $students = $users->filter(function ($value){
+            return $value->roles()->first()->name === 'student';
+        })->count();
+        $researchers = $users->filter(function ($value){
+            return $value->roles()->first()->name === 'researcher';
+        })->count();
+        $oricMembers = $users->filter(function ($value){
+            return $value->roles()->first()->name === 'oric-member';
+        })->count();
+        $facultyMembers = $users->filter(function ($value){
+            return $value->roles()->first()->name === 'faculty';
+        })->count();
+        $focalPersons = $users->filter(function ($value){
+            return $value->roles()->first()->name === 'focal-person';
+        })->count();
+        $approvedProposals = $proposals->filter(function ($value){
+            return $value->status === 'approved';
+        })->count();
+        $rejectedProposals = $proposals->filter(function ($value){
+            return $value->status === 'rejected';
+        })->count();
+        return view('cms.index',compact('activeUsers','blockUsers','approvedProposals','rejectedProposals','admins','students','researchers','oricMembers','facultyMembers','focalPersons'));
     }
 }

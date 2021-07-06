@@ -16,7 +16,7 @@ class NotUser
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && in_array(Auth::user()->roles()->pluck('name')->first(),['user'])){
+        if(Auth::check() && in_array(Auth::user()->roles()->pluck('name')->first(),['student','researcher','faculty','focal-person','oric-member'])){
             return redirect('/user/dashboard');
         }
         return $next($request);

@@ -13,17 +13,43 @@
             </li>
             <li class="dropdown"><a href="javascript:void(0);"> Submitted Proposals</a>
                 <ul>
-                    @can('student-project-proposal-list')
-                        <li class="{{ getActiveClass(request()->segment(2),['research']) }}"><a class="text-nowrap" href="/user/research-projects"><i
+                    @can(['student-project-proposal-list'])
+                        <li class="{{ getActiveClass(request()->segment(2),['student']) }}"><a class="text-nowrap"
+                                                                                               href="/user/student-research-proposals"><i
                                         class="fas fa-scroll fa-fw"></i>
-                                Research Project</a></li>
+                                Submit Proposal</a></li>
+                    @endcan
+                    @can(['researcher-project-proposal-list'])
+                        <li class="{{ getActiveClass(request()->segment(2),['researcher']) }}"><a class="text-nowrap"
+                                                                                                  href="/user/researcher-research-proposals"><i
+                                        class="fas fa-scroll fa-fw"></i>
+                                Submit Proposal</a></li>
+                    @endcan
+                    @can(['focal-person-project-proposal-list'])
+                        <li class="{{ getActiveClass(request()->segment(2),['focal']) }}"><a class="text-nowrap"
+                                                                                             href="/user/focal-person-research-proposals"><i
+                                        class="fas fa-scroll fa-fw"></i>
+                                Submit Proposal</a></li>
+                    @endcan
+                    @can(['faculty-project-proposal-list'])
+                        <li class="{{ getActiveClass(request()->segment(2),['faculty']) }}"><a class="text-nowrap"
+                                                                                               href="/user/faculty-research-proposals"><i
+                                        class="fas fa-scroll fa-fw"></i>
+                                Submit Proposal</a></li>
+                    @endcan
+                    @can(['faculty-project-proposal-list'])
+                        <li class="{{ getActiveClass(request()->segment(2),['oric']) }}"><a class="text-nowrap"
+                                                                                               href="/user/oric-member-research-proposals"><i
+                                        class="fas fa-scroll fa-fw"></i>
+                                Submit Proposal</a></li>
                     @endcan
                 </ul>
             </li>
-            @can('student-notification-list')
+            @can('user-notification-list')
                 <li class="dropdown"><a href="javascript:void(0);"> Notifications</a>
                     <ul>
-                        <li class="{{ getActiveClass(request()->segment(2),['notifications']) }}"><a href="/user/notifications"><i class="icon-bag fa-fw"></i> Notifications</a></li>
+                        <li class="{{ getActiveClass(request()->segment(2),['notifications']) }}"><a
+                                    href="/user/notifications"><i class="icon-bag fa-fw"></i> Notifications</a></li>
                     </ul>
                 </li>
             @endcan
