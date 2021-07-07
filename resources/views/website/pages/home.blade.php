@@ -380,16 +380,17 @@
             <div class="team-details">
                 <div class="inner-box">
                     <div class="image-box">
-                        <figure class="image"><img src="/assets/images/uploads/pages/{{$orics[0]->profile_picture}}"
-                                                   alt=""></figure>
+                        <figure class="image"><img
+                                    src="/assets/images/user_profile/{{$orics->first()->profile_picture ?? 'not_available_oric_member.jpg'}}"
+                                    alt=""></figure>
                         <div class="link"><a href="team-details.html">View More Details</a></div>
                     </div>
                     <div class="content-box">
                         <div class="info">
-                            <h2 class="name">{{ $orics[0]->name ?? '' }}</h2>
-                            <span class="designation">{{ $orics[0]->designation ?? '' }}</span>
+                            <h2 class="name">{{ $orics->first()->full_name ?? '' }}</h2>
+                            <span class="designation">{{ $orics->first()->designation ?? '' }}</span>
                         </div>
-                        <div class="text">{{ $orics[0]->description ?? '' }}
+                        <div class="text">{{ $orics->first()->profile_detail ?? '' }}
                         </div>
                         <div class="progress-content">
                             <div class="single-progress-box">
@@ -422,29 +423,31 @@
             </div>
             <div class="team-block-area">
                 <div class="row">
-                    @foreach($orics as $key => $val)
-                        <div class="col-lg-3 col-md-6 col-sm-12 team-block">
-                            <div class="single-team-block wow fadeInUp" data-wow-delay="00ms"
-                                 data-wow-duration="1500ms">
-                                <div class="inner-box">
-                                    <div class="image-holder">
-                                        <figure class="image"><a href="team-details.html"><img
-                                                        src="/assets/images/uploads/pages/{{$val->profile_picture}}"
-                                                        alt=""></a></figure>
-                                        <ul class="social-links clearfix">
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h4><a href="team-details.html">{{ $val->name ?? '' }}</a></h4>
-                                        <div class="designation">{{ $val->designation ?? '' }}</div>
+                    @if(count($orics) > 0)
+                        @foreach($orics as $key => $val)
+                            <div class="col-lg-3 col-md-6 col-sm-12 team-block">
+                                <div class="single-team-block wow fadeInUp" data-wow-delay="00ms"
+                                     data-wow-duration="1500ms">
+                                    <div class="inner-box">
+                                        <div class="image-holder">
+                                            <figure class="image"><a href="team-details.html"><img
+                                                            src="/assets/images/uploads/pages/{{$val->profile_picture}}"
+                                                            alt=""></a></figure>
+                                            <ul class="social-links clearfix">
+                                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="lower-content">
+                                            <h4><a href="team-details.html">{{ $val->full_name ?? '' }}</a></h4>
+                                            <div class="designation">{{ $val->designation ?? '' }}</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
@@ -523,9 +526,12 @@
                         <div class="news-block-one wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <div class="inner-box">
                                 <div class="image-holder">
-                                    <figure class="image"><a href="blog-details.html"><img src="/assets/images/uploads/pages/blog/{{$val->image}}"
-                                                                                           alt=""></a></figure>
-                                    <div class="date-box"><span>{{\Carbon\Carbon::parse($val->created_at,'UTC')->isoFormat('Do') }}</span>{{ Str::upper(\Carbon\Carbon::parse($val->created_at,'UTC')->isoFormat('MMMM')) }}</div>
+                                    <figure class="image"><a href="blog-details.html"><img
+                                                    src="/assets/images/uploads/pages/blog/{{$val->image}}"
+                                                    alt=""></a></figure>
+                                    <div class="date-box">
+                                        <span>{{\Carbon\Carbon::parse($val->created_at,'UTC')->isoFormat('Do') }}</span>{{ Str::upper(\Carbon\Carbon::parse($val->created_at,'UTC')->isoFormat('MMMM')) }}
+                                    </div>
                                 </div>
                                 <div class="lower-content">
                                     <ul class="info-box clearfix">

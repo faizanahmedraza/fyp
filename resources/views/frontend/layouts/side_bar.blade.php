@@ -37,7 +37,7 @@
                                         class="fas fa-scroll fa-fw"></i>
                                 Submit Proposal</a></li>
                     @endcan
-                    @can(['faculty-project-proposal-list'])
+                    @can(['oric-member-project-proposal-list'])
                         <li class="{{ getActiveClass(request()->segment(2),['oric']) }}"><a class="text-nowrap"
                                                                                                href="/user/oric-member-research-proposals"><i
                                         class="fas fa-scroll fa-fw"></i>

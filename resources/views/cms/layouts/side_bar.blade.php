@@ -23,15 +23,15 @@
                     </ul>
                 </li>
             @endcan
-            <li class="dropdown"><a href="javascript:void(0);"> Project</a>
-                <ul>
-                    @can('research-project-list')
+            @can('research-project-list')
+                <li class="dropdown"><a href="javascript:void(0);"> Project</a>
+                    <ul>
                         <li class="{{ getActiveClass(request()->segment(3),['projects','research']) }}"><a
                                     class="text-nowrap" href="/admin/user/research-projects"><i
                                         class="fas fa-scroll fa-fw"></i>Submitted Proposal</a></li>
-                    @endcan
-                </ul>
-            </li>
+                    </ul>
+                </li>
+            @endcan
             @can('admin-notification-list')
                 <li class="dropdown"><a href="javascript:void(0);"> Notifications</a>
                     <ul>
@@ -68,9 +68,6 @@
                                     Mission/Vision </a></li>
                         </ul>
                     </li>
-                    <li class="{{getActiveClass(request()->segment(5),['oric'])}}"><a
-                                href="/admin/website/pages/home/oric-member"><i class="fas fa-upload fa-fw"></i> Upload
-                            ORIC Member </a></li>
                     <li class="{{getActiveClass(request()->segment(5),['testimonial'])}}"><a
                                 href="/admin/website/pages/home/testimonial"><i class="fas fa-quote-left fa-fw"></i>
                             Upload Testimonial </a></li>

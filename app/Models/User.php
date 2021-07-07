@@ -28,6 +28,8 @@ class User extends Authenticatable
         'password',
         'profile_picture',
         'profile_detail',
+        'student_rollno',
+        'student_seatno',
         'contact',
         'gender',
         'dob',

@@ -92,13 +92,6 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::put('/main-home/update/{cmsHomeId}', 'HomeController@updateHomeData')->name('page.home.update.data');
             Route::get('/main-home/delete/{cmsHomeId}', 'HomeController@deleteHome');
 
-            Route::get('/home/oric-member', 'ORICMemeberController@index')->name('page.home.oric-member');
-            Route::get('/home/oric-member/create', 'ORICMemeberController@addMember')->name('page.home.oric-member.add');
-            Route::post('/home/oric-member/create', 'ORICMemeberController@addMemberData')->name('page.home.oric-member.add.data');
-            Route::get('/home/oric-member/update/{cmsMemberId}', 'ORICMemeberController@updateMember')->name('page.home.oric-member.update');
-            Route::put('/home/oric-member/update/{cmsMemberId}', 'ORICMemeberController@updateMemberData')->name('page.home.oric-member.update.data');
-            Route::get('/home/oric-member/delete/{cmsMemberId}', 'ORICMemeberController@deleteMember');
-
             Route::get('/home/testimonial', 'TestimonialController@index')->name('page.home.testimonial');
             Route::get('/home/testimonial/create', 'TestimonialController@addTestimonial')->name('page.home.testimonial.add');
             Route::post('/home/testimonial/create', 'TestimonialController@addTestimonialData')->name('page.home.testimonial.add.data');
@@ -256,11 +249,11 @@ Route::namespace('FrontEnd')->group(function () {
             Route::get('/focal-person-research-proposal/detail/{researchId}', 'FocalPersonProposalController@detailFocalPersonResearch');
             Route::get('/focal-person-research-proposal-template', 'FocalPersonProposalController@downloadTemplate');
 
-            Route::get('/oric-member-research-proposals', 'OricMemberProposalController@index');
-            Route::get('/oric-member-add-research-proposal', 'OricMemberProposalController@addOricMemberResearch');
-            Route::post('/oric-member-add-research-proposal', 'OricMemberProposalController@addOricMemberResearchData');
-            Route::get('/oric-member-research-proposal/detail/{researchId}', 'OricMemberProposalController@detailOricMemberResearch');
-            Route::get('/oric-member-research-proposal-template', 'OricMemberProposalController@downloadTemplate');
+            Route::get('/oric-member-research-proposals', 'OricMemeberController@index');
+            Route::get('/oric-member-add-research-proposal', 'OricMemeberController@addOricMemberResearch');
+            Route::post('/oric-member-add-research-proposal', 'OricMemeberController@addOricMemberResearchData');
+            Route::get('/oric-member-research-proposal/detail/{researchId}', 'OricMemeberController@detailOricMemberResearch');
+            Route::get('/oric-member-research-proposal-template', 'OricMemeberController@downloadTemplate');
         });
     });
 });

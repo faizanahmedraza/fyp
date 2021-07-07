@@ -17,7 +17,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <h4 class="card-title">Your Profile</h4>
-                                    <span>({{Auth::user()->roles()->pluck('name')->first() == 'super-admin' ? 'Admin' : ucfirst(Auth::user()->roles()->pluck('name')->first())}})</span>
+                                    <span>({{ucwords(str_replace('-',' ',Auth::user()->roles()->pluck('name')->first()))}})</span>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                                             </div>
 
                                             @if(Auth::user()->roles()->first()->name == 'student')
-                                                <div class="row">
+                                                <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="email">Email <span
                                                                     class="required-class">*</span></label>
@@ -108,6 +108,22 @@
                                                                id="department" name="department"
                                                                placeholder="Enter Department"
                                                                value="{{ old('department',$profile->department) }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="event_name">Roll No </label>
+                                                        <input type="text" class="form-control rounded allowNumberOnly"
+                                                               id="student_rollno" name="student_rollno"
+                                                               placeholder="Enter Roll Number"
+                                                               value="{{ old('student_rollno',$profile->student_rollno) }}" maxlength="20">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="event_name">Seat No </label>
+                                                        <input type="text" class="form-control rounded"
+                                                               id="student_seatno" name="student_seatno"
+                                                               placeholder="Enter Seat Number"
+                                                               value="{{ old('student_seatno',$profile->student_seatno) }}" maxlength="20">
                                                     </div>
                                                 </div>
                                             @else
@@ -185,6 +201,14 @@
                                                     <label for="dob">Date of Birth</label>
                                                     <input type="text" class="form-control rounded"
                                                            id="dob" name="dob" value="{{ old('dob',$profile->dob) }}"
+                                                           readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Date of Joining</label>
+                                                    <input type="text" class="form-control rounded" value="{{ \Carbon\Carbon::parse($profile->created_at)->format('Y-M-d') }}"
                                                            readonly>
                                                 </div>
                                             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FrontEnd\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\Notification;
 use App\Models\ResearchProject;
 use App\Models\UploadSample;

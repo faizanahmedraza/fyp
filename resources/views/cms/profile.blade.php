@@ -181,6 +181,14 @@
                                                 </div>
                                             </div>
 
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Date of Joining</label>
+                                                    <input type="text" class="form-control rounded" value="{{ \Carbon\Carbon::parse($profile->created_at)->format('Y-M-d') }}"
+                                                           readonly>
+                                                </div>
+                                            </div>
+
                                             <button type="submit" class="btn btn-primary">Save</button>
                                         </form>
                                     </div>

@@ -32,7 +32,7 @@
 
                         <div class="dropdown-menu border dropdown-menu-right p-0">
                             <a class="dropdown-item px-2 text-dark align-self-center d-flex"
-                               href="javascript:void(0)"><i class="fas fa-user fa-fw mr-1 h6 mb-0"></i> {{Auth::user()->full_name}} ( {{ Auth::user()->roles()->pluck('name')->first() == 'super-admin' ? 'Admin' : ucfirst(Auth::user()->roles()->pluck('name')->first()) }} ) </a>
+                               href="javascript:void(0)"><i class="fas fa-user fa-fw mr-1 h6 mb-0"></i> {{Auth::user()->full_name}} ( {{ ucwords(str_replace('-',' ',Auth::user()->roles()->pluck('name')->first())) }} ) </a>
                             <a class="dropdown-item px-2 text-dark align-self-center d-flex"
                                href="/user/manage-profile"><i class="fas fa-user-edit mr-1 h6 mb-0"></i> Edit
                                 Profile</a>

@@ -132,49 +132,22 @@ class ResearchProjectController extends Controller
 
     public function changeStatus($researchId, $status)
     {
-        $msg = 'Something went wrong.';
-        $code = 400;
-
         $research = ResearchProject::findOrFail($researchId);
 
-        if ($status == 'approved') {
-            $user = User::where('id',$research->user_id)->first();
-            $studentId = sprintf("%04d", (int)$research->user_id);
+        $status === "approved" ? $flag = 'approved' : $flag = 'rejected';
 
-            $user->update([
-                'student_id' => $studentId,
-            ]);
+        $research->update([
+            'status' => $flag
+        ]);
 
-            $research->update([
-                'status' => 'approved'
-            ]);
-
-            Notification::create([
-                'user_id' => $research->user_id,
-                'type' => 'status-project-proposal',
-                'message' => ' project proposal request has been approved.'
-            ]);
-
-            $msg = "Successfully status updated";
-            $status = 'Approved';
-            $code = 200;
-
-        } else {
-            $research->update([
-                'status' => 'rejected'
-            ]);
-            Notification::create([
-                'user_id' => $research->user_id,
-                'type' => 'status-project-proposal',
-                'message' => ' project proposal request has been rejected.'
-            ]);
-            $msg = "Successfully status updated";
-            $status = 'Rejected';
-            $code = 200;
-        }
+        Notification::create([
+            'user_id' => $research->user_id,
+            'type' => 'status-project-proposal',
+            'message' => " project proposal request has been {$flag}."
+        ]);
 
         event(new StatusChanged('project-proposal',$research));
-        return response()->json(['msg' => $msg, 'status' => $status], $code);
+        return response()->json(['msg' => "Successfully status updated", 'status' => ucfirst($flag)]);
     }
 
     public function uploadResearchTemplate(){
