@@ -75,7 +75,7 @@ class UserManagementController extends Controller
     public function updateUser($userId)
     {
         $user = User::findOrFail($userId);
-        $roles = Role::all();
+        $roles = Role::where('name','!=','super-admin')->get();
         $userRoles = $user->roles->pluck('name')->all();
         $userRole = implode(',',$userRoles);
         return view('cms.user-management.update',compact('user','roles','userRole'));

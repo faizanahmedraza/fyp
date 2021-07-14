@@ -184,7 +184,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label>Date of Joining</label>
-                                                    <input type="text" class="form-control rounded" value="{{ \Carbon\Carbon::parse($profile->created_at)->format('Y-M-d') }}"
+                                                    <input type="text" name="joining_date" class="form-control rounded" value="{{old('joining_date',$profile->joining_date)}}"
                                                            readonly>
                                                 </div>
                                             </div>
@@ -207,7 +207,6 @@
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
     <script>
-        oldSubmissionDate = '{{ old('submission_date') }}';
         $(function () {
             $(".allowNumberOnly").keypress(function (e) {
                 if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -216,9 +215,9 @@
             });
 
             $('input[name="dob"]').val();
+            $('input[name="joining_date"]').val();
 
-
-            $('input[name="dob"]').datepicker({
+            $('input[name="dob"],input[name="joining_date"]').datepicker({
                 format: "yyyy-mm-dd",
                 endDate: new Date(),
                 autoclose: true,

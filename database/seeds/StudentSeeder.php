@@ -18,6 +18,7 @@ class StudentSeeder extends Seeder
             'student-project-proposal-create',
             'user-notification-list',
             'user-notification-detail',
+            'user-event-list'
         ];
 
         foreach ($permissions as $permission) {

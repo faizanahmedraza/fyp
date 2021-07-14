@@ -24,6 +24,6 @@ class FocalPersonSeeder extends Seeder
 
         $role = Role::create(['name' => 'focal-person']);
 
-        $role->syncPermissions('user-notification-list','user-notification-detail',...$permissions);
+        $role->syncPermissions('user-notification-list','user-notification-detail','user-event-list',...$permissions);
     }
 }

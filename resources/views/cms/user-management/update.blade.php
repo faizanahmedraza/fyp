@@ -76,13 +76,15 @@
                                                     <label for="cnic">CNIC</label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="cnic" name="cnic" placeholder="Enter CNIC"
-                                                           value="{{ old('cnic',$user->cnic) }}" minlength="13" maxlength="13">
+                                                           value="{{ old('cnic',$user->cnic) }}" minlength="13"
+                                                           maxlength="13">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="contact">Contact</label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="contact" name="contact" placeholder="Enter Contact"
-                                                           value="{{ old('contact',$user->contact) }}" maxlength="13" minlength="11">
+                                                           value="{{ old('contact',$user->contact) }}" maxlength="13"
+                                                           minlength="11">
                                                 </div>
                                             </div>
 
@@ -144,17 +146,15 @@
                                             @if(count($roles) > 0)
                                                 <div class="form-row">
                                                     @foreach($roles as $key => $val)
-                                                        @if($val->name != "super-admin")
-                                                            <div class="form-group col-md-2 role">
-                                                                <div class="custom-control custom-checkbox custom-control-inline">
-                                                                    <input type="checkbox" class="custom-control-input"
-                                                                           id="role_id{{$key}}" name="role"
-                                                                           value="{{ $val->name }}" {{ old("role",$userRole) == $val->name ? 'checked' : '' }}>
-                                                                    <label class="custom-control-label checkbox-primary outline text-nowrap"
-                                                                           for="role_id{{$key}}">{{ $val->name }}</label>
-                                                                </div>
+                                                        <div class="form-group col-md-2 role">
+                                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                       id="role_id{{$key}}" name="role"
+                                                                       value="{{ $val->name }}" {{ old("role",$userRole) == $val->name ? 'checked' : '' }}>
+                                                                <label class="custom-control-label checkbox-primary outline text-nowrap"
+                                                                       for="role_id{{$key}}">{{ $val->name }}</label>
                                                             </div>
-                                                        @endif
+                                                        </div>
                                                     @endforeach
                                                 </div>
                                             @endif
@@ -177,6 +177,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
     <script>
         $(function () {
+            $(".allowNumberOnly").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    return false;
+                }
+            });
+
             $('input[name="dob"]').val();
 
             $('input[name="dob"]').datepicker({

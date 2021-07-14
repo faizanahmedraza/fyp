@@ -1,5 +1,9 @@
 @extends('cms.layouts.master')
 
+@push('styles')
+    <link rel="stylesheet" type="text/css" href="/assets/css/daterangepicker.min.css">
+@endpush
+
 @section('content')
     <main>
         <div class="container-fluid site-width">
@@ -78,6 +82,43 @@
                                                 </div>
                                             </div>
 
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label> Meeting Mode <span class="required-class">*</span></label>
+                                                    <select class="form-control" name="mode" id="mode">
+                                                        <option value="">Select</option>
+                                                        <option value="Online" {{ old('mode',$updateEvent->mode) === 'Online' ? "selected" : "" }}>
+                                                            Online
+                                                        </option>
+                                                        <option value="Physical" {{ old('mode',$updateEvent->mode) === 'Physical' ? "selected" : "" }}>
+                                                            Physical
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" id="location">
+                                                <div class="form-group col-md-12">
+                                                    <label> Location <span class="required-class">*</span></label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control rounded"
+                                                               name="location" placeholder="Enter Location"
+                                                               value="{{ old('location',$updateEvent->location) }}" maxlength="50">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label> Schedule On <span class="required-class">*</span></label>
+                                                    <div class="input-group">
+                                                        <input type="text" name="schedule" value=""
+                                                               class="form-control read-only-background"
+                                                               placeholder="Schedule On" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <div class="form-group mt-5">
                                                 <button type="submit" class="btn btn-primary waves-effect waves-light float-right">
                                                     Save
@@ -96,3 +137,42 @@
         </div>
     </main>
 @endsection
+
+@push('scripts')
+    <script src="/assets/js/moment.min.js"></script>
+    <script src="/assets/js/daterangepicker.min.js"></script>
+    <script>
+        var schedule = "{{ old('schedule',$updateEvent->schedule) }}";
+        var eventMode = "{{ old('mode',$updateEvent->mode) }}";
+
+        if(eventMode === "Online")
+        {
+            $("#location").val('').hide();
+        }
+
+        $(function () {
+            $('input[name="schedule"]').daterangepicker({
+                showDropdowns: true,
+                singleDatePicker: true,
+                timePicker: true,
+                timePicker24Hour: true,
+                timePickerSeconds: true,
+                startDate: moment().format('YYYY-MM-DD hh:mm:ss'),
+                minDate: moment().format('YYYY-MM-DD hh:mm:ss'),
+                locale: {
+                    format: 'YYYY-MM-DD hh:mm:ss'
+                },
+                cancelClass: "btn-primary"
+            });
+
+            $("#mode").change(function () {
+                if($(this).find(":selected").val() === "Online")
+                {
+                    $("#location").val('').hide();
+                } else {
+                    $("#location").show();
+                }
+            });
+        });
+    </script>
+@endpush

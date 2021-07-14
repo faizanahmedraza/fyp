@@ -24,6 +24,6 @@ class ResearcherSeeder extends Seeder
 
         $role = Role::create(['name' => 'researcher']);
 
-        $role->syncPermissions('user-notification-list','user-notification-detail',...$permissions);
+        $role->syncPermissions('user-notification-list','user-notification-detail','user-event-list',...$permissions);
     }
 }

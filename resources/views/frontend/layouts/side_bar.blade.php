@@ -11,7 +11,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown"><a href="javascript:void(0);"> Submitted Proposals</a>
+            <li class="dropdown">
                 <ul>
                     @can(['student-project-proposal-list'])
                         <li class="{{ getActiveClass(request()->segment(2),['student']) }}"><a class="text-nowrap"
@@ -39,17 +39,27 @@
                     @endcan
                     @can(['oric-member-project-proposal-list'])
                         <li class="{{ getActiveClass(request()->segment(2),['oric']) }}"><a class="text-nowrap"
-                                                                                               href="/user/oric-member-research-proposals"><i
+                                                                                            href="/user/oric-member-research-proposals"><i
                                         class="fas fa-scroll fa-fw"></i>
                                 Submit Proposal</a></li>
                     @endcan
                 </ul>
             </li>
             @can('user-notification-list')
-                <li class="dropdown"><a href="javascript:void(0);"> Notifications</a>
+                <li class="dropdown">
                     <ul>
                         <li class="{{ getActiveClass(request()->segment(2),['notifications']) }}"><a
                                     href="/user/notifications"><i class="icon-bag fa-fw"></i> Notifications</a></li>
+                    </ul>
+                </li>
+            @endcan
+            @can('user-event-list')
+                <li class="dropdown">
+                    <ul>
+                        <li class="{{ getActiveClass(request()->segment(2),['events','event']) }}">
+                            <a href="/user/events">
+                                <i class="fas fa-calendar-day fa-fw"></i> Events</a>
+                        </li>
                     </ul>
                 </li>
             @endcan

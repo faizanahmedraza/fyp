@@ -36,8 +36,9 @@ class ProfileController extends Controller
             'department' => 'sometimes|nullable|max:55',
             'expertise' => 'sometimes|nullable|max:255',
             'qualification' => 'sometimes|nullable|',
-            'profile_picture' => 'sometimes|nullable|image|mimes:jpeg,jpg,png|max:2048',
+            'profile_picture' => 'sometimes|nullable|mimes:jpeg,jpg,png|max:2048',
             'profile_detail' => 'sometimes|nullable|string|max:400',
+            'joining_date' => 'sometimes|nullable|date',
         ]);
 
         if (\request()->hasFile('profile_picture')) {
@@ -77,6 +78,7 @@ class ProfileController extends Controller
             'qualification' => request()->qualification,
             'contact' => request()->contact,
             'profile_detail' => request()->profile_detail,
+            'joining_date' => request()->joining_date,
             'updated_by' => Auth::id()
         ]);
 

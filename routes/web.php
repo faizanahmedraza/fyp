@@ -122,11 +122,11 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::get('/blog/change-status/{slug}', 'BlogController@changeBlogStatus');
 
             Route::get('/events', 'EventController@index')->name('page.event');
-            Route::get('/event/create', 'EventController@addEvent')->name('page.event.add');
-            Route::post('/event/create', 'EventController@addEventData')->name('page.event.add.data');
-            Route::get('/event/update/{eventId}', 'EventController@updateEvent')->name('page.event.update');
-            Route::put('/event/update/{eventId}', 'EventController@updateEventData')->name('page.event.update.data');
-            Route::get('/event/delete/{eventId}', 'EventController@deleteEvent');
+            Route::get('/events/create', 'EventController@addEvent')->name('page.event.add');
+            Route::post('/events/create', 'EventController@addEventData')->name('page.event.add.data');
+            Route::get('/events/update/{eventId}', 'EventController@updateEvent')->name('page.event.update');
+            Route::put('/events/update/{eventId}', 'EventController@updateEventData')->name('page.event.update.data');
+            Route::get('/events/delete/{eventId}', 'EventController@deleteEvent');
 
             Route::get('/event/gallery', 'GalleryController@index')->name('page.event.gallery');
             Route::get('/event/gallery/create', 'GalleryController@addGallery')->name('page.event.gallery.add');
@@ -223,6 +223,8 @@ Route::namespace('FrontEnd')->group(function () {
         Route::get('/notifications', 'NotificationController@index');
         Route::get('/delete-notification/{notificationId}', 'NotificationController@deleteNotification');
         Route::get('/notification-detail/{notificationId}', 'NotificationController@detailNotification');
+
+        Route::get('/events', 'EventController@index');
 
         Route::namespace('User')->group(function () {
             Route::get('/student-research-proposals', 'StudentProposalController@index');

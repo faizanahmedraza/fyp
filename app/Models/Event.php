@@ -16,6 +16,9 @@ class Event extends Model
         'image',
         'slug',
         'description',
+        'mode',
+        'schedule',
+        'location',
         'created_by',
         'updated_by',
     ];
@@ -24,5 +27,10 @@ class Event extends Model
     public function getGalleries()
     {
         return $this->hasMany(Gallery::class,'event_id','id');
+    }
+
+    public function getRegisteredEvents()
+    {
+        return $this->hasMany(RegisterEvent::class,'event_id','id');
     }
 }

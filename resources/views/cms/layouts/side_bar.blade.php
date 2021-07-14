@@ -71,10 +71,10 @@
                     <li class="{{getActiveClass(request()->segment(5),['testimonial'])}}"><a
                                 href="/admin/website/pages/home/testimonial"><i class="fas fa-quote-left fa-fw"></i>
                             Upload Testimonial </a></li>
-                    <li class="dropdown @if(getActiveClass(request()->segment(4),['events']) == "active") {{ getActiveClass(request()->segment(4),['events']) }}  @else {{ getActiveClass(request()->segment(5),['gallery']) }} @endif">
-                        <a href="javascript:void(0);"><i class="fas fa-calendar-day fa-fw"></i> Event </a>
+                    <li class="dropdown @if(getActiveClass(request()->segment(5),['gallery']) == "active") {{ getActiveClass(request()->segment(5),['gallery']) }}  @else {{ getActiveClass(request()->segment(4),['events']) }} @endif">
+                        <a href="javascript:void(0);"><i class="fas fa-calendar-day fa-fw"></i> Media </a>
                         <ul class="sub-menu">
-                            <li class="{{getActiveClass(request()->segment(4),['events'])}}"><a
+                            <li class="{{ getActiveClass(request()->segment(4),['events']) }}"><a
                                         href="/admin/website/pages/events"><i class="icon-grid fa-fw"></i> Event</a>
                             </li>
                             <li class="{{ getActiveClass(request()->segment(5),['gallery']) }}"><a

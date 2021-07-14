@@ -92,7 +92,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/event/delete/${eventId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/events/delete/${eventId}`).then(function(response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,
