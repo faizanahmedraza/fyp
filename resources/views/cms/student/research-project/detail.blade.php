@@ -13,7 +13,7 @@
                                     <h4 class="card-title">Research Project Proposal Detail</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/admin/user/research-projects" class="btn btn-primary float-right">←
+                                    <a href="/admin/research-projects" class="btn btn-primary float-right">←
                                         Back</a>
                                 </div>
                             </div>

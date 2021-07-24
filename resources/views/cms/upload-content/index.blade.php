@@ -1,7 +1,6 @@
 @extends('cms.layouts.master')
 
 @push('styles')
-    <link rel="stylesheet" type="text/css" href="/assets/css/toggle-switch.css">
     <link rel="stylesheet" href="/assets/vendors/datatable/css/dataTables.bootstrap4.min.css">
 @endpush
 
@@ -66,7 +65,6 @@
 @endsection
 
 @push('scripts')
-    <script src="/assets/js/bootstrap4-toggle.min.js"></script>
     <script src="/assets/js/axios.min.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>
     <script src="/assets/vendors/datatable/js/jquery.dataTables.min.js"></script>

@@ -20,7 +20,7 @@
                                     <h4 class="card-title">Research Projects Proposal</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/admin/user/add-research-project" class="btn btn-primary float-right">Add
+                                    <a href="/admin/add-research-project" class="btn btn-primary float-right">Add
                                         +</a>
                                 </div>
                             </div>
@@ -71,11 +71,11 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="/admin/user/research-project-detail/{{$project->id}}"
+                                                    <a href="/admin/research-project-detail/{{$project->id}}"
                                                        class="btn btn-info btn-sm">Detail</a>
                                                     @if($project->status === 'pending')
                                                         @can('research-project-update')
-                                                            <a href="/admin/user/update-research-project/{{$project->id}}"
+                                                            <a href="/admin/update-research-project/{{$project->id}}"
                                                                class="btn btn-info btn-sm">Update</a>
                                                         @endcan
                                                     @endif
@@ -115,7 +115,7 @@
                 closeOnClickOutside: false
             }).then((response) => {
                 if (response) {
-                    axios.get(`/admin/user/research-project-change-status/${projectId}/${status}`).then((response) => {
+                    axios.get(`/admin/research-project-change-status/${projectId}/${status}`).then((response) => {
                             if (response) {
                                 swal({
                                     title: response.data.msg,

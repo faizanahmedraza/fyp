@@ -11,6 +11,10 @@ class Blog extends Model
 
     protected $table = "blog";
 
+    protected $appends = [
+        'logo'
+    ];
+
     protected $fillable = [
         'author',
         'title',

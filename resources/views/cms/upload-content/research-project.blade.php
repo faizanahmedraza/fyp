@@ -18,7 +18,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
-                                        <form action="/admin/user/add-rp-template" method="POST" enctype="multipart/form-data">
+                                        <form action="/admin/add-rp-template" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @if($errors->any())
                                                 <div class="alert alert-danger">

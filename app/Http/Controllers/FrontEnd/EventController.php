@@ -12,27 +12,30 @@ class EventController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:user-event-list',['only' => 'index']);
+        $this->middleware('permission:user-event-list', ['only' => 'index']);
     }
 
     public function index()
     {
-        $events = Event::with('getRegisteredEvents')->get();
-        return view('frontend.event.index',compact('events'));
+        $events = Event::with(['getRegisteredEvents'=>function ($query){
+            $query->where('deleted_at',null);
+        }])->get();
+        return view('frontend.event.index', compact('events'));
     }
 
-    public function registerEvents()
+    public function authUserEventRegister($eventId)
     {
-        $registerEvents = RegisterEvent::where('user_id',Auth::id())->get();
-        return view('',compact('registerEvents'));
-    }
+        $user = RegisterEvent::where('event_id', $eventId)->where('user_id', Auth::id())->first();
 
-    public function eventRegisterPerson($eventId)
-    {
-        RegisterEvent::create([
-            'user_id' => Auth::id(),
-            'event_id' => (int)$eventId
-        ]);
-        return response()->json(['msg' => 'You are successfully register for an event']);
+        if (!empty($user)) {
+            $user->delete();
+            return response()->json(['msg' => "You successfully un registered!"], $code = 200);
+        } else {
+            RegisterEvent::updateOrCreate([
+                'user_id' => Auth::id(),
+                'event_id' => (int)$eventId,
+            ]);
+            return response()->json(['msg' => "You successfully registered!"],$code = 200);
+        }
     }
 }

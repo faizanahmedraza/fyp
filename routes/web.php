@@ -72,7 +72,7 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
         Route::get('/upload-samples', 'UploadSampleController@index');
         Route::get('/delete-upload-sample/{uploadId}', 'UploadSampleController@deleteUpload');
 
-        Route::namespace('Student')->prefix('user')->group(function () {
+        Route::namespace('Student')->group(function () {
             Route::get('/research-projects', 'ResearchProjectController@index');
             Route::get('/add-research-project', 'ResearchProjectController@addResearch');
             Route::post('/add-research-project', 'ResearchProjectController@addResearchData');
@@ -225,6 +225,7 @@ Route::namespace('FrontEnd')->group(function () {
         Route::get('/notification-detail/{notificationId}', 'NotificationController@detailNotification');
 
         Route::get('/events', 'EventController@index');
+        Route::get('/register-event/{eventId}', 'EventController@authUserEventRegister');
 
         Route::namespace('User')->group(function () {
             Route::get('/student-research-proposals', 'StudentProposalController@index');
@@ -259,3 +260,4 @@ Route::namespace('FrontEnd')->group(function () {
         });
     });
 });
+
