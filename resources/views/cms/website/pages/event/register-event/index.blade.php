@@ -14,43 +14,31 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Events</h4>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="{{ route('website.page.event.add') }}" class="btn btn-primary float-right">Add +</a>
+                                    <h4 class="card-title">Register Event List</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            @if (Session::has('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <strong>{{ Session::get('success') }}</strong>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @endif
                             <div class="table-responsive">
                                 <table class="display table dataTable table-striped table-bordered">
                                     <thead>
                                     <tr>
                                         <th data-priority="1">#ID</th>
-                                        <th data-priority="3">Title</th>
-                                        <th data-priority="3">Description</th>
+                                        <th data-priority="3" style="width: 400px;">Event Name</th>
+                                        <th data-priority="1">Participants</th>
                                         <th data-priority="1">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if (count($resultSet) > 0)
-                                        @foreach ($resultSet as $key => $event)
+                                    @if (count($events) > 0)
+                                        @foreach ($events as $key => $event)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $event->title }}</td>
-                                                <td>{{ \Illuminate\Support\Str::limit($event->description, 20) }}
-                                                </td>
+                                                <td>{{ $event->getEvent->title ?? ''}}</td>
+                                                <td>{{ $event->get_user_count }}</td>
                                                 <td>
-                                                    <a href="{{ route('website.page.event.update', ['eventId' => $event->id]) }}"
-                                                       class="btn btn-success btn-primary">Update</a>
+                                                    <a href="{{ route('website.page.register-event.detail', ['registerEventId' => $event->id]) }}"
+                                                       class="btn btn-success btn-primary">Detail</a>
                                                     <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
                                                        onclick="deleteRecord(this, '{{ $event->id }}')">Delete</a>
                                                 </td>
@@ -71,7 +59,6 @@
 @endsection
 
 @push('scripts')
-    <script src="/assets/js/bootstrap4-toggle.min.js"></script>
     <script src="/assets/js/axios.min.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>
     <script src="/assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
@@ -81,7 +68,7 @@
             $('.table').DataTable();
         });
 
-        function deleteRecord(input, eventId) {
+        function deleteRecord(input, registerEventId) {
             let tr = $(input).parent().parent();
             swal({
                 title: "Are you sure?",
@@ -91,7 +78,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/events/delete/${eventId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/register_event/detail/${registerEventId}`).then(function(response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,

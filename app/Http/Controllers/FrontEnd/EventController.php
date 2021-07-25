@@ -18,7 +18,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::with(['getRegisteredEvents'=>function ($query){
-            $query->where('deleted_at',null);
+            $query->where('status','registered')->where('deleted_at',null);
         }])->get();
         return view('frontend.event.index', compact('events'));
     }
@@ -26,16 +26,22 @@ class EventController extends Controller
     public function authUserEventRegister($eventId)
     {
         $user = RegisterEvent::where('event_id', $eventId)->where('user_id', Auth::id())->first();
-
+        $msgTxt = "registered";
         if (!empty($user)) {
-            $user->delete();
-            return response()->json(['msg' => "You successfully un registered!"], $code = 200);
+            if ($user->status === "un-registered") {
+                $status = "registered";
+            } else {
+                $status = "un-registered";
+            }
+            $user->update(['status' => $status]);
+            $msgTxt = str_replace('-','',$status);
         } else {
-            RegisterEvent::updateOrCreate([
+            RegisterEvent::create([
                 'user_id' => Auth::id(),
                 'event_id' => (int)$eventId,
+                'status' => "registered",
             ]);
-            return response()->json(['msg' => "You successfully registered!"],$code = 200);
         }
+        return response()->json(['msg' => "You successfully {$msgTxt}!"],200);
     }
 }

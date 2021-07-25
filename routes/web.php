@@ -135,6 +135,10 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::put('/event/gallery/update/{galleryId}', 'GalleryController@updateGalleryData')->name('page.event.gallery.update.data');
             Route::get('/event/gallery/delete/{galleryId}', 'GalleryController@deleteGallery');
 
+            Route::get('/register_event', 'RegisterEventController@index')->name('page.register-event');
+            Route::get('/register_event/detail/{registerEventId}', 'RegisterEventController@detailEvent')->name('page.register-event.detail');
+            Route::get('/register_event/delete/{registerEventId}', 'RegisterEventController@deleteEvent');
+
             Route::get('/news', 'NewsController@index')->name('page.news');
             Route::get('/news/create', 'NewsController@addNews')->name('page.news.add');
             Route::post('/news/create', 'NewsController@addNewsData')->name('page.news.add.data');

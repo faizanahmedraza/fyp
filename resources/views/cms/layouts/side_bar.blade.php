@@ -71,15 +71,23 @@
                     <li class="{{getActiveClass(request()->segment(5),['testimonial'])}}"><a
                                 href="/admin/website/pages/home/testimonial"><i class="fas fa-quote-left fa-fw"></i>
                             Upload Testimonial </a></li>
-                    <li class="dropdown @if(getActiveClass(request()->segment(5),['gallery']) == "active") {{ getActiveClass(request()->segment(5),['gallery']) }}  @else {{ getActiveClass(request()->segment(4),['events']) }} @endif">
+                    <li class="dropdown {{ getActiveClass(request()->segment(5),['gallery']) }}">
                         <a href="javascript:void(0);"><i class="fas fa-calendar-day fa-fw"></i> Media </a>
                         <ul class="sub-menu">
-                            <li class="{{ getActiveClass(request()->segment(4),['events']) }}"><a
-                                        href="/admin/website/pages/events"><i class="icon-grid fa-fw"></i> Event</a>
-                            </li>
                             <li class="{{ getActiveClass(request()->segment(5),['gallery']) }}"><a
                                         href="/admin/website/pages/event/gallery"><i class="icon-grid fa-fw"></i>
                                     Gallery </a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown {{ getActiveClass(request()->segment(4),['events','register_event']) }}">
+                        <a href="javascript:void(0);"><i class="fas fa-home fa-fw"></i> Event </a>
+                        <ul class="sub-menu">
+                            <li class="{{ getActiveClass(request()->segment(4),['events']) }}"><a
+                                        href="/admin/website/pages/events"><i class="icon-grid fa-fw"></i> Event List</a>
+                            </li>
+                            <li class="{{ getActiveClass(request()->segment(4),['register_event']) }}"><a
+                                        href="/admin/website/pages/register_event"><i class="icon-grid fa-fw"></i> Registered Events</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="dropdown @if(getActiveClass(request()->segment(4),['news']) == "active") {{ getActiveClass(request()->segment(4),['news']) }}  @else {{ getActiveClass(request()->segment(4),['blog']) }} @endif">

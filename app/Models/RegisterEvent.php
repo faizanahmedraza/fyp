@@ -12,8 +12,9 @@ class RegisterEvent extends Model
     protected $table = "register_events";
 
     protected $fillable = [
-      'user_id',
-      'event_id'
+        'user_id',
+        'event_id',
+        'status'
     ];
 
     protected $dates = [
@@ -22,11 +23,11 @@ class RegisterEvent extends Model
 
     public function getUser()
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function getEvent()
     {
-        return $this->belongsTo(Event::class,'event_id','id');
+        return $this->belongsTo(Event::class, 'event_id', 'id');
     }
 }
