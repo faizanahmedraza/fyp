@@ -19,14 +19,20 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="alert d-flex p-0 m-0">
-                                <span><strong>Event Name:</strong></span>
-                                <p class="pl-2">{{$registeredUsers->first()->getEvent->title}}</p>
+                            <div class="d-flex flex-column p-0 pl-2 m-0">
+                                <div class="d-flex">
+                                    <span><strong>Event Name:</strong></span>
+                                    <p class="pl-2">{{$registeredUsers->first()->getEvent->title}}</p>
+                                </div>
+                                <div class="d-flex">
+                                    <span><strong>Event Scheduled On:</strong></span>
+                                    <p class="pl-2">{{\Carbon\Carbon::parse($registeredUsers->first()->getEvent->schedule,'UTC')->isoFormat('lll')}}</p>
+                                </div>
                             </div>
                             <table class="table table-borderless" data-tablesaw-mode="stack">
                                 <thead>
                                 <tr>
-                                    <th scope="col">User Name</th>
+                                    <th scope="col">Participant Name</th>
                                     <th scope="col">Student Rollno#</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Contact Number</th>

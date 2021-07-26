@@ -22,6 +22,17 @@ class RegisterEventController extends Controller
 
     public function deleteEvent($registerEventId)
     {
-        //
+        $msgTxt = "Something went wrong!";
+        $code = 400;
+
+        $event = RegisterEvent::findORFail($registerEventId);
+
+        if(!empty($event))
+        {
+            $event->delete();
+            $msgTxt = "Successfully Deleted.";
+            $code = 200;
+        }
+        return response()->json(['msg' => $msgTxt],$code);
     }
 }
