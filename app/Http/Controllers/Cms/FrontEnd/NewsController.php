@@ -31,7 +31,7 @@ class NewsController extends Controller
             'banner' => ['required', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
             'description' => ['required']
         ]);
-
+        $newFileName = "";
         if (request()->hasFile('banner')) {
             $img = Image::make(request()->file('banner'));
             $extension = request()->file('banner')->extension();
@@ -45,20 +45,17 @@ class NewsController extends Controller
                 File::makeDirectory($purposePath, 0777, true, true);
             }
 
-            $check = $img->save($destination);
-
-            if ($check) {
-                CMSNews::create([
-                    'title' => request()->title,
-                    'banner' => $newFileName,
-                    'description' => request()->description,
-                    'created_by' => Auth::id()
-                ]);
-            } else {
-                return back()->with('error', 'File not Saved in Database!');
-            }
-            return redirect()->route('website.page.news')->with('success', 'Your data is successfully added!');
+            $img->save($destination);
         }
+
+        CMSNews::create([
+            'title' => request()->title,
+            'banner' => $newFileName,
+            'description' => request()->description,
+            'created_by' => Auth::id()
+        ]);
+
+        return redirect()->route('website.page.news')->with('success', 'Your data is successfully added!');
     }
 
     public function updateNews($newsId)
@@ -69,17 +66,15 @@ class NewsController extends Controller
 
     public function updateNewsData($newsId)
     {
-
         $updateNews = CMSNews::findOrFail($newsId);
 
-        if(empty($updateNews->banner) && empty(request()->banner))
-        {
+        if (empty($updateNews->banner) && empty(request()->banner)) {
             return back()->withErrors(['error' => 'The banner image is required'])->withInput();
         }
 
         request()->validate([
             'title' => ['required'],
-            'banner' => ['sometimes','nullable', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
+            'banner' => ['sometimes', 'nullable', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
             'description' => ['required']
         ]);
 
@@ -93,29 +88,20 @@ class NewsController extends Controller
             $purposePath = givePath() . '/assets/images/uploads/pages';
             $destination = givePath() . '/assets/images/uploads/pages/' . $newFileName;
 
-            if(File::isDirectory($purposePath)){
+            if (File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
             }
-            $check = $img->save($destination);
-
-            if ($check) {
-                $updateNews->update([
-                    'title' => request()->title,
-                    'banner' => $newFileName,
-                    'description' => request()->description,
-                    'updated_by' => Auth::id()
-                ]);
-            } else {
-                return back()->withErrors(['error' => 'File not Saved in Database!'])->withInput();
-            }
+            $img->save($destination);
+            $filename = $newFileName;
         } else {
-            $updateNews->update([
-                'title' => request()->title,
-                'banner' => $updateNews->banner,
-                'description' => request()->description,
-                'updated_by' => Auth::id()
-            ]);
+            $filename = $updateNews->banner;
         }
+        $updateNews->update([
+            'title' => request()->title,
+            'banner' => $filename,
+            'description' => request()->description,
+            'updated_by' => Auth::id()
+        ]);
         return redirect()->route('website.page.news')->with('success', 'Your data is successfully updated!');
     }
 
@@ -127,7 +113,7 @@ class NewsController extends Controller
         $updateNews = CMSNews::findOrFail($newsId);
         if (count($records) > 1) {
             if (!empty($updateNews)) {
-                unlink(givePath() .'/assets/images/uploads/pages/'. $updateNews->banner);
+                unlink(givePath() . '/assets/images/uploads/pages/' . $updateNews->banner);
                 $updateNews->delete();
                 $msg = "Successfully Delete record!";
                 $code = 200;

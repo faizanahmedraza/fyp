@@ -32,14 +32,6 @@
                     </ul>
                 </li>
             @endcan
-            @can('admin-notification-list')
-                <li class="dropdown"><a href="javascript:void(0);"> Notifications</a>
-                    <ul>
-                        <li class="{{ getActiveClass(request()->segment(2),['notifications']) }}"><a
-                                    href="/admin/notifications"><i class="icon-bag fa-fw"></i> Notification</a></li>
-                    </ul>
-                </li>
-            @endcan
             @can('upload-sample-list')
                 <li class="dropdown"><a href="javascript:void(0);"> Downloadable</a>
                     <ul>

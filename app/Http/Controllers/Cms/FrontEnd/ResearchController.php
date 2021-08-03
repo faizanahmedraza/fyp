@@ -31,7 +31,7 @@ class ResearchController extends Controller
             'banner' => ['required', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
             'description' => ['required']
         ]);
-
+        $newFileName = '';
         if (request()->hasFile('banner')) {
             $img = Image::make(request()->file('banner'));
             $extension = request()->file('banner')->extension();
@@ -45,20 +45,15 @@ class ResearchController extends Controller
                 File::makeDirectory($purposePath, 0777, true, true);
             }
 
-            $check = $img->save($destination);
-
-            if ($check) {
-                CMSResearch::create([
-                    'title' => request()->title,
-                    'banner' => $newFileName,
-                    'description' => request()->description,
-                    'created_by' => Auth::id()
-                ]);
-            } else {
-                return back()->with('error', 'File not Saved in Database!');
-            }
-            return redirect()->route('website.page.research')->with('success', 'Your data is successfully added!');
+            $img->save($destination);
         }
+        CMSResearch::create([
+            'title' => request()->title,
+            'banner' => $newFileName,
+            'description' => request()->description,
+            'created_by' => Auth::id()
+        ]);
+        return redirect()->route('website.page.research')->with('success', 'Your data is successfully added!');
     }
 
     public function updateResearch($researchId)
@@ -72,14 +67,13 @@ class ResearchController extends Controller
 
         $updateResearch = CMSResearch::findOrFail($researchId);
 
-        if(empty($updateResearch->banner) && empty(request()->banner))
-        {
+        if (empty($updateResearch->banner) && empty(request()->banner)) {
             return back()->withErrors(['error' => 'The banner image is required'])->withInput();
         }
 
         request()->validate([
             'title' => ['required'],
-            'banner' => ['sometimes','nullable', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
+            'banner' => ['sometimes', 'nullable', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
             'description' => ['required']
         ]);
 
@@ -93,33 +87,20 @@ class ResearchController extends Controller
             $purposePath = givePath() . '/assets/images/uploads/pages';
             $destination = givePath() . '/assets/images/uploads/pages/' . $newFileName;
 
-            if(File::isDirectory($purposePath)){
+            if (File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
             }
-            $check = $img->save($destination);
-
-            if ($check) {
-                $updateResearch->update([
-                    'title' => request()->title,
-                    'banner' => $newFileName,
-                    'description' => request()->description,
-                    'updated_by' => Auth::id()
-                ]);
-            } else {
-                return back()->withErrors(['error' => 'File not Saved in Database!'])->withInput();
-            }
+            $img->save($destination);
+          $filename = $newFileName;
         } else {
-            request()->validate([
-                'title' => ['required'],
-                'description' => ['required']
-            ]);
-            $updateResearch->update([
-                'title' => request()->title,
-                'banner' => $updateResearch->banner,
-                'description' => request()->description,
-                'updated_by' => Auth::id()
-            ]);
+            $filename = $updateResearch->banner;
         }
+        $updateResearch->update([
+            'title' => request()->title,
+            'banner' => $filename,
+            'description' => request()->description,
+            'updated_by' => Auth::id()
+        ]);
         return redirect()->route('website.page.research')->with('success', 'Your data is successfully updated!');
     }
 
@@ -131,7 +112,7 @@ class ResearchController extends Controller
         $updateResearch = CMSResearch::findOrFail($researchId);
         if (count($records) > 1) {
             if (!empty($updateResearch)) {
-                unlink(givePath() .'/assets/images/uploads/pages/'. $updateResearch->banner);
+                unlink(givePath() . '/assets/images/uploads/pages/' . $updateResearch->banner);
                 $updateResearch->delete();
                 $msg = "Successfully Delete record!";
                 $code = 200;

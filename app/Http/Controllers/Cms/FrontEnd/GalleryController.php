@@ -17,19 +17,20 @@ class GalleryController extends Controller
     public function index()
     {
         $resultSet = Gallery::with('getEvent')->get();
-        return view('cms.website.pages.event.gallery.index',compact('resultSet'));
+        return view('cms.website.pages.event.gallery.index', compact('resultSet'));
     }
 
     public function addGallery()
     {
         $events = Event::get();
-        return view('cms.website.pages.event.gallery.add',compact('events'));
+        return view('cms.website.pages.event.gallery.add', compact('events'));
     }
 
-    public function addGalleryData(){
+    public function addGalleryData()
+    {
         request()->validate([
-            'event_name' => ['required','in:'.implode(',',Event::pluck('id')->toArray())],
-            'image' => ['required','image','mimes:jpeg,jpg,png,svg','max:2048'],
+            'event_name' => ['required', 'in:' . implode(',', Event::pluck('id')->toArray())],
+            'image' => ['required', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
         ]);
 
         if (request()->hasFile('image')) {
@@ -37,90 +38,78 @@ class GalleryController extends Controller
             $extension = request()->file('image')->extension();
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
-            $newFileName = $random.'-'.$dt.'.'.$extension;
-            $purposePath = givePath().'/assets/images/uploads/pages/event/gallery';
-            $destination = givePath().'/assets/images/uploads/pages/event/gallery/'.$newFileName;
+            $newFileName = $random . '-' . $dt . '.' . $extension;
+            $purposePath = givePath() . '/assets/images/uploads/pages/event/gallery';
+            $destination = givePath() . '/assets/images/uploads/pages/event/gallery/' . $newFileName;
 
-            if(!File::isDirectory($purposePath)){
+            if (!File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
             }
-
-            $check = $img->save($destination);
-            if ($check) {
-                Gallery::create([
-                    'event_id' => (int)request()->event_name,
-                    'image' => $newFileName,
-                    'created_by' => Auth::id()
-                ]);
-            } else {
-                return back()->with('error', 'File not Saved in Database!');
-            }
+            $img->save($destination);
+            Gallery::create([
+                'event_id' => (int)request()->event_name,
+                'image' => $newFileName,
+                'created_by' => Auth::id()
+            ]);
             return redirect()->route('website.page.event.gallery')->with('success', 'Your data is successfully added!');
         }
     }
 
-    public function updateGallery($eventId){
-        $updateGallery = Gallery::with('getEvent')->where('id',$eventId)->first();
+    public function updateGallery($eventId)
+    {
+        $updateGallery = Gallery::with('getEvent')->where('id', $eventId)->first();
         $events = Event::get();
-        return view('cms.website.pages.event.gallery.update',compact('updateGallery','events'));
+        return view('cms.website.pages.event.gallery.update', compact('updateGallery', 'events'));
     }
 
-    public function updateGalleryData($eventId){
-        $updateGallery = Gallery::with('getEvent')->where('id',$eventId)->first();
+    public function updateGalleryData($eventId)
+    {
+        $updateGallery = Gallery::with('getEvent')->where('id', $eventId)->first();
 
-        if(empty($updateGallery->image) && empty(request()->image))
-        {
+        if (empty($updateGallery->image) && empty(request()->image)) {
             return back()->withErrors(['error' => 'The image is required'])->withInput();
         }
 
         request()->validate([
-            'event_name' => ['required','in:'.implode(',',Event::pluck('id')->toArray())],
-            'image' => ['sometimes','nullable','image','mimes:jpeg,jpg,png,svg','max:2048'],
+            'event_name' => ['required', 'in:' . implode(',', Event::pluck('id')->toArray())],
+            'image' => ['sometimes', 'nullable', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
         ]);
 
-        if(!empty(request()->file('image'))){
+        if (!empty(request()->file('image'))) {
             unlink(givePath() . '/assets/images/uploads/pages/event/gallery/' . $updateGallery->image);
             $img = Image::make(request()->file('image'));
             $extension = request()->file('image')->extension();
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
-            $newFileName = $random.'-'.$dt.'.'.$extension;
-            $purposePath = givePath().'/assets/images/uploads/pages/event/gallery';
-            $destination = givePath().'/assets/images/uploads/pages/event/gallery/'.$newFileName;
+            $newFileName = $random . '-' . $dt . '.' . $extension;
+            $purposePath = givePath() . '/assets/images/uploads/pages/event/gallery';
+            $destination = givePath() . '/assets/images/uploads/pages/event/gallery/' . $newFileName;
 
-            if(!File::isDirectory($purposePath)){
+            if (!File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
             }
-            $check = $img->save($destination);
-
-            if ($check) {
-                $updateGallery->update([
-                    'event_id' => (int)request()->event_name,
-                    'image' => $newFileName,
-                    'updated_by' => Auth::id()
-                ]);
-            } else {
-                return back()->withErrors(['error' => 'File not Saved in Database!'])->withInput();
-            }
-
+            $img->save($destination);
+            $fileName = $newFileName;
         } else {
-            $updateGallery->update([
-                'event_id' => (int)request()->event_name,
-                'image' => $updateGallery->image,
-                'updated_by' => Auth::id()
-            ]);
+            $fileName = $updateGallery->image;
         }
+        $updateGallery->update([
+            'event_id' => (int)request()->event_name,
+            'image' => $fileName,
+            'updated_by' => Auth::id()
+        ]);
         return redirect()->route('website.page.event.gallery')->with('success', 'Your data is successfully updated!');
     }
 
-    public function deleteGallery($eventId){
+    public function deleteGallery($eventId)
+    {
         $msg = "Some thing went wrong!";
         $code = 400;
         $records = Gallery::all();
-        $updateGallery = Gallery::where('id',$eventId)->first();
+        $updateGallery = Gallery::where('id', $eventId)->first();
         if (count($records) > 2) {
             if (!empty($updateGallery)) {
-                unlink(givePath().'/assets/images/uploads/pages/event/gallery/'.$updateGallery->image);
+                unlink(givePath() . '/assets/images/uploads/pages/event/gallery/' . $updateGallery->image);
                 $updateGallery->delete();
                 $msg = "Successfully Delete record!";
                 $code = 200;
@@ -129,6 +118,6 @@ class GalleryController extends Controller
             $msg = "You have less than three records Add more record to remove them!";
             $code = 302;
         }
-        return response()->json(['msg' => $msg],$code);
+        return response()->json(['msg' => $msg], $code);
     }
 }

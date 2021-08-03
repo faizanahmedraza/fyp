@@ -45,14 +45,6 @@
                     @endcan
                 </ul>
             </li>
-            @can('user-notification-list')
-                <li class="dropdown">
-                    <ul>
-                        <li class="{{ getActiveClass(request()->segment(2),['notifications']) }}"><a
-                                    href="/user/notifications"><i class="icon-bag fa-fw"></i> Notifications</a></li>
-                    </ul>
-                </li>
-            @endcan
             @can('user-event-list')
                 <li class="dropdown">
                     <ul>
