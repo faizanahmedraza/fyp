@@ -16,7 +16,8 @@ class RegisterEvent extends Model
         'event_id',
         'guest_name',
         'guest_email',
-        'status'
+        'status',
+        'visitor_ip'
     ];
 
     protected $dates = [

@@ -69,7 +69,7 @@
     <!--sticky Header-->
     <div class="sticky-header">
         <div class="container clearfix">
-            <figure class="logo-box"><a href="index-2.html"><img src="/assets/website/images/small-logo.png" alt=""></a></figure>
+            <figure class="logo-box"><a href="/"><img src="/assets/website/images/small-logo.png" alt=""></a></figure>
             <div class="menu-area">
                 <nav class="main-menu clearfix">
                     <!--Keep This Empty / Menu will come through Javascript-->

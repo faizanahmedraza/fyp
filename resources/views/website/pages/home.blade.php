@@ -6,7 +6,7 @@
         <div class="main-slider-carousel owl-carousel owl-theme">
             @if (count($resultSet) > 0)
                 @foreach ($resultSet as $key => $val)
-                    <div class="slide cstmBanner slide{{ $key + 1 }}">
+                    <div class="slide cstm-banner slide{{ $key + 1 }}">
                         <div class="container">
                             <div class="content-box">
                                 <div class="top-text">Researcher & Professors</div>

@@ -27,7 +27,7 @@
                         <div class="news-block-one wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <div class="inner-box">
                                 <div class="image-holder">
-                                    <figure class="image"><a href="/news/detail/{{$event->slug}}"><img
+                                    <figure class="image"><a href="/events/{{$event->slug}}/gallery"><img class="cstm-event-img"
                                                     src="/assets/images/uploads/pages/event/{{$event->image}}"
                                                     alt=""></a></figure>
                                     <div class="date-box">
@@ -55,10 +55,15 @@
                                                 @endif
                                             @endauth
                                             @guest
-                                                <button type="button" class="btn btn-secondary btn-sm"
-                                                        data-toggle="modal" data-target="#guestModal">
-                                                    Register For Event
-                                                </button>
+                                                @php
+                                                    $guestUser = $event->getRegisteredEvents->where('guest_email','!=',null)->first();
+                                                @endphp
+                                                @if(empty($guestUser) || (empty($guestUser->visitor_ip) && $guestUser->visitor_ip != request()->ip()))
+                                                    <button type="button" class="btn btn-secondary btn-sm"
+                                                            data-toggle="modal" data-target="#guestModal" data-event-id="{{$event->id}}" data-event-title="{{$event->title}}" onclick="appendDataToModal(this)">
+                                                        Register For Event
+                                                    </button>
+                                                @endif
                                             @endguest
                                         </li>
                                     </ul>
@@ -71,45 +76,49 @@
                             </div>
                         </div>
                     </div>
-                    <!--Guest Modal -->
-                    <div class="modal fade" id="guestModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle1">{{$event->title}}</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <form id="form">
-                                    <div class="modal-body">
-                                        <input type="hidden" name="event_id" value="{{$event->id}}">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="your_name">Your Full Name <span class="required-modal-class">*</span></label>
-                                                <input type="text" class="form-control rounded" name="name"
-                                                       id="your_name"
-                                                       placeholder="Your Full Name" maxlength="55" required>
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <label for="your_email">Email <span class="required-modal-class">*</span></label>
-                                                <input type="email" class="form-control" name="email" id="your_email"
-                                                       placeholder="Your Email" maxlength="100" required>
-                                            </div>
+            @endforeach
+            <!--Guest Modal -->
+                <div class="modal fade" id="guestModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="guestModalTitle">{{$event->title}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form id="form">
+                                <div class="modal-body">
+                                    <input type="hidden" id="event_id" name="event_id" value="">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="your_name">Your Full Name <span
+                                                        class="required-modal-class">*</span></label>
+                                            <input type="text" class="form-control rounded" name="name"
+                                                   id="your_name"
+                                                   placeholder="Your Full Name" maxlength="55" required>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="your_email">Email <span
+                                                        class="required-modal-class">*</span></label>
+                                            <input type="email" class="form-control" name="email" id="your_email"
+                                                   placeholder="Your Email" maxlength="100" required>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                                        </button>
-                                        <button type="submit" class="btn btn-primary">Submit
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">Submit
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <!--End Guest Modal -->
-                @endforeach
+                </div>
+                <!--End Guest Modal -->
+
             </div>
         </div>
     </section>
@@ -153,6 +162,11 @@
             });
         }
 
+        function appendDataToModal(input) {
+            $("#event_id").val($(input).data('eventId'));
+            $("#guestModalTitle").text($(input).data('eventTitle'));
+        }
+
         const form = document.querySelector('#form');
 
         if (form) {
@@ -161,8 +175,7 @@
                 const eventId = $("[name='event_id']").val().trim();
                 const guestName = $("[name='name']").val().trim();
                 const guestEmail = $("[name='email']").val().trim();
-                if(eventId === '' || guestName === '' || guestEmail === '')
-                {
+                if (eventId === '' || guestName === '' || guestEmail === '') {
                     $(".required-modal-class").addClass('text-danger');
                     return false;
                 }
@@ -177,9 +190,9 @@
                         closeOnClickOutside: false
                     }).then((successBtn) => {
                         if (successBtn) {
-                            $("#your_name,#your_email").val('');
+                            $("#event_id,#your_name,#your_email").val('');
                             $("#guestModal").removeClass("fade").modal("hide");
-                            window.history.pushState({},document.title,'/events')
+                            window.history.pushState({}, document.title, '/events')
                         }
                     });
                 }).catch(error => {

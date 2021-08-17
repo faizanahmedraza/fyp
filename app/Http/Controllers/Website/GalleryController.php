@@ -16,7 +16,7 @@ class GalleryController extends Controller
         })->get();
         if(empty($gallery) || count($gallery) == 0)
         {
-            abort(404);
+            $gallery = [];
         }
         return view('website.pages.gallery',compact('gallery'));
     }

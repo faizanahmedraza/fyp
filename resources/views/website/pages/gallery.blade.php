@@ -12,7 +12,7 @@
         </div>
         <div class="container">
             <div class="content-box">
-                <h1>{{$gallery->first()->getEvent->title}}</h1>
+                <h1>{{ !empty($gallery) ? $gallery->first()->getEvent->title : ''}}</h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="/">Home</a></li>
                     <li>Event Gallery</li>
@@ -30,7 +30,7 @@
                     <div class="card border-0">
                         <div class="card-header border-0">
                             <h2 class="card-title">Event Description</h2>
-                            <p class="card-text">{{$gallery->first()->getEvent->description}}</p>
+                            <p class="card-text">{{ !empty($gallery) ? $gallery->first()->getEvent->description : ''}}</p>
                         </div>
                     </div>
                 </div>
@@ -43,22 +43,24 @@
     <section class="blog-page-section">
         <div class="container">
             <div class="row">
-                @foreach($gallery as $key => $val)
-                    <div class="col-lg-3 col-md-6 col-sm-12 news-block">
-                        <div class="news-block-one wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <div class="image-holder">
-                                    <figure class="image"><img
-                                                src="/assets/images/uploads/pages/event/gallery/{{$val->image}}"
-                                                alt=""></figure>
-                                    <div class="date-box">
-                                        <span>{{\Carbon\Carbon::parse($val->created_at,'UTC')->isoFormat('Do') }}</span>{{ Str::upper(\Carbon\Carbon::parse($val->created_at,'UTC')->isoFormat('MMMM')) }}
+                @if(!empty($gallery) > 0)
+                    @foreach($gallery as $key => $val)
+                        <div class="col-lg-3 col-md-6 col-sm-12 news-block">
+                            <div class="news-block-one wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                <div class="inner-box">
+                                    <div class="image-holder">
+                                        <figure class="image"><img
+                                                    src="/assets/images/uploads/pages/event/gallery/{{$val->image}}"
+                                                    alt=""></figure>
+                                        <div class="date-box">
+                                            <span>{{\Carbon\Carbon::parse($val->created_at,'UTC')->isoFormat('Do') }}</span>{{ Str::upper(\Carbon\Carbon::parse($val->created_at,'UTC')->isoFormat('MMMM')) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>

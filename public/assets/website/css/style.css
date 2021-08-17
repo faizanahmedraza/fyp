@@ -4772,6 +4772,10 @@ div#mCSB_1_container{
   height: 525px;
 }
 
-.cstmBanner {
+.cstm-banner {
   background-size: cover!important;
+}
+
+.cstm-event-img {
+  height: 300px;
 }

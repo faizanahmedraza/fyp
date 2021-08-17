@@ -49,6 +49,7 @@ class EventController extends Controller
         RegisterEvent::updateOrCreate([
             'event_id' => request()->eventId,
             'guest_email' => request()->guestEmail,
+            'visitor_ip' => request()->ip()
         ],[ 'guest_name' => request()->guestName,'status' => 'registered']);
         return response()->json(['msg' => "You successfully registered \n Thanks For Registering an Event!"], 200);
     }
