@@ -89,7 +89,7 @@
                             closeOnClickOutside: false
                         }).then((successBtn) => {
                             if (successBtn) {
-                                location.reload();
+                                // location.reload();
                             }
                         });
                     }).catch(function (error) {

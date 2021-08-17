@@ -217,6 +217,8 @@ Route::namespace('FrontEnd')->group(function () {
         Route::post('/user-password-verification/{verificationToken}', 'AuthenticationController@userPasswordVerificationData');
         Route::get('/forgot-password', 'AuthenticationController@forgotPassword');
         Route::post('/forgot-password', 'AuthenticationController@forgotPasswordData');
+
+        Route::post('/guest/register-event', 'EventController@guestUserEventRegister');
     });
 
     Route::middleware(['AuthenticUser', 'NotAdmin'])->prefix('user')->group(function () {

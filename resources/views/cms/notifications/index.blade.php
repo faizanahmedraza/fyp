@@ -33,7 +33,7 @@
                                 <table class="display table dataTable table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>ID#</th>
+                                        <th colspan="1" style="width: 10%">ID#</th>
                                         <th>User Name</th>
                                         <th>Message</th>
                                         <th>Actions</th>
@@ -52,7 +52,7 @@
                                                        onclick="deleteNotification(this, '{{$notification->id}}')">Dismiss</a>
                                                     @if($notification->type === 'project-proposal')
                                                         <a href="/admin/user/research-projects"
-                                                                   class="btn btn-success btn-sm">Detail</a>
+                                                           class="btn btn-success btn-sm">Detail</a>
                                                     @endif
                                                 </td>
                                             </tr>
@@ -81,7 +81,7 @@
             $('.table').DataTable();
         });
 
-        function deleteNotification(input,notificationId) {
+        function deleteNotification(input, notificationId) {
             swal({
                 title: "Are you sure?",
                 icon: "warning",
@@ -89,7 +89,7 @@
                 dangerMode: true,
                 closeOnClickOutside: false
             }).then((willDismiss) => {
-                if(willDismiss){
+                if (willDismiss) {
                     axios.get(`/admin/delete-notification/${notificationId}`).then((response) => {
                         swal({
                             title: response.data.msg,

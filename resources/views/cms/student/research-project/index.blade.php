@@ -8,8 +8,6 @@
 @section('content')
     <main>
         <div class="container-fluid site-width">
-
-
             <!-- START: Card Data-->
             <div class="row">
                 <div class="col-12 mt-3">
@@ -38,7 +36,7 @@
                                 <table class="display table dataTable table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>ID#</th>
+                                        <th colspan="1" style="width: 10%">ID#</th>
                                         <th>Title</th>
                                         <th>Student Name</th>
                                         <th>Status</th>

@@ -31,7 +31,7 @@
                                 <table class="display table dataTable table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>ID#</th>
+                                        <th colspan="1" style="width: 10%">ID#</th>
                                         <th>File</th>
                                         <th>Actions</th>
                                     </tr>

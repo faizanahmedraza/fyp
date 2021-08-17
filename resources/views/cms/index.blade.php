@@ -101,7 +101,7 @@
                                                 <i class="fas fa-check fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600">Proposals(Approved)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break">Proposals(Approved)</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $approvedProposals }}</h2>
                                                 </div>
@@ -117,7 +117,7 @@
                                                 <i class="fas fa-times fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600">Proposals(Rejected)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break">Proposals(Rejected)</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $rejectedProposals }}</h2>
                                                 </div>
