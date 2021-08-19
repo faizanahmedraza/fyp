@@ -14,7 +14,7 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Update Event</h4>
+                                    <h4 class="card-title">Update Internship</h4>
                                 </div>
                                 <div class="col-md-6">
                                     <a href="{{ route('website.page.event') }}" class="btn btn-primary float-right">← Back</a>
@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
-                                        <form method="POST" action="{{ route('website.page.event.update.data',['eventId' => $updateEvent->id]) }}"
+                                        <form method="POST" action="{{ route('website.page.internship.update.data',['internshipId' => $updateInternship->id]) }}"
                                               enctype="multipart/form-data">
                                             @method('PUT')
                                             @csrf
@@ -43,11 +43,11 @@
                                                 </div>
                                             @endif
 
-                                            @if(!empty($updateEvent->image))
+                                            @if(!empty($updateInternship->image))
                                                 <div class="row">
                                                     <div class="form-group col-md-12">
                                                         <div class="input-group">
-                                                            <img src="{{ asset('assets/images/uploads/pages/event/'.$updateEvent->image) }}"
+                                                            <img src="{{ asset('assets/images/uploads/pages/internship/'.$updateInternship->image) }}"
                                                                  height="70" width="70">
                                                         </div>
                                                     </div>
@@ -68,19 +68,19 @@
                                                     <label for="cnic">Title</label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="title" name="title" placeholder="Enter CNIC"
-                                                           value="{{ old('title',$updateEvent->title) }}">
+                                                           value="{{ old('title',$updateInternship->title) }}">
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="form-group col-md-12">
-                                                    <label> Meeting Mode <span class="required-class">*</span></label>
+                                                    <label> Education Mode <span class="required-class">*</span></label>
                                                     <select class="form-control" name="mode" id="mode">
                                                         <option value="">Select</option>
-                                                        <option value="Online" {{ old('mode',$updateEvent->mode) === 'Online' ? "selected" : "" }}>
+                                                        <option value="Online" {{ old('mode',$updateInternship->mode) === 'Online' ? "selected" : "" }}>
                                                             Online
                                                         </option>
-                                                        <option value="Physical" {{ old('mode',$updateEvent->mode) === 'Physical' ? "selected" : "" }}>
+                                                        <option value="Physical" {{ old('mode',$updateInternship->mode) === 'Physical' ? "selected" : "" }}>
                                                             Physical
                                                         </option>
                                                     </select>
@@ -89,22 +89,11 @@
 
                                             <div class="row" id="location">
                                                 <div class="form-group col-md-12">
-                                                    <label> Location <span class="required-class">*</span></label>
+                                                    <label> Address <span class="required-class">*</span></label>
                                                     <div class="input-group">
                                                         <input type="text" class="form-control rounded"
                                                                name="location" placeholder="Enter Location"
-                                                               value="{{ old('location',$updateEvent->location) }}" maxlength="50">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="form-group col-md-12">
-                                                    <label> Schedule On <span class="required-class">*</span></label>
-                                                    <div class="input-group">
-                                                        <input type="text" name="schedule" value=""
-                                                               class="form-control read-only-background"
-                                                               placeholder="Schedule On" readonly>
+                                                               value="{{ old('location',$updateInternship->location) }}" maxlength="50">
                                                     </div>
                                                 </div>
                                             </div>
@@ -114,11 +103,10 @@
                                                     <label> Description <span class="required-class">*</span></label>
                                                     <div class="input-group">
                                             <textarea name="description" id="description" class="form-control"
-                                                      placeholder="Enter Description" rows="3">{{ old('description',$updateEvent->description) }}</textarea>
+                                                      placeholder="Enter Description" rows="3">{{ old('description',$updateInternship->description) }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
-
 
                                             <div class="form-group mt-5">
                                                 <button type="submit" class="btn btn-primary waves-effect waves-light float-right">
@@ -143,8 +131,7 @@
     <script src="/assets/js/moment.min.js"></script>
     <script src="/assets/js/daterangepicker.min.js"></script>
     <script>
-        var schedule = "{{ old('schedule',$updateEvent->schedule) }}";
-        var eventMode = "{{ old('mode',$updateEvent->mode) }}";
+        var eventMode = "{{ old('mode',$updateInternship->mode) }}";
 
         if(eventMode === "Online")
         {
@@ -152,20 +139,6 @@
         }
 
         $(function () {
-            $('input[name="schedule"]').daterangepicker({
-                showDropdowns: true,
-                singleDatePicker: true,
-                timePicker: true,
-                timePicker24Hour: true,
-                timePickerSeconds: true,
-                startDate: moment().format('YYYY-MM-DD hh:mm:ss'),
-                minDate: moment().format('YYYY-MM-DD hh:mm:ss'),
-                locale: {
-                    format: 'YYYY-MM-DD hh:mm:ss'
-                },
-                cancelClass: "btn-primary"
-            });
-
             $("#mode").change(function () {
                 if($(this).find(":selected").val() === "Online")
                 {

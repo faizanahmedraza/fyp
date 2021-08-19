@@ -6,7 +6,7 @@
     <div class="container">
         <div class="footer-top clearfix">
             <div class="footer-logo pull-left">
-                <figure class="logo"><a href="index-2.html"><img src="/assets/website/images/footer-logo.png" alt=""></a></figure>
+                <figure class="logo"><a href="/"><img src="/assets/website/images/footer-logo.png" alt=""></a></figure>
             </div>
             <div class="social-links pull-right">
                 <ul class="clearfix">
@@ -93,7 +93,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="copyright">&copy; Copyright 2019 by <a href="#">brezok.com</a></div>
+            <div class="copyright">&copy; Copyright 2019 by <a href="#">juw-oric.com.pk</a></div>
         </div>
     </div>
 </section>

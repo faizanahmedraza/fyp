@@ -93,9 +93,9 @@ class StudentProposalController extends Controller
 
     public function downloadTemplate()
     {
-        $query = UploadSample::latest()->first();
+        $query = UploadSample::select('name')->where('type','project-proposal-form')->latest()->first();
         if (!empty($query)) {
-            return response()->download(public_path('storage/uploads/'. $query->name));
+            return response()->download(public_path('storage/uploads/'. $query));
         } else {
             abort(404);
         }

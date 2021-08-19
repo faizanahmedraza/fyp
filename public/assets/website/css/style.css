@@ -2521,6 +2521,7 @@ div#mCSB_1_container{
   position: relative;
   background: #f5f6fa;
   padding: 52px 15px 63px 60px;
+  height: 250px;
 }
 
 .news-block-one .inner-box .lower-content .info-box li{
@@ -4777,5 +4778,5 @@ div#mCSB_1_container{
 }
 
 .cstm-event-img {
-  height: 300px;
+  height: 250px;
 }

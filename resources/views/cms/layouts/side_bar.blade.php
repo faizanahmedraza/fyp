@@ -26,25 +26,42 @@
             @can('research-project-list')
                 <li class="dropdown"><a href="javascript:void(0);"> Project</a>
                     <ul>
-                        <li class="{{ getActiveClass(request()->segment(2),['projects','research']) }}"><a
+                        <li class="{{ getActiveClass(request()->segment(2),['research']) }}"><a
                                     class="text-nowrap" href="/admin/research-projects"><i
-                                        class="fas fa-scroll fa-fw"></i>Submitted Proposal</a></li>
+                                        class="fas fa-scroll fa-fw"></i>Proposals</a></li>
+                        <li class="{{ getActiveClass(request()->segment(2),['funds']) }}"><a
+                                    class="text-nowrap" href="/admin/apply-for-funds"><i
+                                        class="fas fa-scroll fa-fw"></i>Funds</a></li>
+                        <li class="{{ getActiveClass(request()->segment(2),['submissions']) }}"><a
+                                    class="text-nowrap" href="/admin/project-submissions"><i
+                                        class="fas fa-scroll fa-fw"></i>Project Submissions</a></li>
                     </ul>
                 </li>
             @endcan
-            @can('upload-sample-list')
-                <li class="dropdown"><a href="javascript:void(0);"> Downloadable</a>
-                    <ul>
-                        <li class="{{ getActiveClass(request()->segment(2),['samples']) }}"><a
-                                    href="/admin/upload-samples"><i
-                                        class="far fa-upload fa-fw"></i> Forms</a></li>
-                        <li class="{{ getActiveClass(request()->segment(2),['template','rp']) }}"><a
-                                    class="text-nowrap" href="/admin/add-rp-template"><i
-                                        class="far fa-upload fa-fw"></i>Upload Form</a></li>
-                    </ul>
-                </li>
-            @endcan
-
+            <li class="dropdown {{ getActiveClass(request()->segment(4),['events','register_event']) }}">
+                <a href="javascript:void(0);"> Event </a>
+                <ul>
+                    <li class="{{ getActiveClass(request()->segment(4),['events']) }}"><a
+                                href="/admin/website/pages/events"><i class="icon-grid fa-fw"></i> Event List</a>
+                    </li>
+                    <li class="{{ getActiveClass(request()->segment(4),['register_event']) }}"><a
+                                href="/admin/website/pages/register_event"><i class="icon-grid fa-fw"></i> Registered
+                            Events</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown {{ getActiveClass(request()->segment(4),['internships','register_intern']) }}">
+                <a href="javascript:void(0);"> Internship Program </a>
+                <ul>
+                    <li class="{{ getActiveClass(request()->segment(4),['internships']) }}"><a
+                                href="/admin/website/pages/internships"><i class="icon-grid fa-fw"></i> Internships</a>
+                    </li>
+                    <li class="{{ getActiveClass(request()->segment(4),['register_intern']) }}"><a
+                                href="/admin/website/pages/register_intern"><i class="icon-grid fa-fw"></i> Registered
+                            Interns</a>
+                    </li>
+                </ul>
+            </li>
             <li class="dropdown @if(getActiveClass(request()->segment(4),['main']) == "active") {{ getActiveClass(request()->segment(4),['main']) }}  @else {{ getActiveClass(request()->segment(5),['aim']) }} @endif">
                 <a href="javascript:void(0);"> Website Content
                     Management</a>
@@ -69,17 +86,6 @@
                             <li class="{{ getActiveClass(request()->segment(5),['gallery']) }}"><a
                                         href="/admin/website/pages/event/gallery"><i class="icon-grid fa-fw"></i>
                                     Gallery </a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown {{ getActiveClass(request()->segment(4),['events','register_event']) }}">
-                        <a href="javascript:void(0);"><i class="fas fa-home fa-fw"></i> Event </a>
-                        <ul class="sub-menu">
-                            <li class="{{ getActiveClass(request()->segment(4),['events']) }}"><a
-                                        href="/admin/website/pages/events"><i class="icon-grid fa-fw"></i> Event List</a>
-                            </li>
-                            <li class="{{ getActiveClass(request()->segment(4),['register_event']) }}"><a
-                                        href="/admin/website/pages/register_event"><i class="icon-grid fa-fw"></i> Registered Events</a>
-                            </li>
                         </ul>
                     </li>
                     <li class="dropdown @if(getActiveClass(request()->segment(4),['news']) == "active") {{ getActiveClass(request()->segment(4),['news']) }}  @else {{ getActiveClass(request()->segment(4),['blog']) }} @endif">
@@ -120,6 +126,18 @@
                                     class="fas fa-chalkboard-teacher fa-fw"></i> Our Professors </a></li>
                 </ul>
             </li>
+            @can('upload-sample-list')
+                <li class="dropdown"><a href="javascript:void(0);"> Downloadable</a>
+                    <ul>
+                        <li class="{{ getActiveClass(request()->segment(2),['samples']) }}"><a
+                                    href="/admin/upload-samples"><i
+                                        class="far fa-upload fa-fw"></i> Forms</a></li>
+                        <li class="{{ getActiveClass(request()->segment(2),['template','rp']) }}"><a
+                                    class="text-nowrap" href="/admin/add-rp-template"><i
+                                        class="far fa-upload fa-fw"></i>Upload Form</a></li>
+                    </ul>
+                </li>
+            @endcan
         </ul>
         <!-- END: Menu-->
     </div>

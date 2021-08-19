@@ -66,17 +66,6 @@
 
                                             <div class="row">
                                                 <div class="form-group col-md-12">
-                                                    <label> Description <span class="required-class">*</span></label>
-                                                    <div class="input-group">
-                                            <textarea name="description" id="description" class="form-control"
-                                                      placeholder="Enter Description"
-                                                      rows="3">{{ old('description') }}</textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="form-group col-md-12">
                                                     <label> Meeting Mode <span class="required-class">*</span></label>
                                                     <select class="form-control" name="mode" id="mode">
                                                         <option value="">Select</option>
@@ -108,6 +97,17 @@
                                                         <input type="text" name="schedule" value=""
                                                                class="form-control read-only-background"
                                                                placeholder="Schedule On" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label> Description <span class="required-class">*</span></label>
+                                                    <div class="input-group">
+                                            <textarea name="description" id="description" class="form-control"
+                                                      placeholder="Enter Description"
+                                                      rows="3">{{ old('description') }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

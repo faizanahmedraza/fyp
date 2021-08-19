@@ -2,7 +2,7 @@
     <div class="site-width">
         <nav class="navbar navbar-expand-lg  p-0">
             <div class="navbar-header  h-100 h4 mb-0 align-self-center logo-bar d-flex justify-content-center pt-2">
-                <a href="/" class="horizontal-logo">
+                <a href="/admin/dashboard" class="horizontal-logo">
                     <img src="/assets/website/images/logo.png" alt="" width="100pt">
                 </a>
             </div>

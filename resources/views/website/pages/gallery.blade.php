@@ -12,7 +12,7 @@
         </div>
         <div class="container">
             <div class="content-box">
-                <h1>{{ !empty($gallery) ? $gallery->first()->getEvent->title : ''}}</h1>
+                <h1>{{ $gallery->title ?? ''}}</h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="/">Home</a></li>
                     <li>Event Gallery</li>
@@ -30,7 +30,7 @@
                     <div class="card border-0">
                         <div class="card-header border-0">
                             <h2 class="card-title">Event Description</h2>
-                            <p class="card-text">{{ !empty($gallery) ? $gallery->first()->getEvent->description : ''}}</p>
+                            <p class="card-text">{{ $gallery->description ?? ''}}</p>
                         </div>
                     </div>
                 </div>
@@ -43,13 +43,13 @@
     <section class="blog-page-section">
         <div class="container">
             <div class="row">
-                @if(!empty($gallery) > 0)
-                    @foreach($gallery as $key => $val)
+                @if(!empty($gallery->getGalleries) > 0)
+                    @foreach($gallery->getGalleries as $key => $val)
                         <div class="col-lg-3 col-md-6 col-sm-12 news-block">
                             <div class="news-block-one wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                                 <div class="inner-box">
                                     <div class="image-holder">
-                                        <figure class="image"><img
+                                        <figure class="image"><img class="cstm-event-img"
                                                     src="/assets/images/uploads/pages/event/gallery/{{$val->image}}"
                                                     alt=""></figure>
                                         <div class="date-box">

@@ -14,7 +14,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Forms</h4>
+                                    <h4 class="card-title">Internships</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="{{ route('website.page.internship.add') }}" class="btn btn-primary float-right">Add +</a>
                                 </div>
                             </div>
                         </div>
@@ -31,22 +34,25 @@
                                 <table class="display table dataTable table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th colspan="1" style="width: 10%">ID#</th>
-                                        <th>Download Link</th>
-                                        <th>Actions</th>
+                                        <th data-priority="1">#ID</th>
+                                        <th data-priority="3">Title</th>
+                                        <th data-priority="3">Description</th>
+                                        <th data-priority="1">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if(count($uploads) > 0)
-                                        @foreach($uploads as $key => $upload)
+                                    @if (count($resultSet) > 0)
+                                        @foreach ($resultSet as $key => $val)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>
-                                                    <a href="{{\Illuminate\Support\Facades\Storage::url('uploads/'.$upload->name)}}" target="_blank" class="btn btn-dark btn-lg">View File</a>
+                                                <td>{{ $val->title }}</td>
+                                                <td>{{ \Illuminate\Support\Str::limit($val->description, 20) }}
                                                 </td>
                                                 <td>
-                                                    <a href="javascript:void(0);"
-                                                       class="btn btn-info btn-sm" onclick="deleteContent(this, '{{$upload->id}}')">Delete</a>
+                                                    <a href="{{ route('website.page.internship.update', ['internshipId' => $val->id]) }}"
+                                                       class="btn btn-success btn-primary">Update</a>
+                                                    <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
+                                                       onclick="deleteRecord(this, '{{ $val->id }}')">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -65,6 +71,7 @@
 @endsection
 
 @push('scripts')
+    <script src="/assets/js/bootstrap4-toggle.min.js"></script>
     <script src="/assets/js/axios.min.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>
     <script src="/assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
@@ -74,26 +81,26 @@
             $('.table').DataTable();
         });
 
-        function deleteContent(input,uploadId) {
+        function deleteRecord(input, eventId) {
+            let tr = $(input).parent().parent();
             swal({
                 title: "Are you sure?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
                 closeOnClickOutside: false
-            }).then((willDismiss) => {
-                if(willDismiss){
-                    axios.get(`/admin/delete-upload-sample/${uploadId}`).then((response) => {
+            }).then((willDelete) => {
+                if (willDelete) {
+                    axios.get(`/admin/website/pages/events/delete/${eventId}`).then(function(response) {
+                        swal(response.data.msg);
                         swal({
                             title: response.data.msg,
                             icon: "success",
                             closeOnClickOutside: false
-                        }).then((successBtn) => {
-                            if (successBtn) {
-                                $(input).parent().parent().remove();
-                            }
+                        }).then((btn) => {
+                            tr.remove();
                         });
-                    }).catch(function (error) {
+                    }).catch(function(error) {
                         swal({
                             title: error.response.data.msg,
                             icon: "error",

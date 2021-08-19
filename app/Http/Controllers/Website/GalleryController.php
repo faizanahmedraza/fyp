@@ -11,13 +11,7 @@ class GalleryController extends Controller
 {
     public function index($slug)
     {
-        $gallery = Gallery::with('getEvent')->whereHas('getEvent',function ($query) use ($slug){
-            $query->where('slug',$slug);
-        })->get();
-        if(empty($gallery) || count($gallery) == 0)
-        {
-            $gallery = [];
-        }
+        $gallery = Event::where('slug',$slug)->with('getGalleries')->first();
         return view('website.pages.gallery',compact('gallery'));
     }
 }

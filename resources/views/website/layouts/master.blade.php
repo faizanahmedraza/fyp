@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from azim.commonsupport.com/Brezok/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 May 2021 10:11:06 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,6 +73,4 @@
 <script src="/assets/website/js/script.js"></script>
 @stack('scripts')
 </body><!-- End of .page_wrapper -->
-
-<!-- Mirrored from azim.commonsupport.com/Brezok/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 May 2021 10:12:45 GMT -->
 </html>

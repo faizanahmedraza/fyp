@@ -61,14 +61,12 @@
             $(this).parent().removeClass('active');
         } else
         {
-
             $(this).parent().find('>.sub-menu').slideDown('slow');
             $(this).parent().addClass('active');
         }
 
         return false;
     });
-
 
     /**************** Chat Pop Up **********************/
     $('.chatbutton').on('click', function () {

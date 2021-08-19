@@ -13,7 +13,7 @@
                                     <h4 class="card-title">Register Event Details</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ route('website.page.register-event') }}"
+                                    <a href="{{ route('website.page.register-intern') }}"
                                        class="btn btn-primary float-right">← Back</a>
                                 </div>
                             </div>
@@ -24,15 +24,11 @@
                                     <span><strong>Event Name:</strong></span>
                                     <p class="pl-2">{{$registeredUsers->title}}</p>
                                 </div>
-                                <div class="d-flex">
-                                    <span><strong>Event Scheduled On:</strong></span>
-                                    <p class="pl-2">{{\Carbon\Carbon::parse($registeredUsers->schedule,'UTC')->isoFormat('lll')}}</p>
-                                </div>
                             </div>
                             <table class="table table-borderless" data-tablesaw-mode="stack">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Participant Name</th>
+                                    <th scope="col">Applicant Name</th>
                                     <th scope="col">Student Rollno#</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Contact Number</th>
@@ -40,8 +36,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if(count($registeredUsers->getRegisteredEvents) > 0)
-                                    @foreach($registeredUsers->getRegisteredEvents as $key => $val)
+                                @if(count($registeredUsers->getRegisteredInterns) > 0)
+                                    @foreach($registeredUsers->getRegisteredInterns as $key => $val)
                                         <tr>
                                             <td>{{!empty($val->getUser) ? $val->getUser->full_name : $val->guest_name}}</td>
                                             <td>{{!empty($val->getUser) ? $val->getUser->student_rollno : ''}}</td>
@@ -70,7 +66,7 @@
     <script src="/assets/js/axios.min.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>
     <script>
-        function deleteRecord(input, registerEventId) {
+        function deleteRecord(input, registerInternId) {
             swal({
                 title: "Are you sure?",
                 icon: "warning",
@@ -79,7 +75,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/register_event/delete/${registerEventId}`).then(function (response) {
+                    axios.get(`/admin/website/pages/register_intern/delete/${registerInternId}`).then(function (response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,

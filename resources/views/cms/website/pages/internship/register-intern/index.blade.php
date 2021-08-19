@@ -14,7 +14,7 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Register Event List</h4>
+                                    <h4 class="card-title">Register Interns List</h4>
                                 </div>
                             </div>
                         </div>
@@ -24,20 +24,20 @@
                                     <thead>
                                     <tr>
                                         <th data-priority="1">#ID</th>
-                                        <th data-priority="3" style="width: 400px;">Event Name</th>
-                                        <th data-priority="1">Participants</th>
+                                        <th data-priority="3" style="width: 400px;">Internship Title</th>
+                                        <th data-priority="1">Applicants</th>
                                         <th data-priority="1">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if (count($events) > 0)
-                                        @foreach ($events as $key => $event)
+                                    @if (count($internships) > 0)
+                                        @foreach ($internships as $key => $val)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $event->title ?? ''}}</td>
-                                                <td>{{ $event->get_registered_events_count ?? ''}}</td>
+                                                <td>{{ $val->title ?? ''}}</td>
+                                                <td>{{ $val->get_registered_interns_count ?? ''}}</td>
                                                 <td>
-                                                    <a href="{{ route('website.page.register-event.detail', ['registerEventId' => $event->id]) }}"
+                                                    <a href="{{ route('website.page.register-intern.detail', ['registerInternId' => $val->id]) }}"
                                                        class="btn btn-success btn-primary">Detail</a>
                                                 </td>
                                             </tr>

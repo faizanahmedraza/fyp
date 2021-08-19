@@ -3,20 +3,26 @@
 namespace App\Http\Controllers\Cms\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\RegisterEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RegisterEventController extends Controller
 {
     public function index()
     {
-        $events = RegisterEvent::withCount('getUser')->where('status','registered')->get();
+        $events = Event::withCount(['getRegisteredEvents' => function($query) {
+            $query->where('status','registered');
+        }])->whereHas('getRegisteredEvents', function ($query) {
+            $query->where('status','registered');
+        })->get();
         return view('cms.website.pages.event.register-event.index',compact('events'));
     }
 
     public function detailEvent($registerEventId)
     {
-        $registeredUsers = RegisterEvent::with(['getUser','getEvent'])->where('id',$registerEventId)->get();
+        $registeredUsers = Event::with('getRegisteredEvents')->where('id',$registerEventId)->first();
         return view('cms.website.pages.event.register-event.detail',compact('registeredUsers'));
     }
 

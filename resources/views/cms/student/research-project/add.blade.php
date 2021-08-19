@@ -118,37 +118,17 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="upload_research">Upload Project </label>
+                                                    <label for="upload_research">Upload Project Proposal</label>
                                                     <input type="file" name="upload_research"
                                                            class="form-control"
                                                            accept=".docx,.pdf" id="upload_project"
                                                            value="{{ old('upload_research') }}">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label>This application is ?</label>
-                                                    <br>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="status"
-                                                               id="status_approved"
-                                                               class="custom-control-input"
-                                                               value="approved" {{ old("status") == 'approved' ? 'checked' : '' }}>
-                                                        <label class="custom-control-label checkbox-primary outline"
-                                                               for="status_approved">Approved</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="status"
-                                                               id="status_rejected"
-                                                               class="custom-control-input"
-                                                               value="rejected" {{ old("status") == 'rejected' ? 'checked' : '' }}>
-                                                        <label class="custom-control-label checkbox-primary outline"
-                                                               for="status_rejected">Rejected</label>
-                                                    </div>
-                                                </div>
                                             </div>
 
 
 
-                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>
                                     </div>
                                 </div>

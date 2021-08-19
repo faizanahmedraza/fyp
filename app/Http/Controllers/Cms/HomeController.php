@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
+use App\Models\InternShip;
 use App\Models\ResearchProject;
 use App\Models\User;
 
@@ -41,6 +43,8 @@ class HomeController extends Controller
         $rejectedProposals = $proposals->filter(function ($value){
             return $value->status === 'rejected';
         })->count();
-        return view('cms.index',compact('activeUsers','blockUsers','approvedProposals','rejectedProposals','admins','students','researchers','oricMembers','facultyMembers','focalPersons'));
+        $events = Event::count();
+        $interns = InternShip::count();
+        return view('cms.index',compact('activeUsers','blockUsers','approvedProposals','rejectedProposals','admins','students','researchers','oricMembers','facultyMembers','focalPersons','events','interns'));
     }
 }

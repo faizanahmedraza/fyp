@@ -11,7 +11,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown"><a href="javascript:void(0);"> Project</a>
                 <ul>
                     @can(['student-project-proposal-list'])
                         <li class="{{ getActiveClass(request()->segment(2),['student']) }}"><a class="text-nowrap"
@@ -43,18 +43,32 @@
                                         class="fas fa-scroll fa-fw"></i>
                                 Submit Proposal</a></li>
                     @endcan
+                    <li class="{{ getActiveClass(request()->segment(2),['funds']) }}"><a
+                                class="text-nowrap" href="/user/apply-for-funds"><i
+                                    class="fas fa-scroll fa-fw"></i>Funds</a></li>
+                    <li class="{{ getActiveClass(request()->segment(2),['submissions']) }}"><a
+                                class="text-nowrap" href="/user/project-submissions"><i
+                                    class="fas fa-scroll fa-fw"></i>Project Submissions</a></li>
                 </ul>
             </li>
             @can('user-event-list')
                 <li class="dropdown">
                     <ul>
-                        <li class="{{ getActiveClass(request()->segment(2),['events','event']) }}">
+                        <li class="{{ getActiveClass(request()->segment(2),['events']) }}">
                             <a href="/user/events">
                                 <i class="fas fa-calendar-day fa-fw"></i> Events</a>
                         </li>
                     </ul>
                 </li>
             @endcan
+            <li class="dropdown">
+                <ul>
+                    <li class="{{ getActiveClass(request()->segment(2),['internships']) }}">
+                        <a href="/user/internships">
+                            <i class="far fa-book"></i> Internships</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
         <!-- END: Menu-->
     </div>

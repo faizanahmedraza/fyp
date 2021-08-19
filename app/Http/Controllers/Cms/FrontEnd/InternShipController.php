@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Cms\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use App\Models\Event;
-use App\Models\RegisterEvent;
+use App\Models\InternShip;
+use App\Models\RegisterIntern;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -12,20 +12,20 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
-class EventController extends Controller
+class InternShipController extends Controller
 {
     public function index()
     {
-        $resultSet = Event::get();
-        return view('cms.website.pages.event.index', compact('resultSet'));
+        $resultSet = InternShip::get();
+        return view('cms.website.pages.internship.index', compact('resultSet'));
     }
 
-    public function addEvent()
+    public function addInternship()
     {
-        return view('cms.website.pages.event.add');
+        return view('cms.website.pages.internship.add');
     }
 
-    public function addEventData()
+    public function addInternshipData()
     {
         if (empty(request()->location) && request()->mode === 'Physical') {
             return back()->withErrors(['error' => 'The location field is required!']);
@@ -33,11 +33,10 @@ class EventController extends Controller
 
         request()->validate([
             'image' => ['required', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
-            'title' => ['required', 'unique:event,title,NULL,id,deleted_at,NULL', 'max:100'],
-            'description' => ['required', 'max:500'],
+            'title' => ['required', 'unique:internships,title,NULL,id,deleted_at,NULL', 'max:100'],
+            'description' => ['required', 'max:800'],
             'mode' => ['required', 'in:Online,Physical'],
-            'schedule' => ['required', 'date_format:Y-m-d H:i:s'],
-            'location' => ['sometimes', 'nullable', 'max:55']
+            'location' => ['sometimes', 'nullable', 'max:200']
         ]);
 
         if (request()->hasFile('image')) {
@@ -46,39 +45,36 @@ class EventController extends Controller
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/images/uploads/pages/event';
-            $destination = givePath() . '/assets/images/uploads/pages/event/' . $newFileName;
+            $purposePath = givePath() . '/assets/images/uploads/pages/internship';
+            $destination = givePath() . '/assets/images/uploads/pages/internship/' . $newFileName;
 
             if (!File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
             }
-
             $img->save($destination);
-            Event::create([
+            InternShip::create([
                 'image' => $newFileName,
                 'title' => request()->title,
                 'slug' => Str::slug(request()->title),
                 'description' => request()->description,
                 'mode' => request()->mode,
-                'schedule' => request()->schedule,
-                'location' => request()->location,
                 'created_by' => Auth::id()
             ]);
-            return redirect()->route('website.page.event')->with('success', 'Your data is successfully added!');
         }
+        return redirect()->route('website.page.internship')->with('success', 'Your data is successfully added!');
     }
 
-    public function updateEvent($eventId)
+    public function updateInternship($internshipId)
     {
-        $updateEvent = Event::where('id', $eventId)->first();
-        return view('cms.website.pages.event.update', compact('updateEvent'));
+        $updateInternship = InternShip::where('id', $internshipId)->first();
+        return view('cms.website.pages.internship.update', compact('updateInternship'));
     }
 
-    public function updateEventData($eventId)
+    public function updateInternshipData($internshipId)
     {
-        $updateEvent = Event::where('id', $eventId)->first();
+        $updateInternship = InternShip::where('id', $internshipId)->first();
 
-        if (empty($updateEvent->image) && empty(request()->image)) {
+        if (empty($updateInternship->image) && empty(request()->image)) {
             return back()->withErrors(['error' => 'The image is required'])->withInput();
         }
 
@@ -88,22 +84,21 @@ class EventController extends Controller
 
         request()->validate([
             'image' => ['sometimes', 'nullable', 'image', 'mimes:jpeg,jpg,png,svg', 'max:2048'],
-            'title' => ['required', 'unique:event,title,' . $eventId . ',id,deleted_at,NULL', 'max:100'],
-            'description' => ['required', 'max:500'],
+            'title' => ['required', 'unique:internships,title,' . $internshipId . ',id,deleted_at,NULL', 'max:100'],
+            'description' => ['required', 'max:800'],
             'mode' => ['required', 'in:Online,Physical'],
-            'schedule' => ['required', 'date_format:Y-m-d H:i:s'],
-            'location' => ['sometimes', 'nullable', 'max:55']
+            'location' => ['sometimes', 'nullable', 'max:200']
         ]);
 
         if (!empty(request()->file('image'))) {
-            unlink(givePath() . '/assets/images/uploads/pages/event/' . $updateEvent->image);
+            unlink(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image);
             $img = Image::make(request()->file('image'));
             $extension = request()->file('image')->extension();
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/images/uploads/pages/event';
-            $destination = givePath() . '/assets/images/uploads/pages/event/' . $newFileName;
+            $purposePath = givePath() . '/assets/images/uploads/pages/internship';
+            $destination = givePath() . '/assets/images/uploads/pages/internship/' . $newFileName;
 
             if (!File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -111,35 +106,35 @@ class EventController extends Controller
             $img->save($destination);
             $fileName = $newFileName;
         } else {
-            $fileName = $updateEvent->image;
+            $fileName = $updateInternship->image;
         }
 
-        $updateEvent->update([
+        $updateInternship->update([
             'image' => $fileName,
             'title' => request()->title,
             'slug' => Str::slug(request()->title),
             'description' => request()->description,
             'mode' => request()->mode,
-            'schedule' => request()->schedule,
-            'location' => request()->location,
             'updated_by' => Auth::id()
         ]);
 
-        return redirect()->route('website.page.event')->with('success', 'Your data is successfully updated!');
+        return redirect()->route('website.page.internship')->with('success', 'Your data is successfully updated!');
     }
 
-    public function deleteEvent($eventId)
+    public function deleteInternship($internshipId)
     {
         $msg = "Some thing went wrong!";
         $code = 400;
-        $updateEvent = Event::where('id', $eventId)->first();
-        if (!empty($updateEvent)) {
-            unlink(givePath() . '/assets/images/uploads/pages/event/' . $updateEvent->image);
-            RegisterEvent::where('event_id',$updateEvent->id)->delete();
-            $updateEvent->delete();
+        $updateInternship = InternShip::where('id', $internshipId)->first();
+
+        if (!empty($updateInternship)) {
+            unlink(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image);
+            RegisterIntern::where('event_id',$updateInternship->id)->delete();
+            $updateInternship->delete();
             $msg = "Successfully Delete record!";
             $code = 200;
         }
+
         return response()->json(['msg' => $msg], $code);
     }
 }

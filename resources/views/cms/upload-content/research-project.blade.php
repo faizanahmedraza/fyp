@@ -10,7 +10,7 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Upload Research Template</h4>
+                                    <h4 class="card-title">Upload Form</h4>
                                 </div>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                                             @endif
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="first_name">Upload File <span
+                                                    <label for="first_name">Upload Form <span
                                                                 class="required-class">*</span></label>
                                                     <input type="file" name="template" class="form-control"
                                                            accept=".docx, .pdf"
@@ -40,7 +40,7 @@
                                                 </div>
                                             </div>
 
-                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>
                                     </div>
                                 </div>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
+use App\Models\RegisterEvent;
+use App\Models\RegisterIntern;
 use App\Models\ResearchProject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +20,8 @@ class HomeController extends Controller
         $rejectedProposals = $proposals->filter(function ($value){
             return $value->status === 'rejected';
         })->count();
-        return view('frontend.index',compact('approvedProposals','rejectedProposals'));
+        $events = RegisterEvent::where('user_id',Auth::id())->count();
+        $interns = RegisterIntern::where('user_id',Auth::id())->count();
+        return view('frontend.index',compact('approvedProposals','rejectedProposals','events','interns'));
     }
 }

@@ -3,7 +3,7 @@
         <div class="header-top clearfix">
             <div class="top-left pull-left clearfix">
                 <div class="logo-box pull-left">
-                    <figure class="logo"><a href=""><img src="/assets/website/images/logo.png" alt=""></a></figure>
+                    <figure class="logo"><a href="/"><img src="/assets/website/images/logo.png" alt=""></a></figure>
                 </div>
                 <ul class="info-box pull-left clearfix">
                     <li><i class="flaticon-email"></i><a href="mailto:info@example.com">info@example.com</a></li>
@@ -13,10 +13,10 @@
             </div>
             <div class="top-right pull-right">
                 <ul class="social-links clearfix">
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-                    <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="javascript:;"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="javascript:;"><i class="fab fa-facebook-square"></i></a></li>
+                    <li><a href="javascript:;"><i class="fab fa-pinterest-p"></i></a></li>
+                    <li><a href="javascript:;"><i class="fab fa-instagram"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -34,24 +34,30 @@
                         <ul class="navigation clearfix">
                             <li class="dropdown"><a href="/">Home</a>
                             </li>
-                            <li class="dropdown"><a href="/research">Research</a>
+                            <li class="dropdown"><a href="javascript:;">Research</a>
                                 <ul>
                                     <li><a href="/research/funding-opportunities">Funding Opportunties</a></li>
                                     <li><a href="/research/funded-projects">Funding Projects</a></li>
-                                    <li><a href="#">Call for proposal</a></li>
+                                    <li><a href="javascript:;">Call for proposal</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="#">Media</a>
+                            <li class="dropdown"><a href="javascript:;">Media</a>
                                 <ul>
                                     <li><a href="/events">Events</a></li>
-                                    <li><a href="#">Success Stories</a>
-                                    <li><a href="#">Timeline</a>
+                                    <li><a href="javascript:;">Success Stories</a>
+                                    <li><a href="javascript:;">Timeline</a>
                                     </li>
-                                </ul></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="/our-news">Our News</a>
+                                <ul>
+                                    <li><a href="/internships">InternShip Program</a></li>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="dropdown"><a href="/about-us">About Us</a>
                             </li>
-                            <li><a href="/our-news">Our News</a></li>
-
+{{--                            <li><a href="/our-news">Our News</a></li>--}}
                             <li><a href="/contact">Contact</a></li>
                         </ul>
                     </div>

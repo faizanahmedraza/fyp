@@ -57,22 +57,13 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label>Profile Picture <span class="required-class">*</span></label>
+                                                    <label>Profile Picture <span class="required-class">*</span> @if(!empty($profile->profile_picture)) <a href="/assets/images/user_profile/{{ $profile->profile_picture }}" target="_blank">{{ env('APP_URL') }}/assets/images/user_profile/{{$profile->profile_picture}}</a> @endif</label>
                                                     <div class="input-group">
                                                         <input type="file" name="profile_picture" class="form-control"
                                                                accept=".jpg, .jpeg, .png"
                                                                value="{{ old('profile_picture',$profile->profile_picture) }}">
                                                     </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label>Description <span class="required-class">*</span></label>
-                                                    <div class="input-group">
-                                                        <textarea name="profile_detail" class="form-control"
-                                                                  rows="3">{{ old('profile_detail',$profile->profile_detail) }}</textarea>
-                                                    </div>
+                                                    <div class="text-danger" style="font-weight: initial;">Supported formats are jpg,jpeg and png.</div>
                                                 </div>
                                             </div>
 
@@ -164,13 +155,6 @@
                                                             <label class="form-check-label"
                                                                    for="exampleRadios1">Female</label>
                                                         </div>
-                                                        <div class="custom-control custom-radio custom-control-inline">
-                                                            <input class="form-check-input" type="radio" name="gender"
-                                                                   id="exampleRadios1" value="other"
-                                                                    {{ old('gender',$profile->gender) === "other" ? "checked" : ""}}>
-                                                            <label class="form-check-label"
-                                                                   for="exampleRadios1">Other</label>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -186,6 +170,13 @@
                                                     <label>Date of Joining</label>
                                                     <input type="text" name="joining_date" class="form-control rounded" value="{{old('joining_date',$profile->joining_date)}}"
                                                            readonly>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Description</label>
+                                                    <div class="input-group">
+                                                        <textarea name="profile_detail" class="form-control"
+                                                                  rows="3">{{ old('profile_detail',$profile->profile_detail) }}</textarea>
+                                                    </div>
                                                 </div>
                                             </div>
 

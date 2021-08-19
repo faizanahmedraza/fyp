@@ -8,10 +8,10 @@
         </div>
         <div class="container">
             <div class="content-box">
-                <h1>Error</h1>
-                <ul class="bread-crumb clearfix">
+                <h1>Whoops</h1>
+                <ul class="bread-crumb clearfix mt-2">
                     <li><a href="/">Home</a></li>
-                    <li>Error Page</li>
+                    <li>404 Page</li>
                 </ul>
             </div>
         </div>

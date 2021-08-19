@@ -51,8 +51,7 @@ class ResearchProjectController extends Controller
             'agency' => 'required|max:250',
             'amount' => 'required|max:250',
             'submission_date' => 'required|date',
-            'upload_research' => 'required|file|mimes:doc,pdf,docx',
-            'status' => 'required|in:approved,rejected',
+            'upload_research' => 'required|file|mimes:doc,pdf,docx'
         ]);
 
         $studentData['user_id'] = request()->user_id;
@@ -62,7 +61,7 @@ class ResearchProjectController extends Controller
         $studentData['agency'] = request()->agency;
         $studentData['amount'] = request()->amount;
         $studentData['submission_date'] = request()->submission_date;
-        $studentData['status'] = request()->status;
+        $studentData['status'] = 'approved';
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
@@ -95,7 +94,6 @@ class ResearchProjectController extends Controller
             'amount' => 'required|max:250',
             'submission_date' => 'required|date',
             'upload_research' => 'sometimes|nullable|file|mimes:doc,pdf,docx',
-            'status' => 'required|in:approved,rejected',
         ]);
 
         $studentData['user_id'] = $project->user_id;
@@ -105,7 +103,7 @@ class ResearchProjectController extends Controller
         $studentData['agency'] = request()->agency;
         $studentData['amount'] = request()->amount;
         $studentData['submission_date'] = request()->submission_date;
-        $studentData['status'] = request()->status;
+        $studentData['status'] = 'approved';
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
@@ -163,12 +161,12 @@ class ResearchProjectController extends Controller
         $newResearchName = '';
 
         if (!empty($template)) {
-            $newResearchName = 'research-project-' . Carbon::now()->timestamp . '.' . $template->getClientOriginalExtension();
+            $newResearchName = 'project-proposal-' . Carbon::now()->timestamp . '.' . $template->getClientOriginalExtension();
             $template->storeAs('/public/uploads', $newResearchName);
         }
 
         UploadSample::create([
-            'type' => 'research-project',
+            'type' => 'project-proposal-form',
             'name' => $newResearchName
         ]);
 
