@@ -31,7 +31,7 @@
                                 <table class="display table dataTable table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th colspan="1" style="width: 10%">ID#</th>
+                                        <th colspan="1" style="width: 20px;">ID#</th>
                                         <th>Download Link</th>
                                         <th>Actions</th>
                                     </tr>
@@ -46,7 +46,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0);"
-                                                       class="btn btn-info btn-sm" onclick="deleteContent(this, '{{$upload->id}}')">Delete</a>
+                                                       class="btn btn-info btn-sm" onclick="deleteResearchTemplate(this, '{{$upload->id}}')">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -74,7 +74,7 @@
             $('.table').DataTable();
         });
 
-        function deleteContent(input,uploadId) {
+        function deleteResearchTemplate(input,uploadId) {
             swal({
                 title: "Are you sure?",
                 icon: "warning",
@@ -83,7 +83,7 @@
                 closeOnClickOutside: false
             }).then((willDismiss) => {
                 if(willDismiss){
-                    axios.get(`/admin/delete-upload-sample/${uploadId}`).then((response) => {
+                    axios.get(`/admin/research-proposal-template/${uploadId}/delete`).then((response) => {
                         swal({
                             title: response.data.msg,
                             icon: "success",

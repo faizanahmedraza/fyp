@@ -23,21 +23,26 @@
                     </ul>
                 </li>
             @endcan
-            @can('research-project-list')
-                <li class="dropdown"><a href="javascript:void(0);"> Project</a>
-                    <ul>
-                        <li class="{{ getActiveClass(request()->segment(2),['research']) }}"><a
-                                    class="text-nowrap" href="/admin/research-projects"><i
-                                        class="fas fa-scroll fa-fw"></i>Proposals</a></li>
-                        <li class="{{ getActiveClass(request()->segment(2),['funds']) }}"><a
-                                    class="text-nowrap" href="/admin/apply-for-funds"><i
-                                        class="fas fa-scroll fa-fw"></i>Funds</a></li>
-                        <li class="{{ getActiveClass(request()->segment(2),['submissions']) }}"><a
-                                    class="text-nowrap" href="/admin/project-submissions"><i
-                                        class="fas fa-scroll fa-fw"></i>Project Submissions</a></li>
-                    </ul>
-                </li>
-            @endcan
+            <li class="dropdown"><a href="javascript:void(0);"> Proposal</a>
+                <ul>
+                    <li class="{{ (request()->is('admin/fyp-proposals*')) ? 'active' : '' }}"><a
+                                class="text-nowrap" href="/admin/fyp-proposals"><i
+                                    class="fas fa-scroll fa-fw"></i>Fyp Proposals</a></li>
+                    <li class="{{ (request()->is('admin/funded-proposals*')) ? 'active' : '' }}"><a
+                                class="text-nowrap" href="/admin/funded-proposals"><i
+                                    class="fas fa-scroll fa-fw"></i>Funded Proposals</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a href="javascript:void(0);"> Project</a>
+                <ul>
+                    <li class="{{ (request()->is('admin/fyp-projects*')) ? 'active' : '' }}"><a
+                                class="text-nowrap" href="/admin/fyp-projects"><i
+                                    class="fas fa-scroll fa-fw"></i>Fyp Projects</a></li>
+                    <li class="{{ (request()->is('admin/funded-projects*')) ? 'active' : '' }}"><a
+                                class="text-nowrap" href="/admin/funded-projects"><i
+                                    class="fas fa-scroll fa-fw"></i>Funded Projects</a></li>
+                </ul>
+            </li>
             <li class="dropdown {{ getActiveClass(request()->segment(4),['events','register_event']) }}">
                 <a href="javascript:void(0);"> Event </a>
                 <ul>
@@ -129,11 +134,11 @@
             @can('upload-sample-list')
                 <li class="dropdown"><a href="javascript:void(0);"> Downloadable</a>
                     <ul>
-                        <li class="{{ getActiveClass(request()->segment(2),['samples']) }}"><a
-                                    href="/admin/upload-samples"><i
+                        <li class="{{ (request()->is('admin/research-proposal-template')) ? 'active' : '' }}"><a
+                                    href="/admin/research-proposal-template"><i
                                         class="far fa-upload fa-fw"></i> Forms</a></li>
-                        <li class="{{ getActiveClass(request()->segment(2),['template','rp']) }}"><a
-                                    class="text-nowrap" href="/admin/add-rp-template"><i
+                        <li class="{{ (request()->is('admin/research-proposal-template/add')) ? 'active' : '' }}"><a
+                                    class="text-nowrap" href="/admin/research-proposal-template/add"><i
                                         class="far fa-upload fa-fw"></i>Upload Form</a></li>
                     </ul>
                 </li>

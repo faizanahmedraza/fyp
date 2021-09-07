@@ -15,10 +15,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Add Research Project Proposal</h4>
+                                    <h4 class="card-title">Add Funded Project</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/admin/research-projects" class="btn btn-primary float-right">← Back</a>
+                                    <a href="/admin/funded-projects" class="btn btn-primary float-right">← Back</a>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 @endif
                                 <div class="row">
                                     <div class="col-12">
-                                        <form action="/admin/add-research-project" method="POST" enctype="multipart/form-data">
+                                        <form action="/admin/funded-projects/add" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @if($errors->any())
                                                 <div class="alert alert-danger">
@@ -49,65 +49,34 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="user_id">Name <span
+                                                    <label for="student_name">Student Name <span
                                                                 class="required-class">*</span></label>
-                                                    <select class="form-control" name="user_id" id="user_id">
+                                                    <select class="form-control" name="student_name" id="student_name">
                                                         <option value="">Select</option>
                                                         @foreach($students as $val)
                                                             <option value="{{$val->id}}"
-                                                                    {{ old('user_id') === $val->id ? "selected" : ""}}>{{$val->full_name}}</option>
+                                                                    {{ old('student_name') === $val->id ? "selected" : ""}}>{{$val->full_name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="title">Title <span
+                                                <div class="form-group col-md-12">
+                                                    <label for="proposal_title">Proposal Title <span
                                                                 class="required-class">*</span></label>
-                                                    <input type="text" class="form-control rounded" id="title"
-                                                           name="title" placeholder="Enter Title"
-                                                           value="{{ old('title') }}">
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="investigator_details">Principal and Co-Principal Details
-                                                        <span
-                                                                class="required-class">*</span></label>
-                                                    <input type="investigator_details" class="form-control rounded"
-                                                           id="investigator_details"
-                                                           name="investigator_details"
-                                                           placeholder="Enter Principal and Co-Principal Investigator Details"
-                                                           value="{{ old('investigator_details') }}">
+                                                    <select class="form-control" name="proposal_title" id="proposal_title">
+                                                        <option value="">Select</option>
+                                                        @foreach($proposals as $val)
+                                                            <option value="{{$val->id}}"
+                                                                    {{ old('proposal_title') === $val->id ? "selected" : ""}}>{{$val->title}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="abstract">Abstract </label>
-                                                    <input type="text" class="form-control rounded"
-                                                           id="abstract" name="abstract"
-                                                           placeholder="Enter Abstract"
-                                                           value="{{ old('abstract') }}">
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="agency">Agency where project
-                                                        submitted </label>
-                                                    <input type="text" class="form-control rounded"
-                                                           id="agency" name="agency"
-                                                           placeholder="Enter Agency Where Project Submitted"
-                                                           value="{{ old('agency') }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="amount">Amount Requested </label>
-                                                    <input type="text" class="form-control rounded allowNumberOnly"
-                                                           id="amount" name="amount"
-                                                           placeholder="Enter Account Requested"
-                                                           value="{{ old('amount') }}">
-                                                </div>
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-12">
                                                     <label for="submission_date">Date of submission </label>
                                                     <input type="text" name="submission_date"
                                                            id="submission_date_id" value=""
@@ -118,15 +87,13 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="upload_research">Upload Project Proposal</label>
-                                                    <input type="file" name="upload_research"
+                                                    <label for="upload_project">Upload Project</label>
+                                                    <input type="file" name="upload_project"
                                                            class="form-control"
                                                            accept=".docx,.pdf" id="upload_project"
-                                                           value="{{ old('upload_research') }}">
+                                                           value="{{ old('upload_project') }}">
                                                 </div>
                                             </div>
-
-
 
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>

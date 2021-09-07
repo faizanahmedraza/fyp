@@ -5,25 +5,24 @@ namespace App\Http\Controllers\Cms\Student;
 use App\Events\StatusChanged;
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
-use App\Models\ResearchProject;
-use App\Models\UploadSample;
+use App\Models\ResearchProposal;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
-class ResearchProjectController extends Controller
+class FypProposalController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('permission:research-project-list|research-project-create|research-project-update', ['only' => ['index','addResearchData']]);
-        $this->middleware('permission:research-project-create', ['only' => ['addResearch','addResearchData']]);
-        $this->middleware('permission:research-project-update', ['only' => ['updateResearch','updateResearchData']]);
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('permission:research-project-list|research-project-create|research-project-update', ['only' => ['index','addResearchData']]);
+//        $this->middleware('permission:research-project-create', ['only' => ['addResearch','addResearchData']]);
+//        $this->middleware('permission:research-project-update', ['only' => ['updateResearch','updateResearchData']]);
+//    }
 
     public function index()
     {
-        $projects = ResearchProject::all();
+        $proposals = ResearchProposal::where('type','funded')->get();
         if(session()->has('notification'))
         {
             $notify = session()->get('notification');
@@ -31,20 +30,20 @@ class ResearchProjectController extends Controller
                 'is_read' => 1
             ]);
         }
-        return view('cms.student.research-project.index', compact('projects'));
+        return view('cms.student.proposal.fyp.index', compact('proposals'));
     }
 
-    public function addResearch()
+    public function addProposal()
     {
         $students = User::role('student')->get();
-        return view('cms.student.research-project.add',compact('students'));
+        return view('cms.student.proposal.fyp.add',compact('students'));
     }
 
-    public function addResearchData()
+    public function addProposalData()
     {
         $studentData = array();
         request()->validate([
-            'user_id' => 'required|in:'.implode(',',User::role('student')->pluck('id')->toArray()),
+            'student_name' => 'required|in:'.implode(',',User::role('student')->pluck('id')->toArray()),
             'title' => 'required|max:150',
             'investigator_details' => 'required|max:150',
             'abstract' => 'required|max:250',
@@ -54,7 +53,7 @@ class ResearchProjectController extends Controller
             'upload_research' => 'required|file|mimes:doc,pdf,docx'
         ]);
 
-        $studentData['user_id'] = request()->user_id;
+        $studentData['user_id'] = request()->student_name;
         $studentData['title'] = request()->title;
         $studentData['investigator_details'] = request()->investigator_details;
         $studentData['abstract'] = request()->abstract;
@@ -62,6 +61,7 @@ class ResearchProjectController extends Controller
         $studentData['amount'] = request()->amount;
         $studentData['submission_date'] = request()->submission_date;
         $studentData['status'] = 'approved';
+        $studentData['type'] = 'fyp';
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
@@ -73,18 +73,18 @@ class ResearchProjectController extends Controller
             $studentData['upload_research'] = $newResearchName;
         }
 
-        ResearchProject::create($studentData);
+        ResearchProposal::create($studentData);
 
-        return redirect('/admin/research-projects')->with('success','Successfully submitted.');
+        return redirect('/admin/fyp-proposals')->with('success','Successfully submitted.');
     }
 
-    public function updateResearch($researchId){
-        $project = ResearchProject::with('getUser')->where('id',$researchId)->whereHas('getUser')->first();
-        return view('cms.student.research-project.update', compact('project'));
+    public function updateProposal($proposalId){
+        $proposal = ResearchProposal::with('getUser')->where('type','fyp')->where('id',$proposalId)->first();
+        return view('cms.student.proposal.fyp.update', compact('proposal'));
     }
 
-    public function updateResearchData($researchId){
-        $project = ResearchProject::with('getUser')->where('id',$researchId)->whereHas('getUser')->first();
+    public function updateProposalData($proposalId){
+        $proposal = ResearchProposal::where('type','fyp')->where('id',$proposalId)->first();
         $studentData = array();
         request()->validate([
             'title' => 'required|max:150',
@@ -96,7 +96,7 @@ class ResearchProjectController extends Controller
             'upload_research' => 'sometimes|nullable|file|mimes:doc,pdf,docx',
         ]);
 
-        $studentData['user_id'] = $project->user_id;
+        $studentData['user_id'] = $proposal->user_id;
         $studentData['title'] = request()->title;
         $studentData['investigator_details'] = request()->investigator_details;
         $studentData['abstract'] = request()->abstract;
@@ -104,33 +104,34 @@ class ResearchProjectController extends Controller
         $studentData['amount'] = request()->amount;
         $studentData['submission_date'] = request()->submission_date;
         $studentData['status'] = 'approved';
+        $studentData['type'] = 'fyp';
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
-            Storage::disk('local')->delete('public/uploads/'.$project->upload_research);
-            $newResearchName = uniqid('research-project-') . '.' . $upload_research->getClientOriginalExtension();
+            Storage::disk('local')->delete('public/uploads/'.$proposal->upload_research);
+            $newResearchName = uniqid('research-proposal-') . '.' . $upload_research->getClientOriginalExtension();
             if(!File::isDirectory(storage_path('app/public/uploads'))){
                 File::makeDirectory(storage_path('app/public/uploads'),0755, true);
             }
             Storage::putFileAs('public/uploads',$upload_research,$newResearchName);
             $studentData['upload_research'] = $newResearchName;
         } else {
-            $studentData['upload_research'] = $project->upload_research;
+            $studentData['upload_research'] = $proposal->upload_research;
         }
 
-        $project->update($studentData);
+        $proposal->update($studentData);
 
-        return redirect('/admin/research-projects')->with('success','Successfully updated.');
+        return redirect('/admin/fyp-proposals')->with('success','Successfully updated.');
     }
 
-    public function researchDetail($researchId){
-        $project = ResearchProject::with('getUser')->where('id',$researchId)->whereHas('getUser')->first();
-        return view('cms.student.research-project.detail', compact('project'));
+    public function proposalDetail($proposalId){
+        $proposal = ResearchProposal::with('getUser')->where('id',$proposalId)->whereHas('getUser')->first();
+        return view('cms.student.proposal.fyp.detail', compact('proposal'));
     }
 
-    public function changeStatus($researchId, $status)
+    public function changeProposalStatus($proposalId, $status)
     {
-        $research = ResearchProject::findOrFail($researchId);
+        $research = ResearchProposal::findOrFail($proposalId);
 
         $status === "approved" ? $flag = 'approved' : $flag = 'rejected';
 
@@ -140,36 +141,11 @@ class ResearchProjectController extends Controller
 
         Notification::create([
             'user_id' => $research->user_id,
-            'type' => 'status-project-proposal',
-            'message' => " project proposal request has been {$flag}."
+            'type' => 'status-fyp-proposal',
+            'message' => " fyp proposal request has been {$flag}."
         ]);
 
-        event(new StatusChanged('project-proposal',$research));
+        event(new StatusChanged('fyp-proposal',$research));
         return response()->json(['msg' => "Successfully status updated", 'status' => ucfirst($flag)]);
-    }
-
-    public function uploadResearchTemplate(){
-        return view('cms.upload-content.research-project');
-    }
-
-    public function uploadResearchTemplateData(){
-        request()->validate([
-            'template' => 'required|file|mimes:doc,pdf,docx',
-        ]);
-
-        $template = request()->file('template');
-        $newResearchName = '';
-
-        if (!empty($template)) {
-            $newResearchName = 'project-proposal-' . Carbon::now()->timestamp . '.' . $template->getClientOriginalExtension();
-            $template->storeAs('/public/uploads', $newResearchName);
-        }
-
-        UploadSample::create([
-            'type' => 'project-proposal-form',
-            'name' => $newResearchName
-        ]);
-
-        return redirect('/admin/upload-samples')->with('success','Successfully uploaded.');
     }
 }

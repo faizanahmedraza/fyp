@@ -13,17 +13,17 @@ class ResearchProject extends Model
 
     protected $fillable = [
         'user_id',
-        'title',
-        'investigator_details',
-        'abstract',
-        'agency',
-        'amount',
-        'submission_date',
-        'upload_research',
-        'status',
+        'research_proposal_id',
+        'upload_project',
+        'type',
+        'status'
     ];
 
     public function getUser(){
-        return $this->hasOne(User::class,'id','user_id');
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+
+    public function getProposal(){
+        return $this->belongsTo(ResearchProposal::class,'research_proposal_id','id');
     }
 }

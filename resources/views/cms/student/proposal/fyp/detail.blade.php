@@ -10,10 +10,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Research Project Proposal Detail</h4>
+                                    <h4 class="card-title">Fyp Proposal Detail</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/admin/research-projects" class="btn btn-primary float-right">←
+                                    <a href="/admin/fyp-proposals" class="btn btn-primary float-right">←
                                         Back</a>
                                 </div>
                             </div>
@@ -27,7 +27,7 @@
                                                 <div class="form-group col-md-12">
                                                     <label>Student Name </label>
                                                     <input type="text" class="form-control rounded"
-                                                           value="{{ $project->getUser->full_name }}" readonly>
+                                                           value="{{ $proposal->getUser->full_name }}" readonly>
                                                 </div>
                                             </div>
 
@@ -35,12 +35,12 @@
                                                 <div class="form-group col-md-6">
                                                     <label>Title </label>
                                                     <input type="text" class="form-control rounded"
-                                                           value="{{ $project->title }}" readonly>
+                                                           value="{{ $proposal->title }}" readonly>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Principal and Co-Principal Investigator Details</label>
                                                     <input type="investigator_details" class="form-control rounded"
-                                                           value="{{ $project->investigator_details }}" readonly>
+                                                           value="{{ $proposal->investigator_details }}" readonly>
                                                 </div>
                                             </div>
 
@@ -48,13 +48,13 @@
                                                 <div class="form-group col-md-6">
                                                     <label>Abstract </label>
                                                     <input type="text" class="form-control rounded"
-                                                           value="{{ $project->abstract }}" readonly>
+                                                           value="{{ $proposal->abstract }}" readonly>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label>Agency where project
+                                                    <label>Agency where proposal
                                                         submitted </label>
                                                     <input type="text" class="form-control rounded"
-                                                           value="{{ $project->agency }}" readonly>
+                                                           value="{{ $proposal->agency }}" readonly>
                                                 </div>
                                             </div>
 
@@ -62,19 +62,19 @@
                                                 <div class="form-group col-md-6">
                                                     <label>Amount Requested </label>
                                                     <input type="text" class="form-control rounded"
-                                                           value="{{ $project->amount }}" readonly>
+                                                           value="{{ $proposal->amount }}" readonly>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Date of submission </label>
                                                     <input type="text"
                                                            class="form-control rounded"
-                                                           value="{{ $project->submission_date }}" readonly>
+                                                           value="{{ $proposal->submission_date }}" readonly>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <a href="{{\Illuminate\Support\Facades\Storage::url('uploads/'.$project->upload_research)}}" target="_blank" class="btn btn-dark btn-lg">
+                                                    <a href="{{\Illuminate\Support\Facades\Storage::url('uploads/'.$proposal->upload_research)}}" target="_blank" class="btn btn-dark btn-lg">
                                                         Check
                                                         your uploaded
                                                         file</a>
@@ -83,7 +83,7 @@
                                                     <label>This application is ?</label>
                                                     <input type="text"
                                                            class="form-control rounded"
-                                                           value="{{ $project->status }}" readonly>
+                                                           value="{{ $proposal->status }}" readonly>
                                                 </div>
                                             </div>
                                         </form>

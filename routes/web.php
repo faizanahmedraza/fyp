@@ -74,29 +74,42 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
         Route::get('/delete-upload-sample/{uploadId}', 'UploadSampleController@deleteUpload');
 
         Route::namespace('Student')->group(function () {
-            Route::get('/research-projects', 'ResearchProjectController@index');
-            Route::get('/add-research-project', 'ResearchProjectController@addResearch');
-            Route::post('/add-research-project', 'ResearchProjectController@addResearchData');
-            Route::get('/update-research-project/{researchId}', 'ResearchProjectController@updateResearch');
-            Route::post('/update-research-project/{researchId}', 'ResearchProjectController@updateResearchData');
-            Route::get('/research-project-detail/{researchId}', 'ResearchProjectController@researchDetail');
-            Route::get('/research-project-change-status/{researchId}/{status}', 'ResearchProjectController@changeStatus');
-            Route::get('/add-rp-template', 'ResearchProjectController@uploadResearchTemplate');
-            Route::post('/add-rp-template', 'ResearchProjectController@uploadResearchTemplateData');
+            Route::get('/fyp-proposals', 'FypProposalController@index');
+            Route::get('/fyp-proposals/add', 'FypProposalController@addProposal');
+            Route::post('/fyp-proposals/add', 'FypProposalController@addProposalData');
+            Route::get('/fyp-proposals/{proposalId}/update', 'FypProposalController@updateProposal');
+            Route::post('/fyp-proposals/{proposalId}/update', 'FypProposalController@updateProposalData');
+            Route::get('/fyp-proposals/{proposalId}/detail', 'FypProposalController@proposalDetail');
+            Route::get('/fyp-proposals/{proposalId}/{status}', 'FypProposalController@changeStatus');
 
-            Route::get('/apply-for-funds', 'ApplyForFundController@index');
-            Route::get('/apply-for-funds/create', 'ApplyForFundController@index');
-            Route::post('/apply-for-funds/create', 'ApplyForFundController@index');
-            Route::post('/apply-for-funds/update/{fundId}', 'ApplyForFundController@index');
-            Route::put('/apply-for-funds/update/{fundId}', 'ApplyForFundController@index');
-            Route::get('/apply-for-funds/{fundId}/{status}', 'ApplyForFundController@changeStatus');
+            Route::get('/funded-proposals', 'FundedProposalController@index');
+            Route::get('/funded-proposals/add', 'FundedProposalController@addProposal');
+            Route::post('/funded-proposals/add', 'FundedProposalController@addProposalData');
+            Route::get('/funded-proposals/{proposalId}/update', 'FundedProposalController@updateProposal');
+            Route::post('/funded-proposals/{proposalId}/update', 'FundedProposalController@updateProposalData');
+            Route::get('/funded-proposals/{proposalId}/detail', 'FundedProposalController@proposalDetail');
+            Route::get('/funded-proposals/{proposalId}/{status}', 'FundedProposalController@proposalChangeStatus');
 
-            Route::get('/project-submissions', 'ProjectSubmissionController@index');
-            Route::get('/project-submissions/create', 'ProjectSubmissionController@index');
-            Route::post('/project-submissions/create', 'ProjectSubmissionController@index');
-            Route::post('/project-submissions/update/{projectId}', 'ProjectSubmissionController@index');
-            Route::put('/project-submissions/update/{projectId}', 'ProjectSubmissionController@index');
-            Route::get('/project-submissions/{projectId}/{status}', 'ProjectSubmissionController@changeStatus');
+            Route::get('/fyp-projects', 'FypProjectController@index');
+            Route::get('/fyp-projects/add', 'FypProjectController@addProject');
+            Route::post('/fyp-projects/add', 'FypProjectController@addProjectData');
+            Route::get('/fyp-projects/{projectId}/update', 'FypProjectController@updateProject');
+            Route::post('/fyp-projects/{projectId}/update', 'FypProjectController@updateProjectData');
+            Route::get('/fyp-projects/{projectId}/detail', 'FypProjectController@projectDetail');
+            Route::get('/fyp-projects/{projectId}/{status}', 'FypProjectController@projectChangeStatus');
+
+            Route::get('/funded-projects', 'FundedProjectController@index');
+            Route::get('/funded-projects/add', 'FundedProjectController@addProject');
+            Route::post('/funded-projects/add', 'FundedProjectController@addProjectData');
+            Route::get('/funded-projects/{projectId}/update', 'FundedProjectController@updateProject');
+            Route::post('/funded-projects/{projectId}/update', 'FundedProjectController@updateProjectData');
+            Route::get('/funded-projects/{projectId}/detail', 'FundedProjectController@projectDetail');
+            Route::get('/funded-projects/{projectId}/{status}', 'FundedProjectController@projectChangeStatus');
+
+            Route::get('/research-proposal-template', 'UploadProposalTemplate@index');
+            Route::get('/research-proposal-template/add', 'UploadProposalTemplate@uploadResearchTemplate');
+            Route::post('/research-proposal-template/add', 'UploadProposalTemplate@uploadResearchTemplateData');
+            Route::get('/research-proposal-template/{templateId}/delete', 'UploadProposalTemplate@deleteResearchTemplate');
         });
 
         Route::namespace('FrontEnd')->prefix('website/pages')->name('website.page.')->group(function () {

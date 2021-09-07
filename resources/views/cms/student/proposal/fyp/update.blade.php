@@ -15,10 +15,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Update Research Project Proposal</h4>
+                                    <h4 class="card-title">Update Fyp Proposal</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/admin/research-projects" class="btn btn-primary float-right">← Back</a>
+                                    <a href="/admin/fyp-proposals" class="btn btn-primary float-right">← Back</a>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 @endif
                                 <div class="row">
                                     <div class="col-12">
-                                        <form action="/admin/update-research-project/{{$project->id}}" method="POST" enctype="multipart/form-data">
+                                        <form action="/admin/fyp-proposals/{{$proposal->id}}/update" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @if($errors->any())
                                                 <div class="alert alert-danger">
@@ -49,11 +49,9 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="user_id">Student Name <span
+                                                    <label>Student Name <span
                                                                 class="required-class">*</span></label>
-                                                    <input type="text" class="form-control rounded" id="user_id"
-                                                           name="user_id" placeholder="Enter Student Name"
-                                                           value="{{ old('user_id',$project->getUser->full_name) }}" readonly>
+                                                    <input type="text" class="form-control rounded" value="{{ $proposal->getUser->full_name ?? '' }}" readonly>
                                                 </div>
                                             </div>
 
@@ -63,7 +61,7 @@
                                                                 class="required-class">*</span></label>
                                                     <input type="text" class="form-control rounded" id="title"
                                                            name="title" placeholder="Enter Title"
-                                                           value="{{ old('title',$project->title) }}">
+                                                           value="{{ old('title',$proposal->title) }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="investigator_details">Principal and Co-Principal Details
@@ -73,7 +71,7 @@
                                                            id="investigator_details"
                                                            name="investigator_details"
                                                            placeholder="Enter Principal and Co-Principal Investigator Details"
-                                                           value="{{ old('investigator_details',$project->investigator_details) }}">
+                                                           value="{{ old('investigator_details',$proposal->investigator_details) }}">
                                                 </div>
                                             </div>
 
@@ -83,15 +81,15 @@
                                                     <input type="text" class="form-control rounded"
                                                            id="abstract" name="abstract"
                                                            placeholder="Enter Abstract"
-                                                           value="{{ old('abstract',$project->abstract) }}">
+                                                           value="{{ old('abstract',$proposal->abstract) }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="agency">Agency where project
+                                                    <label for="agency">Agency where proposal
                                                         submitted </label>
                                                     <input type="text" class="form-control rounded"
                                                            id="agency" name="agency"
                                                            placeholder="Enter Agency Where Project Submitted"
-                                                           value="{{ old('agency',$project->agency) }}">
+                                                           value="{{ old('agency',$proposal->agency) }}">
                                                 </div>
                                             </div>
 
@@ -101,12 +99,12 @@
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="amount" name="amount"
                                                            placeholder="Enter Account Requested"
-                                                           value="{{ old('amount',$project->amount) }}">
+                                                           value="{{ old('amount',$proposal->amount) }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="submission_date">Date of submission </label>
                                                     <input type="text" name="submission_date"
-                                                           id="submission_date_id" value="{{ old('submission_date',$project->submission_date) }}"
+                                                           id="submission_date_id" value="{{ old('submission_date',$proposal->submission_date) }}"
                                                            class="form-control read-only-background"
                                                            placeholder="Enter Date" readonly>
                                                 </div>
@@ -114,7 +112,7 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <a href="{{\Illuminate\Support\Facades\Storage::url('uploads/'.$project->upload_research)}}" target="_blank" class="btn btn-dark btn-lg">
+                                                    <a href="{{\Illuminate\Support\Facades\Storage::url('uploads/'.$proposal->upload_research)}}" target="_blank" class="btn btn-dark btn-lg">
                                                         Check
                                                         your uploaded
                                                         file</a>
@@ -123,8 +121,8 @@
                                                     <label for="upload_research">Upload Project Proposal</label>
                                                     <input type="file" name="upload_research"
                                                            class="form-control"
-                                                           accept=".docx,.pdf" id="upload_project"
-                                                           value="{{ old('upload_research',$project->upload_research) }}">
+                                                           accept=".docx,.pdf" id="upload_proposal"
+                                                           value="{{ old('upload_research',$proposal->upload_research) }}">
                                                 </div>
                                             </div>
 
@@ -146,7 +144,7 @@
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
     <script>
-        oldSubmissionDate = '{{ old('submission_date',$project->submission_date) }}';
+        oldSubmissionDate = '{{ old('submission_date',$proposal->submission_date) }}';
         $(function () {
             $(".allowNumberOnly").keypress(function (e) {
                 if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {

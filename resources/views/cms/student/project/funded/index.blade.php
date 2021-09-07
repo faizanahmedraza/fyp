@@ -15,10 +15,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Research Projects Proposal</h4>
+                                    <h4 class="card-title">Funded Projects</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/admin/add-research-project" class="btn btn-primary float-right">Add
+                                    <a href="/admin/funded-projects/add" class="btn btn-primary float-right">Add
                                         +</a>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                 <table class="display table dataTable table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th colspan="1" style="width: 10%">ID#</th>
+                                        <th colspan="1" style="width: 20px;">ID#</th>
                                         <th>Title</th>
                                         <th>Student Name</th>
                                         <th>Status</th>
@@ -69,11 +69,11 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="/admin/research-project-detail/{{$project->id}}"
+                                                    <a href="/admin/funded-projects/{{$project->id}}/detail"
                                                        class="btn btn-info btn-sm">Detail</a>
                                                     @if($project->status === 'pending')
                                                         @can('research-project-update')
-                                                            <a href="/admin/update-research-project/{{$project->id}}"
+                                                            <a href="/admin/funded-projects/{{$project->id}}/update"
                                                                class="btn btn-info btn-sm">Update</a>
                                                         @endcan
                                                     @endif
@@ -113,7 +113,7 @@
                 closeOnClickOutside: false
             }).then((response) => {
                 if (response) {
-                    axios.get(`/admin/research-project-change-status/${projectId}/${status}`).then((response) => {
+                    axios.get(`/admin/funded-projects/${projectId}/${status}`).then((response) => {
                             if (response) {
                                 swal({
                                     title: response.data.msg,
