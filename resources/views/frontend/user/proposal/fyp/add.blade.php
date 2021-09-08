@@ -15,10 +15,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Add Research Project Proposal</h4>
+                                    <h4 class="card-title">Add Fyp Proposal</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/user/student-research-proposals" class="btn btn-primary float-right">← Back</a>
+                                    <a href="/user/fyp-proposals" class="btn btn-primary float-right">← Back</a>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 @endif
                                 <div class="row">
                                     <div class="col-12">
-                                        <form action="/user/student-add-research-proposal" method="POST" enctype="multipart/form-data">
+                                        <form action="/user/fyp-proposals/add" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @if($errors->any())
                                                 <div class="alert alert-danger">
@@ -48,12 +48,12 @@
                                             @endif
 
                                             <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <a href="/user/student-research-proposal-template"
-                                                       class="btn btn-outline-primary">Download Template</a>
+                                                <div class="form-group col-md-12">
+                                                    <label>Student Name <span
+                                                                class="required-class">*</span></label>
+                                                    <input type="text" class="form-control rounded" value="{{ $user->full_name ?? '' }}" readonly>
                                                 </div>
                                             </div>
-
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
@@ -77,8 +77,7 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="abstract">Abstract <span
-                                                                class="required-class">*</span></label>
+                                                    <label for="abstract">Abstract </label>
                                                     <input type="text" class="form-control rounded"
                                                            id="abstract" name="abstract"
                                                            placeholder="Enter Abstract"
@@ -86,8 +85,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="agency">Agency where project
-                                                        submitted <span
-                                                                class="required-class">*</span></label>
+                                                        submitted </label>
                                                     <input type="text" class="form-control rounded"
                                                            id="agency" name="agency"
                                                            placeholder="Enter Agency Where Project Submitted"
@@ -97,16 +95,14 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="amount">Amount Requested <span
-                                                                class="required-class">*</span></label>
+                                                    <label for="amount">Amount Requested </label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
                                                            id="amount" name="amount"
                                                            placeholder="Enter Account Requested"
                                                            value="{{ old('amount') }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="submission_date">Date of submission <span
-                                                                class="required-class">*</span></label>
+                                                    <label for="submission_date">Date of submission </label>
                                                     <input type="text" name="submission_date"
                                                            id="submission_date_id" value=""
                                                            class="form-control read-only-background"
@@ -116,8 +112,7 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="upload_research">Upload Project <span
-                                                                class="required-class">*</span></label>
+                                                    <label for="upload_research">Upload Project Proposal</label>
                                                     <input type="file" name="upload_research"
                                                            class="form-control"
                                                            accept=".docx,.pdf" id="upload_project"
@@ -125,7 +120,9 @@
                                                 </div>
                                             </div>
 
-                                            <button type="submit" class="btn btn-primary">Save</button>
+
+
+                                            <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>
                                     </div>
                                 </div>
@@ -151,7 +148,7 @@
                 }
             });
 
-            $('input[name="submission_date"]').val(oldSubmissionDate);
+            $('input[name="submission_date"]').val();
 
 
             $('input[name="submission_date"]').datepicker({

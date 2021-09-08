@@ -53,7 +53,6 @@ class FundedProjectController extends Controller
         $studentData['user_id'] = (int)request()->student_name;
         $studentData['title'] = (int)request()->proposal_title;
         $studentData['submission_date'] = request()->submission_date;
-        $studentData['status'] = 'approved';
         $studentData['type'] = 'funded';
         $upload_project = request()->file('upload_project');
 
@@ -88,7 +87,6 @@ class FundedProjectController extends Controller
         $studentData['user_id'] = $proposal->user_id;
         $studentData['research_proposal_id'] = $proposal->research_proposal_id;
         $studentData['submission_date'] = request()->submission_date;
-        $studentData['status'] = 'approved';
         $studentData['type'] = 'funded';
         $upload_project = request()->file('upload_project');
 
@@ -112,25 +110,5 @@ class FundedProjectController extends Controller
     public function projectDetail($projectId){
         $project = ResearchProject::with('getUser')->where('id',$projectId)->whereHas('getUser')->first();
         return view('cms.student.project.funded.detail', compact('project'));
-    }
-
-    public function changeProjectStatus($projectId, $status)
-    {
-        $project = ResearchProject::findOrFail($projectId);
-
-        $status === "approved" ? $flag = 'approved' : $flag = 'rejected';
-
-        $project->update([
-            'status' => $flag
-        ]);
-
-        Notification::create([
-            'user_id' => $project->user_id,
-            'type' => 'status-funded-project',
-            'message' => " funded project request has been {$flag}."
-        ]);
-
-        event(new StatusChanged('funded-project',$project));
-        return response()->json(['msg' => "Successfully status updated", 'status' => ucfirst($flag)]);
     }
 }

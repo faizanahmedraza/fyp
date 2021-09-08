@@ -15,10 +15,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Research Projects</h4>
+                                    <h4 class="card-title">Fyp Proposals</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/user/student-add-research-proposal" class="btn btn-primary float-right">Add
+                                    <a href="/user/fyp-proposals/add" class="btn btn-primary float-right">Add
                                         +</a>
                                 </div>
                             </div>
@@ -36,27 +36,34 @@
                                 <table class="display table dataTable table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>ID#</th>
+                                        <th colspan="1" style="width: 20px;">ID#</th>
                                         <th>Title</th>
-                                        <th>Application Submitted</th>
+                                        <th>Student Name</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if(count($projects) > 0)
-                                        @foreach($projects as $key => $project)
+                                    @if(count($proposals) > 0)
+                                        @foreach($proposals as $key => $proposal)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $project->title }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($project->submission_date,'UTC')->isoFormat('MMMM Do YYYY') }}</td>
+                                                <td>{{ $proposal->title }}</td>
+                                                <td>{{ $proposal->getUser->full_name }}</td>
                                                 <td>
-                                                    <button class="btn btn-dark btn-sm"
-                                                            disabled>{{ ucfirst($project->status) }}</button>
+                                                    <button href="javascript:void(0);"
+                                                            class="btn btn-dark btn-sm"
+                                                            disabled>{{ ucfirst($proposal->status) }}</button>
                                                 </td>
                                                 <td>
-                                                    <a href="/user/student-research-proposal/detail/{{$project->id}}"
+                                                    <a href="/user/fyp-proposals/{{$proposal->id}}/detail"
                                                        class="btn btn-info btn-sm">Detail</a>
+                                                    @if($proposal->status === 'pending')
+                                                        @can('research-proposal-update')
+                                                            <a href="/user/fyp-proposals/{{$proposal->id}}/update"
+                                                               class="btn btn-info btn-sm">Update</a>
+                                                        @endcan
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -75,6 +82,8 @@
 @endsection
 
 @push('scripts')
+    <script src="/assets/js/axios.min.js"></script>
+    <script src="/assets/js/sweetalert.min.js"></script>
     <script src="/assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
     <script src="/assets/vendors/datatable/js/dataTables.bootstrap4.min.js"></script>
     <script>

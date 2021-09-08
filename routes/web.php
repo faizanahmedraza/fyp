@@ -276,49 +276,40 @@ Route::namespace('FrontEnd')->group(function () {
         Route::get('/register-intern/{internshipId}', 'InternShipController@authUserInternRegister');
 
         Route::namespace('User')->group(function () {
-            Route::get('/student-research-proposals', 'StudentProposalController@index');
-            Route::get('/student-add-research-proposal', 'StudentProposalController@addStudentResearch');
-            Route::post('/student-add-research-proposal', 'StudentProposalController@addStudentResearchData');
-            Route::get('/student-research-proposal/detail/{researchId}', 'StudentProposalController@detailStudentResearch');
-            Route::get('/student-research-proposal-template', 'StudentProposalController@downloadTemplate');
+            Route::get('/fyp-proposals', 'FypProposalController@index');
+            Route::get('/fyp-proposals/add', 'FypProposalController@addProposal');
+            Route::post('/fyp-proposals/add', 'FypProposalController@addProposalData');
+            Route::get('/fyp-proposals/{proposalId}/update', 'FypProposalController@updateProposal');
+            Route::post('/fyp-proposals/{proposalId}/update', 'FypProposalController@updateProposalData');
+            Route::get('/fyp-proposals/{proposalId}/detail', 'FypProposalController@proposalDetail');
+            Route::get('/fyp-proposals/{proposalId}/{status}', 'FypProposalController@changeStatus');
+            Route::get('/fyp-proposals/template', 'FypProposalController@downloadTemplate');
 
-            Route::get('/researcher-research-proposals', 'ResearcherProposalController@index');
-            Route::get('/researcher-add-research-proposal', 'ResearcherProposalController@addResearcherResearch');
-            Route::post('/researcher-add-research-proposal', 'ResearcherProposalController@addResearcherResearchData');
-            Route::get('/researcher-research-proposal/detail/{researchId}', 'ResearcherProposalController@detailResearcherResearch');
-            Route::get('/researcher-research-proposal-template', 'ResearcherProposalController@downloadTemplate');
+            Route::get('/funded-proposals', 'FundedProposalController@index');
+            Route::get('/funded-proposals/add', 'FundedProposalController@addProposal');
+            Route::post('/funded-proposals/add', 'FundedProposalController@addProposalData');
+            Route::get('/funded-proposals/{proposalId}/update', 'FundedProposalController@updateProposal');
+            Route::post('/funded-proposals/{proposalId}/update', 'FundedProposalController@updateProposalData');
+            Route::get('/funded-proposals/{proposalId}/detail', 'FundedProposalController@proposalDetail');
+            Route::get('/funded-proposals/{proposalId}/{status}', 'FundedProposalController@proposalChangeStatus');
+            Route::get('/funded-proposals/template', 'FundedProposalController@downloadTemplate');
 
-            Route::get('/faculty-research-proposals', 'FacultyProposalController@index');
-            Route::get('/faculty-add-research-proposal', 'FacultyProposalController@addFacultyResearch');
-            Route::post('/faculty-add-research-proposal', 'FacultyProposalController@addFacultyResearchData');
-            Route::get('/faculty-research-proposal/detail/{researchId}', 'FacultyProposalController@detailFacultyResearch');
-            Route::get('/faculty-research-proposal-template', 'FacultyProposalController@downloadTemplate');
+            Route::get('/fyp-projects', 'FypProjectController@index');
+            Route::get('/fyp-projects/add', 'FypProjectController@addProject');
+            Route::post('/fyp-projects/add', 'FypProjectController@addProjectData');
+            Route::get('/fyp-projects/{projectId}/update', 'FypProjectController@updateProject');
+            Route::post('/fyp-projects/{projectId}/update', 'FypProjectController@updateProjectData');
+            Route::get('/fyp-projects/{projectId}/detail', 'FypProjectController@projectDetail');
+            Route::get('/fyp-projects/{projectId}/{status}', 'FypProjectController@projectChangeStatus');
 
-            Route::get('/focal-person-research-proposals', 'FocalPersonProposalController@index');
-            Route::get('/focal-person-add-research-proposal', 'FocalPersonProposalController@addFocalPersonResearch');
-            Route::post('/focal-person-add-research-proposal', 'FocalPersonProposalController@addFocalPersonResearchData');
-            Route::get('/focal-person-research-proposal/detail/{researchId}', 'FocalPersonProposalController@detailFocalPersonResearch');
-            Route::get('/focal-person-research-proposal-template', 'FocalPersonProposalController@downloadTemplate');
+            Route::get('/funded-projects', 'FundedProjectController@index');
+            Route::get('/funded-projects/add', 'FundedProjectController@addProject');
+            Route::post('/funded-projects/add', 'FundedProjectController@addProjectData');
+            Route::get('/funded-projects/{projectId}/update', 'FundedProjectController@updateProject');
+            Route::post('/funded-projects/{projectId}/update', 'FundedProjectController@updateProjectData');
+            Route::get('/funded-projects/{projectId}/detail', 'FundedProjectController@projectDetail');
+            Route::get('/funded-projects/{projectId}/{status}', 'FundedProjectController@projectChangeStatus');
 
-            Route::get('/oric-member-research-proposals', 'OricMemeberController@index');
-            Route::get('/oric-member-add-research-proposal', 'OricMemeberController@addOricMemberResearch');
-            Route::post('/oric-member-add-research-proposal', 'OricMemeberController@addOricMemberResearchData');
-            Route::get('/oric-member-research-proposal/detail/{researchId}', 'OricMemeberController@detailOricMemberResearch');
-            Route::get('/oric-member-research-proposal-template', 'OricMemeberController@downloadTemplate');
-
-            Route::get('/apply-for-funds', 'ApplyForFundController@index');
-            Route::get('/apply-for-funds/create', 'ApplyForFundController@index');
-            Route::post('/apply-for-funds/create', 'ApplyForFundController@index');
-            Route::post('/apply-for-funds/update/{fundId}', 'ApplyForFundController@index');
-            Route::put('/apply-for-funds/update/{fundId}', 'ApplyForFundController@index');
-            Route::get('/apply-for-funds/{fundId}/{status}', 'ApplyForFundController@changeStatus');
-
-            Route::get('/project-submissions', 'ProjectSubmissionController@index');
-            Route::get('/project-submissions/create', 'ProjectSubmissionController@index');
-            Route::post('/project-submissions/create', 'ProjectSubmissionController@index');
-            Route::post('/project-submissions/update/{projectId}', 'ProjectSubmissionController@index');
-            Route::put('/project-submissions/update/{projectId}', 'ProjectSubmissionController@index');
-            Route::get('/project-submissions/{projectId}/{status}', 'ProjectSubmissionController@changeStatus');
         });
     });
 });

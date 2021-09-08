@@ -19,9 +19,9 @@
                                                 <i class="fas fa-check fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break">Proposals(Approved)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break">Fyp Proposals(Approved)</span><br>
                                                     </div>
-                                                    <h2 class="card-liner-title text-white">{{ $approvedProposals }}</h2>
+                                                    <h2 class="card-liner-title text-white">{{ $approvedFypProposals }}</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -35,9 +35,9 @@
                                                 <i class="fas fa-times fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break">Proposals(Rejected)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break">Fyp Proposals(Rejected)</span><br>
                                                     </div>
-                                                    <h2 class="card-liner-title text-white">{{ $rejectedProposals }}</h2>
+                                                    <h2 class="card-liner-title text-white">{{ $rejectedFundedProposals }}</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -51,9 +51,9 @@
                                                 <i class="fas fa-check fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break">Projects(Approved)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break">Funded Proposals(Approved)</span><br>
                                                     </div>
-                                                    <h2 class="card-liner-title text-white">0</h2>
+                                                    <h2 class="card-liner-title text-white">{{ $approvedFundedProposals }}</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -67,9 +67,9 @@
                                                 <i class="fas fa-times fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break">Projects(Rejected)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break">Funded Proposals(Rejected)</span><br>
                                                     </div>
-                                                    <h2 class="card-liner-title text-white">0</h2>
+                                                    <h2 class="card-liner-title text-white">{{ $approvedFundedProposals }}</h2>
                                                 </div>
                                             </div>
                                         </div>

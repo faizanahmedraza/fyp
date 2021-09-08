@@ -15,8 +15,7 @@ class ResearchProject extends Model
         'user_id',
         'research_proposal_id',
         'upload_project',
-        'type',
-        'status'
+        'type'
     ];
 
     public function getUser(){

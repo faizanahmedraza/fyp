@@ -11,44 +11,24 @@
                     </li>
                 </ul>
             </li>
+            <li class="dropdown"><a href="javascript:void(0);"> Proposal</a>
+                <ul>
+                    <li class="{{ (request()->is('user/fyp-proposals*')) ? 'active' : '' }}"><a
+                                class="text-nowrap" href="/user/fyp-proposals"><i
+                                    class="fas fa-scroll fa-fw"></i>Fyp Proposals</a></li>
+                    <li class="{{ (request()->is('user/funded-proposals*')) ? 'active' : '' }}"><a
+                                class="text-nowrap" href="/user/funded-proposals"><i
+                                    class="fas fa-scroll fa-fw"></i>Funded Proposals</a></li>
+                </ul>
+            </li>
             <li class="dropdown"><a href="javascript:void(0);"> Project</a>
                 <ul>
-                    @can(['student-project-proposal-list'])
-                        <li class="{{ getActiveClass(request()->segment(2),['student']) }}"><a class="text-nowrap"
-                                                                                               href="/user/student-research-proposals"><i
-                                        class="fas fa-scroll fa-fw"></i>
-                                Submit Proposal</a></li>
-                    @endcan
-                    @can(['researcher-project-proposal-list'])
-                        <li class="{{ getActiveClass(request()->segment(2),['researcher']) }}"><a class="text-nowrap"
-                                                                                                  href="/user/researcher-research-proposals"><i
-                                        class="fas fa-scroll fa-fw"></i>
-                                Submit Proposal</a></li>
-                    @endcan
-                    @can(['focal-person-project-proposal-list'])
-                        <li class="{{ getActiveClass(request()->segment(2),['focal']) }}"><a class="text-nowrap"
-                                                                                             href="/user/focal-person-research-proposals"><i
-                                        class="fas fa-scroll fa-fw"></i>
-                                Submit Proposal</a></li>
-                    @endcan
-                    @can(['faculty-project-proposal-list'])
-                        <li class="{{ getActiveClass(request()->segment(2),['faculty']) }}"><a class="text-nowrap"
-                                                                                               href="/user/faculty-research-proposals"><i
-                                        class="fas fa-scroll fa-fw"></i>
-                                Submit Proposal</a></li>
-                    @endcan
-                    @can(['oric-member-project-proposal-list'])
-                        <li class="{{ getActiveClass(request()->segment(2),['oric']) }}"><a class="text-nowrap"
-                                                                                            href="/user/oric-member-research-proposals"><i
-                                        class="fas fa-scroll fa-fw"></i>
-                                Submit Proposal</a></li>
-                    @endcan
-                    <li class="{{ getActiveClass(request()->segment(2),['funds']) }}"><a
-                                class="text-nowrap" href="/user/apply-for-funds"><i
-                                    class="fas fa-scroll fa-fw"></i>Funds</a></li>
-                    <li class="{{ getActiveClass(request()->segment(2),['submissions']) }}"><a
-                                class="text-nowrap" href="/user/project-submissions"><i
-                                    class="fas fa-scroll fa-fw"></i>Project Submissions</a></li>
+                    <li class="{{ (request()->is('user/fyp-projects*')) ? 'active' : '' }}"><a
+                                class="text-nowrap" href="/user/fyp-projects"><i
+                                    class="fas fa-scroll fa-fw"></i>Fyp Projects</a></li>
+                    <li class="{{ (request()->is('user/funded-projects*')) ? 'active' : '' }}"><a
+                                class="text-nowrap" href="/user/funded-projects"><i
+                                    class="fas fa-scroll fa-fw"></i>Funded Projects</a></li>
                 </ul>
             </li>
             @can('user-event-list')

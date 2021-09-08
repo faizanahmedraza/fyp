@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\InternShip;
 use App\Models\ResearchProject;
+use App\Models\ResearchProposal;
 use App\Models\User;
 
 class HomeController extends Controller
 {
     public function index(){
         $users = User::with('roles')->get();
-        $proposals = ResearchProject::get();
+        $proposals = ResearchProposal::get();
         $activeUsers = $users->filter(function ($value){
             return $value->is_block === 0;
         })->count();

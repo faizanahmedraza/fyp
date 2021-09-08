@@ -15,10 +15,10 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Research Projects</h4>
+                                    <h4 class="card-title">Funded Proposals</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/user/researcher-add-research-proposal" class="btn btn-primary float-right">Add
+                                    <a href="/user/funded-proposals/add" class="btn btn-primary float-right">Add
                                         +</a>
                                 </div>
                             </div>
@@ -36,27 +36,32 @@
                                 <table class="display table dataTable table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>ID#</th>
+                                        <th colspan="1" style="width: 20px;">ID#</th>
                                         <th>Title</th>
-                                        <th>Application Submitted</th>
+                                        <th>Student Name</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if(count($projects) > 0)
-                                        @foreach($projects as $key => $project)
+                                    @if(count($proposals) > 0)
+                                        @foreach($proposals as $key => $proposal)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $project->title }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($project->submission_date,'UTC')->isoFormat('MMMM Do YYYY') }}</td>
+                                                <td>{{ $proposal->title }}</td>
+                                                <td>{{ $proposal->getUser->full_name }}</td>
                                                 <td>
-                                                    <button class="btn btn-dark btn-sm"
-                                                            disabled>{{ ucfirst($project->status) }}</button>
+                                                    <button href="javascript:void(0);"
+                                                            class="btn btn-dark btn-sm"
+                                                            disabled>{{ ucfirst($proposal->status) }}</button>
                                                 </td>
                                                 <td>
-                                                    <a href="/user/researcher-research-proposal/detail/{{$project->id}}"
+                                                    <a href="/user/funded-proposals/{{$proposal->id}}/detail"
                                                        class="btn btn-info btn-sm">Detail</a>
+                                                    @if($proposal->status === 'pending')
+                                                            <a href="/user/funded-proposals/{{$proposal->id}}/update"
+                                                               class="btn btn-info btn-sm">Update</a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
