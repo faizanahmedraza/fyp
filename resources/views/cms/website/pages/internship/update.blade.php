@@ -17,7 +17,7 @@
                                     <h4 class="card-title">Update Internship</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ route('website.page.event') }}" class="btn btn-primary float-right">← Back</a>
+                                    <a href="{{ route('website.page.internship') }}" class="btn btn-primary float-right">← Back</a>
                                 </div>
                             </div>
                         </div>
@@ -74,6 +74,17 @@
 
                                             <div class="row">
                                                 <div class="form-group col-md-12">
+                                                    <label>Company <span class="required-class">*</span></label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control rounded"
+                                                               name="company" placeholder="Enter Company Name"
+                                                               value="{{ old('company',$updateInternship->company) }}" maxlength="55">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
                                                     <label> Education Mode <span class="required-class">*</span></label>
                                                     <select class="form-control" name="mode" id="mode">
                                                         <option value="">Select</option>
@@ -104,6 +115,27 @@
                                                     <div class="input-group">
                                             <textarea name="description" id="description" class="form-control"
                                                       placeholder="Enter Description" rows="3">{{ old('description',$updateInternship->description) }}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label> Duration <span class="required-class">*</span></label>
+                                                    <input type="text" class="form-control" name="duration"
+                                                           value="{{old('duration',$updateInternship->duration)}}" placeholder="Enter Time Duration"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                                        <input type="checkbox" name="paid" value="1"
+                                                               class="custom-control-input"
+                                                               id="is_paid" {{ old('paid',$updateInternship->paid) == 1 ? 'checked' : ''  }}>
+                                                        <label class="custom-control-label"
+                                                               for="is_paid">Is Paid <span
+                                                                    class="required-class">*</span></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -146,6 +178,16 @@
                 } else {
                     $("#location").show();
                 }
+            });
+            $('input[name="duration"]').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            }).on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
+            }).on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
             });
         });
     </script>

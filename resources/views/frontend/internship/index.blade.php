@@ -16,21 +16,31 @@
                                                  alt="" class="img-fluid"
                                                  style="min-height:230px!important; max-height: 230px!important;">
                                         </div>
+                                        <div class="like"><i
+                                                    class="ion ion-clock"></i>
+                                            @php
+                                                $date = explode(' - ',$val->duration);
+                                                $startDate = \Carbon\Carbon::parse(trim($date[0]),'UTC')->isoFormat('ll');
+                                                $endDate = \Carbon\Carbon::parse(trim($date[1]),'UTC')->isoFormat('ll');
+                                            @endphp
+
+                                            {{ $startDate .' to '. $endDate}}
+                                        </div>
                                     </div>
                                     <div class="card-body"
                                          style="min-height: 270px!important; max-height: 270px!important;">
-                                        <h5 class="card-title mb-3 mt-2">{{$val->title}}</h5>
+                                        <h5 class="card-title mb-3 mt-2">{{$val->title}} <span style="font-size: 13px;">({{ $val->paid == 1 ? 'Paid' : 'UnPaid' }})</span></h5>
                                         <p class="card-text text-justify"
                                            style="min-height: 60px!important; max-height: 60px!important;">{{Str::limit($val->description,100)}}</p>
                                         <div class="row pt-2"
                                              style="min-height: 76px!important; max-height: 76px!important;">
                                             @if($val->mode === 'Online')
                                                 <div class="col-7">
-                                                    <b><i class="ion ion-android-pin"></i>{{$val->mode}}</b>
+                                                    <b><i class="ion ion-android-pin"></i>{{ $val->company }}</b> <span style="font-size: 13px;">({{$val->mode}})</span>
                                                 </div>
                                             @else
-                                                <div class="col-7 text-justify">
-                                                    <b><i class="ion ion-android-pin"></i> Location</b><br>
+                                                <div class="col-7">
+                                                    <b><i class="ion ion-android-pin"></i>{{ $val->company }}</b> <span style="font-size: 13px;">(Physical)</span><br>
                                                     {{$val->location}}
                                                 </div>
                                             @endif

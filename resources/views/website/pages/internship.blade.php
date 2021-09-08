@@ -27,14 +27,24 @@
                         <div class="news-block-one wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <div class="inner-box">
                                 <div class="image-holder">
-                                    <figure class="image"><a href="/internships/{{$val->slug}}/internship-detail"><img class="cstm-event-img"
-                                                                                                          src="/assets/images/uploads/pages/internship/{{$val->image}}"
-                                                                                                          alt=""></a></figure>
+                                    <figure class="image"><a href="/internships/{{$val->slug}}/internship-detail"><img
+                                                    class="cstm-event-img"
+                                                    src="/assets/images/uploads/pages/internship/{{$val->image}}"
+                                                    alt=""></a></figure>
+
+                                    <div class="date-box w-25">
+                                        @php
+                                            $date = explode(' - ',$val->duration);
+                                            $startDate = \Carbon\Carbon::parse(trim($date[0]),'UTC')->isoFormat('ll');
+                                            $endDate = \Carbon\Carbon::parse(trim($date[1]),'UTC')->isoFormat('ll');
+                                        @endphp
+
+                                        {{ $startDate }} <br/> to <br/> {{$endDate}}                                </div>
                                 </div>
                                 <div class="lower-content" style="height: 300px; padding: 10px 15px;">
                                     <ul class="info-box clearfix mt-1">
                                         <li class="d-flex justify-content-between">
-                                            <a href="javascript:;">{{ $val->title ?? '' }}</a>
+                                            <a href="javascript:;" style="font-size: 20px;">{{ $val->title ?? '' }} <span style="font-size: 13px;">({{ $val->paid == 1 ? 'Paid' : 'UnPaid' }})</span><br/> <span class="pt-0 mt-0" style="font-size: 14px;">{{ $val->company }}</span></a>
                                             @auth
                                                 @if(in_array(Arr::first(Auth::user()->getRoleNames()),['student','researcher','faculty','focal-person','oric-member']))
                                                     @php
@@ -68,9 +78,11 @@
                                         </li>
                                     </ul>
                                     <p>
-                                        <a href="/internships/{{$val->slug}}/internship-detail">{{ Str::limit($val->description,240) ?? '' }}</a>
+                                        <a href="/internships/{{$val->slug}}/internship-detail">{{ Str::limit($val->description,200) ?? '' }}</a>
                                     </p>
-                                    <div class="link-btn" style="padding-left: 100px;"><a href="/internships/{{$val->slug}}/internship-detail" style="padding-left:5px;"><i
+                                    <div class="link-btn" style="padding-left: 100px;"><a
+                                                href="/internships/{{$val->slug}}/internship-detail"
+                                                style="padding-left:5px;"><i
                                                     class="flaticon-right-arrow"></i></a></div>
                                 </div>
                             </div>

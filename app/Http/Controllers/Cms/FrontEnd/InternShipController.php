@@ -36,7 +36,10 @@ class InternShipController extends Controller
             'title' => ['required', 'unique:internships,title,NULL,id,deleted_at,NULL', 'max:100'],
             'description' => ['required', 'max:800'],
             'mode' => ['required', 'in:Online,Physical'],
-            'location' => ['sometimes', 'nullable', 'max:200']
+            'company' => ['required','max:100'],
+            'location' => ['sometimes', 'nullable', 'max:200'],
+            'paid' => ['required', 'boolean'],
+            'duration' => ['required', 'max:30'],
         ]);
 
         if (request()->hasFile('image')) {
@@ -57,8 +60,10 @@ class InternShipController extends Controller
                 'title' => request()->title,
                 'slug' => Str::slug(request()->title),
                 'description' => request()->description,
+                'company' => request()->company,
                 'mode' => request()->mode,
-                'created_by' => Auth::id()
+                'paid' => request()->paid,
+                'duration' => request()->duration
             ]);
         }
         return redirect()->route('website.page.internship')->with('success', 'Your data is successfully added!');
@@ -87,7 +92,10 @@ class InternShipController extends Controller
             'title' => ['required', 'unique:internships,title,' . $internshipId . ',id,deleted_at,NULL', 'max:100'],
             'description' => ['required', 'max:800'],
             'mode' => ['required', 'in:Online,Physical'],
-            'location' => ['sometimes', 'nullable', 'max:200']
+            'company' => ['required','max:100'],
+            'location' => ['sometimes', 'nullable', 'max:200'],
+            'paid' => ['required', 'boolean'],
+            'duration' => ['required', 'max:30'],
         ]);
 
         if (!empty(request()->file('image'))) {
@@ -114,8 +122,10 @@ class InternShipController extends Controller
             'title' => request()->title,
             'slug' => Str::slug(request()->title),
             'description' => request()->description,
+            'company' => request()->company,
             'mode' => request()->mode,
-            'updated_by' => Auth::id()
+            'paid' => request()->paid,
+            'duration' => request()->duration
         ]);
 
         return redirect()->route('website.page.internship')->with('success', 'Your data is successfully updated!');
@@ -129,7 +139,7 @@ class InternShipController extends Controller
 
         if (!empty($updateInternship)) {
             unlink(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image);
-            RegisterIntern::where('event_id',$updateInternship->id)->delete();
+            RegisterIntern::where('event_id', $updateInternship->id)->delete();
             $updateInternship->delete();
             $msg = "Successfully Delete record!";
             $code = 200;

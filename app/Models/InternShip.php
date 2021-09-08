@@ -16,14 +16,15 @@ class InternShip extends Model
         'image',
         'slug',
         'description',
+        'company',
         'mode',
-        'created_by',
-        'updated_by',
+        'paid',
+        'duration'
     ];
     protected $dates = ['deleted_at'];
 
     public function getRegisteredInterns()
     {
-        return $this->hasMany(RegisterIntern::class,'internship_id','id');
+        return $this->hasMany(RegisterIntern::class, 'internship_id', 'id');
     }
 }
