@@ -39,7 +39,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role</th>
-                                        <th>UnBlock / Block</th>
+                                        <th>User Status</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -98,7 +98,9 @@
     <script src="/assets/vendors/datatable/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(function () {
-            $('.table').DataTable();
+            $('.table').DataTable({
+                "order": [[ 1, "asc" ]]
+            });
         });
 
         function blockUser(input, userId, is_block) {

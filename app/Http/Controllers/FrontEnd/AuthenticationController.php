@@ -62,7 +62,7 @@ class AuthenticationController extends Controller
 
     public function registerUser()
     {
-        $roles = Role::whereIn('name', ['researcher', 'student'])->get();
+        $roles = Role::whereIn('name', ['researcher', 'student','oric-member','faculty','focal-person'])->get();
         return view('frontend.authentication.register', compact('roles'));
     }
 
@@ -74,7 +74,7 @@ class AuthenticationController extends Controller
             'email' => 'required|email:rfc|max:255|unique:users,email,NULL,id,first_name,' . request('first_name') . ',last_name,' . request('last_name'),
             'password' => 'required|string|max:255|min:8|confirmed',
             'password_confirmation' => 'required|string|max:255|min:8|max:255',
-            'user_type' => 'required|in:' . implode(',', Role::whereIn('name', ['researcher', 'student'])->pluck('id')->toArray()),
+            'user_type' => 'required|in:' . implode(',', Role::whereIn('name', ['researcher', 'student','oric-member','faculty','focal-person'])->pluck('id')->toArray()),
         ]);
 
         $user = User::create([

@@ -119,13 +119,6 @@
                                                             <label class="form-check-label"
                                                                    for="exampleRadios1">Female</label>
                                                         </div>
-                                                        <div class="custom-control custom-radio custom-control-inline">
-                                                            <input class="form-check-input" type="radio" name="gender"
-                                                                   id="exampleRadios1" value="other"
-                                                                    {{ old('gender') === "other" ? "checked" : ""}}>
-                                                            <label class="form-check-label"
-                                                                   for="exampleRadios1">Other</label>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-6">

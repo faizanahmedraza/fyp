@@ -78,7 +78,9 @@
     <script src="/assets/vendors/datatable/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(function () {
-            $('.table').DataTable();
+            $('.table').DataTable({
+                "order": [[ 1, "asc" ]]
+            });
         });
 
         function deleteRole(input, roleId) {
