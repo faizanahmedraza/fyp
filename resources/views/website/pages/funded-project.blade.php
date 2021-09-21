@@ -6,7 +6,7 @@
 
 @section('content')
     <!--Page Title-->
-    <section class="page-title banner">
+    <section class="page-title banner" style="background-image: url(/assets/website/images/background/page-title.jpg);">
         <div id="particles-js" class="particles-pattern">
             <canvas class="particles-js-canvas-el"></canvas>
         </div>
@@ -15,7 +15,7 @@
                 <h1>Funded Projects</h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="/">Home</a></li>
-                    <li>{{ $resultSet->title }}</li>
+                    <li>{{ $resultSet->title ?? '' }}</li>
                 </ul>
             </div>
         </div>
@@ -66,10 +66,5 @@
                 "info": false,
             });
         });
-        var jsonEncoded = @json($resultSet);
-        var publicpath = "{{ asset('assets/images/uploads/pages') }}";
-        if (jsonEncoded.banner) {
-            $(".banner").css("background-image", "url(" + publicpath + "/" + jsonEncoded.banner + ")");
-        }
     </script>
 @endpush

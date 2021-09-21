@@ -68,11 +68,11 @@ class HomeController extends Controller
         $updateHome = CMSHome::findOrFail($cmsHomeId);
 
         if(!empty(request()->file('banner'))){
-            unlink(givePath() . '/assets/images/uploads/pages/' . $updateHome->banner);
             request()->validate([
                 'banner' => ['required','image','mimes:jpeg,jpg,png,svg','max:2048'],
                 'description' => ['required']
             ]);
+            unlink(givePath() . '/assets/images/uploads/pages/' . $updateHome->banner);
             $img = Image::make(request()->file('banner'));
             $extension = request()->file('banner')->extension();
             $random = Str::random(30);
