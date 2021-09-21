@@ -129,6 +129,8 @@
                     <li class="{{ getActiveClass(request()->segment(4),['our-professors']) }}"><a
                                 href="/admin/website/pages/our-professors"><i
                                     class="fas fa-chalkboard-teacher fa-fw"></i> Our Professors </a></li>
+                    <li class="{{ getActiveClass(request()->segment(4),['inquires']) }}"><a
+                                href="/admin/website/pages/inquiries"><i class="fas fa-question"></i> Inquires </a></li>
                 </ul>
             </li>
             @can('upload-sample-list')

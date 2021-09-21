@@ -1,5 +1,13 @@
 @extends('website.layouts.master')
 
+@push('styles')
+    <style>
+        .sideNavQuickButton {
+            display: none!important;
+        }
+    </style>
+@endpush
+
 @section('content')
     <!-- contact-section -->
     <section class="contact-section sec-pad">
@@ -38,10 +46,33 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 form-column">
                     <div class="form-inner">
-                        <form method="post" action="http://azim.commonsupport.com/Brezok/sendemail.php"
+                        <form method="POST" action="/contact/inquiry"
                               id="contact-form" class="default-form">
+                            @csrf
+                            @if (Session::has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{ Session::get('success') }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+
+                            @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Whoops!</strong>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <div class="form-group">
-                                <input type="text" name="username" placeholder="Your Name" required>
+                                <input type="text" name="name" placeholder="Your Name" required>
                             </div>
                             <div class="form-group">
                                 <input type="email" name="email" placeholder="Email Address" required>
@@ -66,8 +97,6 @@
         </div>
     </section>
     <!-- contact-section end -->
-
-
     <!-- map-section -->
     <section class="map-section">
         <div class="google-map-area">

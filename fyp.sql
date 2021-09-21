@@ -1,0 +1,689 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               5.7.33 - MySQL Community Server (GPL)
+-- Server OS:                    Win64
+-- HeidiSQL Version:             11.2.0.6213
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+-- Dumping structure for table fyp.blog
+CREATE TABLE IF NOT EXISTS `blog` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `image` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `author` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT '0',
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.blog: ~4 rows (approximately)
+/*!40000 ALTER TABLE `blog` DISABLE KEYS */;
+INSERT INTO `blog` (`id`, `image`, `author`, `title`, `slug`, `description`, `is_active`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(12, 'h42mV0GWOcwr8fNpnoiqW4Bw2XJA5K-1624781486.jpg', 'faizan', 'laravel is a best php framework', 'laravel-is-a-best-php-framework', 'dasdsa vdasdas', 1, 1, 1, '2021-06-27 08:11:26', '2021-06-27 08:11:37', NULL),
+	(13, 'XW4oHb7hpJNJIVzR0CvtqjPPD9lhBl-1624781534.jpg', 'SAJJAD', 'laravel is a best php framework TEST', 'laravel-is-a-best-php-framework-test', 'aSASDA EWREWRW EWERQWERQW', 1, 1, 0, '2021-06-27 08:12:14', '2021-06-27 08:12:17', NULL),
+	(14, 'DYpX4ReGGlnAcvP1rxWsJFvGK5N6Fn-1624781565.jpg', 'Umer', 'laravel is a best php framework AST', 'laravel-is-a-best-php-framework-ast', 'ASAS DSADAS EDWAEDWQQ WEQWEWQ', 0, 1, 1, '2021-06-27 08:12:46', '2021-06-27 08:13:45', '2021-06-27 08:13:45'),
+	(15, 'EGEn7g4FbupajPrma1YD6TFMiWc48I-1624781658.jpg', 'Umer', 'laravel is a best php framework AST', 'laravel-is-a-best-php-framework-ast', 'DCADSDASD EDWADASDX EDWQD EWQEWQ', 1, 1, 0, '2021-06-27 08:14:18', '2021-06-27 08:14:23', NULL);
+/*!40000 ALTER TABLE `blog` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.cms_about_us
+CREATE TABLE IF NOT EXISTS `cms_about_us` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` char(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `banner` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vision` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mission` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.cms_about_us: ~0 rows (approximately)
+/*!40000 ALTER TABLE `cms_about_us` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_about_us` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.cms_contact_us
+CREATE TABLE IF NOT EXISTS `cms_contact_us` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` char(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `banner` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `office_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `it_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fax_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.cms_contact_us: ~0 rows (approximately)
+/*!40000 ALTER TABLE `cms_contact_us` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_contact_us` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.cms_home
+CREATE TABLE IF NOT EXISTS `cms_home` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `banner` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.cms_home: ~3 rows (approximately)
+/*!40000 ALTER TABLE `cms_home` DISABLE KEYS */;
+INSERT INTO `cms_home` (`id`, `banner`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'P23WzANjDcpqOV89ornVu1gULlaobt-1624695913.jpg', 'Never usedfvs  e erqwe qerqw', 1, 1, '2021-06-26 08:25:13', '2021-06-26 09:18:52', NULL),
+	(2, 'CXedTc8tzYRgAnAvYo4NZTELCyYyqd-1624696770.jpg', 'da  wewssedas w basdha qwewehd', 1, 0, '2021-06-26 08:39:30', '2021-06-26 08:39:30', NULL),
+	(3, 'MIlaZuk13mXK20szT8jHPXGfNChcGY-1624696782.jpg', 'as WSA wsd e9uw9 wu', 1, 0, '2021-06-26 08:39:42', '2021-06-26 08:39:42', NULL);
+/*!40000 ALTER TABLE `cms_home` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.cms_home_intro
+CREATE TABLE IF NOT EXISTS `cms_home_intro` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `vision` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mission` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `values` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.cms_home_intro: ~0 rows (approximately)
+/*!40000 ALTER TABLE `cms_home_intro` DISABLE KEYS */;
+INSERT INTO `cms_home_intro` (`id`, `vision`, `mission`, `values`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(5, 'sASAsa', 'ASAsaS', 'SAsaSA', 1, 0, '2021-06-26 14:27:30', '2021-06-26 14:27:30', NULL);
+/*!40000 ALTER TABLE `cms_home_intro` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.cms_home_oric_members
+CREATE TABLE IF NOT EXISTS `cms_home_oric_members` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `profile_picture` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `designation` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.cms_home_oric_members: ~4 rows (approximately)
+/*!40000 ALTER TABLE `cms_home_oric_members` DISABLE KEYS */;
+INSERT INTO `cms_home_oric_members` (`id`, `profile_picture`, `name`, `designation`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 's28wgoIY75P0QfpC4KqFA7cKC2orP0-1624706002.png', 'oric', '.Net Developer', 'XasXDA s d RFE WERQ RWER F', 1, 1, '2021-06-26 11:13:22', '2021-06-26 11:32:30', NULL),
+	(2, 'xmY3T1KrwdYD8rn2IA7OgEnnz5bZ5y-1624730252.jpg', 'asaa SA', 'A sa s', 'SA   sASa sASaAS  AS S AAS AS qs ASasA', 1, 0, '2021-06-26 17:57:32', '2021-06-26 17:57:32', NULL),
+	(3, 'zcQhGN0kulhaCyTZ0mvxnNpuXKXZG1-1624730509.jpg', 'DFSDF SA', 'QA wq', 'wsddsa  sassdad swqesqwesqwe', 1, 1, '2021-06-26 18:00:50', '2021-06-26 18:01:49', NULL),
+	(4, 'PVpl0OhsErTspsxcZsYDsIADAlzGAG-1624730570.jpg', 'asdasd', 'dasdasdas saswsdaw', 'awsw ewdqwee wqe eqwedwqeeqwwe e qwedqw eqw', 1, 0, '2021-06-26 18:02:50', '2021-06-26 18:02:50', NULL);
+/*!40000 ALTER TABLE `cms_home_oric_members` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.cms_home_testimonials
+CREATE TABLE IF NOT EXISTS `cms_home_testimonials` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `profile_picture` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `designation` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.cms_home_testimonials: ~3 rows (approximately)
+/*!40000 ALTER TABLE `cms_home_testimonials` DISABLE KEYS */;
+INSERT INTO `cms_home_testimonials` (`id`, `profile_picture`, `name`, `designation`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'hnOMQih5oV5epvkh3MJMgM8zxUjL2d-1624719128.jpg', 'Testimonial', 'DAAS', 'dasda  esse  ed wesqw es esq', 1, 1, '2021-06-26 11:44:45', '2021-06-26 14:52:08', NULL),
+	(2, '5WyvKIvDlg3vdgJuKEuB3gdVyUQV7j-1624719141.jpg', 'ASAsa', 'AsaSAsaSAsa', 'SAsaSAsaSAsaSA sAS AsaSA s aSAs', 1, 1, '2021-06-26 14:33:43', '2021-06-26 14:52:21', NULL),
+	(3, '8h4qdLN2nC05Sx4iQ8FsMOqiw5gyIQ-1624719149.jpg', 'asAASA', 'dasdasd das d sasdsa', 'asdasd dasdas sad das dasds', 1, 1, '2021-06-26 14:34:10', '2021-06-26 14:52:29', NULL);
+/*!40000 ALTER TABLE `cms_home_testimonials` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.cms_inquires
+CREATE TABLE IF NOT EXISTS `cms_inquires` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contact` varchar(14) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci,
+  `is_answer` tinyint(4) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.cms_inquires: ~1 rows (approximately)
+/*!40000 ALTER TABLE `cms_inquires` DISABLE KEYS */;
+INSERT INTO `cms_inquires` (`id`, `name`, `email`, `contact`, `subject`, `message`, `is_answer`, `created_at`, `updated_at`) VALUES
+	(1, 'dwewq', 'faizan.ahmed123.f@gmail.com', '3325774617', 'gfdgf', 'rrer rwerwer rewwer rew', 0, '2021-09-20 16:53:18', '2021-09-20 16:53:18');
+/*!40000 ALTER TABLE `cms_inquires` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.cms_news
+CREATE TABLE IF NOT EXISTS `cms_news` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `banner` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.cms_news: ~0 rows (approximately)
+/*!40000 ALTER TABLE `cms_news` DISABLE KEYS */;
+INSERT INTO `cms_news` (`id`, `title`, `banner`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(4, 'News', '7m9xix54LdXcSFVpDDhpu1kCVKspL6-1624863965.jpg', 'dcsad  dad aedwar ew wqeqww', 1, 1, '2021-06-27 12:42:12', '2021-06-28 07:06:05', NULL);
+/*!40000 ALTER TABLE `cms_news` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.cms_research
+CREATE TABLE IF NOT EXISTS `cms_research` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(55) DEFAULT NULL,
+  `banner` varchar(55) NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table fyp.cms_research: ~0 rows (approximately)
+/*!40000 ALTER TABLE `cms_research` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_research` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.event
+CREATE TABLE IF NOT EXISTS `event` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `image` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `schedule` datetime NOT NULL,
+  `mode` enum('Online','Physical') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Physical',
+  `location` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.event: ~3 rows (approximately)
+/*!40000 ALTER TABLE `event` DISABLE KEYS */;
+INSERT INTO `event` (`id`, `image`, `title`, `slug`, `description`, `schedule`, `mode`, `location`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(10, 'c5u0k6zjDqt50hXjNJlGOOUZqOxOeT-1624789842.jpg', 'Event 1', 'event-1', 'dads dada swseqw  dfeasef edwerdweq  rfewrdweq rqewrrdweq', '2021-07-13 06:15:55', 'Online', 'asdasdas', 1, 1, '2021-06-27 10:30:42', '2021-07-13 13:15:59', NULL),
+	(11, 'sJVWgB8fdD5lOMFeUzsKhPyYop9nnl-1626182640.jpg', 'Test', 'test', 'adas dd da dasdas dsdas das dasdasd erqwerqw dedwq weeqwe eqweqweqw ewqeqwe ewe qweqwe eqwqwewq  qweqweqw eqweqweqwe eqweqwewqe eqweqw', '2021-07-13 07:16:37', 'Physical', 'dasddasdas d dasdas adasdasd dadasdas dasdasd', 1, 1, '2021-07-13 13:24:00', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
+	(12, '3TI3cx1zWukmEku2UexXefVBTRYP6p-1629290435.jpg', 'Event 3', 'event-3', 'ddsa  dasdas d aas', '2021-08-20 05:38:03', 'Online', NULL, 1, 0, '2021-08-18 12:40:35', '2021-08-18 12:40:35', NULL);
+/*!40000 ALTER TABLE `event` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.failed_jobs
+CREATE TABLE IF NOT EXISTS `failed_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.failed_jobs: ~0 rows (approximately)
+/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.funding_opportunities
+CREATE TABLE IF NOT EXISTS `funding_opportunities` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `principle_investigator` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `funding_agency` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `department` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `amount` char(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.funding_opportunities: ~4 rows (approximately)
+/*!40000 ALTER TABLE `funding_opportunities` DISABLE KEYS */;
+INSERT INTO `funding_opportunities` (`id`, `title`, `principle_investigator`, `funding_agency`, `department`, `amount`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'Test 1', 'dasda', NULL, 'SsS S wsS DADASD', NULL, 1, 0, '2021-06-28 18:24:27', '2021-06-28 18:51:28', '2021-06-28 18:51:28'),
+	(2, 'Test 1', 'dasda', 'sadsad', 'ADAD', '1', 1, 1, '2021-06-28 18:46:12', '2021-06-28 18:50:41', NULL),
+	(3, 'Test 1', 'dasda', 'sadsad', NULL, '3', 1, 0, '2021-06-28 18:50:52', '2021-06-28 18:50:52', NULL),
+	(4, 'laravel', 'dasda', NULL, 'dsaaasdas', NULL, 1, 0, '2021-06-28 18:57:56', '2021-06-28 18:57:56', NULL);
+/*!40000 ALTER TABLE `funding_opportunities` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.gallery
+CREATE TABLE IF NOT EXISTS `gallery` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `event_id` int(20) unsigned NOT NULL,
+  `image` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.gallery: ~5 rows (approximately)
+/*!40000 ALTER TABLE `gallery` DISABLE KEYS */;
+INSERT INTO `gallery` (`id`, `event_id`, `image`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(10, 10, 'A3Foe7iSzLeeJ4O7NDHkS7RM4tPx7b-1624793219.jpg', 1, 1, '2021-06-27 11:26:59', '2021-06-27 11:57:16', NULL),
+	(11, 10, '6cuH2UgOSZFeBv09ZG7MI9WaxeQR3q-1624863517.jpg', 1, 0, '2021-06-28 06:58:37', '2021-06-28 06:58:37', NULL),
+	(12, 10, 'f5K7Sl14xYWd3uep2BcoINCQkErhnC-1624863541.jpg', 1, 0, '2021-06-28 06:59:01', '2021-06-28 06:59:01', NULL),
+	(13, 10, 'HMQsTbyJ7XtTk3IOS6Y0KV1wetmd1T-1624863553.jpg', 1, 0, '2021-06-28 06:59:13', '2021-06-28 06:59:13', NULL),
+	(14, 10, 'uEl3Dqt1RoFXj3MR2DQp3NLiGGvtbr-1624863592.jpg', 1, 0, '2021-06-28 06:59:52', '2021-06-28 06:59:52', NULL);
+/*!40000 ALTER TABLE `gallery` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.internships
+CREATE TABLE IF NOT EXISTS `internships` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `image` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `company` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mode` enum('Online','Physical') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Physical',
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paid` tinyint(4) NOT NULL DEFAULT '0',
+  `duration` char(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.internships: ~2 rows (approximately)
+/*!40000 ALTER TABLE `internships` DISABLE KEYS */;
+INSERT INTO `internships` (`id`, `image`, `title`, `slug`, `description`, `company`, `mode`, `location`, `paid`, `duration`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(12, '1Bo3J7RGmiiPnD4gKOWVBAoLgH4CFm-1629292648.jpg', 'Php Intern', 'php-intern', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 'Test Comp', 'Physical', 'fsdfdsfd f fsd', 1, '2021-09-08 - 2021-10-07', '2021-08-18 13:17:28', '2021-09-08 17:08:40', NULL),
+	(13, 'O7X1sgve08AwYshlJWxTTEfs4Uwp6y-1631119529.png', 'laravel123', 'laravel123', 'asdsad dsadsad', 'Test Comp', 'Online', NULL, 1, '2021-09-08 - 2021-10-07', '2021-09-08 16:45:29', '2021-09-08 17:08:54', NULL);
+/*!40000 ALTER TABLE `internships` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.migrations
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.migrations: ~6 rows (approximately)
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+	(1, '2014_10_12_000000_create_users_table', 1),
+	(2, '2019_08_19_000000_create_failed_jobs_table', 1),
+	(3, '2021_05_26_083308_create_permission_tables', 1),
+	(4, '2021_06_02_183327_create_research_projects_table', 1),
+	(5, '2021_06_04_023315_create_notifications_table', 1),
+	(6, '2021_06_05_123512_create_upload_samples_table', 1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.model_has_permissions
+CREATE TABLE IF NOT EXISTS `model_has_permissions` (
+  `permission_id` bigint(20) unsigned NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`),
+  CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.model_has_permissions: ~0 rows (approximately)
+/*!40000 ALTER TABLE `model_has_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `model_has_permissions` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.model_has_roles
+CREATE TABLE IF NOT EXISTS `model_has_roles` (
+  `role_id` bigint(20) unsigned NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`),
+  CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.model_has_roles: ~5 rows (approximately)
+/*!40000 ALTER TABLE `model_has_roles` DISABLE KEYS */;
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+	(1, 'App\\Models\\User', 1),
+	(3, 'App\\Models\\User', 2),
+	(2, 'App\\Models\\User', 3),
+	(7, 'App\\Models\\User', 4),
+	(2, 'App\\Models\\User', 5);
+/*!40000 ALTER TABLE `model_has_roles` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.notifications
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_read` tinyint(4) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.notifications: ~0 rows (approximately)
+/*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
+/*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.permissions
+CREATE TABLE IF NOT EXISTS `permissions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.permissions: ~29 rows (approximately)
+/*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+	(1, 'user-list', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(2, 'user-create', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(3, 'user-update', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(4, 'user-delete', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(5, 'role-list', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(6, 'role-create', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(7, 'role-update', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(8, 'role-delete', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(9, 'research-project-list', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(10, 'research-project-create', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(11, 'research-project-update', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(12, 'admin-notification-list', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(13, 'admin-notification-detail', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
+	(14, 'admin-notification-delete', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
+	(15, 'upload-sample-list', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
+	(16, 'upload-sample-delete', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
+	(17, 'student-project-proposal-list', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
+	(18, 'student-project-proposal-create', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
+	(19, 'user-notification-list', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
+	(20, 'user-notification-detail', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
+	(21, 'oric-member-project-proposal-list', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
+	(22, 'oric-member-project-proposal-create', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
+	(23, 'researcher-project-proposal-list', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
+	(24, 'researcher-project-proposal-create', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
+	(25, 'faculty-project-proposal-list', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
+	(26, 'faculty-project-proposal-create', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
+	(27, 'focal-person-project-proposal-list', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
+	(28, 'focal-person-project-proposal-create', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
+	(29, 'user-event-list', 'web', '2021-07-13 14:46:55', '2021-07-13 14:46:56');
+/*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.register_events
+CREATE TABLE IF NOT EXISTS `register_events` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned DEFAULT NULL,
+  `event_id` int(10) unsigned NOT NULL,
+  `status` enum('registered','un-registered') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'un-registered',
+  `guest_name` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `guest_email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `visitor_ip` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.register_events: ~3 rows (approximately)
+/*!40000 ALTER TABLE `register_events` DISABLE KEYS */;
+INSERT INTO `register_events` (`id`, `user_id`, `event_id`, `status`, `guest_name`, `guest_email`, `visitor_ip`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, NULL, 11, 'registered', 'Faizan', 'faizan.ahmed123.f@gmail.com', '127.0.0.1', '2021-08-18 10:50:43', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
+	(2, 3, 11, 'registered', NULL, NULL, NULL, '2021-08-18 10:55:23', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
+	(3, 3, 10, 'registered', NULL, NULL, NULL, '2021-08-18 11:04:30', '2021-08-18 11:04:30', NULL);
+/*!40000 ALTER TABLE `register_events` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.register_interns
+CREATE TABLE IF NOT EXISTS `register_interns` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned DEFAULT NULL,
+  `internship_id` int(10) unsigned NOT NULL,
+  `status` enum('registered','un-registered') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'un-registered',
+  `guest_name` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `guest_email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `visitor_ip` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.register_interns: ~3 rows (approximately)
+/*!40000 ALTER TABLE `register_interns` DISABLE KEYS */;
+INSERT INTO `register_interns` (`id`, `user_id`, `internship_id`, `status`, `guest_name`, `guest_email`, `visitor_ip`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 3, 12, 'registered', NULL, NULL, NULL, '2021-08-18 15:06:30', '2021-08-18 15:10:21', '2021-08-18 15:10:21'),
+	(2, NULL, 12, 'registered', 'Faizan', 'faizan.ahmed123.f@gmail.com', '127.0.0.1', '2021-08-19 07:14:11', '2021-08-19 07:21:28', '2021-08-19 07:21:28'),
+	(3, 3, 12, 'un-registered', NULL, NULL, NULL, '2021-08-19 07:21:08', '2021-09-08 17:24:50', NULL),
+	(4, 3, 13, 'registered', NULL, NULL, NULL, '2021-09-08 17:24:43', '2021-09-08 17:24:43', NULL);
+/*!40000 ALTER TABLE `register_interns` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.research_projects
+CREATE TABLE IF NOT EXISTS `research_projects` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `research_proposal_id` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `upload_project` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('fyp','funded') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `submission_date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.research_projects: ~0 rows (approximately)
+/*!40000 ALTER TABLE `research_projects` DISABLE KEYS */;
+/*!40000 ALTER TABLE `research_projects` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.research_proposals
+CREATE TABLE IF NOT EXISTS `research_proposals` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `title` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `investigator_details` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abstract` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `agency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` int(11) NOT NULL,
+  `submission_date` date NOT NULL,
+  `upload_research` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('fyp','funded') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('pending','approved','rejected') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.research_proposals: ~0 rows (approximately)
+/*!40000 ALTER TABLE `research_proposals` DISABLE KEYS */;
+/*!40000 ALTER TABLE `research_proposals` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.roles
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.roles: ~7 rows (approximately)
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+	(1, 'super-admin', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
+	(2, 'student', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
+	(3, 'oric-member', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
+	(4, 'researcher', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
+	(5, 'faculty', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
+	(6, 'focal-person', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
+	(7, 'test', 'web', '2021-07-07 06:56:37', '2021-07-07 06:56:37');
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.role_has_permissions
+CREATE TABLE IF NOT EXISTS `role_has_permissions` (
+  `permission_id` bigint(20) unsigned NOT NULL,
+  `role_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`permission_id`,`role_id`),
+  KEY `role_has_permissions_role_id_foreign` (`role_id`),
+  CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.role_has_permissions: ~43 rows (approximately)
+/*!40000 ALTER TABLE `role_has_permissions` DISABLE KEYS */;
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+	(1, 1),
+	(2, 1),
+	(3, 1),
+	(4, 1),
+	(5, 1),
+	(6, 1),
+	(7, 1),
+	(8, 1),
+	(9, 1),
+	(10, 1),
+	(11, 1),
+	(12, 1),
+	(13, 1),
+	(14, 1),
+	(15, 1),
+	(16, 1),
+	(17, 2),
+	(18, 2),
+	(19, 2),
+	(20, 2),
+	(29, 2),
+	(19, 3),
+	(20, 3),
+	(21, 3),
+	(22, 3),
+	(19, 4),
+	(20, 4),
+	(23, 4),
+	(24, 4),
+	(29, 4),
+	(19, 5),
+	(20, 5),
+	(25, 5),
+	(26, 5),
+	(19, 6),
+	(20, 6),
+	(27, 6),
+	(28, 6),
+	(29, 6),
+	(1, 7),
+	(2, 7),
+	(3, 7),
+	(5, 7);
+/*!40000 ALTER TABLE `role_has_permissions` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.upload_samples
+CREATE TABLE IF NOT EXISTS `upload_samples` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.upload_samples: ~0 rows (approximately)
+/*!40000 ALTER TABLE `upload_samples` DISABLE KEYS */;
+/*!40000 ALTER TABLE `upload_samples` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `father_name` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cnic` char(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profile_picture` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profile_detail` text COLLATE utf8mb4_unicode_ci,
+  `student_rollno` bigint(20) unsigned DEFAULT NULL,
+  `student_seatno` char(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `department` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact` bigint(20) DEFAULT NULL,
+  `gender` char(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `designation` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `qualification` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `expertise` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `certification` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `joining_date` date DEFAULT NULL,
+  `verification_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_block` tinyint(4) NOT NULL DEFAULT '0',
+  `is_verified` tinyint(4) NOT NULL DEFAULT '0',
+  `created_by` int(11) DEFAULT '0',
+  `updated_by` int(11) DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.users: ~5 rows (approximately)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `father_name`, `cnic`, `email`, `password`, `profile_picture`, `profile_detail`, `student_rollno`, `student_seatno`, `department`, `contact`, `gender`, `dob`, `designation`, `qualification`, `expertise`, `certification`, `joining_date`, `verification_token`, `remember_token`, `is_block`, `is_verified`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+	(1, 'Umer', 'Aziz', NULL, '2342423312312', 'admin@fyp.com', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', 'hfN3pfxy631629373389.png', 'dasdasd', NULL, NULL, NULL, NULL, 'male', '2021-07-06', NULL, NULL, NULL, NULL, '2021-07-22', NULL, 'DD0cwkHEmJLadlXHzal6Vg4Bd7lhCV2ZZPort0OnTrzHqoNyE1JPFptnBhFK', 0, 1, 0, 1, '2021-07-06 13:53:04', '2021-08-19 11:43:09'),
+	(2, 'Sajjad', 'Ali', NULL, '2342423442342', 'sajjad.ali@viftech.com.pk', '$2y$10$tqDpuOhJ.4kdiNM.qs0h6.5u1xCNnOdseceE0Z1ZZ4M6Wi4LnUvbK', NULL, 'asa', NULL, NULL, NULL, NULL, 'male', '2021-07-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 1, '2021-07-07 06:10:32', '2021-07-08 09:12:42'),
+	(3, 'Affan', 'Ali', NULL, '1323123123123', 'affan@viftech.com.pk', '$2y$10$wD3DgVlac9LlJrPO0UpgVuOoSdqyFB3Vkbc7ajXePJmBnnlYR5EhG', NULL, 'dasdasd', 24234, '312f', NULL, NULL, 'male', '2021-08-02', NULL, NULL, NULL, NULL, '2021-08-19', NULL, 'yjRKZ6yvpbVM69hqYq2QiTqrwFXlfbEFJNuBHTDVgzRuo2fyl7JMoyDtP6Nv', 0, 1, 1, 3, '2020-07-07 06:38:30', '2021-08-19 11:51:35'),
+	(4, 'Faizan', 'AHMED RAZA', NULL, '3412312312312', 'faizan@viftech.com.pk', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', NULL, NULL, NULL, NULL, NULL, NULL, 'male', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 1, '2021-07-07 06:57:17', '2021-07-08 09:14:14'),
+	(5, 'Test 1', 'abc', 'dasda', NULL, 'test1@email.com', '$2y$10$QTfxdzZSvum20TEwkMy8BODv2iDD21WQn1/ByMcr63KAFRVDevFde', NULL, NULL, NULL, NULL, NULL, NULL, 'male', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 0, '2021-08-03 11:00:08', '2021-08-03 11:00:33');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

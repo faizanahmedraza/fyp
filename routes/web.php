@@ -22,6 +22,7 @@ Route::namespace('website')->group(function () {
     Route::get('/our-news/{slug}/detail', 'NewsController@newsDetail');
     Route::get('/about-us', 'AboutController@index');
     Route::get('/contact', 'ContactController@index');
+    Route::post('/contact/inquiry', 'InquiryController@storeInquiry');
     Route::get('/events', 'EventController@index');
     Route::get('/events/{slug}/gallery', 'GalleryController@index');
     Route::get('/internships', 'InternShipController@index');
@@ -240,6 +241,10 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::get('/career/update-job/{cmsJobId}', 'JobController@updateJob')->name('career.job.update');
             Route::put('/career/update-job/{cmsJobId}', 'JobController@updateJobData')->name('career.job.update.data');
             Route::get('/career/active-inactive-job/{cmsJobId}', 'JobController@activeInactiveJob');
+
+            Route::get('/inquiries','InquiryController@index')->name('inquiries');
+            Route::get('/inquiries/{inquiryId}/detail','InquiryController@inquiryDetail')->name('inquiries.detail');
+            Route::post('/inquiries/submit-answer','InquiryController@submitAnswer')->name('inquiries.submit-answer');
         });
 
     });
