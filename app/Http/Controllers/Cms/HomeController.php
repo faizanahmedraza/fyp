@@ -38,14 +38,20 @@ class HomeController extends Controller
         $focalPersons = $users->filter(function ($value){
             return $value->roles()->first()->name === 'focal-person';
         })->count();
-        $approvedProposals = $proposals->filter(function ($value){
+        $approvedFypProposals = $proposals->where('type','fyp')->filter(function ($value){
             return $value->status === 'approved';
         })->count();
-        $rejectedProposals = $proposals->filter(function ($value){
+        $approvedFundedProposals = $proposals->where('type','funded')->filter(function ($value){
+            return $value->status === 'approved';
+        })->count();
+        $rejectedFypProposals = $proposals->where('type','fyp')->filter(function ($value){
+            return $value->status === 'rejected';
+        })->count();
+        $rejectedFundedProposals = $proposals->where('type','funded')->filter(function ($value){
             return $value->status === 'rejected';
         })->count();
         $events = Event::count();
         $interns = InternShip::count();
-        return view('cms.index',compact('activeUsers','blockUsers','approvedProposals','rejectedProposals','admins','students','researchers','oricMembers','facultyMembers','focalPersons','events','interns'));
+        return view('cms.index',compact('activeUsers','blockUsers','approvedFypProposals','approvedFundedProposals','rejectedFypProposals','rejectedFundedProposals','admins','students','researchers','oricMembers','facultyMembers','focalPersons','events','interns'));
     }
 }

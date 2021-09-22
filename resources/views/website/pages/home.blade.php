@@ -10,7 +10,7 @@
                         <div class="container">
                             <div class="content-box">
                                 <div class="top-text">Researcher & Professors</div>
-                                <h1>{{ $val->description }}</h1>
+                                <h1 class="">{{$val->description }}</h1>
                                 <div class="btn-box"><a href="#" class="theme-btn style-one">Discover More</a></div>
                             </div>
                         </div>
@@ -149,11 +149,11 @@
                     <div class="single-research-box wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="inner-box">
                             <div class="icon-box"><i class="flaticon-bacteria"></i></div>
-                            <h3><a href="research-details.html">Bacteria Research</a></h3>
+                            <h3><a href="javascript:;">Bacteria Research</a></h3>
                             <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis
                                 elit id impedie.
                             </div>
-                            <div class="link-btn"><a href="research-details.html">Learn More</a></div>
+                            <div class="link-btn"><a href="javascript:;">Learn More</a></div>
                         </div>
                     </div>
                 </div>
@@ -161,11 +161,11 @@
                     <div class="single-research-box wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
                         <div class="inner-box">
                             <div class="icon-box"><i class="flaticon-molecular"></i></div>
-                            <h3><a href="research-details.html">Medicale Research</a></h3>
+                            <h3><a href="javascript:;">Medicale Research</a></h3>
                             <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis
                                 elit id impedie.
                             </div>
-                            <div class="link-btn"><a href="research-details.html">Learn More</a></div>
+                            <div class="link-btn"><a href="javascript:;">Learn More</a></div>
                         </div>
                     </div>
                 </div>
@@ -173,11 +173,11 @@
                     <div class="single-research-box wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
                         <div class="inner-box">
                             <div class="icon-box"><i class="flaticon-dna-structure"></i></div>
-                            <h3><a href="research-details.html">Dna Structure Research</a></h3>
+                            <h3><a href="javascript:;">Dna Structure Research</a></h3>
                             <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis
                                 elit id impedie.
                             </div>
-                            <div class="link-btn"><a href="research-details.html">Learn More</a></div>
+                            <div class="link-btn"><a href="javascript:;">Learn More</a></div>
                         </div>
                     </div>
                 </div>
@@ -319,46 +319,46 @@
                 <div class="inner-content clearfix">
                     <div class="single-item wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="image-box"><a href="research-details.html"><img
-                                            src="images/resource/research-1.jpg" alt=""></a></figure>
+                            <figure class="image-box"><a href="javascript:;"><img
+                                            src="/assets/website/images/resource/research-1.jpg" alt=""></a></figure>
                             <div class="lower-content">
-                                <h4><a href="research-details.html">Chemical Formula</a></h4>
+                                <h4><a href="javascript:;">Chemical Formula</a></h4>
                             </div>
                         </div>
                     </div>
                     <div class="single-item wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="image-box"><a href="research-details.html"><img
-                                            src="images/resource/research-2.jpg" alt=""></a></figure>
+                            <figure class="image-box"><a href="javascript:;"><img
+                                            src="/assets/website/images/resource/research-2.jpg" alt=""></a></figure>
                             <div class="lower-content">
-                                <h4><a href="research-details.html">Human Body</a></h4>
+                                <h4><a href="javascript:;">Human Body</a></h4>
                             </div>
                         </div>
                     </div>
                     <div class="single-item wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="image-box"><a href="research-details.html"><img
-                                            src="images/resource/research-3.jpg" alt=""></a></figure>
+                            <figure class="image-box"><a href="javascript:;"><img
+                                            src="/assets/website/images/resource/research-3.jpg" alt=""></a></figure>
                             <div class="lower-content">
-                                <h4><a href="research-details.html">Cancer Therapies</a></h4>
+                                <h4><a href="javascript:;">Cancer Therapies</a></h4>
                             </div>
                         </div>
                     </div>
                     <div class="single-item wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="image-box"><a href="research-details.html"><img
-                                            src="images/resource/research-4.jpg" alt=""></a></figure>
+                            <figure class="image-box"><a href="javascript:;"><img
+                                            src="/assets/website/images/resource/research-4.jpg" alt=""></a></figure>
                             <div class="lower-content">
-                                <h4><a href="research-details.html">Blood Cells</a></h4>
+                                <h4><a href="javascript:;">Blood Cells</a></h4>
                             </div>
                         </div>
                     </div>
                     <div class="single-item wow fadeInUp" data-wow-delay="1200ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="image-box"><a href="research-details.html"><img
-                                            src="images/resource/research-5.jpg" alt=""></a></figure>
+                            <figure class="image-box"><a href="javascript:;"><img
+                                            src="/assets/website/images/resource/research-5.jpg" alt=""></a></figure>
                             <div class="lower-content">
-                                <h4><a href="research-details.html">Pathology Research</a></h4>
+                                <h4><a href="javascript:;">Pathology Research</a></h4>
                             </div>
                         </div>
                     </div>
@@ -431,7 +431,7 @@
                                     <div class="inner-box">
                                         <div class="image-holder">
                                             <figure class="image"><a href="team-details.html"><img
-                                                            src="/assets/images/uploads/pages/{{$val->profile_picture}}"
+                                                            src="/assets/images/uploads/pages/{{$val->profile_picture ?? 'not_available_oric_member.jpg'}}"
                                                             alt=""></a></figure>
                                             <ul class="social-links clearfix">
                                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -456,7 +456,7 @@
 
 
     <!-- video-section -->
-    <section class="video-section centred" style="background-image: url(images/background/video-bg.jpg);">
+    <section class="video-section centred" style="background-image: url(/assets/website/images/background/video-bg.jpg);">
         <div class="container">
             <div class="inner-box">
                 <div class="video-btn"><a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s"
@@ -555,11 +555,11 @@
     <section class="clients-section centred">
         <div class="container">
             <div class="clients-carousel owl-carousel owl-theme owl-dots-none">
-                <figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure>
-                <figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure>
-                <figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure>
-                <figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure>
-                <figure class="image-box"><a href="#"><img src="images/clients/5.png" alt=""></a></figure>
+                <figure class="image-box"><a href="#"><img src="/assets/website/images/clients/1.png" alt=""></a></figure>
+                <figure class="image-box"><a href="#"><img src="/assets/website/images/clients/2.png" alt=""></a></figure>
+                <figure class="image-box"><a href="#"><img src="/assets/website/images/clients/3.png" alt=""></a></figure>
+                <figure class="image-box"><a href="#"><img src="/assets/website/images/clients/4.png" alt=""></a></figure>
+                <figure class="image-box"><a href="#"><img src="/assets/website/images/clients/5.png" alt=""></a></figure>
             </div>
         </div>
     </section>

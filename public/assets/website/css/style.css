@@ -1294,7 +1294,7 @@ div#mCSB_1_container {
 
 .main-slider h1 {
     position: relative;
-    display: block;
+    display: inline-block;
     font-size: 100px;
     line-height: 95px;
     color: #0e1221;
@@ -1315,6 +1315,12 @@ div#mCSB_1_container {
 
 .main-slider .active h1 {
     opacity: 1;
+    height: 300px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
     -ms-transform: translateX(0);
@@ -4762,6 +4768,7 @@ div#mCSB_1_container {
 
 .cstm-banner {
     background-size: cover !important;
+    height: 800px;
 }
 
 .cstm-event-img {
@@ -4806,6 +4813,7 @@ div#mCSB_1_container {
 }
 
 .contact {
+    position: fixed!important;
     top: 40vh !important;
     background-color: #5cbb63;
     white-space: nowrap;

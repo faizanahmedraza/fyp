@@ -109,9 +109,9 @@
                                                 <i class="fas fa-check fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break">Proposals(Approved)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break">Fyp Proposals(Approved)</span><br>
                                                     </div>
-                                                    <h2 class="card-liner-title text-white">{{ $approvedProposals }}</h2>
+                                                    <h2 class="card-liner-title text-white">{{ $approvedFypProposals }}</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,9 +125,9 @@
                                                 <i class="fas fa-times fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break">Proposals(Rejected)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break">Fyp Proposals(Rejected)</span><br>
                                                     </div>
-                                                    <h2 class="card-liner-title text-white">{{ $rejectedProposals }}</h2>
+                                                    <h2 class="card-liner-title text-white">{{ $rejectedFundedProposals }}</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -136,6 +136,37 @@
 
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
                                     <div class="card cstRedColor">
+                                        <div class="card-body">
+                                            <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
+                                                <i class="fas fa-check fa-3x fa-fw mt-2 text-white"></i>
+                                                <div class='card-liner-content'>
+                                                    <div class="media-body align-self-center text-white">
+                                                        <span class="mb-0 h5 font-w-600 text-break">Funded Proposals(Approved)</span><br>
+                                                    </div>
+                                                    <h2 class="card-liner-title text-white">{{ $approvedFundedProposals }}</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
+                                    <div class="card cstYellowColor">
+                                        <div class="card-body">
+                                            <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
+                                                <i class="fas fa-times fa-3x fa-fw mt-2 text-white"></i>
+                                                <div class='card-liner-content'>
+                                                    <div class="media-body align-self-center text-white">
+                                                        <span class="mb-0 h5 font-w-600 text-break">Funded Proposals(Rejected)</span><br>
+                                                    </div>
+                                                    <h2 class="card-liner-title text-white">{{ $approvedFundedProposals }}</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
+                                    <div class="card cstOrangeColor">
                                         <div class="card-body">
                                             <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
                                                 <i class="icon-grid fa-3x fa-fw mt-2 text-white"></i>
