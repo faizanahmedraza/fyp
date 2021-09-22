@@ -158,10 +158,10 @@
                 timePicker: true,
                 timePicker24Hour: true,
                 timePickerSeconds: true,
-                startDate: moment().format('YYYY-MM-DD hh:mm:ss'),
-                minDate: moment().format('YYYY-MM-DD hh:mm:ss'),
+                startDate: moment().format('DD-MM-YYYY hh:mm:ss'),
+                minDate: moment().format('DD-MM-YYYY hh:mm:ss'),
                 locale: {
-                    format: 'YYYY-MM-DD hh:mm:ss'
+                    format: 'DD-MM-YYYY hh:mm:ss'
                 },
                 cancelClass: "btn-primary"
             });

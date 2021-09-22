@@ -179,8 +179,8 @@
             $('input[name="dob"]').val();
 
             $('input[name="dob"]').datepicker({
-                format: "yyyy-mm-dd",
-                endDate: '2004-01-01',
+                format: "dd-mm-yyyy",
+                endDate: '01-01-2004',
                 autoclose: true,
                 clearBtn: true,
             }).on('changeDate', function () {

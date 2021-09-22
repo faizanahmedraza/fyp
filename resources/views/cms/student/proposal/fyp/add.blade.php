@@ -158,7 +158,7 @@
 
 
             $('input[name="submission_date"]').datepicker({
-                format: "yyyy-mm-dd",
+                format: "dd-mm-yyyy",
                 endDate: new Date(),
                 autoclose: true,
                 clearBtn: true,

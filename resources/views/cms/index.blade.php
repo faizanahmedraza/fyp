@@ -1,5 +1,13 @@
 @extends('cms.layouts.master')
 
+@push('styles')
+    <style>
+        .card .card-body {
+            height: 125px;
+        }
+    </style>
+@endpush
+
 @section('content')
     <main>
         <div class="container-fluid site-width">
@@ -13,7 +21,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstGreenColor">
+                                    <div class="card cstRedColor">
                                         <div class="card-body">
                                             <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
                                                 <i class="fas fa-user-check fa-3x fa-fw mt-2 text-white"></i>
@@ -47,7 +55,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstBlueColor">
+                                    <div class="card cstRedColor">
                                         <div class="card-body">
                                             <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
                                                 <i class="fas fa-user-check fa-3x fa-fw mt-2 text-white"></i>
@@ -63,7 +71,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstYellowColor">
+                                    <div class="card cstRedColor">
                                         <div class="card-body">
                                             <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
                                                 <i class="fas fa-user-check fa-3x fa-fw mt-2 text-white"></i>
@@ -79,7 +87,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstOrangeColor">
+                                    <div class="card cstRedColor">
                                         <div class="card-body">
                                             <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
                                                 <i class="fas fa-user-check fa-3x fa-fw mt-2 text-white"></i>
@@ -95,7 +103,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstBlackColor">
+                                    <div class="card cstRedColor">
                                         <div class="card-body">
                                             <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
                                                 <i class="fas fa-check fa-3x fa-fw mt-2 text-white"></i>
@@ -111,7 +119,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstPurpleColor">
+                                    <div class="card cstRedColor">
                                         <div class="card-body">
                                             <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
                                                 <i class="fas fa-times fa-3x fa-fw mt-2 text-white"></i>
@@ -127,7 +135,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstOrangeColor">
+                                    <div class="card cstRedColor">
                                         <div class="card-body">
                                             <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
                                                 <i class="icon-grid fa-3x fa-fw mt-2 text-white"></i>
@@ -143,7 +151,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstGreenColor">
+                                    <div class="card cstRedColor">
                                         <div class="card-body">
                                             <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
                                                 <i class="icon-grid fa-3x fa-fw mt-2 text-white"></i>

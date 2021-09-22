@@ -232,7 +232,7 @@
             $('input[name="joining_date"]').val();
 
             $('input[name="dob"],input[name="joining_date"]').datepicker({
-                format: "yyyy-mm-dd",
+                format: "dd-mm-yyyy",
                 endDate: new Date(),
                 autoclose: true,
                 clearBtn: true,
