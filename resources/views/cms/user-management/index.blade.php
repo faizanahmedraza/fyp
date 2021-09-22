@@ -48,7 +48,7 @@
                                         @foreach($users as $key => $user)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $user->full_name }}</td>
+                                                <td>{{ $user->full_name }}  @if($user->is_verified == 1)<span class="badge badge-primary">  Verified</span>@endif</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>
                                                     @foreach($user->roles as $role)
@@ -99,7 +99,7 @@
     <script>
         $(function () {
             $('.table').DataTable({
-                "order": [[ 1, "asc" ]]
+                "order": [[ 0, "asc" ]]
             });
         });
 

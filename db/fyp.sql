@@ -91,14 +91,10 @@ CREATE TABLE IF NOT EXISTS `cms_home` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.cms_home: ~3 rows (approximately)
+-- Dumping data for table fyp.cms_home: ~0 rows (approximately)
 /*!40000 ALTER TABLE `cms_home` DISABLE KEYS */;
-INSERT INTO `cms_home` (`id`, `banner`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 'P23WzANjDcpqOV89ornVu1gULlaobt-1624695913.jpg', 'Never usedfvs  e erqwe qerqw', 1, 1, '2021-06-26 08:25:13', '2021-06-26 09:18:52', NULL),
-	(2, 'CXedTc8tzYRgAnAvYo4NZTELCyYyqd-1624696770.jpg', 'da  wewssedas w basdha qwewehd', 1, 0, '2021-06-26 08:39:30', '2021-06-26 08:39:30', NULL),
-	(3, 'MIlaZuk13mXK20szT8jHPXGfNChcGY-1624696782.jpg', 'as WSA wsd e9uw9 wu', 1, 0, '2021-06-26 08:39:42', '2021-06-26 08:39:42', NULL);
 /*!40000 ALTER TABLE `cms_home` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.cms_home_intro
@@ -247,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `event` (
 -- Dumping data for table fyp.event: ~3 rows (approximately)
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
 INSERT INTO `event` (`id`, `image`, `title`, `slug`, `description`, `schedule`, `mode`, `location`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(10, 'c5u0k6zjDqt50hXjNJlGOOUZqOxOeT-1624789842.jpg', 'Event 1', 'event-1', 'dads dada swseqw  dfeasef edwerdweq  rfewrdweq rqewrrdweq', '2021-07-13 06:15:55', 'Online', 'asdasdas', 1, 1, '2021-06-27 10:30:42', '2021-07-13 13:15:59', NULL),
+	(10, 'c5u0k6zjDqt50hXjNJlGOOUZqOxOeT-1624789842.jpg', 'Event 1', 'event-1', 'dads dada swseqw  dfeasef edwerdweq  rfewrdweq rqewrrdweq', '2021-07-13 07:15:55', 'Online', 'asdasdas', 1, 1, '2021-06-27 10:30:42', '2021-07-13 13:15:59', NULL),
 	(11, 'sJVWgB8fdD5lOMFeUzsKhPyYop9nnl-1626182640.jpg', 'Test', 'test', 'adas dd da dasdas dsdas das dasdasd erqwerqw dedwq weeqwe eqweqweqw ewqeqwe ewe qweqwe eqwqwewq  qweqweqw eqweqweqwe eqweqwewqe eqweqw', '2021-07-13 07:16:37', 'Physical', 'dasddasdas d dasdas adasdasd dadasdas dasdasd', 1, 1, '2021-07-13 13:24:00', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
 	(12, '3TI3cx1zWukmEku2UexXefVBTRYP6p-1629290435.jpg', 'Event 3', 'event-3', 'ddsa  dasdas d aas', '2021-08-20 05:38:03', 'Online', NULL, 1, 0, '2021-08-18 12:40:35', '2021-08-18 12:40:35', NULL);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
@@ -468,14 +464,15 @@ CREATE TABLE IF NOT EXISTS `register_events` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.register_events: ~3 rows (approximately)
+-- Dumping data for table fyp.register_events: ~4 rows (approximately)
 /*!40000 ALTER TABLE `register_events` DISABLE KEYS */;
 INSERT INTO `register_events` (`id`, `user_id`, `event_id`, `status`, `guest_name`, `guest_email`, `visitor_ip`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, NULL, 11, 'registered', 'Faizan', 'faizan.ahmed123.f@gmail.com', '127.0.0.1', '2021-08-18 10:50:43', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
 	(2, 3, 11, 'registered', NULL, NULL, NULL, '2021-08-18 10:55:23', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
-	(3, 3, 10, 'registered', NULL, NULL, NULL, '2021-08-18 11:04:30', '2021-08-18 11:04:30', NULL);
+	(3, 3, 10, 'un-registered', NULL, NULL, NULL, '2021-08-18 11:04:30', '2021-09-22 17:38:58', NULL),
+	(4, 3, 12, 'registered', NULL, NULL, NULL, '2021-09-22 17:26:58', '2021-09-22 17:30:27', NULL);
 /*!40000 ALTER TABLE `register_events` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.register_interns
@@ -499,7 +496,7 @@ INSERT INTO `register_interns` (`id`, `user_id`, `internship_id`, `status`, `gue
 	(1, 3, 12, 'registered', NULL, NULL, NULL, '2021-08-18 15:06:30', '2021-08-18 15:10:21', '2021-08-18 15:10:21'),
 	(2, NULL, 12, 'registered', 'Faizan', 'faizan.ahmed123.f@gmail.com', '127.0.0.1', '2021-08-19 07:14:11', '2021-08-19 07:21:28', '2021-08-19 07:21:28'),
 	(3, 3, 12, 'un-registered', NULL, NULL, NULL, '2021-08-19 07:21:08', '2021-09-08 17:24:50', NULL),
-	(4, 3, 13, 'registered', NULL, NULL, NULL, '2021-09-08 17:24:43', '2021-09-08 17:24:43', NULL);
+	(4, 3, 13, 'un-registered', NULL, NULL, NULL, '2021-09-08 17:24:43', '2021-09-22 17:27:14', NULL);
 /*!40000 ALTER TABLE `register_interns` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.research_projects
@@ -528,7 +525,7 @@ CREATE TABLE IF NOT EXISTS `research_proposals` (
   `investigator_details` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `abstract` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `agency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `amount` int(11) NOT NULL,
+  `amount` int(11) DEFAULT NULL,
   `submission_date` date NOT NULL,
   `upload_research` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` enum('fyp','funded') COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -552,7 +549,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table fyp.roles: ~7 rows (approximately)
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;

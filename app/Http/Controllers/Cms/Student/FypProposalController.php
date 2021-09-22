@@ -48,7 +48,6 @@ class FypProposalController extends Controller
             'investigator_details' => 'required|max:150',
             'abstract' => 'required|max:250',
             'agency' => 'required|max:250',
-            'amount' => 'required|max:250',
             'submission_date' => 'required|date',
             'upload_research' => 'required|file|mimes:doc,pdf,docx'
         ]);
@@ -58,7 +57,6 @@ class FypProposalController extends Controller
         $studentData['investigator_details'] = request()->investigator_details;
         $studentData['abstract'] = request()->abstract;
         $studentData['agency'] = request()->agency;
-        $studentData['amount'] = request()->amount;
         $studentData['submission_date'] = request()->submission_date;
         $studentData['status'] = 'approved';
         $studentData['type'] = 'fyp';
@@ -91,7 +89,6 @@ class FypProposalController extends Controller
             'investigator_details' => 'required|max:150',
             'abstract' => 'required|max:250',
             'agency' => 'required|max:250',
-            'amount' => 'required|max:250',
             'submission_date' => 'required|date',
             'upload_research' => 'sometimes|nullable|file|mimes:doc,pdf,docx',
         ]);
@@ -101,7 +98,6 @@ class FypProposalController extends Controller
         $studentData['investigator_details'] = request()->investigator_details;
         $studentData['abstract'] = request()->abstract;
         $studentData['agency'] = request()->agency;
-        $studentData['amount'] = request()->amount;
         $studentData['submission_date'] = request()->submission_date;
         $studentData['status'] = 'approved';
         $studentData['type'] = 'fyp';

@@ -12,7 +12,7 @@
         </div>
         <div class="container">
             <div class="content-box">
-                <h1>Funded Projects</h1>
+                <h1>FYP Projects</h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="/">Home</a></li>
                     <li>{{ $resultSet->title ?? '' }}</li>
@@ -33,7 +33,6 @@
                         <th data-priority="3">Project Title</th>
                         <th data-priority="3">Principle Investigator</th>
                         <th data-priority="3">Funding Agency</th>
-                        <th data-priority="3">Amount</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,7 +43,6 @@
                                 <td>{{ Str::words($val->getProposal->title,20) ?? '' }}</td>
                                 <td>{{ $val->getProposal->principle_investigator ?? '' }}</td>
                                 <td>{{ $val->getProposal->funding_agency ?? ''}}</td>
-                                <td>{{ $val->getProposal->amount }}</td>
                             </tr>
                         @endforeach
                     @endif

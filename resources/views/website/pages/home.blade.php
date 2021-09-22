@@ -549,21 +549,6 @@
         </div>
     </section>
     <!-- news-section end -->
-
-
-    <!-- clients-section -->
-    <section class="clients-section centred">
-        <div class="container">
-            <div class="clients-carousel owl-carousel owl-theme owl-dots-none">
-                <figure class="image-box"><a href="#"><img src="/assets/website/images/clients/1.png" alt=""></a></figure>
-                <figure class="image-box"><a href="#"><img src="/assets/website/images/clients/2.png" alt=""></a></figure>
-                <figure class="image-box"><a href="#"><img src="/assets/website/images/clients/3.png" alt=""></a></figure>
-                <figure class="image-box"><a href="#"><img src="/assets/website/images/clients/4.png" alt=""></a></figure>
-                <figure class="image-box"><a href="#"><img src="/assets/website/images/clients/5.png" alt=""></a></figure>
-            </div>
-        </div>
-    </section>
-    <!-- clients-section end -->
 @endsection
 
 @push('scripts')

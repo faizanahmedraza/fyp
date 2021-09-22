@@ -94,14 +94,7 @@
                                             </div>
 
                                             <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="amount">Amount Requested </label>
-                                                    <input type="text" class="form-control rounded allowNumberOnly"
-                                                           id="amount" name="amount"
-                                                           placeholder="Enter Account Requested"
-                                                           value="{{ old('amount',$proposal->amount) }}">
-                                                </div>
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-12">
                                                     <label for="submission_date">Date of submission </label>
                                                     <input type="text" name="submission_date"
                                                            id="submission_date_id" value="{{ old('submission_date',$proposal->submission_date) }}"

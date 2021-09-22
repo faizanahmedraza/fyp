@@ -151,7 +151,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstYellowColor">
+                                    <div class="card cstRedColor">
                                         <div class="card-body">
                                             <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
                                                 <i class="fas fa-times fa-3x fa-fw mt-2 text-white"></i>
@@ -166,7 +166,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstOrangeColor">
+                                    <div class="card cstRedColor">
                                         <div class="card-body">
                                             <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
                                                 <i class="icon-grid fa-3x fa-fw mt-2 text-white"></i>

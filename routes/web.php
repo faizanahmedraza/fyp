@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('website')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::get('/research/funding-opportunities', 'FundingOpportunityController@index');
+    Route::get('/research/fyp-projects', 'FypController@index');
     Route::get('/research/funded-projects', 'FundedProjectController@index');
     Route::get('/our-professors', 'ProfessorController@index');
     Route::get('/our-news', 'NewsController@index');

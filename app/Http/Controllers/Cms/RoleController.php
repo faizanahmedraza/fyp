@@ -82,9 +82,13 @@ class RoleController extends Controller
         $role = Role::findOrFail($roleId);
 
         if (!empty($role)) {
-            $role->delete();
-            $msg = "Successfully Delete record!";
-            $code = 200;
+            if (count($role->users) == 0) {
+                $role->delete();
+                $msg = "Successfully Delete record!";
+                $code = 200;
+            } else {
+                $msg = "Please delete the assigned users!";
+            }
         }
         return response()->json(['msg' => $msg], $code);
     }

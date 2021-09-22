@@ -36,7 +36,8 @@
                                     <tr>
                                         <th data-priority="1">#ID</th>
                                         <th data-priority="3">Title</th>
-                                        <th data-priority="3">Description</th>
+                                        <th data-priority="3" style="max-width: 250px;">Description</th>
+                                        <th data-priority="3">Schedule On</th>
                                         <th data-priority="1">Actions</th>
                                     </tr>
                                     </thead>
@@ -47,6 +48,9 @@
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $event->title }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($event->description, 20) }}
+                                                </td>
+                                                <td>
+                                                    {{ $event->schedule }}
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('website.page.event.update', ['eventId' => $event->id]) }}"

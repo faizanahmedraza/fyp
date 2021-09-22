@@ -36,7 +36,8 @@
                                     <tr>
                                         <th data-priority="1">#ID</th>
                                         <th data-priority="3">Title</th>
-                                        <th data-priority="3">Description</th>
+                                        <th data-priority="3" style="max-width: 250px;">Description</th>
+                                        <th data-priority="3">Start - End Date</th>
                                         <th data-priority="1">Actions</th>
                                     </tr>
                                     </thead>
@@ -48,6 +49,12 @@
                                                 <td>{{ $val->title }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($val->description, 20) }}
                                                 </td>
+                                                @php
+                                                    $date = explode(' - ',$val->duration);
+                                                    $startDate = \Carbon\Carbon::parse(trim($date[0]),'UTC')->isoFormat('ll');
+                                                    $endDate = \Carbon\Carbon::parse(trim($date[1]),'UTC')->isoFormat('ll');
+                                                @endphp
+                                                <td>{{ $startDate .' to '. $endDate}}</td>
                                                 <td>
                                                     <a href="{{ route('website.page.internship.update', ['internshipId' => $val->id]) }}"
                                                        class="btn btn-success btn-primary">Update</a>

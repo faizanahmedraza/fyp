@@ -37,8 +37,9 @@
                             <li class="dropdown"><a href="javascript:;">Research</a>
                                 <ul>
                                     <li><a href="/research/funding-opportunities">Funding Opportunties</a></li>
+                                    <li><a href="/research/fyp-projects">FYP Projects</a></li>
                                     <li><a href="/research/funded-projects">Funding Projects</a></li>
-                                    <li><a href="javascript:;">Call for proposal</a></li>
+{{--                                    <li><a href="javascript:;">Call for proposal</a></li>--}}
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="javascript:;">Media</a>

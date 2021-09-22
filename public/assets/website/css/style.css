@@ -221,6 +221,7 @@ img {
     margin-bottom: 4px;
     z-index: 1;
     transition: all 500ms ease;
+    left: 30%;
 }
 
 .theme-btn.style-one {
@@ -1311,6 +1312,7 @@ div#mCSB_1_container {
     -ms-transform: translateX(-50px);
     -o-transform: translateX(-50px);
     transform: translateX(-50px);
+    left: 30%;
 }
 
 .main-slider .active h1 {

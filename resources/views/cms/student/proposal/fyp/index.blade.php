@@ -37,8 +37,8 @@
                                     <thead>
                                     <tr>
                                         <th colspan="1" style="width: 20px;">ID#</th>
-                                        <th>Title</th>
                                         <th>Student Name</th>
+                                        <th>Title</th>
                                         <th>Status</th>
                                         <th>Approved / Rejected</th>
                                         <th>Actions</th>
@@ -49,8 +49,8 @@
                                         @foreach($proposals as $key => $proposal)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $proposal->title }}</td>
                                                 <td>{{ $proposal->getUser->full_name }}</td>
+                                                <td>{{ $proposal->title }}</td>
                                                 <td>
                                                     <button href="javascript:void(0);"
                                                             class="btn btn-dark btn-sm"

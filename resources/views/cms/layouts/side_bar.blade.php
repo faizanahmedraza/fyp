@@ -115,22 +115,22 @@
                             <li class="{{ getActiveClass(request()->segment(5),['funded']) }}"><a
                                         href="/admin/website/pages/res/funded-project"><i class="icon-grid fa-fw"></i>
                                     Funded Project </a></li>
-                            <li class="{{ getActiveClass(request()->segment(5),['proposal']) }}"><a
-                                        href="/admin/website/pages/res/call-for-proposal"><i
-                                            class="icon-grid fa-fw"></i> Call For Proposal </a></li>
+{{--                            <li class="{{ getActiveClass(request()->segment(5),['proposal']) }}"><a--}}
+{{--                                        href="/admin/website/pages/res/call-for-proposal"><i--}}
+{{--                                            class="icon-grid fa-fw"></i> Call For Proposal </a></li>--}}
                         </ul>
                     </li>
                     <li class="{{ getActiveClass(request()->segment(4),['contact']) }}"><a
                                 href="/admin/website/pages/contact"><i class="far fa-address-card fa-fw"></i> Contact
                         </a></li>
-                    <li class="{{ getActiveClass(request()->segment(4),['about-us']) }}"><a
-                                href="/admin/website/pages/about-us"><i class="fas fa-info fa-fw"></i> About Us </a>
-                    </li>
-                    <li class="{{ getActiveClass(request()->segment(4),['our-professors']) }}"><a
-                                href="/admin/website/pages/our-professors"><i
-                                    class="fas fa-chalkboard-teacher fa-fw"></i> Our Professors </a></li>
+{{--                    <li class="{{ getActiveClass(request()->segment(4),['about-us']) }}"><a--}}
+{{--                                href="/admin/website/pages/about-us"><i class="fas fa-info fa-fw"></i> About Us </a>--}}
+{{--                    </li>--}}
+{{--                    <li class="{{ getActiveClass(request()->segment(4),['our-professors']) }}"><a--}}
+{{--                                href="/admin/website/pages/our-professors"><i--}}
+{{--                                    class="fas fa-chalkboard-teacher fa-fw"></i> Our Professors </a></li>--}}
                     <li class="{{ getActiveClass(request()->segment(4),['inquires']) }}"><a
-                                href="/admin/website/pages/inquiries"><i class="fas fa-question"></i> Inquires </a></li>
+                                href="/admin/website/pages/inquiries"><i class="fas fa-question fa-fw"></i> Inquires </a></li>
                 </ul>
             </li>
             @can('upload-sample-list')
