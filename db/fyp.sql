@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Server version:               5.7.33 - MySQL Community Server (GPL)
+-- Host:                         localhost
+-- Server version:               5.7.24 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
--- HeidiSQL Version:             11.2.0.6213
+-- HeidiSQL Version:             10.2.0.5599
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -10,7 +10,6 @@
 /*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Dumping structure for table fyp.blog
 CREATE TABLE IF NOT EXISTS `blog` (
@@ -91,10 +90,14 @@ CREATE TABLE IF NOT EXISTS `cms_home` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.cms_home: ~0 rows (approximately)
+-- Dumping data for table fyp.cms_home: ~3 rows (approximately)
 /*!40000 ALTER TABLE `cms_home` DISABLE KEYS */;
+INSERT INTO `cms_home` (`id`, `banner`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'P23WzANjDcpqOV89ornVu1gULlaobt-1624695913.jpg', 'There are many variations of passages of Lorem Ipsum available', 1, 1, '2021-06-26 08:25:13', '2021-09-21 08:33:55', NULL),
+	(2, 'CXedTc8tzYRgAnAvYo4NZTELCyYyqd-1624696770.jpg', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 1, 1, '2021-06-26 08:39:30', '2021-09-21 08:33:32', NULL),
+	(3, 'MyidZ1xfOOM664wtbGU4wzkxfU1KYs-1632212999.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 1, '2021-06-26 08:39:42', '2021-09-21 08:33:05', NULL);
 /*!40000 ALTER TABLE `cms_home` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.cms_home_intro
@@ -164,26 +167,6 @@ INSERT INTO `cms_home_testimonials` (`id`, `profile_picture`, `name`, `designati
 	(3, '8h4qdLN2nC05Sx4iQ8FsMOqiw5gyIQ-1624719149.jpg', 'asAASA', 'dasdasd das d sasdsa', 'asdasd dasdas sad das dasds', 1, 1, '2021-06-26 14:34:10', '2021-06-26 14:52:29', NULL);
 /*!40000 ALTER TABLE `cms_home_testimonials` ENABLE KEYS */;
 
--- Dumping structure for table fyp.cms_inquires
-CREATE TABLE IF NOT EXISTS `cms_inquires` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `contact` varchar(14) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `subject` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci,
-  `is_answer` tinyint(4) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table fyp.cms_inquires: ~1 rows (approximately)
-/*!40000 ALTER TABLE `cms_inquires` DISABLE KEYS */;
-INSERT INTO `cms_inquires` (`id`, `name`, `email`, `contact`, `subject`, `message`, `is_answer`, `created_at`, `updated_at`) VALUES
-	(1, 'dwewq', 'faizan.ahmed123.f@gmail.com', '3325774617', 'gfdgf', 'rrer rwerwer rewwer rew', 0, '2021-09-20 16:53:18', '2021-09-20 16:53:18');
-/*!40000 ALTER TABLE `cms_inquires` ENABLE KEYS */;
-
 -- Dumping structure for table fyp.cms_news
 CREATE TABLE IF NOT EXISTS `cms_news` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -243,9 +226,9 @@ CREATE TABLE IF NOT EXISTS `event` (
 -- Dumping data for table fyp.event: ~3 rows (approximately)
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
 INSERT INTO `event` (`id`, `image`, `title`, `slug`, `description`, `schedule`, `mode`, `location`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(10, 'c5u0k6zjDqt50hXjNJlGOOUZqOxOeT-1624789842.jpg', 'Event 1', 'event-1', 'dads dada swseqw  dfeasef edwerdweq  rfewrdweq rqewrrdweq', '2021-07-13 07:15:55', 'Online', 'asdasdas', 1, 1, '2021-06-27 10:30:42', '2021-07-13 13:15:59', NULL),
+	(10, 'c5u0k6zjDqt50hXjNJlGOOUZqOxOeT-1624789842.jpg', 'Event 1', 'event-1', 'dads dada swseqw  dfeasef edwerdweq  rfewrdweq rqewrrdweq', '2021-09-23 05:14:49', 'Online', 'asdasdas', 1, 1, '2021-06-27 10:30:42', '2021-09-23 12:14:53', NULL),
 	(11, 'sJVWgB8fdD5lOMFeUzsKhPyYop9nnl-1626182640.jpg', 'Test', 'test', 'adas dd da dasdas dsdas das dasdasd erqwerqw dedwq weeqwe eqweqweqw ewqeqwe ewe qweqwe eqwqwewq  qweqweqw eqweqweqwe eqweqwewqe eqweqw', '2021-07-13 07:16:37', 'Physical', 'dasddasdas d dasdas adasdasd dadasdas dasdasd', 1, 1, '2021-07-13 13:24:00', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
-	(12, '3TI3cx1zWukmEku2UexXefVBTRYP6p-1629290435.jpg', 'Event 3', 'event-3', 'ddsa  dasdas d aas', '2021-08-20 05:38:03', 'Online', NULL, 1, 0, '2021-08-18 12:40:35', '2021-08-18 12:40:35', NULL);
+	(12, '3TI3cx1zWukmEku2UexXefVBTRYP6p-1629290435.jpg', 'Event 3', 'event-3', 'ddsa  dasdas d aas', '2021-09-23 05:14:40', 'Online', NULL, 1, 1, '2021-08-18 12:40:35', '2021-09-23 12:14:46', NULL);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.failed_jobs
@@ -464,15 +447,14 @@ CREATE TABLE IF NOT EXISTS `register_events` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.register_events: ~4 rows (approximately)
+-- Dumping data for table fyp.register_events: ~3 rows (approximately)
 /*!40000 ALTER TABLE `register_events` DISABLE KEYS */;
 INSERT INTO `register_events` (`id`, `user_id`, `event_id`, `status`, `guest_name`, `guest_email`, `visitor_ip`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, NULL, 11, 'registered', 'Faizan', 'faizan.ahmed123.f@gmail.com', '127.0.0.1', '2021-08-18 10:50:43', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
 	(2, 3, 11, 'registered', NULL, NULL, NULL, '2021-08-18 10:55:23', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
-	(3, 3, 10, 'un-registered', NULL, NULL, NULL, '2021-08-18 11:04:30', '2021-09-22 17:38:58', NULL),
-	(4, 3, 12, 'registered', NULL, NULL, NULL, '2021-09-22 17:26:58', '2021-09-22 17:30:27', NULL);
+	(3, 3, 10, 'registered', NULL, NULL, NULL, '2021-08-18 11:04:30', '2021-08-18 11:04:30', NULL);
 /*!40000 ALTER TABLE `register_events` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.register_interns
@@ -490,13 +472,13 @@ CREATE TABLE IF NOT EXISTS `register_interns` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.register_interns: ~3 rows (approximately)
+-- Dumping data for table fyp.register_interns: ~4 rows (approximately)
 /*!40000 ALTER TABLE `register_interns` DISABLE KEYS */;
 INSERT INTO `register_interns` (`id`, `user_id`, `internship_id`, `status`, `guest_name`, `guest_email`, `visitor_ip`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, 3, 12, 'registered', NULL, NULL, NULL, '2021-08-18 15:06:30', '2021-08-18 15:10:21', '2021-08-18 15:10:21'),
 	(2, NULL, 12, 'registered', 'Faizan', 'faizan.ahmed123.f@gmail.com', '127.0.0.1', '2021-08-19 07:14:11', '2021-08-19 07:21:28', '2021-08-19 07:21:28'),
 	(3, 3, 12, 'un-registered', NULL, NULL, NULL, '2021-08-19 07:21:08', '2021-09-08 17:24:50', NULL),
-	(4, 3, 13, 'un-registered', NULL, NULL, NULL, '2021-09-08 17:24:43', '2021-09-22 17:27:14', NULL);
+	(4, 3, 13, 'registered', NULL, NULL, NULL, '2021-09-08 17:24:43', '2021-09-08 17:24:43', NULL);
 /*!40000 ALTER TABLE `register_interns` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.research_projects
@@ -534,10 +516,12 @@ CREATE TABLE IF NOT EXISTS `research_proposals` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table fyp.research_proposals: ~0 rows (approximately)
 /*!40000 ALTER TABLE `research_proposals` DISABLE KEYS */;
+INSERT INTO `research_proposals` (`id`, `user_id`, `title`, `investigator_details`, `abstract`, `agency`, `amount`, `submission_date`, `upload_research`, `type`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 3, 'Test', 'asdasda', 'adassdas', 'dasdasd', NULL, '2021-09-23', 'research-project-614c28732348a.pdf', 'fyp', 'approved', '2021-09-23 07:10:43', '2021-09-23 07:10:43', NULL);
 /*!40000 ALTER TABLE `research_proposals` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.roles
@@ -549,7 +533,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table fyp.roles: ~7 rows (approximately)
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
@@ -673,7 +657,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table fyp.users: ~5 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `father_name`, `cnic`, `email`, `password`, `profile_picture`, `profile_detail`, `student_rollno`, `student_seatno`, `department`, `contact`, `gender`, `dob`, `designation`, `qualification`, `expertise`, `certification`, `joining_date`, `verification_token`, `remember_token`, `is_block`, `is_verified`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-	(1, 'Umer', 'Aziz', NULL, '2342423312312', 'admin@fyp.com', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', 'hfN3pfxy631629373389.png', 'dasdasd', NULL, NULL, NULL, NULL, 'male', '2021-07-06', NULL, NULL, NULL, NULL, '2021-07-22', NULL, 'DD0cwkHEmJLadlXHzal6Vg4Bd7lhCV2ZZPort0OnTrzHqoNyE1JPFptnBhFK', 0, 1, 0, 1, '2021-07-06 13:53:04', '2021-08-19 11:43:09'),
+	(1, 'Umer', 'Aziz', NULL, '2342423312312', 'admin@fyp.com', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', 'hfN3pfxy631629373389.png', 'dasdasd', NULL, NULL, NULL, NULL, 'male', '2021-07-06', NULL, NULL, NULL, NULL, '1928-02-17', NULL, 'DD0cwkHEmJLadlXHzal6Vg4Bd7lhCV2ZZPort0OnTrzHqoNyE1JPFptnBhFK', 0, 1, 0, 1, '2021-07-06 13:53:04', '2021-09-23 07:24:52'),
 	(2, 'Sajjad', 'Ali', NULL, '2342423442342', 'sajjad.ali@viftech.com.pk', '$2y$10$tqDpuOhJ.4kdiNM.qs0h6.5u1xCNnOdseceE0Z1ZZ4M6Wi4LnUvbK', NULL, 'asa', NULL, NULL, NULL, NULL, 'male', '2021-07-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 1, '2021-07-07 06:10:32', '2021-07-08 09:12:42'),
 	(3, 'Affan', 'Ali', NULL, '1323123123123', 'affan@viftech.com.pk', '$2y$10$wD3DgVlac9LlJrPO0UpgVuOoSdqyFB3Vkbc7ajXePJmBnnlYR5EhG', NULL, 'dasdasd', 24234, '312f', NULL, NULL, 'male', '2021-08-02', NULL, NULL, NULL, NULL, '2021-08-19', NULL, 'yjRKZ6yvpbVM69hqYq2QiTqrwFXlfbEFJNuBHTDVgzRuo2fyl7JMoyDtP6Nv', 0, 1, 1, 3, '2020-07-07 06:38:30', '2021-08-19 11:51:35'),
 	(4, 'Faizan', 'AHMED RAZA', NULL, '3412312312312', 'faizan@viftech.com.pk', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', NULL, NULL, NULL, NULL, NULL, NULL, 'male', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 1, '2021-07-07 06:57:17', '2021-07-08 09:14:14'),
@@ -681,6 +665,5 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `father_name`, `cnic`, `em
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

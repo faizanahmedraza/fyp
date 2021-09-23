@@ -143,7 +143,7 @@
     <script src="/assets/js/moment.min.js"></script>
     <script src="/assets/js/daterangepicker.min.js"></script>
     <script>
-        var schedule = "{{ old('schedule',$updateEvent->schedule) }}";
+        var schedule = "{{ old('schedule',\Carbon\Carbon::parse($updateEvent->schedule)->format('d-m-Y H:i:s')) }}";
         var eventMode = "{{ old('mode',$updateEvent->mode) }}";
 
         if(eventMode === "Online")

@@ -25,7 +25,7 @@ class ProfileController extends Controller
             'first_name' => 'required|max:55',
             'last_name' => 'required|max:55',
             'father_name' => 'sometimes|nullable|max:55',
-            'email' => 'required|email:rfc|max:255|unique:users,email,' . $profile->id,
+            'email' => 'required|email:rfc|max:255|unique:users,email,' . Auth::id(),
             'cnic' => 'sometimes|nullable|digits_between:13,13',
             'contact' => 'sometimes|nullable|digits_between:11,13',
             'gender' => 'sometimes|nullable|in:male,female,other|max:10',
@@ -68,13 +68,13 @@ class ProfileController extends Controller
             'email' => request()->email,
             'cnic' => request()->cnic,
             'gender' => request()->gender,
-            'dob' => request()->dob,
+            'dob' => \Carbon\Carbon::parse(request()->dob)->format('Y-m-d'),
             'department' => request()->department,
             'designation' => request()->designation,
             'qualification' => request()->qualification,
             'contact' => request()->contact,
             'profile_detail' => request()->profile_detail,
-            'joining_date' => request()->joining_date,
+            'joining_date' => \Carbon\Carbon::parse(request()->joining_date)->format('Y-m-d'),
             'updated_by' => Auth::id()
         ]);
 

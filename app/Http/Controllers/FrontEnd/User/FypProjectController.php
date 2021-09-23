@@ -53,7 +53,7 @@ class FypProjectController extends Controller
 
         $studentData['user_id'] = Auth::id();
         $studentData['title'] = (int)request()->proposal_title;
-        $studentData['submission_date'] = request()->submission_date;
+        $studentData['submission_date'] = Carbon::parse(request()->submission_date)->format('Y-m-d');
         $studentData['type'] = 'fyp';
         $upload_project = request()->file('upload_project');
 

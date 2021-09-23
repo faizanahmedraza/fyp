@@ -58,7 +58,7 @@ class FundedProposalController extends Controller
         $studentData['abstract'] = request()->abstract;
         $studentData['agency'] = request()->agency;
         $studentData['amount'] = request()->amount;
-        $studentData['submission_date'] = request()->submission_date;
+        $studentData['submission_date'] = Carbon::parse(request()->submission_date)->format('Y-m-d');
         $studentData['status'] = 'approved';
         $studentData['type'] = 'funded';
         $upload_research = request()->file('upload_research');

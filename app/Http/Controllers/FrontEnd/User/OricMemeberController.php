@@ -55,7 +55,7 @@ class OricMemeberController extends Controller
         $focalPersonData['abstract'] = request()->abstract;
         $focalPersonData['agency'] = request()->agency;
         $focalPersonData['amount'] = request()->amount;
-        $focalPersonData['submission_date'] = request()->submission_date;
+        $focalPersonData['submission_date'] = Carbon::parse(request()->submission_date)->format('Y-m-d');
         $focalPersonData['status'] = 'pending';
         $upload_research = request()->file('upload_research');
 

@@ -50,7 +50,7 @@
                                                 <td>{{ \Illuminate\Support\Str::limit($event->description, 20) }}
                                                 </td>
                                                 <td>
-                                                    {{ $event->schedule }}
+                                                    {{ \Carbon\Carbon::parse($event->schedule)->format('d-m-Y H:i:s') }}
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('website.page.event.update', ['eventId' => $event->id]) }}"

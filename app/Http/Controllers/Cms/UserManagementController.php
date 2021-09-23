@@ -58,7 +58,7 @@ class UserManagementController extends Controller
             'cnic' => request()->cnic,
             'contact'  => request()->contact,
             'gender' => request()->gender,
-            'dob' => request()->dob,
+            'dob' => \Carbon\Carbon::parse(request()->dob)->format('Y-m-d'),
             'department' => request()->department,
             'designation' => request()->designation,
             'verification_token' => Str::random('50'),
@@ -106,7 +106,7 @@ class UserManagementController extends Controller
             'cnic' => request()->cnic,
             'contact'  => request()->contact,
             'gender' => request()->gender,
-            'dob' => request()->dob,
+            'dob' => \Carbon\Carbon::parse(request()->dob)->format('Y-m-d'),
             'department' => request()->department,
             'designation' => request()->designation,
             'updated_by' => Auth::id()

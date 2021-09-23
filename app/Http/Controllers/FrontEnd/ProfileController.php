@@ -70,7 +70,7 @@ class ProfileController extends Controller
             'email' => request()->email,
             'cnic' => request()->cnic,
             'gender' => request()->gender,
-            'dob' => request()->dob,
+            'dob' => \Carbon\Carbon::parse(request()->dob)->format('Y-m-d'),
             'student_rollno' => request()->student_rollno,
             'student_seatno' => request()->student_seatno,
             'department' => request()->department,
@@ -78,7 +78,7 @@ class ProfileController extends Controller
             'qualification' => request()->qualification,
             'contact' => request()->contact,
             'profile_detail' => request()->profile_detail,
-            'joining_date' => request()->joining_date,
+            'joining_date' => \Carbon\Carbon::parse(request()->joining_date)->format('Y-m-d'),
             'updated_by' => Auth::id()
         ]);
 
