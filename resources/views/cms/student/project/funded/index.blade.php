@@ -47,8 +47,8 @@
                                         @foreach($projects as $key => $project)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $project->getUser->full_name }}</td>
-                                                <td>{{ $project->getProposal->title }}</td>
+                                                <td>{{ $project->getUser->full_name ?? '' }}</td>
+                                                <td>{{ $project->getProposal->title  ?? ''}}</td>
                                                 <td>
                                                     <a href="/admin/funded-projects/{{$project->id}}/detail"
                                                        class="btn btn-info btn-sm">Detail</a>

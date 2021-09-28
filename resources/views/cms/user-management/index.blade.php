@@ -39,7 +39,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role</th>
-                                        <th>User Status</th>
+                                        <th>Active / InActive</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -48,7 +48,8 @@
                                         @foreach($users as $key => $user)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $user->full_name }}  @if($user->is_verified == 1)<span class="badge badge-primary">  Verified</span>@endif</td>
+                                                <td>{{ $user->full_name }}  @if($user->is_verified == 1)<span
+                                                            class="badge badge-primary">  Verified</span>@endif</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>
                                                     @foreach($user->roles as $role)
@@ -70,6 +71,8 @@
                                                     @if($user->is_block === 0)
                                                         <a href="/admin/update-user/{{$user->id}}"
                                                            class="btn btn-info btn-sm">Update</a>
+                                                    @else
+                                                        <a class="btn btn-info btn-sm disabled">Update</a>
                                                     @endif
                                                     <a href="/admin/user-detail/{{$user->id}}"
                                                        class="btn btn-success btn-sm">View</a>
@@ -99,14 +102,14 @@
     <script>
         $(function () {
             $('.table').DataTable({
-                "order": [[ 0, "asc" ]]
+                "order": [[0, "asc"]]
             });
         });
 
         function blockUser(input, userId, is_block) {
-            let status = is_block === '1' ? "unblock" : "block";
+            let status = is_block === '1' ? "active" : "inactive";
             swal({
-                title: "Are you sure you want to "+ status +"?",
+                title: "Are you sure you want to " + status + "?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -114,6 +117,7 @@
             }).then((willDelete) => {
                 if (willDelete) {
                     axios.get(`/admin/block-user/${userId}`).then(function (response) {
+                        swal(response.data.msg);
                         swal({
                             title: response.data.msg,
                             icon: "success",

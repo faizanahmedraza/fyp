@@ -49,13 +49,13 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="user_id">Student Name <span
+                                                    <label for="student_name">Student Name <span
                                                                 class="required-class">*</span></label>
-                                                    <select class="form-control" name="user_id" id="user_id">
+                                                    <select class="form-control" name="student_name" id="student_name">
                                                         <option value="">Select</option>
                                                         @foreach($students as $val)
                                                             <option value="{{$val->id}}"
-                                                                    {{ old('user_id') === $val->id ? "selected" : ""}}>{{$val->full_name}}</option>
+                                                                    {{ (int)old('student_name') === $val->id ? "selected" : ""}}>{{$val->full_name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -63,13 +63,13 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="proposal_id">Proposal Title <span
+                                                    <label for="proposal_title">Proposal Title <span
                                                                 class="required-class">*</span></label>
-                                                    <select class="form-control" name="proposal_id" id="proposal_id">
+                                                    <select class="form-control" name="proposal_title" id="proposal_title">
                                                         <option value="">Select</option>
                                                         @foreach($proposals as $val)
                                                             <option value="{{$val->id}}"
-                                                                    {{ old('proposal_id') === $val->id ? "selected" : ""}}>{{$val->title}}</option>
+                                                                    {{ (int)old('proposal_title') === $val->id ? "selected" : ""}}>{{$val->title}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -79,7 +79,7 @@
                                                 <div class="form-group col-md-12">
                                                     <label for="submission_date">Date of submission </label>
                                                     <input type="text" name="submission_date"
-                                                           id="submission_date_id" value=""
+                                                           id="submission_date_id" value="{{old('submission_date')}}"
                                                            class="form-control read-only-background"
                                                            placeholder="Enter Date" readonly>
                                                 </div>

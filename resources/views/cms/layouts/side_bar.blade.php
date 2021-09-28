@@ -129,6 +129,10 @@
 {{--                    <li class="{{ getActiveClass(request()->segment(4),['our-professors']) }}"><a--}}
 {{--                                href="/admin/website/pages/our-professors"><i--}}
 {{--                                    class="fas fa-chalkboard-teacher fa-fw"></i> Our Professors </a></li>--}}
+                </ul>
+            </li>
+            <li class="dropdown"><a href="javascript:void(0);"> Online Interaction</a>
+                <ul>
                     <li class="{{ getActiveClass(request()->segment(4),['inquires']) }}"><a
                                 href="/admin/website/pages/inquiries"><i class="fas fa-question fa-fw"></i> Inquires </a></li>
                 </ul>

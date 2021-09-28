@@ -52,7 +52,7 @@
                                                     @endcan
                                                     @can('role-delete')
                                                         <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                           onclick="deleteRole(this, '{{ $role->id }}')">Delete</a>
+                                                           onclick="deleteRole(this, '{{ $role->id }}')">Disable</a>
                                                     @endcan
                                                 </td>
                                             </tr>

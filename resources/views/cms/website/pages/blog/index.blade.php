@@ -39,7 +39,7 @@
                                         <th data-priority="3">Author</th>
                                         <th data-priority="3">Title</th>
                                         <th data-priority="3">Description</th>
-                                        <th>In-Active/Active</th>
+                                        <th>Active / In-Active</th>
                                         <th data-priority="1">Actions</th>
                                     </tr>
                                     </thead>
@@ -56,8 +56,8 @@
                                                     <label class="switch">
                                                         <input type="checkbox" name="is_active" class="is_active"
                                                                value="1"
-                                                               onchange="changeStatus(this, '{{ $blog->id }}')"
-                                                                {{ !empty($blog->is_active) ? 'checked' : '' }}>
+                                                               onchange="changeStatus(this, '{{ $blog->id }}','{{$blog->is_active}}')"
+                                                                {{ empty($blog->is_active) ? 'checked' : '' }}>
                                                         <span class="slider round"></span>
                                                     </label>
                                                 </td>
@@ -94,9 +94,10 @@
             $('.table').DataTable();
         });
 
-        function changeStatus(input, blogId) {
+        function changeStatus(input, blogId,is_block) {
+            let status = is_block === '1' ? "inactive" : "active";
             swal({
-                title: "Are you sure?",
+                title: "Are you sure you want to "+ status +"?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,

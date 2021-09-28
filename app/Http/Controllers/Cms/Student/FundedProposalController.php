@@ -64,7 +64,7 @@ class FundedProposalController extends Controller
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
-            $newResearchName = uniqid('research-project-') . '.' . $upload_research->getClientOriginalExtension();
+            $newResearchName = uniqid('research-proposal-') . '.' . $upload_research->getClientOriginalExtension();
             if(!File::isDirectory(storage_path('app/public/uploads'))){
                 File::makeDirectory(storage_path('app/public/uploads'),0755, true);
             }

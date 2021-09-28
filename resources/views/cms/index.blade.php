@@ -27,57 +27,7 @@
                                                 <i class="fas fa-user-check fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600">Active
-                                                            Users</span><br>
-                                                    </div>
-                                                    <h2 class="card-liner-title text-white">{{ $activeUsers - 1 }}</h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstRedColor">
-                                        <div class="card-body">
-                                            <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
-                                                <i class="fas fa-user-alt-slash fa-3x fa-fw mt-2 text-white"></i>
-                                                <div class='card-liner-content'>
-                                                    <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600">Block
-                                                            Users</span><br>
-                                                    </div>
-                                                    <h2 class="card-liner-title text-white">{{ $blockUsers }}</h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstRedColor">
-                                        <div class="card-body">
-                                            <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
-                                                <i class="fas fa-user-check fa-3x fa-fw mt-2 text-white"></i>
-                                                <div class='card-liner-content'>
-                                                    <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600">Admins</span><br>
-                                                    </div>
-                                                    <h2 class="card-liner-title text-white">{{ $admins }}</h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
-                                    <div class="card cstRedColor">
-                                        <div class="card-body">
-                                            <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
-                                                <i class="fas fa-user-check fa-3x fa-fw mt-2 text-white"></i>
-                                                <div class='card-liner-content'>
-                                                    <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600">Students</span><br>
+                                                        <span class="mb-0 h5 font-w-600" style="font-size: 1rem!important;">Students</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $students }}</h2>
                                                 </div>
@@ -93,9 +43,41 @@
                                                 <i class="fas fa-user-check fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600">Researchers</span><br>
+                                                        <span class="mb-0 h5 font-w-600" style="font-size: 1rem!important;">Researchers</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $researchers }}</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
+                                    <div class="card cstRedColor">
+                                        <div class="card-body">
+                                            <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
+                                                <i class="fas fa-user-check fa-3x fa-fw mt-2 text-white"></i>
+                                                <div class='card-liner-content'>
+                                                    <div class="media-body align-self-center text-white">
+                                                        <span class="mb-0 h5 font-w-600" style="font-size: 1rem!important;">Faculty Members</span><br>
+                                                    </div>
+                                                    <h2 class="card-liner-title text-white">{{ $facultyMembers }}</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
+                                    <div class="card cstRedColor">
+                                        <div class="card-body">
+                                            <div class='d-flex px-0 px-lg-2 py-2 align-self-center'>
+                                                <i class="fas fa-user-check fa-3x fa-fw mt-2 text-white"></i>
+                                                <div class='card-liner-content'>
+                                                    <div class="media-body align-self-center text-white">
+                                                        <span class="mb-0 h5 font-w-600" style="font-size: 1rem!important;">ORIC Members</span><br>
+                                                    </div>
+                                                    <h2 class="card-liner-title text-white">{{ $oricMembers }}</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,7 +91,7 @@
                                                 <i class="fas fa-check fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break">Fyp Proposals(Approved)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Fyp Proposals(Approved)</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $approvedFypProposals }}</h2>
                                                 </div>
@@ -125,7 +107,7 @@
                                                 <i class="fas fa-times fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break">Fyp Proposals(Rejected)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Fyp Proposals(Rejected)</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $rejectedFundedProposals }}</h2>
                                                 </div>
@@ -141,7 +123,7 @@
                                                 <i class="fas fa-check fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break">Funded Proposals(Approved)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Funded Proposals(Approved)</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $approvedFundedProposals }}</h2>
                                                 </div>
@@ -157,7 +139,7 @@
                                                 <i class="fas fa-times fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break">Funded Proposals(Rejected)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Funded Proposals(Rejected)</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $approvedFundedProposals }}</h2>
                                                 </div>
@@ -172,7 +154,7 @@
                                                 <i class="icon-grid fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600">No. Of Events</span><br>
+                                                        <span class="mb-0 h5 font-w-600" style="font-size: 1rem!important;">No. Of Events</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $events }}</h2>
                                                 </div>
@@ -188,7 +170,7 @@
                                                 <i class="icon-grid fa-3x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600">No. Of Internships</span><br>
+                                                        <span class="mb-0 h5 font-w-600" style="font-size: 1rem!important;">No. Of Internships</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $interns }}</h2>
                                                 </div>

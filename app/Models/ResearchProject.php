@@ -14,6 +14,7 @@ class ResearchProject extends Model
     protected $fillable = [
         'user_id',
         'research_proposal_id',
+        'submission_date',
         'upload_project',
         'type'
     ];

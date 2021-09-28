@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_active` tinyint(4) NOT NULL DEFAULT '0',
+  `is_active` tinyint(4) NOT NULL DEFAULT '1',
   `created_by` int(11) NOT NULL,
   `updated_by` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -31,9 +31,9 @@ CREATE TABLE IF NOT EXISTS `blog` (
 -- Dumping data for table fyp.blog: ~4 rows (approximately)
 /*!40000 ALTER TABLE `blog` DISABLE KEYS */;
 INSERT INTO `blog` (`id`, `image`, `author`, `title`, `slug`, `description`, `is_active`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(12, 'h42mV0GWOcwr8fNpnoiqW4Bw2XJA5K-1624781486.jpg', 'faizan', 'laravel is a best php framework', 'laravel-is-a-best-php-framework', 'dasdsa vdasdas', 1, 1, 1, '2021-06-27 08:11:26', '2021-06-27 08:11:37', NULL),
-	(13, 'XW4oHb7hpJNJIVzR0CvtqjPPD9lhBl-1624781534.jpg', 'SAJJAD', 'laravel is a best php framework TEST', 'laravel-is-a-best-php-framework-test', 'aSASDA EWREWRW EWERQWERQW', 1, 1, 0, '2021-06-27 08:12:14', '2021-06-27 08:12:17', NULL),
-	(14, 'DYpX4ReGGlnAcvP1rxWsJFvGK5N6Fn-1624781565.jpg', 'Umer', 'laravel is a best php framework AST', 'laravel-is-a-best-php-framework-ast', 'ASAS DSADAS EDWAEDWQQ WEQWEWQ', 0, 1, 1, '2021-06-27 08:12:46', '2021-06-27 08:13:45', '2021-06-27 08:13:45'),
+	(12, 'h42mV0GWOcwr8fNpnoiqW4Bw2XJA5K-1624781486.jpg', 'faizan', 'laravel is a best php framework', 'laravel-is-a-best-php-framework', 'dasdsa vdasdas', 0, 1, 1, '2021-06-27 08:11:26', '2021-09-28 13:12:43', NULL),
+	(13, 'XW4oHb7hpJNJIVzR0CvtqjPPD9lhBl-1624781534.jpg', 'SAJJAD', 'laravel is a best php framework TEST', 'laravel-is-a-best-php-framework-test', 'aSASDA EWREWRW EWERQWERQW', 1, 1, 0, '2021-06-27 08:12:14', '2021-09-28 12:38:17', NULL),
+	(14, 'DYpX4ReGGlnAcvP1rxWsJFvGK5N6Fn-1624781565.jpg', 'Umer', 'laravel is a best php framework AST', 'laravel-is-a-best-php-framework-ast', 'ASAS DSADAS EDWAEDWQQ WEQWEWQ', 1, 1, 1, '2021-06-27 08:12:46', '2021-06-27 08:13:45', '2021-06-27 08:13:45'),
 	(15, 'EGEn7g4FbupajPrma1YD6TFMiWc48I-1624781658.jpg', 'Umer', 'laravel is a best php framework AST', 'laravel-is-a-best-php-framework-ast', 'DCADSDASD EDWADASDX EDWQD EWQEWQ', 1, 1, 0, '2021-06-27 08:14:18', '2021-06-27 08:14:23', NULL);
 /*!40000 ALTER TABLE `blog` ENABLE KEYS */;
 
@@ -95,9 +95,9 @@ CREATE TABLE IF NOT EXISTS `cms_home` (
 -- Dumping data for table fyp.cms_home: ~3 rows (approximately)
 /*!40000 ALTER TABLE `cms_home` DISABLE KEYS */;
 INSERT INTO `cms_home` (`id`, `banner`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 'P23WzANjDcpqOV89ornVu1gULlaobt-1624695913.jpg', 'There are many variations of passages of Lorem Ipsum available', 1, 1, '2021-06-26 08:25:13', '2021-09-21 08:33:55', NULL),
-	(2, 'CXedTc8tzYRgAnAvYo4NZTELCyYyqd-1624696770.jpg', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 1, 1, '2021-06-26 08:39:30', '2021-09-21 08:33:32', NULL),
-	(3, 'MyidZ1xfOOM664wtbGU4wzkxfU1KYs-1632212999.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 1, '2021-06-26 08:39:42', '2021-09-21 08:33:05', NULL);
+	(1, 'Id7ZeQ3Tz4V8JMFCbqcD7SKpLNXB3c-1632430499.jpg', 'JUW-ORIC MANAGEMENT PORTAL', 1, 1, '2021-06-26 08:25:13', '2021-09-23 20:54:59', NULL),
+	(2, 'SwAM7k8FZvDT5UfNvGknDb5MzswShm-1632429577.jpg', 'EXPLORE UNDER ONE UMBRELLA', 1, 1, '2021-06-26 08:39:30', '2021-09-23 20:39:37', NULL),
+	(3, 'MIlaZuk13mXK20szT8jHPXGfNChcGY-1624696782.jpg', 'as WSA wsd e9uw9 wu', 1, 0, '2021-06-26 08:39:42', '2021-06-26 08:39:42', NULL);
 /*!40000 ALTER TABLE `cms_home` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.cms_home_intro
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `cms_home_intro` (
 -- Dumping data for table fyp.cms_home_intro: ~0 rows (approximately)
 /*!40000 ALTER TABLE `cms_home_intro` DISABLE KEYS */;
 INSERT INTO `cms_home_intro` (`id`, `vision`, `mission`, `values`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(5, 'sASAsa', 'ASAsaS', 'SAsaSA', 1, 0, '2021-06-26 14:27:30', '2021-06-26 14:27:30', NULL);
+	(5, 'To ignite ingenuity, creativity and innovation in the hearts of our researchers to explore their inner soul and make their dreams a reality.', 'To become the hub for innovative ideas and their implementation. To provide a launching pad for the brilliant students, faculty and professionals to market their research; where every passing day promises a better tomorrow.', 'Innovation is the specific instrument of entrepreneurship; the act that endows resources with a new capacity to create wealth, and to generate new ideas into futuristic solutions for the betterment of individual, institute and the humanity.', 1, 1, '2021-06-26 14:27:30', '2021-09-23 20:44:08', NULL);
 /*!40000 ALTER TABLE `cms_home_intro` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.cms_home_oric_members
@@ -162,10 +162,31 @@ CREATE TABLE IF NOT EXISTS `cms_home_testimonials` (
 -- Dumping data for table fyp.cms_home_testimonials: ~3 rows (approximately)
 /*!40000 ALTER TABLE `cms_home_testimonials` DISABLE KEYS */;
 INSERT INTO `cms_home_testimonials` (`id`, `profile_picture`, `name`, `designation`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 'hnOMQih5oV5epvkh3MJMgM8zxUjL2d-1624719128.jpg', 'Testimonial', 'DAAS', 'dasda  esse  ed wesqw es esq', 1, 1, '2021-06-26 11:44:45', '2021-06-26 14:52:08', NULL),
-	(2, '5WyvKIvDlg3vdgJuKEuB3gdVyUQV7j-1624719141.jpg', 'ASAsa', 'AsaSAsaSAsa', 'SAsaSAsaSAsaSA sAS AsaSA s aSAs', 1, 1, '2021-06-26 14:33:43', '2021-06-26 14:52:21', NULL),
-	(3, '8h4qdLN2nC05Sx4iQ8FsMOqiw5gyIQ-1624719149.jpg', 'asAASA', 'dasdasd das d sasdsa', 'asdasd dasdas sad das dasds', 1, 1, '2021-06-26 14:34:10', '2021-06-26 14:52:29', NULL);
+	(1, 'MWBz4f7NLJUjcFoGWVVsN0e3iiYzbs-1632430133.jpg', 'Dr. Rashida R Zohra', 'Director ORIC-JUW', 'To lead in today’s education sector, a researcher is a passionate soul with commitment to serve society through science.  ORIC JUW provides a complete package to the researchers of JUW.', 1, 1, '2021-06-26 11:44:45', '2021-09-23 20:48:53', NULL),
+	(2, '5WyvKIvDlg3vdgJuKEuB3gdVyUQV7j-1624719141.jpg', 'Mr. Wajeeh Uddin Ahmed', 'Chancellor JUW', 'Proud of its extraordinary roster of former researchers and its past successes in the research arena, Jinnah for Women (JUW) is unequivocally focused on the future.', 1, 1, '2021-06-26 14:33:43', '2021-09-23 20:52:40', NULL),
+	(3, '8h4qdLN2nC05Sx4iQ8FsMOqiw5gyIQ-1624719149.jpg', 'Prof. Dr. Naeem Farooqui', 'Vice chancellor JUW', 'We have state of the art faculties in the field of bio-science, pharmaceutics, business management and media science.The innovative based researches have vast impact on international level.', 1, 1, '2021-06-26 14:34:10', '2021-09-23 20:54:37', NULL);
 /*!40000 ALTER TABLE `cms_home_testimonials` ENABLE KEYS */;
+
+-- Dumping structure for table fyp.cms_inquires
+CREATE TABLE IF NOT EXISTS `cms_inquires` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contact` char(15) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_answer` tinyint(4) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table fyp.cms_inquires: ~0 rows (approximately)
+/*!40000 ALTER TABLE `cms_inquires` DISABLE KEYS */;
+INSERT INTO `cms_inquires` (`id`, `name`, `email`, `contact`, `subject`, `message`, `is_answer`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'dwewq', 'faizan.ahmed123.f@gmail.com', '3325774617', 'gfdgf', 'rrer rwerwer rewwer rew', 0, '2021-09-20 16:53:18', '2021-09-20 16:53:18', NULL);
+/*!40000 ALTER TABLE `cms_inquires` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.cms_news
 CREATE TABLE IF NOT EXISTS `cms_news` (
@@ -221,14 +242,18 @@ CREATE TABLE IF NOT EXISTS `event` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.event: ~3 rows (approximately)
+-- Dumping data for table fyp.event: ~7 rows (approximately)
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
 INSERT INTO `event` (`id`, `image`, `title`, `slug`, `description`, `schedule`, `mode`, `location`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(10, 'c5u0k6zjDqt50hXjNJlGOOUZqOxOeT-1624789842.jpg', 'Event 1', 'event-1', 'dads dada swseqw  dfeasef edwerdweq  rfewrdweq rqewrrdweq', '2021-09-23 05:14:49', 'Online', 'asdasdas', 1, 1, '2021-06-27 10:30:42', '2021-09-23 12:14:53', NULL),
+	(10, 'c5u0k6zjDqt50hXjNJlGOOUZqOxOeT-1624789842.jpg', 'Event 1', 'event-1', 'dads dada swseqw  dfeasef edwerdweq  rfewrdweq rqewrrdweq', '2021-07-13 06:15:55', 'Online', 'asdasdas', 1, 1, '2021-06-27 10:30:42', '2021-07-13 13:15:59', NULL),
 	(11, 'sJVWgB8fdD5lOMFeUzsKhPyYop9nnl-1626182640.jpg', 'Test', 'test', 'adas dd da dasdas dsdas das dasdasd erqwerqw dedwq weeqwe eqweqweqw ewqeqwe ewe qweqwe eqwqwewq  qweqweqw eqweqweqwe eqweqwewqe eqweqw', '2021-07-13 07:16:37', 'Physical', 'dasddasdas d dasdas adasdasd dadasdas dasdasd', 1, 1, '2021-07-13 13:24:00', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
-	(12, '3TI3cx1zWukmEku2UexXefVBTRYP6p-1629290435.jpg', 'Event 3', 'event-3', 'ddsa  dasdas d aas', '2021-09-23 05:14:40', 'Online', NULL, 1, 1, '2021-08-18 12:40:35', '2021-09-23 12:14:46', NULL);
+	(12, '3TI3cx1zWukmEku2UexXefVBTRYP6p-1629290435.jpg', 'Event 3', 'event-3', 'ddsa  dasdas d aas', '2021-08-20 05:38:03', 'Online', NULL, 1, 0, '2021-08-18 12:40:35', '2021-09-23 17:34:43', '2021-09-23 17:34:43'),
+	(13, '7hlYGmGsRr57lc0uS9PEmkeVRnfQXq-1632419533.jpg', 'FPCCI visit', 'fpcci-visit', 'A viist to FPPCI', '2021-09-29 10:00:00', 'Physical', 'Jinnah university', 1, 0, '2021-09-23 17:52:13', '2021-09-23 17:52:13', NULL),
+	(14, '9oBDYGdXy8bARXtfsgykBS0YD4VIoA-1632420116.jpg', 'Cultural Exhibition', 'cultural-exhibition', 'Cultural Exhibition At Marriott Hotel Karachi', '2021-09-23 11:00:56', 'Physical', 'Marriott Hotel', 1, 0, '2021-09-23 18:01:56', '2021-09-23 18:01:56', NULL),
+	(15, 'ZYVjeCtxdIvN9HoqvCKNw43ZQQgCgV-1632420795.jpg', 'From campus to venture', 'from-campus-to-venture', 'Role f social media', '2021-10-07 11:00:00', 'Physical', 'Universirty campus', 1, 0, '2021-09-23 18:13:16', '2021-09-28 14:01:19', NULL),
+	(16, 'Xa9uiPgN7e9FzkrRdPWG6xvHrAMU4Y-1632420996.png', 'IBM Workshop', 'ibm-workshop', 'IBM workshop for students', '2021-09-23 11:15:58', 'Online', NULL, 1, 0, '2021-09-23 18:16:36', '2021-09-28 14:01:13', NULL);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.failed_jobs
@@ -310,13 +335,15 @@ CREATE TABLE IF NOT EXISTS `internships` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.internships: ~2 rows (approximately)
+-- Dumping data for table fyp.internships: ~4 rows (approximately)
 /*!40000 ALTER TABLE `internships` DISABLE KEYS */;
 INSERT INTO `internships` (`id`, `image`, `title`, `slug`, `description`, `company`, `mode`, `location`, `paid`, `duration`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(12, '1Bo3J7RGmiiPnD4gKOWVBAoLgH4CFm-1629292648.jpg', 'Php Intern', 'php-intern', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 'Test Comp', 'Physical', 'fsdfdsfd f fsd', 1, '2021-09-08 - 2021-10-07', '2021-08-18 13:17:28', '2021-09-08 17:08:40', NULL),
-	(13, 'O7X1sgve08AwYshlJWxTTEfs4Uwp6y-1631119529.png', 'laravel123', 'laravel123', 'asdsad dsadsad', 'Test Comp', 'Online', NULL, 1, '2021-09-08 - 2021-10-07', '2021-09-08 16:45:29', '2021-09-08 17:08:54', NULL);
+	(12, 'eHZo9iEpaZkNlQgqibDHH04f2SQhG2-1632426991.jpg', 'International Projects', 'international-projects', 'Engineering- Computer Diploma', 'Satejinfo Tech', 'Physical', 'fsdfdsfd f fsd', 1, '2021-09-08 - 2021-10-07', '2021-08-18 13:17:28', '2021-09-23 19:56:31', NULL),
+	(13, '9WbUtZ3vWR5Z2kx4TvV5fYEJQS6lxI-1632427100.jpg', 'Creative Interns', 'creative-interns', 'Social Media & Communications, Data collection & Analytics', 'Every-Mind Organization', 'Physical', NULL, 1, '2021-09-08 - 2021-10-07', '2021-09-08 16:45:29', '2021-09-23 19:59:05', NULL),
+	(14, 'pIZqGdUUlsTodbeSQf6mIDTKLjfYod-1632427388.jpg', 'Job Vacancy', 'job-vacancy', 'BCS - Fresh 1 year of experience', 'Speridian Technology', 'Physical', NULL, 1, '28-09-2021 - 22-10-2021', '2021-09-23 20:03:08', '2021-09-23 20:03:08', NULL),
+	(15, 'b5zvOy4tBVyIM4Adxrdhwv37AqFAMG-1632427521.jpg', 'Career Advising & Counselling Officer', 'career-advising-counselling-officer', 'Interested applicants with minimum two year of relevant experience and 16 years of education can send resume', 'PAK - TURK MAARIF', 'Physical', NULL, 1, '04-10-2021 - 11-11-2021', '2021-09-23 20:05:21', '2021-09-23 20:05:21', NULL);
 /*!40000 ALTER TABLE `internships` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.migrations
@@ -362,14 +389,21 @@ CREATE TABLE IF NOT EXISTS `model_has_roles` (
   CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.model_has_roles: ~5 rows (approximately)
+-- Dumping data for table fyp.model_has_roles: ~12 rows (approximately)
 /*!40000 ALTER TABLE `model_has_roles` DISABLE KEYS */;
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 	(1, 'App\\Models\\User', 1),
 	(3, 'App\\Models\\User', 2),
 	(2, 'App\\Models\\User', 3),
-	(7, 'App\\Models\\User', 4),
-	(2, 'App\\Models\\User', 5);
+	(3, 'App\\Models\\User', 4),
+	(2, 'App\\Models\\User', 5),
+	(2, 'App\\Models\\User', 6),
+	(2, 'App\\Models\\User', 7),
+	(2, 'App\\Models\\User', 8),
+	(2, 'App\\Models\\User', 9),
+	(2, 'App\\Models\\User', 10),
+	(2, 'App\\Models\\User', 11),
+	(2, 'App\\Models\\User', 12);
 /*!40000 ALTER TABLE `model_has_roles` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.notifications
@@ -383,10 +417,12 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table fyp.notifications: ~0 rows (approximately)
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
+INSERT INTO `notifications` (`id`, `user_id`, `type`, `message`, `is_read`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 8, 'fyp-project-proposal', ' is send approval request of fyp proposal.', 0, '2021-09-23 21:08:09', '2021-09-23 21:08:09', NULL);
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.permissions
@@ -447,14 +483,15 @@ CREATE TABLE IF NOT EXISTS `register_events` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.register_events: ~3 rows (approximately)
+-- Dumping data for table fyp.register_events: ~4 rows (approximately)
 /*!40000 ALTER TABLE `register_events` DISABLE KEYS */;
 INSERT INTO `register_events` (`id`, `user_id`, `event_id`, `status`, `guest_name`, `guest_email`, `visitor_ip`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, NULL, 11, 'registered', 'Faizan', 'faizan.ahmed123.f@gmail.com', '127.0.0.1', '2021-08-18 10:50:43', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
 	(2, 3, 11, 'registered', NULL, NULL, NULL, '2021-08-18 10:55:23', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
-	(3, 3, 10, 'registered', NULL, NULL, NULL, '2021-08-18 11:04:30', '2021-08-18 11:04:30', NULL);
+	(3, 3, 10, 'registered', NULL, NULL, NULL, '2021-08-18 11:04:30', '2021-09-23 18:09:30', '2021-09-23 18:09:30'),
+	(4, 8, 13, 'registered', NULL, NULL, NULL, '2021-09-23 21:09:03', '2021-09-23 21:09:03', NULL);
 /*!40000 ALTER TABLE `register_events` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.register_interns
@@ -470,15 +507,16 @@ CREATE TABLE IF NOT EXISTS `register_interns` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.register_interns: ~4 rows (approximately)
+-- Dumping data for table fyp.register_interns: ~5 rows (approximately)
 /*!40000 ALTER TABLE `register_interns` DISABLE KEYS */;
 INSERT INTO `register_interns` (`id`, `user_id`, `internship_id`, `status`, `guest_name`, `guest_email`, `visitor_ip`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, 3, 12, 'registered', NULL, NULL, NULL, '2021-08-18 15:06:30', '2021-08-18 15:10:21', '2021-08-18 15:10:21'),
 	(2, NULL, 12, 'registered', 'Faizan', 'faizan.ahmed123.f@gmail.com', '127.0.0.1', '2021-08-19 07:14:11', '2021-08-19 07:21:28', '2021-08-19 07:21:28'),
 	(3, 3, 12, 'un-registered', NULL, NULL, NULL, '2021-08-19 07:21:08', '2021-09-08 17:24:50', NULL),
-	(4, 3, 13, 'registered', NULL, NULL, NULL, '2021-09-08 17:24:43', '2021-09-08 17:24:43', NULL);
+	(4, 3, 13, 'registered', NULL, NULL, NULL, '2021-09-08 17:24:43', '2021-09-08 17:24:43', NULL),
+	(5, 8, 13, 'registered', NULL, NULL, NULL, '2021-09-23 21:09:15', '2021-09-23 21:09:15', NULL);
 /*!40000 ALTER TABLE `register_interns` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.research_projects
@@ -493,10 +531,12 @@ CREATE TABLE IF NOT EXISTS `research_projects` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.research_projects: ~0 rows (approximately)
+-- Dumping data for table fyp.research_projects: ~1 rows (approximately)
 /*!40000 ALTER TABLE `research_projects` DISABLE KEYS */;
+INSERT INTO `research_projects` (`id`, `user_id`, `research_proposal_id`, `upload_project`, `type`, `submission_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 3, '3', 'research-project-61531f7619700.pdf', 'funded', '2021-09-28', '2021-09-28 13:58:14', '2021-09-28 13:58:14', NULL);
 /*!40000 ALTER TABLE `research_projects` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.research_proposals
@@ -516,12 +556,17 @@ CREATE TABLE IF NOT EXISTS `research_proposals` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.research_proposals: ~0 rows (approximately)
+-- Dumping data for table fyp.research_proposals: ~6 rows (approximately)
 /*!40000 ALTER TABLE `research_proposals` DISABLE KEYS */;
 INSERT INTO `research_proposals` (`id`, `user_id`, `title`, `investigator_details`, `abstract`, `agency`, `amount`, `submission_date`, `upload_research`, `type`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 3, 'Test', 'asdasda', 'adassdas', 'dasdasd', NULL, '2021-09-23', 'research-project-614c28732348a.pdf', 'fyp', 'approved', '2021-09-23 07:10:43', '2021-09-23 07:10:43', NULL);
+	(1, 7, 'Research Grants Program', 'Ms Ummay Faseeha', 'The Research Grants Program provides support for research projects in the following field: Basic and Applied Sciences, Biotechnology and Informatics, Information Technology, Administrative Sciences and Arts.', 'Ignite', 25000, '2021-09-18', 'research-project-614cd09bce1c8.docx', 'funded', 'approved', '2021-09-23 19:08:12', '2021-09-23 19:08:12', NULL),
+	(2, 11, 'Micropropagation Of Commercially Important Ornamental Plants', 'Dr. Syeda Kahkashan kazmi', 'Micropropagation refers to the in vitro multiplication and/or regeneration of plant material under aseptic and controlled environmental conditions to', 'Higher Education Commission.', 25000, '2021-09-16', 'research-project-614cd11314c1f.docx', 'funded', 'approved', '2021-09-23 19:10:11', '2021-09-23 19:10:11', NULL),
+	(3, 12, 'Synthesis of Dye Intermediates used for the synthesis of industrial dyes', 'Dr. Farzana Naz', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Higher Education Commission', 30000, '2021-09-23', 'research-project-614cd16fb2a93.docx', 'funded', 'approved', '2021-09-23 19:11:43', '2021-09-23 19:11:43', NULL),
+	(4, 7, 'Impaired Glove', 'Ms. Ummay Faseeha', 'converts hand signals into audio output. It helps to reduce the interaction gap between speech impaired', 'Ignite', 76140, '2021-08-03', 'research-project-614cd24396749.docx', 'funded', 'approved', '2021-09-23 19:15:15', '2021-09-23 19:15:15', NULL),
+	(5, 3, 'Toddler Track', 'Ms. Saima Amber', 'National track and field competitions usually start for primary school-age children aged six and over,', 'Ignite', 78800, '2021-06-11', 'research-project-614cd2c8f0c6e.docx', 'funded', 'approved', '2021-09-23 19:17:28', '2021-09-23 19:17:28', NULL),
+	(6, 8, 'From campus to venture', 'Ms Ummay Faseeha', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Ignite', 25000, '2021-09-23', 'research-project-614cecb937997.docx', 'fyp', 'approved', '2021-09-23 21:08:09', '2021-09-23 21:08:09', NULL);
 /*!40000 ALTER TABLE `research_proposals` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.roles
@@ -531,20 +576,21 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table fyp.roles: ~7 rows (approximately)
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-	(1, 'super-admin', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
-	(2, 'student', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
-	(3, 'oric-member', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
-	(4, 'researcher', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
-	(5, 'faculty', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
-	(6, 'focal-person', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
-	(7, 'test', 'web', '2021-07-07 06:56:37', '2021-07-07 06:56:37');
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'super-admin', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04', NULL),
+	(2, 'student', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04', NULL),
+	(3, 'oric-member', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL),
+	(4, 'researcher', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL),
+	(5, 'faculty', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL),
+	(6, 'focal-person', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL),
+	(7, 'fsfsd', 'web', '2021-09-28 13:40:22', '2021-09-28 13:40:33', '2021-09-28 13:40:33');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.role_has_permissions
@@ -557,7 +603,7 @@ CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.role_has_permissions: ~43 rows (approximately)
+-- Dumping data for table fyp.role_has_permissions: ~40 rows (approximately)
 /*!40000 ALTER TABLE `role_has_permissions` DISABLE KEYS */;
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 	(1, 1),
@@ -599,10 +645,7 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 	(27, 6),
 	(28, 6),
 	(29, 6),
-	(1, 7),
-	(2, 7),
-	(3, 7),
-	(5, 7);
+	(25, 7);
 /*!40000 ALTER TABLE `role_has_permissions` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.upload_samples
@@ -652,16 +695,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.users: ~5 rows (approximately)
+-- Dumping data for table fyp.users: ~12 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `father_name`, `cnic`, `email`, `password`, `profile_picture`, `profile_detail`, `student_rollno`, `student_seatno`, `department`, `contact`, `gender`, `dob`, `designation`, `qualification`, `expertise`, `certification`, `joining_date`, `verification_token`, `remember_token`, `is_block`, `is_verified`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-	(1, 'Umer', 'Aziz', NULL, '2342423312312', 'admin@fyp.com', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', 'hfN3pfxy631629373389.png', 'dasdasd', NULL, NULL, NULL, NULL, 'male', '2021-07-06', NULL, NULL, NULL, NULL, '1928-02-17', NULL, 'DD0cwkHEmJLadlXHzal6Vg4Bd7lhCV2ZZPort0OnTrzHqoNyE1JPFptnBhFK', 0, 1, 0, 1, '2021-07-06 13:53:04', '2021-09-23 07:24:52'),
-	(2, 'Sajjad', 'Ali', NULL, '2342423442342', 'sajjad.ali@viftech.com.pk', '$2y$10$tqDpuOhJ.4kdiNM.qs0h6.5u1xCNnOdseceE0Z1ZZ4M6Wi4LnUvbK', NULL, 'asa', NULL, NULL, NULL, NULL, 'male', '2021-07-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 1, '2021-07-07 06:10:32', '2021-07-08 09:12:42'),
-	(3, 'Affan', 'Ali', NULL, '1323123123123', 'affan@viftech.com.pk', '$2y$10$wD3DgVlac9LlJrPO0UpgVuOoSdqyFB3Vkbc7ajXePJmBnnlYR5EhG', NULL, 'dasdasd', 24234, '312f', NULL, NULL, 'male', '2021-08-02', NULL, NULL, NULL, NULL, '2021-08-19', NULL, 'yjRKZ6yvpbVM69hqYq2QiTqrwFXlfbEFJNuBHTDVgzRuo2fyl7JMoyDtP6Nv', 0, 1, 1, 3, '2020-07-07 06:38:30', '2021-08-19 11:51:35'),
-	(4, 'Faizan', 'AHMED RAZA', NULL, '3412312312312', 'faizan@viftech.com.pk', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', NULL, NULL, NULL, NULL, NULL, NULL, 'male', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 1, '2021-07-07 06:57:17', '2021-07-08 09:14:14'),
-	(5, 'Test 1', 'abc', 'dasda', NULL, 'test1@email.com', '$2y$10$QTfxdzZSvum20TEwkMy8BODv2iDD21WQn1/ByMcr63KAFRVDevFde', NULL, NULL, NULL, NULL, NULL, NULL, 'male', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 0, '2021-08-03 11:00:08', '2021-08-03 11:00:33');
+	(1, 'Dr. Rashida R', 'Zohra', NULL, '2342423312312', 'admin@fyp.com', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', '0fnEFnGriQ1632431005.jpg', 'dasdasd', NULL, NULL, NULL, NULL, 'female', '2021-07-06', NULL, NULL, NULL, NULL, '2019-08-21', NULL, 'a0EWxvZWdc5zDSSdEoPVWtCKQoEngsuZXObW4iX29Iw1VgE9FjjO8GepfXvD', 0, 1, 0, 1, '2021-07-06 13:53:04', '2021-09-23 21:03:53'),
+	(2, 'Aisha', 'Khan', NULL, '2342423442342', 'sajjad.ali@viftech.com.pk', '$2y$10$tqDpuOhJ.4kdiNM.qs0h6.5u1xCNnOdseceE0Z1ZZ4M6Wi4LnUvbK', NULL, 'asa', NULL, NULL, NULL, NULL, 'female', '2021-07-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 1, '2021-07-07 06:10:32', '2021-09-28 12:17:54'),
+	(3, 'Affan', 'Ali', NULL, '1323123123123', 'affan@viftech.com.pk', '$2y$10$wD3DgVlac9LlJrPO0UpgVuOoSdqyFB3Vkbc7ajXePJmBnnlYR5EhG', NULL, 'dasdasd', 24234, '312f', NULL, NULL, 'male', '2021-08-02', NULL, NULL, NULL, NULL, '2021-08-19', NULL, 'yjRKZ6yvpbVM69hqYq2QiTqrwFXlfbEFJNuBHTDVgzRuo2fyl7JMoyDtP6Nv', 0, 1, 1, 1, '2020-07-07 06:38:30', '2021-09-23 17:36:26'),
+	(4, 'Faizan', 'AHMED RAZA', NULL, '3412312312312', 'faizan@viftech.com.pk', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', NULL, NULL, NULL, NULL, NULL, NULL, 'male', '2021-09-23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 1, '2021-07-07 06:57:17', '2021-09-23 19:45:18'),
+	(5, 'fariha', 'sheikh', 'sheikh', NULL, 'test1@email.com', '$2y$10$QTfxdzZSvum20TEwkMy8BODv2iDD21WQn1/ByMcr63KAFRVDevFde', NULL, NULL, NULL, NULL, NULL, NULL, 'male', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 0, '2021-08-03 11:00:08', '2021-08-03 11:00:33'),
+	(6, 'aqsa', 'Khan', NULL, NULL, 'aqsa@fyp.com', '$2y$10$rhhv.QnHmew2PseozhbdiuDoBSqpC2bCER04WnCizs6NV8qfKVv/2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uUWXyITdvfJpEupTIPTi7uRvkJgNLoHWmIwZKeOkLlAYCb2UsU', NULL, 0, 1, NULL, 0, '2021-09-23 17:29:40', '2021-09-23 18:21:05'),
+	(7, 'aiman', 'khan', NULL, NULL, 'aiman@gmail.com', '$2y$10$GcqHjFwtnVw8scsJYbsBP.rBC4NK9C6CEQAQjWe688GbJDlWu4QNe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'HSzW0pTs8IhVGCGC7JPbfC6u9a66sdU7GaMNUlkDgJSNGS1Vqj', NULL, 0, 1, NULL, 0, '2021-09-23 17:30:49', '2021-09-23 18:21:21'),
+	(8, 'Jaweria', 'khan', NULL, NULL, 'jaweria@fyp.com', '$2y$10$icx9lYBZG33Ko9.sfzQHoe0075SUo.NBgP72vxNL3WskuUAcBV1Di', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pqaE0d8byD6vHhQPyfBOR4kMYrnTQTYjaWMV4CZG62MpyxljRm', NULL, 0, 1, NULL, 0, '2021-09-23 17:31:39', '2021-09-23 18:21:11'),
+	(9, 'Aqsa', 'Khan', NULL, NULL, 'aqsa00@fyp.com', '$2y$10$Oc7WCGXdN2GrJd.lZmZ/PeQbDo9si6RuwjgPNipbgH.nl1JbwNKV.', NULL, NULL, NULL, NULL, NULL, NULL, 'female', '2021-09-23', NULL, NULL, NULL, NULL, NULL, 'UgvDGA51EaYLJedf7OuEtSUsoeyc4Jyy09qY5zL6dZjbMek8B5', NULL, 0, 1, NULL, 1, '2021-09-23 18:17:50', '2021-09-23 18:28:48'),
+	(10, 'mahnoor', 'Khan', NULL, NULL, 'mahnoor00@fyp.com', '$2y$10$Hhhzt.uCWoS.ZConMzp6HO6SwSF6LMslllC5NhbfgRlMV0lbRUxyu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'JEubsvDeoj2qMcZWaA7qPyq6goab6aSqYnqJXe1VxCcYbOfbyE', NULL, 0, 1, NULL, 0, '2021-09-23 18:18:40', '2021-09-23 18:18:40'),
+	(11, 'Jaweria', 'arif', NULL, NULL, 'jaweria00@fyp.com', '$2y$10$gjoyzt6uyXVhP6xvScxPx.mDNeKc6rp9WJc.iQFIlM9g0CR/izezu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'xlnQ05PUQndLswAPXOMa8DLY2XZBqHjCO3L3tKq9cS5ijO95gY', NULL, 0, 1, NULL, 0, '2021-09-23 18:19:24', '2021-09-23 18:19:24'),
+	(12, 'khadija', 'zulfikar', NULL, '6433468997657', 'khadija@fyp.com', '$2y$10$1dQsTE60uXf5L.9KNlC0wOnyVrdS4OIwhLyJFCw/ZFzk1Wm4xtN1a', NULL, NULL, NULL, NULL, 'Computer Science', 98546789976, 'female', '2021-09-23', 'Student', NULL, NULL, NULL, NULL, 'USLFNxWAHXTZCoUQk3YU1rMzh5TSJFQMXGWuf2iYiwUdgs67kp', NULL, 0, 1, 1, 0, '2021-09-23 18:25:32', '2021-09-23 18:25:32');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -14,15 +14,6 @@ class HomeController extends Controller
     public function index(){
         $users = User::with('roles')->get();
         $proposals = ResearchProposal::get();
-        $activeUsers = $users->filter(function ($value){
-            return $value->is_block === 0;
-        })->count();
-        $blockUsers = $users->filter(function ($value){
-            return $value->is_block === 1;
-        })->count();
-        $admins = $users->filter(function ($value){
-            return $value->roles()->first()->name === 'admin';
-        })->count();
         $students = $users->filter(function ($value){
             return $value->roles()->first()->name === 'student';
         })->count();
@@ -52,6 +43,6 @@ class HomeController extends Controller
         })->count();
         $events = Event::count();
         $interns = InternShip::count();
-        return view('cms.index',compact('activeUsers','blockUsers','approvedFypProposals','approvedFundedProposals','rejectedFypProposals','rejectedFundedProposals','admins','students','researchers','oricMembers','facultyMembers','focalPersons','events','interns'));
+        return view('cms.index',compact('approvedFypProposals','approvedFundedProposals','rejectedFypProposals','rejectedFundedProposals','students','researchers','oricMembers','facultyMembers','focalPersons','events','interns'));
     }
 }

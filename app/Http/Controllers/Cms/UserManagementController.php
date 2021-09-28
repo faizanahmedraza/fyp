@@ -131,7 +131,7 @@ class UserManagementController extends Controller
         $user = User::findOrFail($userId);
 
         if (!empty($user)) {
-            $msgText = $user->is_block ? "unblock" : "blocked";
+            $msgText = $user->is_block ? "activated" : "inactive";
             $user->update(['is_block' => $user->is_block ? 0 : 1]);
             $msg = "User successfully {$msgText}!";
             $code = 200;
