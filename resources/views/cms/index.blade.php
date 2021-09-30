@@ -3,7 +3,7 @@
 @push('styles')
     <style>
         .card .card-body {
-            height: 125px;
+            height: 106px;
         }
         #afterimage::before{
             content: "";
@@ -105,7 +105,7 @@
                                                 <i class="fas fa-check fa-2x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Fyp Proposals(Approved)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Fyp Proposals (Approved)</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $approvedFypProposals }}</h2>
                                                 </div>
@@ -121,7 +121,7 @@
                                                 <i class="fas fa-times fa-2x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Fyp Proposals(Rejected)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Fyp Proposals (Rejected)</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $rejectedFundedProposals }}</h2>
                                                 </div>
@@ -137,7 +137,7 @@
                                                 <i class="fas fa-check fa-2x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Funded Proposals(Approved)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Funded Proposals (Approved)</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $approvedFundedProposals }}</h2>
                                                 </div>
@@ -153,7 +153,7 @@
                                                 <i class="fas fa-times fa-2x fa-fw mt-2 text-white"></i>
                                                 <div class='card-liner-content'>
                                                     <div class="media-body align-self-center text-white">
-                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Funded Proposals(Rejected)</span><br>
+                                                        <span class="mb-0 h5 font-w-600 text-break" style="font-size: 1rem!important;">Funded Proposals (Rejected)</span><br>
                                                     </div>
                                                     <h2 class="card-liner-title text-white">{{ $approvedFundedProposals }}</h2>
                                                 </div>
