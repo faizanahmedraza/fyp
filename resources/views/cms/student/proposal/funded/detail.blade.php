@@ -80,7 +80,7 @@
                                                         file</a>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label>This application is ?</label>
+                                                    <label>Status</label>
                                                     <input type="text"
                                                            class="form-control rounded"
                                                            value="{{ $proposal->status }}" readonly>
