@@ -68,7 +68,7 @@
                                                     <label>Date of submission </label>
                                                     <input type="text"
                                                            class="form-control rounded"
-                                                           value="{{ $proposal->submission_date }}" readonly>
+                                                           value="{{ \Carbon\Carbon::parse($proposal->submission_date)->format('d-m-Y') }}" readonly>
                                                 </div>
                                             </div>
 

@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Notification;
 use App\Models\ResearchProposal;
 use App\Models\User;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,7 +21,7 @@ class FypProposalController extends Controller
 
     public function index()
     {
-        $proposals = ResearchProposal::where('type','funded')->get();
+        $proposals = ResearchProposal::where('type','fyp')->get();
         if(session()->has('notification'))
         {
             $notify = session()->get('notification');
@@ -57,13 +56,13 @@ class FypProposalController extends Controller
         $studentData['investigator_details'] = request()->investigator_details;
         $studentData['abstract'] = request()->abstract;
         $studentData['agency'] = request()->agency;
-        $studentData['submission_date'] = request()->submission_date;
+        $studentData['submission_date'] = \Carbon\Carbon::parse(request()->submission_date)->format('Y-m-d');
         $studentData['status'] = 'approved';
         $studentData['type'] = 'fyp';
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
-            $newResearchName = uniqid('research-project-') . '.' . $upload_research->getClientOriginalExtension();
+            $newResearchName = uniqid('research-proposal-') . '.' . $upload_research->getClientOriginalExtension();
             if(!File::isDirectory(storage_path('app/public/uploads'))){
                 File::makeDirectory(storage_path('app/public/uploads'),0755, true);
             }
@@ -98,7 +97,7 @@ class FypProposalController extends Controller
         $studentData['investigator_details'] = request()->investigator_details;
         $studentData['abstract'] = request()->abstract;
         $studentData['agency'] = request()->agency;
-        $studentData['submission_date'] = request()->submission_date;
+        $studentData['submission_date'] = \Carbon\Carbon::parse(request()->submission_date)->format('Y-m-d');
         $studentData['status'] = 'approved';
         $studentData['type'] = 'fyp';
         $upload_research = request()->file('upload_research');

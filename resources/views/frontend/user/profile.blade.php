@@ -183,7 +183,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="dob">Date of Birth</label>
                                                     <input type="text" class="form-control rounded"
-                                                           id="dob" name="dob" value="{{ old('dob',$profile->dob) }}"
+                                                           id="dob" name="dob" value="{{ old('dob',\Carbon\Carbon::parse($profile->dob)->format('d-m-Y')) }}"
                                                            readonly>
                                                 </div>
                                             </div>
@@ -191,7 +191,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label>Date of Joining</label>
-                                                    <input type="text" name="joining_date" class="form-control rounded" value="{{old('joining_date',$profile->joining_date)}}"
+                                                    <input type="text" name="joining_date" class="form-control rounded" value="{{old('joining_date',\Carbon\Carbon::parse($profile->joining_date)->format('d-m-Y'))}}"
                                                            readonly>
                                                 </div>
                                                 <div class="form-group col-md-6">

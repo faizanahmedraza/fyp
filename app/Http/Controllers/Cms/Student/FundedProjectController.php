@@ -51,8 +51,8 @@ class FundedProjectController extends Controller
         ]);
 
         $studentData['user_id'] = (int)request()->student_name;
-        $studentData['title'] = (int)request()->proposal_title;
-        $studentData['submission_date'] = request()->submission_date;
+        $studentData['research_proposal_id'] = (int)request()->proposal_title;
+        $studentData['submission_date'] = \Carbon\Carbon::parse(request()->submission_date)->format('Y-m-d');
         $studentData['type'] = 'funded';
         $upload_project = request()->file('upload_project');
 
@@ -86,7 +86,7 @@ class FundedProjectController extends Controller
 
         $studentData['user_id'] = $proposal->user_id;
         $studentData['research_proposal_id'] = $proposal->research_proposal_id;
-        $studentData['submission_date'] = request()->submission_date;
+        $studentData['submission_date'] = \Carbon\Carbon::parse(request()->submission_date)->format('Y-m-d');
         $studentData['type'] = 'funded';
         $upload_project = request()->file('upload_project');
 

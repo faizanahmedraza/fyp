@@ -22,17 +22,17 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown user-profile align-self-center d-inline-block">
+                    <a class="dropdown-item px-2 text-dark align-self-center d-sm-none d-md-block d-lg-block"> {{Auth::user()->full_name}} ( {{ Auth::user()->roles()->pluck('name')->first() == 'super-admin' ? 'Admin' : ucfirst(Auth::user()->roles()->pluck('name')->first()) }} ) </a>
+
+                    <li class="dropdown user-profile align-self-center d-inline-block border-left-0">
                         <a href="javascript:void(0);" class="nav-link py-0" data-toggle="dropdown" aria-expanded="false">
                             <div class="media">
                                 <img src="/assets/images/user_profile/@if(Auth::user()->profile_picture){{ Auth::user()->profile_picture }}@else not_available.jpg @endif" alt=""
-                                     class="d-flex img-fluid rounded-circle" style="width: 35px; height: 35px; object-fit: fill;">
+                                     class="d-flex rounded-circle" style="width: 35px; height: 35px; object-fit: fill;">
                             </div>
                         </a>
 
                         <div class="dropdown-menu border dropdown-menu-right p-0">
-                            <a class="dropdown-item px-2 text-dark align-self-center d-flex"
-                               href="javascript:void(0)"><i class="fas fa-user fa-fw mr-1 h6 mb-0"></i> {{Auth::user()->full_name}} ( {{ Auth::user()->roles()->pluck('name')->first() == 'super-admin' ? 'Admin' : ucfirst(Auth::user()->roles()->pluck('name')->first()) }} ) </a>
                             <a class="dropdown-item px-2 text-dark align-self-center d-flex"
                                href="/admin/manage-profile"><i class="fas fa-user-edit fa-fw mr-1 h6 mb-0"></i> Edit
                                 Profile</a>

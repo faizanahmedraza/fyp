@@ -58,7 +58,7 @@ class UserManagementController extends Controller
             'cnic' => request()->cnic,
             'contact'  => request()->contact,
             'gender' => request()->gender,
-            'dob' => request()->dob,
+            'dob' => \Carbon\Carbon::parse(request()->dob)->format('Y-m-d'),
             'department' => request()->department,
             'designation' => request()->designation,
             'verification_token' => Str::random('50'),
@@ -106,7 +106,7 @@ class UserManagementController extends Controller
             'cnic' => request()->cnic,
             'contact'  => request()->contact,
             'gender' => request()->gender,
-            'dob' => request()->dob,
+            'dob' => \Carbon\Carbon::parse(request()->dob)->format('Y-m-d'),
             'department' => request()->department,
             'designation' => request()->designation,
             'updated_by' => Auth::id()
@@ -131,7 +131,7 @@ class UserManagementController extends Controller
         $user = User::findOrFail($userId);
 
         if (!empty($user)) {
-            $msgText = $user->is_block ? "unblock" : "blocked";
+            $msgText = $user->is_block ? "activated" : "inactive";
             $user->update(['is_block' => $user->is_block ? 0 : 1]);
             $msg = "User successfully {$msgText}!";
             $code = 200;

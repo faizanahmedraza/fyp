@@ -57,7 +57,7 @@ class ResearcherProposalController extends Controller
         $researcherData['abstract'] = request()->abstract;
         $researcherData['agency'] = request()->agency;
         $researcherData['amount'] = request()->amount;
-        $researcherData['submission_date'] = request()->submission_date;
+        $researcherData['submission_date'] = Carbon::parse(request()->submission_date)->format('Y-m-d');
         $researcherData['status'] = 'pending';
         $upload_research = request()->file('upload_research');
 

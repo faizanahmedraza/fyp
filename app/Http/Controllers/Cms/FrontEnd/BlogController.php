@@ -53,7 +53,6 @@ class BlogController extends Controller
                     'title' => request()->title,
                     'slug' => Str::slug(request()->title),
                     'description' => request()->description,
-                    'is_active' => 0,
                     'created_by' => Auth::id()
                 ]);
             } else {
@@ -128,10 +127,10 @@ class BlogController extends Controller
     {
         $msg = 'Something went wrong.';
         $code = 400;
-        $blog = Blog::where('id',$blogId)->first();
+        $blog = Blog::findOrFail($blogId);
 
         if (!empty($blog)) {
-            $msgText = $blog->is_active ? "in-active" : "active";
+            $msgText = $blog->is_active ? "inactive" : "activated";
             $blog->update(['is_active' => $blog->is_active ? 0 : 1]);
             $msg = "Blog successfully {$msgText}!";
             $code = 200;

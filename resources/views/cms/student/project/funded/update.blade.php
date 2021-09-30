@@ -66,7 +66,7 @@
                                             <div class="form-group col-md-12">
                                                 <label for="submission_date">Date of submission </label>
                                                 <input type="text" name="submission_date"
-                                                       id="submission_date_id" value="{{ old('submission_date',$project->submission_date) }}"
+                                                       id="submission_date_id" value="{{ old('submission_date',\Carbon\Carbon::parse($project->submission_date)->format('d-m-Y')) }}"
                                                        class="form-control"
                                                        placeholder="Enter Date" readonly>
                                             </div>
@@ -105,7 +105,7 @@
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
     <script>
-        oldSubmissionDate = '{{ old('submission_date',$project->submission_date) }}';
+        oldSubmissionDate = '{{ old('submission_date',\Carbon\Carbon::parse($project->submission_date)->format('d-m-Y')) }}';
         $(function () {
             $(".allowNumberOnly").keypress(function (e) {
                 if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {

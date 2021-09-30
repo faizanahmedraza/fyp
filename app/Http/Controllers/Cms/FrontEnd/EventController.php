@@ -36,7 +36,7 @@ class EventController extends Controller
             'title' => ['required', 'unique:event,title,NULL,id,deleted_at,NULL', 'max:100'],
             'description' => ['required', 'max:500'],
             'mode' => ['required', 'in:Online,Physical'],
-            'schedule' => ['required', 'date_format:Y-m-d H:i:s'],
+            'schedule' => ['required', 'date_format:d-m-Y H:i:s'],
             'location' => ['sometimes', 'nullable', 'max:55']
         ]);
 
@@ -60,7 +60,7 @@ class EventController extends Controller
                 'slug' => Str::slug(request()->title),
                 'description' => request()->description,
                 'mode' => request()->mode,
-                'schedule' => request()->schedule,
+                'schedule' => \Carbon\Carbon::parse(request()->schedule)->format('Y-m-d H:i:s'),
                 'location' => request()->location,
                 'created_by' => Auth::id()
             ]);
@@ -91,7 +91,7 @@ class EventController extends Controller
             'title' => ['required', 'unique:event,title,' . $eventId . ',id,deleted_at,NULL', 'max:100'],
             'description' => ['required', 'max:500'],
             'mode' => ['required', 'in:Online,Physical'],
-            'schedule' => ['required', 'date_format:Y-m-d H:i:s'],
+            'schedule' => ['required', 'date_format:d-m-Y H:i:s'],
             'location' => ['sometimes', 'nullable', 'max:55']
         ]);
 
@@ -120,7 +120,7 @@ class EventController extends Controller
             'slug' => Str::slug(request()->title),
             'description' => request()->description,
             'mode' => request()->mode,
-            'schedule' => request()->schedule,
+            'schedule' => \Carbon\Carbon::parse(request()->schedule)->format('Y-m-d H:i:s'),
             'location' => request()->location,
             'updated_by' => Auth::id()
         ]);

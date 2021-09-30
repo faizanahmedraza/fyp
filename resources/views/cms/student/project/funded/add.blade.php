@@ -55,7 +55,7 @@
                                                         <option value="">Select</option>
                                                         @foreach($students as $val)
                                                             <option value="{{$val->id}}"
-                                                                    {{ old('student_name') === $val->id ? "selected" : ""}}>{{$val->full_name}}</option>
+                                                                    {{ (int)old('student_name') === $val->id ? "selected" : ""}}>{{$val->full_name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -69,7 +69,7 @@
                                                         <option value="">Select</option>
                                                         @foreach($proposals as $val)
                                                             <option value="{{$val->id}}"
-                                                                    {{ old('proposal_title') === $val->id ? "selected" : ""}}>{{$val->title}}</option>
+                                                                    {{ (int)old('proposal_title') === $val->id ? "selected" : ""}}>{{$val->title}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -79,7 +79,7 @@
                                                 <div class="form-group col-md-12">
                                                     <label for="submission_date">Date of submission </label>
                                                     <input type="text" name="submission_date"
-                                                           id="submission_date_id" value=""
+                                                           id="submission_date_id" value="{{old('submission_date')}}"
                                                            class="form-control read-only-background"
                                                            placeholder="Enter Date" readonly>
                                                 </div>
