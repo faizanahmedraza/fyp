@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Host:                         localhost
--- Server version:               5.7.24 - MySQL Community Server (GPL)
+-- Host:                         127.0.0.1
+-- Server version:               5.7.33 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
--- HeidiSQL Version:             10.2.0.5599
+-- HeidiSQL Version:             11.2.0.6213
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -10,6 +10,7 @@
 /*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Dumping structure for table fyp.blog
 CREATE TABLE IF NOT EXISTS `blog` (
@@ -97,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `cms_home` (
 INSERT INTO `cms_home` (`id`, `banner`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, 'Id7ZeQ3Tz4V8JMFCbqcD7SKpLNXB3c-1632430499.jpg', 'JUW-ORIC MANAGEMENT PORTAL', 1, 1, '2021-06-26 08:25:13', '2021-09-23 20:54:59', NULL),
 	(2, 'SwAM7k8FZvDT5UfNvGknDb5MzswShm-1632429577.jpg', 'EXPLORE UNDER ONE UMBRELLA', 1, 1, '2021-06-26 08:39:30', '2021-09-23 20:39:37', NULL),
-	(3, 'MIlaZuk13mXK20szT8jHPXGfNChcGY-1624696782.jpg', 'as WSA wsd e9uw9 wu', 1, 0, '2021-06-26 08:39:42', '2021-06-26 08:39:42', NULL);
+	(3, 'IVGcRhwMDqG3DJccwUvK0vD1rckKTF-1633024184.jpg', 'JUW ORIC WEB PORTAL', 1, 1, '2021-06-26 08:39:42', '2021-09-30 17:50:29', NULL);
 /*!40000 ALTER TABLE `cms_home` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.cms_home_intro
@@ -533,7 +534,7 @@ CREATE TABLE IF NOT EXISTS `research_projects` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.research_projects: ~1 rows (approximately)
+-- Dumping data for table fyp.research_projects: ~0 rows (approximately)
 /*!40000 ALTER TABLE `research_projects` DISABLE KEYS */;
 INSERT INTO `research_projects` (`id`, `user_id`, `research_proposal_id`, `upload_project`, `type`, `submission_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, 3, '3', 'research-project-61531f7619700.pdf', 'funded', '2021-09-28', '2021-09-28 13:58:14', '2021-09-28 13:58:14', NULL);
@@ -544,7 +545,8 @@ CREATE TABLE IF NOT EXISTS `research_proposals` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL,
   `title` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `investigator_details` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `investigator_details_pi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `investigator_details_copi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `abstract` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `agency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` int(11) DEFAULT NULL,
@@ -560,13 +562,13 @@ CREATE TABLE IF NOT EXISTS `research_proposals` (
 
 -- Dumping data for table fyp.research_proposals: ~6 rows (approximately)
 /*!40000 ALTER TABLE `research_proposals` DISABLE KEYS */;
-INSERT INTO `research_proposals` (`id`, `user_id`, `title`, `investigator_details`, `abstract`, `agency`, `amount`, `submission_date`, `upload_research`, `type`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 7, 'Research Grants Program', 'Ms Ummay Faseeha', 'The Research Grants Program provides support for research projects in the following field: Basic and Applied Sciences, Biotechnology and Informatics, Information Technology, Administrative Sciences and Arts.', 'Ignite', 25000, '2021-09-18', 'research-project-614cd09bce1c8.docx', 'funded', 'approved', '2021-09-23 19:08:12', '2021-09-23 19:08:12', NULL),
-	(2, 11, 'Micropropagation Of Commercially Important Ornamental Plants', 'Dr. Syeda Kahkashan kazmi', 'Micropropagation refers to the in vitro multiplication and/or regeneration of plant material under aseptic and controlled environmental conditions to', 'Higher Education Commission.', 25000, '2021-09-16', 'research-project-614cd11314c1f.docx', 'funded', 'approved', '2021-09-23 19:10:11', '2021-09-23 19:10:11', NULL),
-	(3, 12, 'Synthesis of Dye Intermediates used for the synthesis of industrial dyes', 'Dr. Farzana Naz', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Higher Education Commission', 30000, '2021-09-23', 'research-project-614cd16fb2a93.docx', 'funded', 'approved', '2021-09-23 19:11:43', '2021-09-23 19:11:43', NULL),
-	(4, 7, 'Impaired Glove', 'Ms. Ummay Faseeha', 'converts hand signals into audio output. It helps to reduce the interaction gap between speech impaired', 'Ignite', 76140, '2021-08-03', 'research-project-614cd24396749.docx', 'funded', 'approved', '2021-09-23 19:15:15', '2021-09-23 19:15:15', NULL),
-	(5, 3, 'Toddler Track', 'Ms. Saima Amber', 'National track and field competitions usually start for primary school-age children aged six and over,', 'Ignite', 78800, '2021-06-11', 'research-project-614cd2c8f0c6e.docx', 'funded', 'approved', '2021-09-23 19:17:28', '2021-09-23 19:17:28', NULL),
-	(6, 8, 'From campus to venture', 'Ms Ummay Faseeha', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Ignite', 25000, '2021-09-23', 'research-project-614cecb937997.docx', 'fyp', 'approved', '2021-09-23 21:08:09', '2021-09-23 21:08:09', NULL);
+INSERT INTO `research_proposals` (`id`, `user_id`, `title`, `investigator_details_pi`, `investigator_details_copi`, `abstract`, `agency`, `amount`, `submission_date`, `upload_research`, `type`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 7, 'Research Grants Program', 'Ms Ummay Faseeha', '', 'The Research Grants Program provides support for research projects in the following field: Basic and Applied Sciences, Biotechnology and Informatics, Information Technology, Administrative Sciences and Arts.', 'Ignite', 25000, '2021-09-18', 'research-project-614cd09bce1c8.docx', 'funded', 'approved', '2021-09-23 19:08:12', '2021-09-23 19:08:12', NULL),
+	(2, 11, 'Micropropagation Of Commercially Important Ornamental Plants', 'Dr. Syeda Kahkashan kazmi', '', 'Micropropagation refers to the in vitro multiplication and/or regeneration of plant material under aseptic and controlled environmental conditions to', 'Higher Education Commission.', 25000, '2021-09-16', 'research-project-614cd11314c1f.docx', 'funded', 'approved', '2021-09-23 19:10:11', '2021-09-23 19:10:11', NULL),
+	(3, 12, 'Synthesis of Dye Intermediates used for the synthesis of industrial dyes', 'Dr. Farzana Naz', '', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Higher Education Commission', 30000, '2021-09-23', 'research-project-614cd16fb2a93.docx', 'funded', 'approved', '2021-09-23 19:11:43', '2021-09-23 19:11:43', NULL),
+	(4, 7, 'Impaired Glove', 'Ms. Ummay Faseeha', '', 'converts hand signals into audio output. It helps to reduce the interaction gap between speech impaired', 'Ignite', 76140, '2021-08-03', 'research-project-614cd24396749.docx', 'funded', 'approved', '2021-09-23 19:15:15', '2021-09-23 19:15:15', NULL),
+	(5, 3, 'Toddler Track', 'Ms. Saima Amber', '', 'National track and field competitions usually start for primary school-age children aged six and over,', 'Ignite', 78800, '2021-06-11', 'research-project-614cd2c8f0c6e.docx', 'funded', 'approved', '2021-09-23 19:17:28', '2021-09-23 19:17:28', NULL),
+	(6, 8, 'From campus to venture', 'Ms Ummay Faseeha', '', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Ignite', 25000, '2021-09-23', 'research-project-614cecb937997.docx', 'fyp', 'approved', '2021-09-23 21:08:09', '2021-09-23 21:08:09', NULL);
 /*!40000 ALTER TABLE `research_proposals` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.roles
@@ -715,5 +717,6 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `father_name`, `cnic`, `em
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

@@ -44,16 +44,23 @@ class FypProposalController extends Controller
         request()->validate([
             'student_name' => 'required|in:'.implode(',',User::role('student')->pluck('id')->toArray()),
             'title' => 'required|max:150',
-            'investigator_details' => 'required|max:150',
+            'investigator_details_pi' => 'required|max:150',
+            'investigator_details_copi' => 'required|max:150',
             'abstract' => 'required|max:250',
             'agency' => 'required|max:250',
             'submission_date' => 'required|date',
             'upload_research' => 'required|file|mimes:doc,pdf,docx'
+        ],[
+            'investigator_details_pi.required' => 'The investigator principal details is required.',
+            'investigator_details_pi.max' => 'The investigator principal details may not be greater than 150 characters.',
+            'investigator_details_copi.required' => 'The investigator co-principal details is required.',
+            'investigator_details_copi.max' => 'The investigator co-principal details may not be greater than 150 characters.',
         ]);
 
         $studentData['user_id'] = request()->student_name;
         $studentData['title'] = request()->title;
-        $studentData['investigator_details'] = request()->investigator_details;
+        $studentData['investigator_details_pi'] = request()->investigator_details_pi;
+        $studentData['investigator_details_copi'] = request()->investigator_details_copi;
         $studentData['abstract'] = request()->abstract;
         $studentData['agency'] = request()->agency;
         $studentData['submission_date'] = \Carbon\Carbon::parse(request()->submission_date)->format('Y-m-d');
@@ -85,16 +92,23 @@ class FypProposalController extends Controller
         $studentData = array();
         request()->validate([
             'title' => 'required|max:150',
-            'investigator_details' => 'required|max:150',
+            'investigator_details_pi' => 'required|max:150',
+            'investigator_details_copi' => 'required|max:150',
             'abstract' => 'required|max:250',
             'agency' => 'required|max:250',
             'submission_date' => 'required|date',
             'upload_research' => 'sometimes|nullable|file|mimes:doc,pdf,docx',
+        ],[
+            'investigator_details_pi.required' => 'The investigator principal details is required.',
+            'investigator_details_pi.max' => 'The investigator principal details may not be greater than 150 characters.',
+            'investigator_details_copi.required' => 'The investigator co-principal details is required.',
+            'investigator_details_copi.max' => 'The investigator co-principal details may not be greater than 150 characters.',
         ]);
 
         $studentData['user_id'] = $proposal->user_id;
         $studentData['title'] = request()->title;
-        $studentData['investigator_details'] = request()->investigator_details;
+        $studentData['investigator_details_pi'] = request()->investigator_details_pi;
+        $studentData['investigator_details_copi'] = request()->investigator_details_copi;
         $studentData['abstract'] = request()->abstract;
         $studentData['agency'] = request()->agency;
         $studentData['submission_date'] = \Carbon\Carbon::parse(request()->submission_date)->format('Y-m-d');

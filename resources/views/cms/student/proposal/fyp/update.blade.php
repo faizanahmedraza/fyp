@@ -64,18 +64,28 @@
                                                            value="{{ old('title',$proposal->title) }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="investigator_details">Principal and Co-Principal Details
+                                                    <label for="investigator_details">Principal Details
                                                         <span
                                                                 class="required-class">*</span></label>
-                                                    <input type="investigator_details" class="form-control rounded"
+                                                    <input type="text" class="form-control rounded"
                                                            id="investigator_details"
-                                                           name="investigator_details"
-                                                           placeholder="Enter Principal and Co-Principal Investigator Details"
-                                                           value="{{ old('investigator_details',$proposal->investigator_details) }}">
+                                                           name="investigator_details_pi"
+                                                           placeholder="Enter Principal Investigator Details"
+                                                           value="{{ old('investigator_details_pi',$proposal->investigator_details_pi) }}">
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="investigator_details">Co-Principal Details
+                                                        <span
+                                                                class="required-class">*</span></label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="investigator_details"
+                                                           name="investigator_details_copi"
+                                                           placeholder="Enter Co-Principal Investigator Details"
+                                                           value="{{ old('investigator_details_copi',$proposal->investigator_details_copi) }}">
+                                                </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="abstract">Abstract </label>
                                                     <input type="text" class="form-control rounded"
@@ -83,6 +93,9 @@
                                                            placeholder="Enter Abstract"
                                                            value="{{ old('abstract',$proposal->abstract) }}">
                                                 </div>
+                                            </div>
+
+                                            <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="agency">Agency where proposal
                                                         submitted </label>
@@ -91,11 +104,8 @@
                                                            placeholder="Enter Agency Where Project Submitted"
                                                            value="{{ old('agency',$proposal->agency) }}">
                                                 </div>
-                                            </div>
-
-                                            <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="submission_date">Date of submission </label>
+                                                    <label for="submission_date">Date of Submission </label>
                                                     <input type="text" name="submission_date"
                                                            id="submission_date_id" value="{{ old('submission_date',\Carbon\Carbon::parse($proposal->submission_date)->format('d-m-Y')) }}"
                                                            class="form-control read-only-background"

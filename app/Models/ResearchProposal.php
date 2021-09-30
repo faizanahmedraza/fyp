@@ -14,7 +14,8 @@ class ResearchProposal extends Model
     protected $fillable = [
         'user_id',
         'title',
-        'investigator_details',
+        'investigator_details_pi',
+        'investigator_details_copi',
         'abstract',
         'agency',
         'amount',

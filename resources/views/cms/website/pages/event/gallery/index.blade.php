@@ -61,7 +61,7 @@
                                                     <a href="{{ route('website.page.event.gallery.update', ['galleryId' => $gallery->id]) }}"
                                                        class="btn btn-success btn-primary">Update</a>
                                                     <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $gallery->id }}')">Delete</a>
+                                                       onclick="deleteRecord(this, '{{ $gallery->id }}')">Disable</a>
                                                 </td>
                                             </tr>
                                         @endforeach

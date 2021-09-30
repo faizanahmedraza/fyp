@@ -32,7 +32,6 @@
                                     <th scope="col">Student Rollno#</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Contact Number</th>
-                                    <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -43,10 +42,6 @@
                                             <td>{{!empty($val->getUser) ? $val->getUser->student_rollno : ''}}</td>
                                             <td>{{!empty($val->getUser) ? $val->getUser->email : $val->guest_email}}</td>
                                             <td>{{!empty($val->getUser) ? $val->getUser->contact : ''}}</td>
-                                            <td>
-                                                <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                   onclick="deleteRecord(this, '{{ $val->id }}')">Delete</a>
-                                            </td>
                                         </tr>
                                     @endforeach
                                 @endif

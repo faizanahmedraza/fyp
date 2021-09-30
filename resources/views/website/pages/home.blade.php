@@ -10,7 +10,7 @@
                         <div class="container">
                             <div class="content-box">
                                 <div class="top-text">Researcher & Professors</div>
-                                <h1 class="">{{$val->description }}</h1>
+                                <h2>{{$val->description }}</h2>
                                 <div class="btn-box"><a href="#" class="theme-btn style-one">Discover More</a></div>
                             </div>
                         </div>

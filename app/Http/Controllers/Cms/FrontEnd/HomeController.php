@@ -72,7 +72,7 @@ class HomeController extends Controller
                 'banner' => ['required','image','mimes:jpeg,jpg,png,svg','max:2048'],
                 'description' => ['required']
             ]);
-            unlink(givePath() . '/assets/images/uploads/pages/' . $updateHome->banner);
+//            unlink(givePath() . '/assets/images/uploads/pages/' . $updateHome->banner);
             $img = Image::make(request()->file('banner'));
             $extension = request()->file('banner')->extension();
             $random = Str::random(30);

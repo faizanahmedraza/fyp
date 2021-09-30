@@ -46,7 +46,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0);"
-                                                       class="btn btn-info btn-sm" onclick="deleteResearchTemplate(this, '{{$upload->id}}')">Delete</a>
+                                                       class="btn btn-info btn-sm" onclick="deleteResearchTemplate(this, '{{$upload->id}}')">Disable</a>
                                                 </td>
                                             </tr>
                                         @endforeach

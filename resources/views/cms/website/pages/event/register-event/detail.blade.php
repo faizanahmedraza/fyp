@@ -49,7 +49,7 @@
                                             <td>{{!empty($val->getUser) ? $val->getUser->contact : ''}}</td>
                                             <td>
                                                 <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                   onclick="deleteRecord(this, '{{ $val->id }}')">Delete</a>
+                                                   onclick="deleteRecord(this, '{{ $val->id }}')">Disable</a>
                                             </td>
                                         </tr>
                                     @endforeach

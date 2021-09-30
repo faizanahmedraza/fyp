@@ -65,7 +65,7 @@
                                                     <a href="{{ route('website.page.blog.update', ['blogId' => $blog->id]) }}"
                                                        class="btn btn-success btn-primary">Update</a>
                                                     <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $blog->id }}')">Delete</a>
+                                                       onclick="deleteRecord(this, '{{ $blog->id }}')">Disable</a>
                                                 </td>
                                             </tr>
                                         @endforeach

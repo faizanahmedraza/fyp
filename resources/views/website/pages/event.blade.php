@@ -31,7 +31,7 @@
                                                     src="/assets/images/uploads/pages/event/{{$event->image}}"
                                                     alt=""></a></figure>
                                     <div class="date-box">
-                                        <span>{{\Carbon\Carbon::parse($event->created_at,'UTC')->isoFormat('Do') }}</span>{{ Str::upper(\Carbon\Carbon::parse($event->created_at,'UTC')->isoFormat('MMMM')) }}
+                                        <span>{{\Carbon\Carbon::parse($event->created_at,'UTC')->isoFormat('Do') }}</span>{{ Str::upper(\Carbon\Carbon::parse($event->created_at,'UTC')->isoFormat('MMM')) }}
                                     </div>
                                 </div>
                                 <div class="lower-content">

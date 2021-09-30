@@ -70,7 +70,8 @@
                                                             data-toggle="modal" data-target="#guestModal"
                                                             data-intern-id="{{$val->id}}"
                                                             data-intern-title="{{$val->title}}"
-                                                            onclick="appendDataToModal(this)">
+                                                            onclick="appendDataToModal(this)"
+                                                            style="max-height: 30px;">
                                                         Register Now
                                                     </button>
                                                 @endif

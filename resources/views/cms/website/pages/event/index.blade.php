@@ -56,7 +56,7 @@
                                                     <a href="{{ route('website.page.event.update', ['eventId' => $event->id]) }}"
                                                        class="btn btn-success btn-primary">Update</a>
                                                     <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $event->id }}')">Delete</a>
+                                                       onclick="deleteRecord(this, '{{ $event->id }}')">Disable</a>
                                                 </td>
                                             </tr>
                                         @endforeach

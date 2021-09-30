@@ -1243,14 +1243,14 @@ div#mCSB_1_container {
 .main-slider .content-box {
     position: relative;
     display: block;
-    max-width: 550px;
+    max-width: 600px;
     width: 100%;
 }
 
 .main-slider .content-box:before {
     position: absolute;
     content: '';
-    width: 560px;
+    width: 600px;
     height: 560px;
     left: -200px;
     top: -315px;
@@ -1293,13 +1293,13 @@ div#mCSB_1_container {
     transition-delay: 500ms;
 }
 
-.main-slider h1 {
+.main-slider h2 {
     position: relative;
     display: inline-block;
-    font-size: 100px;
+    font-size: 80px;
     line-height: 95px;
     color: #0e1221;
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 66px;
     opacity: 0;
     -webkit-transition: all 1000ms ease;
@@ -1315,7 +1315,7 @@ div#mCSB_1_container {
     left: 30%;
 }
 
-.main-slider .active h1 {
+.main-slider .active h2 {
     opacity: 1;
     height: 300px;
     display: -webkit-box;

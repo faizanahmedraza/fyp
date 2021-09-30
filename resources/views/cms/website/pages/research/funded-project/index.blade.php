@@ -55,7 +55,7 @@
                                                     <a href="{{ route('website.page.research.funded-project.update', ['fundedProjectId' => $val->id]) }}"
                                                        class="btn btn-success btn-primary">Update</a>
                                                     <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $val->id }}')">Delete</a>
+                                                       onclick="deleteRecord(this, '{{ $val->id }}')">Disable</a>
                                                 </td>
                                             </tr>
                                         @endforeach
