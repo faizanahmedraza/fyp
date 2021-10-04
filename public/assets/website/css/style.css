@@ -1317,9 +1317,9 @@ div#mCSB_1_container {
 
 .main-slider .active h2 {
     opacity: 1;
-    height: 300px;
+    height: 400px;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1419,6 +1419,12 @@ div#mCSB_1_container {
     position: relative;
     float: left;
     width: 33.33%;
+    min-height: 400px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     background: #fff;
     padding: 90px 50px 95px 130px;
     border-right: 1px solid #eff0f4;
@@ -1427,6 +1433,7 @@ div#mCSB_1_container {
     -o-transition: all 300ms ease;
     -moz-transition: all 300ms ease;
     transition: all 300ms ease;
+    text-align: justify;
 }
 
 .intro-section .single-intro-box:before {

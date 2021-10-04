@@ -24,6 +24,7 @@ Route::namespace('website')->group(function () {
     Route::get('/about-us', 'AboutController@index');
     Route::get('/contact', 'ContactController@index');
     Route::post('/contact/inquiry', 'InquiryController@storeInquiry');
+    Route::get('/success-stories', 'SuccessStoryController@index');
     Route::get('/events', 'EventController@index');
     Route::get('/events/{slug}/gallery', 'GalleryController@index');
     Route::get('/internships', 'InternShipController@index');

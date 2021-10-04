@@ -13,9 +13,8 @@
             </div>
             <div class="top-right pull-right">
                 <ul class="social-links clearfix">
-                    <li><a href="javascript:;"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="javascript:;"><i class="fab fa-youtube"></i></a></li>
                     <li><a href="javascript:;"><i class="fab fa-facebook-square"></i></a></li>
-                    <li><a href="javascript:;"><i class="fab fa-pinterest-p"></i></a></li>
                     <li><a href="javascript:;"><i class="fab fa-instagram"></i></a></li>
                 </ul>
             </div>
@@ -45,7 +44,7 @@
                             <li class="dropdown"><a href="javascript:;">Media</a>
                                 <ul>
                                     <li><a href="/events">Events</a></li>
-                                    <li><a href="javascript:;">Success Stories</a>
+                                    <li><a href="/success-stories">Success Stories</a>
                                     <li><a href="javascript:;">Timeline</a>
                                     </li>
                                 </ul>

@@ -109,13 +109,13 @@
 		$('.count-box').appear(function(){
 	
 			var $t = $(this),
-				n = $t.find(".count-text").attr("data-stop"),
+				n = $t.find(".count-text").text(),
 				r = parseInt($t.find(".count-text").attr("data-speed"), 10);
 				
 			if (!$t.hasClass("counted")) {
 				$t.addClass("counted");
 				$({
-					countNum: $t.find(".count-text").text()
+					countNum: 0
 				}).animate({
 					countNum: n
 				}, {
