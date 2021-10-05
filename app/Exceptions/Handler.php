@@ -53,7 +53,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if($exception instanceof NotFoundHttpException && $request->segment(1) == 'admin') {
+        if($exception instanceof NotFoundHttpException && ($request->segment(1) == 'admin' || $request->segment(1) == 'storage')) {
             return response()->view('errors.admin.404', [], 404);
         }
 

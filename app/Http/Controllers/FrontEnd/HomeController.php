@@ -15,6 +15,7 @@ class HomeController extends Controller
 {
     public function index(){
         $proposals = ResearchProposal::where('user_id',Auth::id())->get();
+        $projects = ResearchProject::with('getProposal')->where('user_id',Auth::id())->get();
         $approvedFypProposals = $proposals->where('type','fyp')->filter(function ($value){
             return $value->status === 'approved';
         })->count();
@@ -27,8 +28,10 @@ class HomeController extends Controller
         $rejectedFundedProposals = $proposals->where('type','funded')->filter(function ($value){
             return $value->status === 'rejected';
         })->count();
+        $approvedFypProjects = $projects->where('type', 'fyp')->count();
+        $approvedFundedProjects = $projects->where('type', 'funded')->count();
         $events = RegisterEvent::where('user_id',Auth::id())->count();
         $interns = RegisterIntern::where('user_id',Auth::id())->count();
-        return view('frontend.index',compact('approvedFypProposals','approvedFundedProposals','rejectedFypProposals','rejectedFundedProposals','events','interns'));
+        return view('frontend.index',compact('approvedFypProposals','approvedFundedProposals','rejectedFypProposals','rejectedFundedProposals','events','interns','approvedFypProjects','approvedFundedProjects'));
     }
 }

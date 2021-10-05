@@ -70,12 +70,10 @@
                                                 </td>
                                                 <td>
                                                     <a href="/admin/fyp-proposals/{{$proposal->id}}/detail"
-                                                       class="btn btn-info btn-sm">Detail</a>
+                                                       class="btn btn-success btn-sm">Detail</a>
                                                     @if($proposal->status === 'pending')
-                                                        @can('research-proposal-update')
                                                             <a href="/admin/fyp-proposals/{{$proposal->id}}/update"
                                                                class="btn btn-info btn-sm">Update</a>
-                                                        @endcan
                                                     @endif
                                                 </td>
                                             </tr>

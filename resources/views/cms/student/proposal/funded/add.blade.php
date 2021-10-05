@@ -70,18 +70,28 @@
                                                            value="{{ old('title') }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="investigator_details">Principal and Co-Principal Details
+                                                    <label for="investigator_details">Principal Details
                                                         <span
                                                                 class="required-class">*</span></label>
-                                                    <input type="investigator_details" class="form-control rounded"
+                                                    <input type="text" class="form-control rounded"
                                                            id="investigator_details"
-                                                           name="investigator_details"
-                                                           placeholder="Enter Principal and Co-Principal Investigator Details"
-                                                           value="{{ old('investigator_details') }}">
+                                                           name="investigator_details_pi"
+                                                           placeholder="Enter Principal Investigator Details"
+                                                           value="{{ old('investigator_details_pi') }}">
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="investigator_details">Co-Principal Details
+                                                        <span
+                                                                class="required-class">*</span></label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="investigator_details"
+                                                           name="investigator_details_copi"
+                                                           placeholder="Enter Co-Principal Investigator Details"
+                                                           value="{{ old('investigator_details_copi') }}">
+                                                </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="abstract">Abstract </label>
                                                     <input type="text" class="form-control rounded"
@@ -89,6 +99,9 @@
                                                            placeholder="Enter Abstract"
                                                            value="{{ old('abstract') }}">
                                                 </div>
+                                            </div>
+
+                                            <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="agency">Agency where project
                                                         submitted </label>
@@ -97,9 +110,6 @@
                                                            placeholder="Enter Agency Where Project Submitted"
                                                            value="{{ old('agency') }}">
                                                 </div>
-                                            </div>
-
-                                            <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="amount">Amount Requested </label>
                                                     <input type="text" class="form-control rounded allowNumberOnly"
@@ -107,6 +117,9 @@
                                                            placeholder="Enter Account Requested"
                                                            value="{{ old('amount') }}">
                                                 </div>
+                                            </div>
+
+                                            <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="submission_date">Date of submission </label>
                                                     <input type="text" name="submission_date"
@@ -114,9 +127,6 @@
                                                            class="form-control read-only-background"
                                                            placeholder="Enter Date" readonly>
                                                 </div>
-                                            </div>
-
-                                            <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="upload_research">Upload Project Proposal</label>
                                                     <input type="file" name="upload_research"
@@ -125,8 +135,6 @@
                                                            value="{{ old('upload_research') }}">
                                                 </div>
                                             </div>
-
-
 
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>

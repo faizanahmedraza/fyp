@@ -33,54 +33,80 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label>Title </label>
-                                                    <input type="text" class="form-control rounded"
+                                                    <label for="title">Title <span
+                                                                class="required-class">*</span></label>
+                                                    <input type="text" class="form-control rounded" id="title"
+                                                           name="title" placeholder="Enter Title"
                                                            value="{{ $proposal->title }}" readonly>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label>Principal and Co-Principal Investigator Details</label>
-                                                    <input type="investigator_details" class="form-control rounded"
-                                                           value="{{ $proposal->investigator_details }}" readonly>
+                                                    <label for="investigator_details">Principal Details
+                                                        <span
+                                                                class="required-class">*</span></label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="investigator_details"
+                                                           name="investigator_details_pi"
+                                                           placeholder="Enter Principal Investigator Details"
+                                                           value="{{ $proposal->investigator_details_pi }}" readonly>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label>Abstract </label>
+                                                    <label for="investigator_details">Co-Principal Details
+                                                        <span
+                                                                class="required-class">*</span></label>
                                                     <input type="text" class="form-control rounded"
+                                                           id="investigator_details"
+                                                           name="investigator_details_copi"
+                                                           placeholder="Enter Co-Principal Investigator Details"
+                                                           value="{{ $proposal->investigator_details_copi }}" readonly>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="abstract">Abstract </label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="abstract" name="abstract"
+                                                           placeholder="Enter Abstract"
                                                            value="{{ $proposal->abstract }}" readonly>
                                                 </div>
+                                            </div>
+
+                                            <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label>Agency where proposal
+                                                    <label for="agency">Agency where proposal
                                                         submitted </label>
                                                     <input type="text" class="form-control rounded"
+                                                           id="agency" name="agency"
+                                                           placeholder="Enter Agency Where Project Submitted"
                                                            value="{{ $proposal->agency }}" readonly>
                                                 </div>
-                                            </div>
-
-                                            <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label>Amount Requested </label>
-                                                    <input type="text" class="form-control rounded"
+                                                    <label for="amount">Amount Requested </label>
+                                                    <input type="text" class="form-control rounded allowNumberOnly"
+                                                           id="amount" name="amount"
+                                                           placeholder="Enter Account Requested"
                                                            value="{{ $proposal->amount }}" readonly>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label>Date of submission </label>
-                                                    <input type="text"
-                                                           class="form-control rounded"
-                                                           value="{{ $proposal->submission_date }}" readonly>
-                                                </div>
                                             </div>
 
                                             <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="submission_date">Date of submission </label>
+                                                    <input type="text" name="submission_date"
+                                                           id="submission_date_id" value="{{ \Carbon\Carbon::parse($proposal->submission_date)->format('d-m-Y') }}"
+                                                           class="form-control read-only-background"
+                                                           placeholder="Enter Date" readonly>
+                                                </div>
                                                 <div class="form-group col-md-6">
                                                     <a href="{{\Illuminate\Support\Facades\Storage::url('uploads/'.$proposal->upload_research)}}" target="_blank" class="btn btn-dark btn-lg">
                                                         Check
                                                         your uploaded
                                                         file</a>
                                                 </div>
+                                            </div>
+                                            <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label>This application is ?</label>
+                                                    <label>Status</label>
                                                     <input type="text"
                                                            class="form-control rounded"
                                                            value="{{ $proposal->status }}" readonly>
