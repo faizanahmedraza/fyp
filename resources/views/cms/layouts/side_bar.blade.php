@@ -11,6 +11,14 @@
                     </li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <ul>
+                    <li class="{{ getActiveClass(request()->segment(2),['profile']) }}">
+                        <a href="/admin/manage-profile">
+                            <i class="fas fa-user fa-fw"></i> Profile</a>
+                    </li>
+                </ul>
+            </li>
             @can('user-list')
                 <li class="dropdown"><a href="javascript:void(0);"> User Management</a>
                     <ul>

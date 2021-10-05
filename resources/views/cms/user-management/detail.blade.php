@@ -20,87 +20,71 @@
                         <div class="card-body">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-12">
-                                        <form>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="first_name">First Name <span class="required-class">*</span></label>
-                                                    <input type="text" class="form-control rounded"
-                                                           value="{{ $user->first_name }}" readonly>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <div class="d-flex justify-content-start flex-column flex-wrap">
+                                            <div class="form-group">
+                                                <label for="first_name" class="font-weight-bold">First Name <span
+                                                            class="required-class">*</span></label> {{ $user->first_name }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="first_name" class="font-weight-bold">Email <span
+                                                            class="required-class">*</span></label> {{ $user->email }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="first_name" class="font-weight-bold">Department <span
+                                                            class="required-class">*</span></label> {{ $user->department }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="first_name" class="font-weight-bold">Date of Birth <span
+                                                            class="required-class">*</span></label> {{ $user->dob }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <div class="d-flex justify-content-start flex-column flex-wrap">
+                                            <div class="form-group">
+                                                <label for="first_name" class="font-weight-bold">Last Name <span
+                                                            class="required-class">*</span></label> {{ $user->last_name }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="first_name" class="font-weight-bold">CNIC <span
+                                                            class="required-class">*</span></label> {{ $user->cnic }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="first_name" class="font-weight-bold">Designation <span
+                                                            class="required-class">*</span></label> {{ $user->designation }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="first_name" class="font-weight-bold">User Role <span
+                                                            class="required-class">*</span></label> {{ $userRole }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <div class="d-flex justify-content-start flex-column flex-wrap">
+                                            <div class="form-group">
+                                                <label for="first_name" class="font-weight-bold">Father Name <span
+                                                            class="required-class">*</span></label> {{ $user->father_name }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="first_name" class="font-weight-bold">Contact <span
+                                                            class="required-class">*</span></label> {{ $user->contact }}
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                            {{ $user->gender === "male" ? "checked disabled" : "disabled"}}>
+                                                    <label class="font-weight-bold"
+                                                           for="exampleRadios1">Male</label>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="last_name">Last Name <span class="required-class">*</span></label>
-                                                    <input type="text" class="form-control rounded"
-                                                           value="{{ $user->last_name }}" readonly>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                            {{ $user->gender === "female" ? "checked disabled" : "disabled"}}>
+                                                    <label class="font-weight-bold"
+                                                           for="exampleRadios1">Female</label>
                                                 </div>
                                             </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label>Father Name </label>
-                                                    <input type="text" class="form-control rounded"
-                                                           value="{{ $user->father_name }}" readonly>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="email">Email <span class="required-class">*</span></label>
-                                                    <input type="email" class="form-control rounded"
-                                                           value="{{ $user->email }}" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="cnic">CNIC </label>
-                                                    <input type="text" class="form-control rounded"
-                                                           value="{{ $user->cnic }}" readonly>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="contact">Contact </label>
-                                                    <input type="text" class="form-control rounded"
-                                                           value="{{ $user->contact }}" readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label>Department </label>
-                                                    <input type="text" class="form-control rounded"
-                                                           value="{{ $user->department }}" readonly>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label>Designation</label>
-                                                    <input type="text" class="form-control rounded"
-                                                           value="{{ $user->designation }}" readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label>Gender</label>
-                                                    <div class="input-group">
-                                                        <div class="custom-control custom-radio custom-control-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                    {{ $user->gender}} checked disabled>
-                                                            <label class="form-check-label">Male</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label>Date of Birth</label>
-                                                    <input type="text" class="form-control rounded" value="{{ $user->dob }}"
-                                                           readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-2 role">
-                                                <label>User Role <span class="required-class">*</span></label>
-                                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                                        <input type="checkbox" class="custom-control-input" id="role" checked disabled>
-                                                        <label class="custom-control-label checkbox-primary outline"
-                                                               for="role" >{{ $userRole }}</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

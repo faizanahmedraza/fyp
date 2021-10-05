@@ -57,7 +57,7 @@
                                     <li>
                                         <i class="flaticon-email"></i>
                                         <h6>Email</h6>
-                                        <a href="mailto:info@example.com">oric.juw@gmail.com</a>
+                                        <a href="mailto:oric.juw@gmail.com">oric.juw@gmail.com</a>
                                     </li>
                                     <li>
                                         <i class="flaticon-phone-call"></i>

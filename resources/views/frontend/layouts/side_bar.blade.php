@@ -11,6 +11,14 @@
                     </li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <ul>
+                    <li class="{{ getActiveClass(request()->segment(2),['profile']) }}">
+                        <a href="/user/manage-profile">
+                            <i class="fa fa-user fa-fw"></i> Profile</a>
+                    </li>
+                </ul>
+            </li>
             <li class="dropdown"><a href="javascript:void(0);"> Proposal</a>
                 <ul>
                     <li class="{{ (request()->is('user/fyp-proposals*')) ? 'active' : '' }}"><a
@@ -32,7 +40,7 @@
                 </ul>
             </li>
             @can('user-event-list')
-                <li class="dropdown">
+                <li class="dropdown"><a href="javascript:void(0);">Events</a>
                     <ul>
                         <li class="{{ getActiveClass(request()->segment(2),['events']) }}">
                             <a href="/user/events">
@@ -41,7 +49,7 @@
                     </ul>
                 </li>
             @endcan
-            <li class="dropdown">
+            <li class="dropdown"><a href="javascript:void(0);">Internships</a>
                 <ul>
                     <li class="{{ getActiveClass(request()->segment(2),['internships']) }}">
                         <a href="/user/internships">

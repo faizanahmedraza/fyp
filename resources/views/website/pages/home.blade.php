@@ -138,56 +138,6 @@
     </section>
     <!-- cta-section end -->
 
-
-    <!-- research-fields -->
-    <section class="research-fields sec-pad">
-        <div class="container">
-            <div class="sec-title text-center">
-                <div class="top-text">Areas of Research</div>
-                <h1>Research Fields</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-12 research-block">
-                    <div class="single-research-box wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                        <div class="inner-box">
-                            <div class="icon-box"><i class="flaticon-bacteria"></i></div>
-                            <h3><a href="javascript:;">Bacteria Research</a></h3>
-                            <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis
-                                elit id impedie.
-                            </div>
-                            <div class="link-btn"><a href="javascript:;">Learn More</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 research-block">
-                    <div class="single-research-box wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
-                        <div class="inner-box">
-                            <div class="icon-box"><i class="flaticon-molecular"></i></div>
-                            <h3><a href="javascript:;">Medicale Research</a></h3>
-                            <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis
-                                elit id impedie.
-                            </div>
-                            <div class="link-btn"><a href="javascript:;">Learn More</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 research-block">
-                    <div class="single-research-box wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-                        <div class="inner-box">
-                            <div class="icon-box"><i class="flaticon-dna-structure"></i></div>
-                            <h3><a href="javascript:;">Dna Structure Research</a></h3>
-                            <div class="text">Lorem ipsum is simply dolor sit amet con adipiscing elit. Etiam convallis
-                                elit id impedie.
-                            </div>
-                            <div class="link-btn"><a href="javascript:;">Learn More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- research-fields end -->
-
     <!-- video-section -->
     <section class="video-section centred"
              style="background-image: url(/assets/website/images/background/video-bg.jpg);">
@@ -201,7 +151,6 @@
         </div>
     </section>
     <!-- video-section end -->
-
 
     <!-- fact-counter -->
     <section class="fact-counter centred">
