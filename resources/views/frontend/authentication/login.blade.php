@@ -26,7 +26,7 @@
                         <div class="text-center mt-0 mb-3">
                             <a href="/login" class="logo logo-admin">
                                 <img src="/assets/website/images/logo.png" class="mt-3" alt="" height="80"></a>
-                            <p class="text-muted w-75 mx-auto mb-4 mt-4">Enter your email address and password to access admin panel.</p>
+
                         </div>
 
                         <form class="form-horizontal mt-4" action="/login" method="post">

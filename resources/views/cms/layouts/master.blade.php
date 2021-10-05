@@ -45,25 +45,26 @@
 <script src="{{ url('/js/laravel-echo-setup.js') }}" type="text/javascript"></script>
 
 <script type="text/javascript">
-    setInterval(function () {
-        if ($("div.alert-danger").length > 0 || $("div.alert-success").length > 0) {
-            setTimeout(function () {
-                $("div.alert-danger").remove();
-                $("div.alert-success").remove();
-            }, 8000);
-        }
-    }, 1000);
+    // setInterval(function () {
+    //     if ($("div.alert-danger").length > 0 || $("div.alert-success").length > 0) {
+    //         setTimeout(function () {
+    //             $("div.alert-danger").remove();
+    //             $("div.alert-success").remove();
+    //         }, 8000);
+    //     }
+    // }, 1000);
 
-    window.Echo.channel("student-name.{{\Illuminate\Support\Facades\Auth::id()}}")
-        .listen('.studentFormSubmitted', (data) => {
-            playAudio();
-            $("#adminNotification").prev().append(
-                `<span class="badge badge-default"> <span class="ring">
+    if(typeof(io) != 'undefined') {
+        window.Echo.channel("student-name.{{\Illuminate\Support\Facades\Auth::id()}}")
+            .listen('.studentFormSubmitted', (data) => {
+                playAudio();
+                $("#adminNotification").prev().append(
+                    `<span class="badge badge-default"> <span class="ring">
                                         </span><span class="ring-point">
                                         </span> </span>`
-            );
-            $("#adminNotification").prepend(
-                `<li>
+                );
+                $("#adminNotification").prepend(
+                    `<li>
                         <a class="dropdown-item px-2 py-2 border border-top-0 border-left-0 border-right-0" href="/admin/notification-detail/${data.data.id}">
                                     <div class="media">
                                         <img src="" alt="" class="d-flex mr-3 img-fluid rounded-circle">
@@ -75,8 +76,9 @@
                                 </a>
                             </li>
                           `
-            );
-        });
+                );
+            });
+    }
     function playAudio() {
         var audio = new Audio('/assets/media/success.mp3');
         audio.play();

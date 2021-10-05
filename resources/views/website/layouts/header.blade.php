@@ -13,9 +13,9 @@
             </div>
             <div class="top-right pull-right">
                 <ul class="social-links clearfix">
-                    <li><a href="javascript:;"><i class="fab fa-youtube"></i></a></li>
-                    <li><a href="javascript:;"><i class="fab fa-facebook-square"></i></a></li>
-                    <li><a href="javascript:;"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCSOLPNXIH-IkClusVHMdyXw?reload=9"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://www.facebook.com/juworic"><i class="fab fa-facebook-square"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                 </ul>
             </div>
         </div>
