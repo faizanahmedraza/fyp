@@ -53,6 +53,7 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
         Route::get('/dashboard', 'HomeController@index');
         Route::get('/logout', 'AuthenticationController@logout');
         Route::get('/manage-profile', 'ProfileController@index');
+        Route::get('/view-profile', 'ProfileController@viewProfile');
         Route::post('/manage-profile', 'ProfileController@updateProfile');
         Route::get('/notifications', 'NotificationController@index');
         Route::get('/delete-notification/{notificationId}', 'NotificationController@deleteNotification');
@@ -83,7 +84,7 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::get('/fyp-proposals/{proposalId}/update', 'FypProposalController@updateProposal');
             Route::post('/fyp-proposals/{proposalId}/update', 'FypProposalController@updateProposalData');
             Route::get('/fyp-proposals/{proposalId}/detail', 'FypProposalController@proposalDetail');
-            Route::get('/fyp-proposals/{proposalId}/{status}', 'FypProposalController@changeStatus');
+            Route::get('/fyp-proposals/{proposalId}/{status}', 'FypProposalController@proposalChangeStatus');
 
             Route::get('/funded-proposals', 'FundedProposalController@index');
             Route::get('/funded-proposals/add', 'FundedProposalController@addProposal');
@@ -99,7 +100,6 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::get('/fyp-projects/{projectId}/update', 'FypProjectController@updateProject');
             Route::post('/fyp-projects/{projectId}/update', 'FypProjectController@updateProjectData');
             Route::get('/fyp-projects/{projectId}/detail', 'FypProjectController@projectDetail');
-            Route::get('/fyp-projects/{projectId}/{status}', 'FypProjectController@projectChangeStatus');
 
             Route::get('/funded-projects', 'FundedProjectController@index');
             Route::get('/funded-projects/add', 'FundedProjectController@addProject');
@@ -107,7 +107,6 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::get('/funded-projects/{projectId}/update', 'FundedProjectController@updateProject');
             Route::post('/funded-projects/{projectId}/update', 'FundedProjectController@updateProjectData');
             Route::get('/funded-projects/{projectId}/detail', 'FundedProjectController@projectDetail');
-            Route::get('/funded-projects/{projectId}/{status}', 'FundedProjectController@projectChangeStatus');
 
             Route::get('/research-proposal-template', 'UploadProposalTemplate@index');
             Route::get('/research-proposal-template/add', 'UploadProposalTemplate@uploadResearchTemplate');
@@ -272,6 +271,7 @@ Route::namespace('FrontEnd')->group(function () {
         Route::get('/dashboard', 'HomeController@index');
         Route::get('/logout', 'AuthenticationController@logout');
         Route::get('/manage-profile', 'ProfileController@index');
+        Route::get('/view-profile', 'ProfileController@viewProfile');
         Route::post('/manage-profile', 'ProfileController@updateProfile');
         Route::get('/notifications', 'NotificationController@index');
         Route::get('/delete-notification/{notificationId}', 'NotificationController@deleteNotification');

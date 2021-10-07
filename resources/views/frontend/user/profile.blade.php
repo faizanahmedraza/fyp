@@ -15,7 +15,7 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Your Profile</h4>
+                                    <h4 class="card-title">Edit Profile</h4>
                                     <span>({{ucwords(str_replace('-',' ',Auth::user()->roles()->pluck('name')->first()))}})</span>
                                 </div>
                             </div>

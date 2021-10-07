@@ -13,8 +13,8 @@
             </li>
             <li class="dropdown">
                 <ul>
-                    <li class="{{ getActiveClass(request()->segment(2),['profile']) }}">
-                        <a href="/admin/manage-profile">
+                    <li class="{{ getActiveClass(request()->segment(2),['view']) }}">
+                        <a href="/admin/view-profile">
                             <i class="fas fa-user fa-fw"></i> Profile</a>
                     </li>
                 </ul>

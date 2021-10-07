@@ -80,4 +80,10 @@ class ProfileController extends Controller
 
         return back()->with('success', 'Your profile has been successfully updated.');
     }
+
+    public function viewProfile()
+    {
+        $profile = Auth::user();
+        return view('cms.view-profile', compact('profile'));
+    }
 }

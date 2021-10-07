@@ -39,7 +39,7 @@
 }
 
 input:checked + .slider {
-    background-color: #c1c0c0;
+    background-color: #fb0000;
 }
 
 input:focus + .slider {

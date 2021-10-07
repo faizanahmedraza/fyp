@@ -138,7 +138,7 @@ class FypProposalController extends Controller
         return view('cms.student.proposal.fyp.detail', compact('proposal'));
     }
 
-    public function changeProposalStatus($proposalId, $status)
+    public function proposalChangeStatus($proposalId, $status)
     {
         $research = ResearchProposal::findOrFail($proposalId);
 

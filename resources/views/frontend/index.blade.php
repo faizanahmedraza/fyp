@@ -43,7 +43,7 @@
                                     <div class="card rounded-0 cstm-opacity">
                                         <div class="card-header p-4">PROPOSALS</div>
                                         <div class="card-body">
-                                            <div class="d-flex justify-content-around flex-wrap">
+                                            <div class="d-flex justify-content-start flex-wrap">
                                                 <div class="card cstRedColor border-bottom border-success border-w-5 border-bottom m-2 zoom">
                                                     <div class="card-body">
                                                         <div class='d-flex px-0 px-lg-2 align-self-center'>
@@ -110,7 +110,7 @@
                                     <div class="card rounded-0 cstm-opacity">
                                         <div class="card-header p-4">PROJECTS</div>
                                         <div class="card-body">
-                                            <div class="d-flex justify-content-around flex-wrap">
+                                            <div class="d-flex justify-content-start flex-wrap">
                                                 <div class="card cstRedColor border-bottom border-success border-w-5 border-bottom m-2 zoom">
                                                     <div class="card-body">
                                                         <div class='d-flex px-0 px-lg-2 align-self-center'>
@@ -146,9 +146,9 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 mt-lg-4">
                                     <div class="card rounded-0 cstm-opacity">
-                                        <div class="card-header p-4">EXTRAS</div>
+                                        <div class="card-header p-4">ACTIVITIES</div>
                                         <div class="card-body">
-                                            <div class="d-flex justify-content-around flex-wrap">
+                                            <div class="d-flex justify-content-start flex-wrap">
                                                 <div class="card cstRedColor border-bottom border-success border-w-5 border-bottom m-2 zoom">
                                                     <div class="card-body">
                                                         <div class='d-flex px-0 px-lg-2 align-self-center'>

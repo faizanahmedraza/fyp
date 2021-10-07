@@ -43,7 +43,7 @@
                                     <div class="card rounded-0 cstm-opacity">
                                         <div class="card-header p-4">USERS</div>
                                         <div class="card-body">
-                                            <div class="d-flex justify-content-around flex-wrap">
+                                            <div class="d-flex justify-content-start flex-wrap">
                                                 <div class="card cstRedColor border-bottom border-success border-w-5 border-bottom m-2 zoom">
                                                     <div class="card-body">
                                                         <div class='d-flex px-0 px-lg-2 align-self-center'>
@@ -110,7 +110,7 @@
                                     <div class="card rounded-0 cstm-opacity">
                                         <div class="card-header p-4">PROPOSALS</div>
                                         <div class="card-body">
-                                            <div class="d-flex justify-content-around flex-wrap">
+                                            <div class="d-flex justify-content-start flex-wrap">
                                                 <div class="card cstRedColor border-bottom border-success border-w-5 border-bottom m-2 zoom">
                                                     <div class="card-body">
                                                         <div class='d-flex px-0 px-lg-2 align-self-center'>
@@ -134,7 +134,7 @@
                                                         <span class="mb-0 h5 font-w-600 text-break"
                                                               style="font-size: 1rem!important;">Fyp Proposals (Rejected)</span><br>
                                                                 </div>
-                                                                <h2 class="card-liner-title text-white">{{ $rejectedFundedProposals }}</h2>
+                                                                <h2 class="card-liner-title text-white">{{ $rejectedFypProposals }}</h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -162,7 +162,7 @@
                                                         <span class="mb-0 h5 font-w-600 text-break"
                                                               style="font-size: 1rem!important;">Funded Proposals (Rejected)</span><br>
                                                                 </div>
-                                                                <h2 class="card-liner-title text-white">{{ $approvedFundedProposals }}</h2>
+                                                                <h2 class="card-liner-title text-white">{{ $rejectedFundedProposals }}</h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -177,7 +177,7 @@
                                     <div class="card rounded-0 cstm-opacity">
                                         <div class="card-header p-4">PROJECTS</div>
                                         <div class="card-body">
-                                            <div class="d-flex justify-content-around flex-wrap">
+                                            <div class="d-flex justify-content-start flex-wrap">
                                                 <div class="card cstRedColor border-bottom border-success border-w-5 border-bottom m-2 zoom">
                                                     <div class="card-body">
                                                         <div class='d-flex px-0 px-lg-2 align-self-center'>
@@ -213,9 +213,9 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 mt-lg-4">
                                     <div class="card rounded-0 cstm-opacity">
-                                        <div class="card-header p-4">EXTRAS</div>
+                                        <div class="card-header p-4">ACTIVITIES</div>
                                         <div class="card-body">
-                                            <div class="d-flex justify-content-around flex-wrap">
+                                            <div class="d-flex justify-content-start flex-wrap">
                                                 <div class="card cstRedColor border-bottom border-success border-w-5 border-bottom m-2 zoom">
                                                     <div class="card-body">
                                                         <div class='d-flex px-0 px-lg-2 align-self-center'>
@@ -223,7 +223,7 @@
                                                             <div class='card-liner-content'>
                                                                 <div class="media-body align-self-center text-white">
                                                         <span class="mb-0 h5 font-w-600"
-                                                              style="font-size: 1rem!important;">No. Of Events</span><br>
+                                                              style="font-size: 1rem!important;">Events</span><br>
                                                                 </div>
                                                                 <h2 class="card-liner-title text-white">{{ $events }}</h2>
                                                             </div>
@@ -237,7 +237,7 @@
                                                             <div class='card-liner-content'>
                                                                 <div class="media-body align-self-center text-white">
                                                         <span class="mb-0 h5 font-w-600"
-                                                              style="font-size: 1rem!important;">No. Of Internships</span><br>
+                                                              style="font-size: 1rem!important;">Internships</span><br>
                                                                 </div>
                                                                 <h2 class="card-liner-title text-white">{{ $interns }}</h2>
                                                             </div>
