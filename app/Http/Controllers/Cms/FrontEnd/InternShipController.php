@@ -14,6 +14,14 @@ use Intervention\Image\Facades\Image;
 
 class InternShipController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:internship-list|internship-create|internship-update|internship-delete', ['only' => ['index','addInternshipData']]);
+        $this->middleware('permission:internship-create', ['only' => ['addInternship','addInternshipData']]);
+        $this->middleware('permission:internship-update', ['only' => ['updateInternship','updateInternshipData']]);
+        $this->middleware('permission:internship-delete', ['only' => ['deleteInternship']]);
+    }
+
     public function index()
     {
         $resultSet = InternShip::get();
@@ -36,9 +44,9 @@ class InternShipController extends Controller
             'title' => ['required', 'unique:internships,title,NULL,id,deleted_at,NULL', 'max:100'],
             'description' => ['required', 'max:800'],
             'mode' => ['required', 'in:Online,Physical'],
-            'company' => ['required','max:100'],
+            'company' => ['required', 'max:100'],
             'location' => ['sometimes', 'nullable', 'max:200'],
-            'paid' => ['required', 'boolean'],
+            'paid' => ['sometimes','nullable', 'boolean'],
             'duration' => ['required', 'max:30'],
         ]);
 
@@ -62,7 +70,7 @@ class InternShipController extends Controller
                 'description' => request()->description,
                 'company' => request()->company,
                 'mode' => request()->mode,
-                'paid' => request()->paid,
+                'paid' => request()->paid ? : 0,
                 'duration' => request()->duration
             ]);
         }
@@ -92,14 +100,16 @@ class InternShipController extends Controller
             'title' => ['required', 'unique:internships,title,' . $internshipId . ',id,deleted_at,NULL', 'max:100'],
             'description' => ['required', 'max:800'],
             'mode' => ['required', 'in:Online,Physical'],
-            'company' => ['required','max:100'],
+            'company' => ['required', 'max:100'],
             'location' => ['sometimes', 'nullable', 'max:200'],
-            'paid' => ['required', 'boolean'],
+            'paid' => ['sometimes','nullable', 'boolean'],
             'duration' => ['required', 'max:30'],
         ]);
 
         if (!empty(request()->file('image'))) {
-            unlink(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image);
+            if (file_exists(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image)) {
+                unlink(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image);
+            }
             $img = Image::make(request()->file('image'));
             $extension = request()->file('image')->extension();
             $random = Str::random(30);
@@ -124,7 +134,7 @@ class InternShipController extends Controller
             'description' => request()->description,
             'company' => request()->company,
             'mode' => request()->mode,
-            'paid' => request()->paid,
+            'paid' => request()->paid ? : 0,
             'duration' => request()->duration
         ]);
 
@@ -138,8 +148,10 @@ class InternShipController extends Controller
         $updateInternship = InternShip::where('id', $internshipId)->first();
 
         if (!empty($updateInternship)) {
-            unlink(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image);
-            RegisterIntern::where('event_id', $updateInternship->id)->delete();
+            if (file_exists(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image)) {
+                unlink(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image);
+            }
+            RegisterIntern::where('internship_id', $updateInternship->id)->delete();
             $updateInternship->delete();
             $msg = "Successfully Delete record!";
             $code = 200;

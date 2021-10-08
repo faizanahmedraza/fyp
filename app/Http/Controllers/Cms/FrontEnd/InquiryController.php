@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class InquiryController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:inquiry-list', ['only' => ['index','inquiryDetail','submitAnswer']]);
+    }
+
     public function index()
     {
         $inquires = CMSInquiry::where('is_answer',0)->latest()->get();

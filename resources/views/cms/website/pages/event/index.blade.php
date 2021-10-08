@@ -16,9 +16,12 @@
                                 <div class="col-md-6">
                                     <h4 class="card-title">Events</h4>
                                 </div>
-                                <div class="col-md-6">
-                                    <a href="{{ route('website.page.event.add') }}" class="btn btn-primary float-right">Add +</a>
-                                </div>
+                                @can('event-create')
+                                    <div class="col-md-6">
+                                        <a href="{{ route('website.page.event.add') }}"
+                                           class="btn btn-primary float-right">Add +</a>
+                                    </div>
+                                @endcan
                             </div>
                         </div>
                         <div class="card-body">
@@ -53,10 +56,14 @@
                                                     {{ \Carbon\Carbon::parse($event->schedule)->format('d-m-Y H:i:s') }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('website.page.event.update', ['eventId' => $event->id]) }}"
-                                                       class="btn btn-success btn-primary">Update</a>
-                                                    <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $event->id }}')">Disable</a>
+                                                    @can('event-update')
+                                                        <a href="{{ route('website.page.event.update', ['eventId' => $event->id]) }}"
+                                                           class="btn btn-success btn-primary">Update</a>
+                                                    @endcan
+                                                    @can('event-delete')
+                                                        <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
+                                                           onclick="deleteRecord(this, '{{ $event->id }}')">Disable</a>
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -95,7 +102,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/events/delete/${eventId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/events/delete/${eventId}`).then(function (response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,
@@ -104,7 +111,7 @@
                         }).then((btn) => {
                             tr.remove();
                         });
-                    }).catch(function(error) {
+                    }).catch(function (error) {
                         swal({
                             title: error.response.data.msg,
                             icon: "error",

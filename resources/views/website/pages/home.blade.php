@@ -146,7 +146,7 @@
                 <div class="video-btn"><a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s"
                                           class="lightbox-image" data-caption=""><i
                                 class="flaticon-play-button"></i></a></div>
-                <h1>One Of The Best Leading Research Center</h1>
+                <h1>Pakistan's First Women University</h1>
             </div>
         </div>
     </section>
@@ -200,7 +200,6 @@
     <section class="news-section sec-pad">
         <div class="container">
             <div class="sec-title text-center">
-                <div class="top-text">From the News & Articles</div>
                 <h1>Latest Blog Posts</h1>
             </div>
             <div class="row">

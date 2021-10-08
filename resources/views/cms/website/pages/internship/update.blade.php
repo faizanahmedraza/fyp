@@ -134,8 +134,7 @@
                                                                class="custom-control-input"
                                                                id="is_paid" {{ old('paid',$updateInternship->paid) == 1 ? 'checked' : ''  }}>
                                                         <label class="custom-control-label"
-                                                               for="is_paid">Is Paid <span
-                                                                    class="required-class">*</span></label>
+                                                               for="is_paid">Is Paid</label>
                                                     </div>
                                                 </div>
                                             </div>

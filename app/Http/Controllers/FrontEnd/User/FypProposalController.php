@@ -14,12 +14,11 @@ use Illuminate\Support\Facades\Storage;
 
 class FypProposalController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->middleware('permission:research-project-list|research-project-create|research-project-update', ['only' => ['index','addResearchData']]);
-//        $this->middleware('permission:research-project-create', ['only' => ['addResearch','addResearchData']]);
-//        $this->middleware('permission:research-project-update', ['only' => ['updateResearch','updateResearchData']]);
-//    }
+    public function __construct()
+    {
+        $this->middleware('permission:user-fyp-proposal-list|user-fyp-proposal-create', ['only' => ['index', 'addProposalData']]);
+        $this->middleware('permission:user-fyp-proposal-create', ['only' => ['addProposal', 'addProposalData']]);
+    }
 
     public function index()
     {

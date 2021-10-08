@@ -17,9 +17,12 @@
                                 <div class="col-md-6">
                                     <h4 class="card-title">Blogs</h4>
                                 </div>
-                                <div class="col-md-6">
-                                    <a href="{{ route('website.page.blog.add') }}" class="btn btn-primary float-right">Add +</a>
-                                </div>
+                                @can('blog-create')
+                                    <div class="col-md-6">
+                                        <a href="{{ route('website.page.blog.add') }}"
+                                           class="btn btn-primary float-right">Add +</a>
+                                    </div>
+                                @endcan
                             </div>
                         </div>
                         <div class="card-body">
@@ -62,10 +65,14 @@
                                                     </label>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('website.page.blog.update', ['blogId' => $blog->id]) }}"
-                                                       class="btn btn-success btn-primary">Update</a>
-                                                    <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $blog->id }}')">Disable</a>
+                                                    @can('blog-update')
+                                                        <a href="{{ route('website.page.blog.update', ['blogId' => $blog->id]) }}"
+                                                           class="btn btn-success btn-primary">Update</a>
+                                                    @endcan
+                                                    @can('blog-delete')
+                                                        <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
+                                                           onclick="deleteRecord(this, '{{ $blog->id }}')">Disable</a>
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -94,17 +101,17 @@
             $('.table').DataTable();
         });
 
-        function changeStatus(input, blogId,is_block) {
+        function changeStatus(input, blogId, is_block) {
             let status = is_block === '1' ? "inactive" : "active";
             swal({
-                title: "Are you sure you want to "+ status +"?",
+                title: "Are you sure you want to " + status + "?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/blog/change-status/${blogId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/blog/change-status/${blogId}`).then(function (response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,
@@ -117,7 +124,7 @@
                             }
                         });
 
-                    }).catch(function(error) {
+                    }).catch(function (error) {
                         swal({
                             title: error.response.data.msg,
                             icon: "error",
@@ -139,7 +146,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/blog/delete/${blogId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/blog/delete/${blogId}`).then(function (response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,
@@ -148,7 +155,7 @@
                         }).then((btn) => {
                             tr.remove();
                         });
-                    }).catch(function(error) {
+                    }).catch(function (error) {
                         swal({
                             title: error.response.data.msg,
                             icon: "error",

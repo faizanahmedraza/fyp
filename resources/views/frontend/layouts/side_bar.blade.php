@@ -19,26 +19,38 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown"><a href="javascript:void(0);"> Proposal</a>
-                <ul>
-                    <li class="{{ (request()->is('user/fyp-proposals*')) ? 'active' : '' }}"><a
-                                class="text-nowrap" href="/user/fyp-proposals"><i
-                                    class="fas fa-scroll fa-fw"></i>Fyp Proposals</a></li>
-                    <li class="{{ (request()->is('user/funded-proposals*')) ? 'active' : '' }}"><a
-                                class="text-nowrap" href="/user/funded-proposals"><i
-                                    class="fas fa-scroll fa-fw"></i>Funded Proposals</a></li>
-                </ul>
-            </li>
-            <li class="dropdown"><a href="javascript:void(0);"> Project</a>
-                <ul>
-                    <li class="{{ (request()->is('user/fyp-projects*')) ? 'active' : '' }}"><a
-                                class="text-nowrap" href="/user/fyp-projects"><i
-                                    class="fas fa-scroll fa-fw"></i>Fyp Projects</a></li>
-                    <li class="{{ (request()->is('user/funded-projects*')) ? 'active' : '' }}"><a
-                                class="text-nowrap" href="/user/funded-projects"><i
-                                    class="fas fa-scroll fa-fw"></i>Funded Projects</a></li>
-                </ul>
-            </li>
+            @canany(['user-fyp-proposal-list','user-funded-proposal-list'])
+                <li class="dropdown"><a href="javascript:void(0);"> Proposal</a>
+                    <ul>
+                        @can('user-fyp-proposal-list')
+                            <li class="{{ (request()->is('user/fyp-proposals*')) ? 'active' : '' }}"><a
+                                        class="text-nowrap" href="/user/fyp-proposals"><i
+                                            class="fas fa-scroll fa-fw"></i>Fyp Proposals</a></li>
+                        @endcan
+                        @can('user-funded-proposal-list')
+                            <li class="{{ (request()->is('user/funded-proposals*')) ? 'active' : '' }}"><a
+                                        class="text-nowrap" href="/user/funded-proposals"><i
+                                            class="fas fa-scroll fa-fw"></i>Funded Proposals</a></li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcanany
+            @can(['user-funded-project-list','user-fyp-project-list'])
+                <li class="dropdown"><a href="javascript:void(0);"> Project</a>
+                    <ul>
+                        @can('user-fyp-project-list')
+                            <li class="{{ (request()->is('user/fyp-projects*')) ? 'active' : '' }}"><a
+                                        class="text-nowrap" href="/user/fyp-projects"><i
+                                            class="fas fa-scroll fa-fw"></i>Fyp Projects</a></li>
+                        @endcan
+                        @can('user-funded-project-list')
+                            <li class="{{ (request()->is('user/funded-projects*')) ? 'active' : '' }}"><a
+                                        class="text-nowrap" href="/user/funded-projects"><i
+                                            class="fas fa-scroll fa-fw"></i>Funded Projects</a></li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
             @can('user-event-list')
                 <li class="dropdown"><a href="javascript:void(0);">Events</a>
                     <ul>

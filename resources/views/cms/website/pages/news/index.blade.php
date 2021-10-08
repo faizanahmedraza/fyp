@@ -16,9 +16,12 @@
                                 <div class="col-md-6">
                                     <h4 class="card-title">News Page</h4>
                                 </div>
-                                <div class="col-md-6">
-                                    <a href="{{ route('website.page.news.add') }}" class="btn btn-primary float-right">Add +</a>
-                                </div>
+                                @can('news-create')
+                                    <div class="col-md-6">
+                                        <a href="{{ route('website.page.news.add') }}"
+                                           class="btn btn-primary float-right">Add +</a>
+                                    </div>
+                                @endcan
                             </div>
                         </div>
                         <div class="card-body">
@@ -49,10 +52,14 @@
                                                 <td>{{ \Illuminate\Support\Str::limit($home->description, 20) }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('website.page.news.update', ['newsId' => $home->id]) }}"
-                                                       class="btn btn-success btn-primary">Update</a>
-                                                    <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $home->id }}')">Disable</a>
+                                                    @can('news-update')
+                                                        <a href="{{ route('website.page.news.update', ['newsId' => $home->id]) }}"
+                                                           class="btn btn-success btn-primary">Update</a>
+                                                    @endcan
+                                                    @can('news-delete')
+                                                        <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
+                                                           onclick="deleteRecord(this, '{{ $home->id }}')">Disable</a>
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -90,7 +97,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/news/delete/${newsId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/news/delete/${newsId}`).then(function (response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,
@@ -99,7 +106,7 @@
                         }).then((btn) => {
                             tr.remove();
                         });
-                    }).catch(function(error) {
+                    }).catch(function (error) {
                         swal({
                             title: error.response.data.msg,
                             icon: "error",
