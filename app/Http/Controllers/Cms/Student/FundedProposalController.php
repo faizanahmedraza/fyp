@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Storage;
 
 class FundedProposalController extends Controller
 {
-    //    public function __construct()
-//    {
-//        $this->middleware('permission:research-project-list|research-project-create|research-project-update', ['only' => ['index','addResearchData']]);
-//        $this->middleware('permission:research-project-create', ['only' => ['addResearch','addResearchData']]);
-//        $this->middleware('permission:research-project-update', ['only' => ['updateResearch','updateResearchData']]);
-//    }
+    public function __construct()
+    {
+        $this->middleware('permission:funded-proposal-list|funded-proposal-create|funded-proposal-update', ['only' => ['index', 'addProposalData']]);
+        $this->middleware('permission:funded-proposal-create', ['only' => ['addProposal', 'addProposalData']]);
+        $this->middleware('permission:funded-proposal-update', ['only' => ['updateProposal', 'updateProposalData']]);
+    }
 
     public function index()
     {

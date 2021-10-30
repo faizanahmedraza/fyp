@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Host:                         localhost
--- Server version:               5.7.24 - MySQL Community Server (GPL)
+-- Host:                         127.0.0.1
+-- Server version:               5.7.33 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
--- HeidiSQL Version:             10.2.0.5599
+-- HeidiSQL Version:             11.2.0.6213
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -10,6 +10,7 @@
 /*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Dumping structure for table fyp.blog
 CREATE TABLE IF NOT EXISTS `blog` (
@@ -97,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `cms_home` (
 INSERT INTO `cms_home` (`id`, `banner`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, 'Id7ZeQ3Tz4V8JMFCbqcD7SKpLNXB3c-1632430499.jpg', 'JUW-ORIC MANAGEMENT PORTAL', 1, 1, '2021-06-26 08:25:13', '2021-09-23 20:54:59', NULL),
 	(2, 'SwAM7k8FZvDT5UfNvGknDb5MzswShm-1632429577.jpg', 'EXPLORE UNDER ONE UMBRELLA', 1, 1, '2021-06-26 08:39:30', '2021-09-23 20:39:37', NULL),
-	(3, 'IVGcRhwMDqG3DJccwUvK0vD1rckKTF-1633024184.jpg', 'as WSA wsd e9uw9 wu', 1, 0, '2021-06-26 08:39:42', '2021-10-04 14:10:18', '2021-10-04 14:10:18');
+	(3, 'l1FvWvhCCSB6jAzphDDCGZ98PfeMiN-1625217061.jpg', 'JUW ORIC WEB PORTAL', 1, 1, '2021-06-26 08:39:42', '2021-09-30 17:50:29', NULL);
 /*!40000 ALTER TABLE `cms_home` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.cms_home_intro
@@ -252,8 +253,8 @@ INSERT INTO `event` (`id`, `image`, `title`, `slug`, `description`, `schedule`, 
 	(12, '3TI3cx1zWukmEku2UexXefVBTRYP6p-1629290435.jpg', 'Event 3', 'event-3', 'ddsa  dasdas d aas', '2021-08-20 05:38:03', 'Online', NULL, 1, 0, '2021-08-18 12:40:35', '2021-09-23 17:34:43', '2021-09-23 17:34:43'),
 	(13, '7hlYGmGsRr57lc0uS9PEmkeVRnfQXq-1632419533.jpg', 'FPCCI visit', 'fpcci-visit', 'A viist to FPPCI', '2021-09-29 10:00:00', 'Physical', 'Jinnah university', 1, 0, '2021-09-23 17:52:13', '2021-09-23 17:52:13', NULL),
 	(14, '9oBDYGdXy8bARXtfsgykBS0YD4VIoA-1632420116.jpg', 'Cultural Exhibition', 'cultural-exhibition', 'Cultural Exhibition At Marriott Hotel Karachi', '2021-09-23 11:00:56', 'Physical', 'Marriott Hotel', 1, 0, '2021-09-23 18:01:56', '2021-09-23 18:01:56', NULL),
-	(15, 'ZYVjeCtxdIvN9HoqvCKNw43ZQQgCgV-1632420795.jpg', 'From campus to venture', 'from-campus-to-venture', 'Role f social media', '2021-10-07 11:00:00', 'Physical', 'Universirty campus', 1, 0, '2021-09-23 18:13:16', '2021-09-28 14:01:19', NULL),
-	(16, 'Xa9uiPgN7e9FzkrRdPWG6xvHrAMU4Y-1632420996.png', 'IBM Workshop', 'ibm-workshop', 'IBM workshop for students', '2021-09-23 11:15:58', 'Online', NULL, 1, 0, '2021-09-23 18:16:36', '2021-09-28 14:01:13', NULL);
+	(15, 'ZYVjeCtxdIvN9HoqvCKNw43ZQQgCgV-1632420795.jpg', 'From campus to venture', 'from-campus-to-venture', 'Role f social media', '2021-10-07 11:00:00', 'Physical', 'Universirty campus', 1, 0, '2021-09-23 18:13:16', '2021-10-08 19:14:43', '2021-10-08 19:14:43'),
+	(16, 'Xa9uiPgN7e9FzkrRdPWG6xvHrAMU4Y-1632420996.png', 'IBM Workshop', 'ibm-workshop', 'IBM workshop for students', '2021-09-23 11:15:58', 'Online', NULL, 1, 0, '2021-09-23 18:16:36', '2021-10-08 19:10:42', '2021-10-08 19:10:42');
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.failed_jobs
@@ -335,15 +336,16 @@ CREATE TABLE IF NOT EXISTS `internships` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.internships: ~4 rows (approximately)
+-- Dumping data for table fyp.internships: ~5 rows (approximately)
 /*!40000 ALTER TABLE `internships` DISABLE KEYS */;
 INSERT INTO `internships` (`id`, `image`, `title`, `slug`, `description`, `company`, `mode`, `location`, `paid`, `duration`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(12, 'eHZo9iEpaZkNlQgqibDHH04f2SQhG2-1632426991.jpg', 'International Projects', 'international-projects', 'Engineering- Computer Diploma', 'Satejinfo Tech', 'Physical', 'fsdfdsfd f fsd', 1, '2021-09-08 - 2021-10-07', '2021-08-18 13:17:28', '2021-09-23 19:56:31', NULL),
 	(13, '9WbUtZ3vWR5Z2kx4TvV5fYEJQS6lxI-1632427100.jpg', 'Creative Interns', 'creative-interns', 'Social Media & Communications, Data collection & Analytics', 'Every-Mind Organization', 'Physical', NULL, 1, '2021-09-08 - 2021-10-07', '2021-09-08 16:45:29', '2021-09-23 19:59:05', NULL),
 	(14, 'pIZqGdUUlsTodbeSQf6mIDTKLjfYod-1632427388.jpg', 'Job Vacancy', 'job-vacancy', 'BCS - Fresh 1 year of experience', 'Speridian Technology', 'Physical', NULL, 1, '28-09-2021 - 22-10-2021', '2021-09-23 20:03:08', '2021-09-23 20:03:08', NULL),
-	(15, 'b5zvOy4tBVyIM4Adxrdhwv37AqFAMG-1632427521.jpg', 'Career Advising & Counselling Officer', 'career-advising-counselling-officer', 'Interested applicants with minimum two year of relevant experience and 16 years of education can send resume', 'PAK - TURK MAARIF', 'Physical', NULL, 1, '04-10-2021 - 11-11-2021', '2021-09-23 20:05:21', '2021-09-23 20:05:21', NULL);
+	(15, 'b5zvOy4tBVyIM4Adxrdhwv37AqFAMG-1632427521.jpg', 'Career Advising & Counselling Officer', 'career-advising-counselling-officer', 'Interested applicants with minimum two year of relevant experience and 16 years of education can send resume', 'PAK - TURK MAARIF', 'Physical', NULL, 1, '04-10-2021 - 11-11-2021', '2021-09-23 20:05:21', '2021-10-08 19:19:50', '2021-10-08 19:19:50'),
+	(16, 'pPoF3eJHKrDgujJ44MwZ4LnwxjUWDY-1633721094.png', 'test', 'test', 'test', 'Test Comp', 'Physical', NULL, 0, '09-10-2021 - 10-11-2021', '2021-10-08 19:24:54', '2021-10-08 19:24:54', NULL);
 /*!40000 ALTER TABLE `internships` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.migrations
@@ -432,42 +434,66 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.permissions: ~29 rows (approximately)
+-- Dumping data for table fyp.permissions: ~53 rows (approximately)
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-	(1, 'user-list', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(2, 'user-create', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(3, 'user-update', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(4, 'user-delete', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(5, 'role-list', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(6, 'role-create', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(7, 'role-update', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(8, 'role-delete', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(9, 'research-project-list', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(10, 'research-project-create', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(11, 'research-project-update', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(12, 'admin-notification-list', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(13, 'admin-notification-detail', 'web', '2021-07-06 13:53:03', '2021-07-06 13:53:03'),
-	(14, 'admin-notification-delete', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
-	(15, 'upload-sample-list', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
-	(16, 'upload-sample-delete', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
-	(17, 'student-project-proposal-list', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
-	(18, 'student-project-proposal-create', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
-	(19, 'user-notification-list', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
-	(20, 'user-notification-detail', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
-	(21, 'oric-member-project-proposal-list', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
-	(22, 'oric-member-project-proposal-create', 'web', '2021-07-06 13:53:04', '2021-07-06 13:53:04'),
-	(23, 'researcher-project-proposal-list', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
-	(24, 'researcher-project-proposal-create', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
-	(25, 'faculty-project-proposal-list', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
-	(26, 'faculty-project-proposal-create', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
-	(27, 'focal-person-project-proposal-list', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
-	(28, 'focal-person-project-proposal-create', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05'),
-	(29, 'user-event-list', 'web', '2021-07-13 14:46:55', '2021-07-13 14:46:56');
+	(30, 'user-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(31, 'user-create', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(32, 'user-update', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(33, 'user-delete', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(34, 'role-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(35, 'role-create', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(36, 'role-update', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(37, 'role-delete', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(38, 'admin-notification-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(39, 'admin-notification-detail', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(40, 'admin-notification-delete', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(41, 'upload-sample-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(42, 'upload-sample-delete', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(43, 'inquiry-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(44, 'internship-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(45, 'internship-create', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(46, 'internship-update', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(47, 'internship-delete', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(48, 'event-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(49, 'event-create', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(50, 'event-update', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(51, 'event-delete', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(52, 'fyp-proposal-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(53, 'fyp-proposal-create', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(54, 'fyp-proposal-update', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(55, 'funded-proposal-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(56, 'funded-proposal-create', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(57, 'funded-proposal-update', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(58, 'funded-project-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(59, 'funded-project-create', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(60, 'funded-project-update', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(61, 'fyp-project-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(62, 'fyp-project-create', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(63, 'fyp-project-update', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(64, 'news-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(65, 'news-create', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(66, 'news-update', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(67, 'news-delete', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(68, 'blog-list', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(69, 'blog-create', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(70, 'blog-update', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(71, 'blog-delete', 'web', '2021-10-08 20:43:52', '2021-10-08 20:43:52'),
+	(72, 'user-fyp-proposal-list', 'web', '2021-10-08 20:43:53', '2021-10-08 20:43:53'),
+	(73, 'user-fyp-proposal-create', 'web', '2021-10-08 20:43:53', '2021-10-08 20:43:53'),
+	(74, 'user-funded-proposal-list', 'web', '2021-10-08 20:43:53', '2021-10-08 20:43:53'),
+	(75, 'user-funded-proposal-create', 'web', '2021-10-08 20:43:53', '2021-10-08 20:43:53'),
+	(76, 'user-funded-project-list', 'web', '2021-10-08 20:43:53', '2021-10-08 20:43:53'),
+	(77, 'user-funded-project-create', 'web', '2021-10-08 20:43:53', '2021-10-08 20:43:53'),
+	(78, 'user-fyp-project-list', 'web', '2021-10-08 20:43:53', '2021-10-08 20:43:53'),
+	(79, 'user-fyp-project-create', 'web', '2021-10-08 20:43:53', '2021-10-08 20:43:53'),
+	(80, 'user-notification-list', 'web', '2021-10-08 20:43:53', '2021-10-08 20:43:53'),
+	(81, 'user-notification-detail', 'web', '2021-10-08 20:43:53', '2021-10-08 20:43:53'),
+	(82, 'user-event-list', 'web', '2021-10-08 20:43:53', '2021-10-08 20:43:53');
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.register_events
@@ -489,8 +515,8 @@ CREATE TABLE IF NOT EXISTS `register_events` (
 /*!40000 ALTER TABLE `register_events` DISABLE KEYS */;
 INSERT INTO `register_events` (`id`, `user_id`, `event_id`, `status`, `guest_name`, `guest_email`, `visitor_ip`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, NULL, 11, 'registered', 'Faizan', 'faizan.ahmed123.f@gmail.com', '127.0.0.1', '2021-08-18 10:50:43', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
-	(2, 3, 11, 'registered', NULL, NULL, NULL, '2021-08-18 10:55:23', '2021-08-18 13:08:47', NULL),
-	(3, 3, 10, 'registered', NULL, NULL, NULL, '2021-08-18 11:04:30', '2021-09-23 18:09:30', NULL),
+	(2, 3, 11, 'registered', NULL, NULL, NULL, '2021-08-18 10:55:23', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
+	(3, 3, 10, 'registered', NULL, NULL, NULL, '2021-08-18 11:04:30', '2021-09-23 18:09:30', '2021-09-23 18:09:30'),
 	(4, 8, 13, 'registered', NULL, NULL, NULL, '2021-09-23 21:09:03', '2021-09-23 21:09:03', NULL);
 /*!40000 ALTER TABLE `register_events` ENABLE KEYS */;
 
@@ -512,7 +538,7 @@ CREATE TABLE IF NOT EXISTS `register_interns` (
 -- Dumping data for table fyp.register_interns: ~5 rows (approximately)
 /*!40000 ALTER TABLE `register_interns` DISABLE KEYS */;
 INSERT INTO `register_interns` (`id`, `user_id`, `internship_id`, `status`, `guest_name`, `guest_email`, `visitor_ip`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 3, 12, 'registered', NULL, NULL, NULL, '2021-08-18 15:06:30', '2021-08-18 15:10:21', '2021-10-05 13:00:20'),
+	(1, 3, 12, 'registered', NULL, NULL, NULL, '2021-08-18 15:06:30', '2021-08-18 15:10:21', '2021-08-18 15:10:21'),
 	(2, NULL, 12, 'registered', 'Faizan', 'faizan.ahmed123.f@gmail.com', '127.0.0.1', '2021-08-19 07:14:11', '2021-08-19 07:21:28', '2021-08-19 07:21:28'),
 	(3, 3, 12, 'un-registered', NULL, NULL, NULL, '2021-08-19 07:21:08', '2021-09-08 17:24:50', NULL),
 	(4, 3, 13, 'registered', NULL, NULL, NULL, '2021-09-08 17:24:43', '2021-09-08 17:24:43', NULL),
@@ -544,7 +570,8 @@ CREATE TABLE IF NOT EXISTS `research_proposals` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL,
   `title` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `investigator_details` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `investigator_details_pi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `investigator_details_copi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `abstract` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `agency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` int(11) DEFAULT NULL,
@@ -560,13 +587,13 @@ CREATE TABLE IF NOT EXISTS `research_proposals` (
 
 -- Dumping data for table fyp.research_proposals: ~6 rows (approximately)
 /*!40000 ALTER TABLE `research_proposals` DISABLE KEYS */;
-INSERT INTO `research_proposals` (`id`, `user_id`, `title`, `investigator_details`, `abstract`, `agency`, `amount`, `submission_date`, `upload_research`, `type`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 7, 'Research Grants Program', 'Ms Ummay Faseeha', 'The Research Grants Program provides support for research projects in the following field: Basic and Applied Sciences, Biotechnology and Informatics, Information Technology, Administrative Sciences and Arts.', 'Ignite', 25000, '2021-09-18', 'research-project-614cd09bce1c8.docx', 'funded', 'approved', '2021-09-23 19:08:12', '2021-09-23 19:08:12', NULL),
-	(2, 11, 'Micropropagation Of Commercially Important Ornamental Plants', 'Dr. Syeda Kahkashan kazmi', 'Micropropagation refers to the in vitro multiplication and/or regeneration of plant material under aseptic and controlled environmental conditions to', 'Higher Education Commission.', 25000, '2021-09-16', 'research-project-614cd11314c1f.docx', 'funded', 'approved', '2021-09-23 19:10:11', '2021-09-23 19:10:11', NULL),
-	(3, 12, 'Synthesis of Dye Intermediates used for the synthesis of industrial dyes', 'Dr. Farzana Naz', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Higher Education Commission', 30000, '2021-09-23', 'research-project-614cd16fb2a93.docx', 'funded', 'approved', '2021-09-23 19:11:43', '2021-09-23 19:11:43', NULL),
-	(4, 7, 'Impaired Glove', 'Ms. Ummay Faseeha', 'converts hand signals into audio output. It helps to reduce the interaction gap between speech impaired', 'Ignite', 76140, '2021-08-03', 'research-project-614cd24396749.docx', 'funded', 'pending', '2021-09-23 19:15:15', '2021-09-23 19:15:15', NULL),
-	(5, 3, 'Toddler Track', 'Ms. Saima Amber', 'National track and field competitions usually start for primary school-age children aged six and over,', 'Ignite', 78800, '2021-06-11', 'research-project-614cd2c8f0c6e.docx', 'funded', 'approved', '2021-09-23 19:17:28', '2021-09-23 19:17:28', NULL),
-	(6, 8, 'From campus to venture', 'Ms Ummay Faseeha', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Ignite', 25000, '2021-09-23', 'research-project-614cecb937997.docx', 'fyp', 'approved', '2021-09-23 21:08:09', '2021-09-23 21:08:09', NULL);
+INSERT INTO `research_proposals` (`id`, `user_id`, `title`, `investigator_details_pi`, `investigator_details_copi`, `abstract`, `agency`, `amount`, `submission_date`, `upload_research`, `type`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 7, 'Research Grants Program', 'Ms Ummay Faseeha', '', 'The Research Grants Program provides support for research projects in the following field: Basic and Applied Sciences, Biotechnology and Informatics, Information Technology, Administrative Sciences and Arts.', 'Ignite', 25000, '2021-09-18', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:08:12', '2021-09-23 19:08:12', NULL),
+	(2, 11, 'Micropropagation Of Commercially Important Ornamental Plants', 'Dr. Syeda Kahkashan kazmi', '', 'Micropropagation refers to the in vitro multiplication and/or regeneration of plant material under aseptic and controlled environmental conditions to', 'Higher Education Commission.', 25000, '2021-09-16', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:10:11', '2021-09-23 19:10:11', NULL),
+	(3, 12, 'Synthesis of Dye Intermediates used for the synthesis of industrial dyes', 'Dr. Farzana Naz', '', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Higher Education Commission', 30000, '2021-09-23', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:11:43', '2021-09-23 19:11:43', NULL),
+	(4, 7, 'Impaired Glove', 'Ms. Ummay Faseeha', '', 'converts hand signals into audio output. It helps to reduce the interaction gap between speech impaired', 'Ignite', 76140, '2021-08-03', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:15:15', '2021-09-23 19:15:15', NULL),
+	(5, 3, 'Toddler Track', 'Ms. Saima Amber', '', 'National track and field competitions usually start for primary school-age children aged six and over,', 'Ignite', 78800, '2021-06-11', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:17:28', '2021-09-23 19:17:28', NULL),
+	(6, 8, 'From campus to venture', 'Ms Ummay Faseeha', '', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Ignite', 25000, '2021-09-23', 'research-project-611e42e5db2e6.pdf', 'fyp', 'approved', '2021-09-23 21:08:09', '2021-09-23 21:08:09', NULL);
 /*!40000 ALTER TABLE `research_proposals` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.roles
@@ -589,8 +616,7 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`, `de
 	(3, 'oric-member', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL),
 	(4, 'researcher', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL),
 	(5, 'faculty', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL),
-	(6, 'focal-person', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL),
-	(7, 'fsfsd', 'web', '2021-09-28 13:40:22', '2021-09-28 13:40:33', '2021-09-28 13:40:33');
+	(6, 'focal-person', 'web', '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL);
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.role_has_permissions
@@ -603,50 +629,106 @@ CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.role_has_permissions: ~41 rows (approximately)
+-- Dumping data for table fyp.role_has_permissions: ~97 rows (approximately)
 /*!40000 ALTER TABLE `role_has_permissions` DISABLE KEYS */;
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
-	(1, 1),
-	(2, 1),
-	(3, 1),
-	(4, 1),
-	(5, 1),
-	(6, 1),
-	(7, 1),
-	(8, 1),
-	(9, 1),
-	(10, 1),
-	(11, 1),
-	(12, 1),
-	(13, 1),
-	(14, 1),
-	(15, 1),
-	(16, 1),
-	(17, 2),
-	(18, 2),
-	(19, 2),
-	(20, 2),
-	(29, 2),
-	(19, 3),
-	(20, 3),
-	(21, 3),
-	(22, 3),
-	(29, 3),
-	(19, 4),
-	(20, 4),
-	(23, 4),
-	(24, 4),
-	(29, 4),
-	(19, 5),
-	(20, 5),
-	(25, 5),
-	(26, 5),
-	(19, 6),
-	(20, 6),
-	(27, 6),
-	(28, 6),
-	(29, 6),
-	(25, 7);
+	(30, 1),
+	(31, 1),
+	(32, 1),
+	(33, 1),
+	(34, 1),
+	(35, 1),
+	(36, 1),
+	(37, 1),
+	(38, 1),
+	(39, 1),
+	(40, 1),
+	(41, 1),
+	(42, 1),
+	(43, 1),
+	(44, 1),
+	(45, 1),
+	(46, 1),
+	(47, 1),
+	(48, 1),
+	(49, 1),
+	(50, 1),
+	(51, 1),
+	(52, 1),
+	(53, 1),
+	(54, 1),
+	(55, 1),
+	(56, 1),
+	(57, 1),
+	(58, 1),
+	(59, 1),
+	(60, 1),
+	(61, 1),
+	(62, 1),
+	(63, 1),
+	(64, 1),
+	(65, 1),
+	(66, 1),
+	(67, 1),
+	(68, 1),
+	(69, 1),
+	(70, 1),
+	(71, 1),
+	(72, 2),
+	(73, 2),
+	(74, 2),
+	(75, 2),
+	(76, 2),
+	(77, 2),
+	(78, 2),
+	(79, 2),
+	(80, 2),
+	(81, 2),
+	(82, 2),
+	(72, 3),
+	(73, 3),
+	(74, 3),
+	(75, 3),
+	(76, 3),
+	(77, 3),
+	(78, 3),
+	(79, 3),
+	(80, 3),
+	(81, 3),
+	(82, 3),
+	(72, 4),
+	(73, 4),
+	(74, 4),
+	(75, 4),
+	(76, 4),
+	(77, 4),
+	(78, 4),
+	(79, 4),
+	(80, 4),
+	(81, 4),
+	(82, 4),
+	(72, 5),
+	(73, 5),
+	(74, 5),
+	(75, 5),
+	(76, 5),
+	(77, 5),
+	(78, 5),
+	(79, 5),
+	(80, 5),
+	(81, 5),
+	(82, 5),
+	(72, 6),
+	(73, 6),
+	(74, 6),
+	(75, 6),
+	(76, 6),
+	(77, 6),
+	(78, 6),
+	(79, 6),
+	(80, 6),
+	(81, 6),
+	(82, 6);
 /*!40000 ALTER TABLE `role_has_permissions` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.upload_samples
@@ -696,7 +778,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table fyp.users: ~12 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
@@ -716,5 +798,6 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `father_name`, `cnic`, `em
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

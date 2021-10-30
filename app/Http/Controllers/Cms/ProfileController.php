@@ -57,7 +57,9 @@ class ProfileController extends Controller
                     'profile_picture' => $newFileName
                 ]);
             } else {
-                File::delete($destination);
+                if (file_exists($destination)) {
+                    File::delete($destination);
+                }
                 return back()->withErrors(['error', 'File have not been saved in database!'])->withInput();
             }
         }

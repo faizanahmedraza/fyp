@@ -17,10 +17,12 @@
                                 <div class="col-md-6">
                                     <h4 class="card-title">Fyp Projects</h4>
                                 </div>
-                                <div class="col-md-6">
-                                    <a href="/admin/fyp-projects/add" class="btn btn-primary float-right">Add
-                                        +</a>
-                                </div>
+                                @can('fyp-project-create')
+                                    <div class="col-md-6">
+                                        <a href="/admin/fyp-projects/add" class="btn btn-primary float-right">Add
+                                            +</a>
+                                    </div>
+                                @endcan
                             </div>
                         </div>
                         <div class="card-body">
@@ -52,12 +54,12 @@
                                                 <td>
                                                     <a href="/admin/fyp-projects/{{$project->id}}/detail"
                                                        class="btn btn-info btn-sm">Detail</a>
-                                                    @if($project->status === 'pending')
-                                                        @can('research-project-update')
+                                                    @can('fyp-project-update')
+                                                        @if($project->status === 'pending')
                                                             <a href="/admin/fyp-projects/{{$project->id}}/update"
                                                                class="btn btn-info btn-sm">Update</a>
-                                                        @endcan
-                                                    @endif
+                                                        @endif
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach

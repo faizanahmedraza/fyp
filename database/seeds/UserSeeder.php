@@ -22,32 +22,58 @@ class UserSeeder extends Seeder
             'role-create',
             'role-update',
             'role-delete',
-            'research-project-list',
-            'research-project-create',
-            'research-project-update',
             'admin-notification-list',
             'admin-notification-detail',
             'admin-notification-delete',
             'upload-sample-list',
-            'upload-sample-delete'
+            'upload-sample-delete',
+            'inquiry-list',
+            'internship-list',
+            'internship-create',
+            'internship-update',
+            'internship-delete',
+            'event-list',
+            'event-create',
+            'event-update',
+            'event-delete',
+            'fyp-proposal-list',
+            'fyp-proposal-create',
+            'fyp-proposal-update',
+            'funded-proposal-list',
+            'funded-proposal-create',
+            'funded-proposal-update',
+            'funded-project-list',
+            'funded-project-create',
+            'funded-project-update',
+            'fyp-project-list',
+            'fyp-project-create',
+            'fyp-project-update',
+            'news-list',
+            'news-create',
+            'news-update',
+            'news-delete',
+            'blog-list',
+            'blog-create',
+            'blog-update',
+            'blog-delete',
         ];
 
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
         }
 
-        $role = Role::create(['name' => 'super-admin']);
+        $role = Role::findById(1);
 
         $role->syncPermissions($permissions);
 
-        $user = \App\Models\User::create([
-            'first_name' => 'Umer',
-            'last_name' => 'Aziz',
-            'email' => 'admin@fyp.com',
-            'password' => 'admin123',
-            'is_verified' => 1,
-        ]);
-
-        $user->assignRole($role);
+//        $user = \App\Models\User::create([
+//            'first_name' => 'Umer',
+//            'last_name' => 'Aziz',
+//            'email' => 'admin@fyp.com',
+//            'password' => 'admin123',
+//            'is_verified' => 1,
+//        ]);
+//
+//        $user->assignRole($role);
     }
 }

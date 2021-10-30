@@ -16,9 +16,12 @@
                                 <div class="col-md-6">
                                     <h4 class="card-title">Internships</h4>
                                 </div>
-                                <div class="col-md-6">
-                                    <a href="{{ route('website.page.internship.add') }}" class="btn btn-primary float-right">Add +</a>
-                                </div>
+                                @can('internship-create')
+                                    <div class="col-md-6">
+                                        <a href="{{ route('website.page.internship.add') }}"
+                                           class="btn btn-primary float-right">Add +</a>
+                                    </div>
+                                @endcan
                             </div>
                         </div>
                         <div class="card-body">
@@ -56,10 +59,14 @@
                                                 @endphp
                                                 <td>{{ $startDate .' to '. $endDate}}</td>
                                                 <td>
-                                                    <a href="{{ route('website.page.internship.update', ['internshipId' => $val->id]) }}"
-                                                       class="btn btn-success btn-primary">Update</a>
-                                                    <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $val->id }}')">Disable</a>
+                                                    @can('internship-update')
+                                                        <a href="{{ route('website.page.internship.update', ['internshipId' => $val->id]) }}"
+                                                           class="btn btn-success btn-primary">Update</a>
+                                                    @endcan
+                                                    @can('internship-delete')
+                                                        <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
+                                                           onclick="deleteRecord(this, '{{ $val->id }}')">Disable</a>
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -88,7 +95,7 @@
             $('.table').DataTable();
         });
 
-        function deleteRecord(input, eventId) {
+        function deleteRecord(input, internId) {
             let tr = $(input).parent().parent();
             swal({
                 title: "Are you sure?",
@@ -98,7 +105,7 @@
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/events/delete/${eventId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/internships/delete/${internId}`).then(function (response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,
@@ -107,7 +114,7 @@
                         }).then((btn) => {
                             tr.remove();
                         });
-                    }).catch(function(error) {
+                    }).catch(function (error) {
                         swal({
                             title: error.response.data.msg,
                             icon: "error",

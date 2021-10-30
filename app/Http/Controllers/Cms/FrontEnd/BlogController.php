@@ -13,6 +13,14 @@ use Intervention\Image\Facades\Image;
 
 class BlogController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:blog-list|blog-create|blog-update|blog-delete', ['only' => ['index','addBlogData']]);
+        $this->middleware('permission:blog-create', ['only' => ['addBlog','addBlogData']]);
+        $this->middleware('permission:blog-update', ['only' => ['updateBlog','updateBlogData']]);
+        $this->middleware('permission:blog-delete', ['only' => ['deleteBlog']]);
+    }
+
     public function index()
     {
         $resultSet = Blog::get();

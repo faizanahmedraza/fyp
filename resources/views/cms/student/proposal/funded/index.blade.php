@@ -17,10 +17,12 @@
                                 <div class="col-md-6">
                                     <h4 class="card-title">Funded Proposals</h4>
                                 </div>
-                                <div class="col-md-6">
-                                    <a href="/admin/funded-proposals/add" class="btn btn-primary float-right">Add
-                                        +</a>
-                                </div>
+                                @can('funded-proposal-list')
+                                    <div class="col-md-6">
+                                        <a href="/admin/funded-proposals/add" class="btn btn-primary float-right">Add
+                                            +</a>
+                                    </div>
+                                @endcan
                             </div>
                         </div>
                         <div class="card-body">
@@ -71,10 +73,12 @@
                                                 <td>
                                                     <a href="/admin/funded-proposals/{{$proposal->id}}/detail"
                                                        class="btn btn-success btn-sm">Detail</a>
-                                                    @if($proposal->status === 'pending')
+                                                    @can('funded-proposal-update')
+                                                        @if($proposal->status === 'pending')
                                                             <a href="/admin/funded-proposals/{{$proposal->id}}/update"
                                                                class="btn btn-info btn-sm">Update</a>
-                                                    @endif
+                                                        @endif
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -112,16 +116,16 @@
             }).then((response) => {
                 if (response) {
                     axios.get(`/admin/funded-proposals/${proposalId}/${status}`).then((response) => {
-                            if (response) {
-                                swal({
-                                    title: response.data.msg,
-                                    icon: "success",
-                                    closeOnClickOutside: false
-                                }).then((btn) => {
-                                    window.location.reload();
-                                });
-                            }
-                        }).catch((error) => {
+                        if (response) {
+                            swal({
+                                title: response.data.msg,
+                                icon: "success",
+                                closeOnClickOutside: false
+                            }).then((btn) => {
+                                window.location.reload();
+                            });
+                        }
+                    }).catch((error) => {
                         swal({
                             title: error.response.data.msg,
                             icon: "error",

@@ -6,9 +6,9 @@
                     <figure class="logo"><a href="/"><img src="/assets/website/images/logo.png" alt=""></a></figure>
                 </div>
                 <ul class="info-box pull-left clearfix">
+                    <li class="px-5 mx-3"></li>
                     <li><i class="flaticon-email"></i><a href="mailto:oric.juw@gmail.com">oric.juw@gmail.com</a></li>
                     <li><i class="flaticon-phone-call"></i><a href="tel:36620857-59">(92-21) 36620857-59 EXT: 295, 263</a></li>
-                    <li><i class="flaticon-maps-and-flags"></i>Karachi, Pakistan</li>
                 </ul>
             </div>
             <div class="top-right pull-right">

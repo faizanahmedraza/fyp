@@ -14,6 +14,14 @@ use Intervention\Image\Facades\Image;
 
 class EventController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:event-list|event-create|event-update|event-delete', ['only' => ['index','addEventData']]);
+        $this->middleware('permission:event-create', ['only' => ['addEvent','addEventData']]);
+        $this->middleware('permission:event-update', ['only' => ['updateEvent','updateEventData']]);
+        $this->middleware('permission:event-delete', ['only' => ['deleteEvent']]);
+    }
+
     public function index()
     {
         $resultSet = Event::get();
@@ -96,7 +104,9 @@ class EventController extends Controller
         ]);
 
         if (!empty(request()->file('image'))) {
-            unlink(givePath() . '/assets/images/uploads/pages/event/' . $updateEvent->image);
+            if (file_exists(givePath() . '/assets/images/uploads/pages/event/' . $updateEvent->image)) {
+                unlink(givePath() . '/assets/images/uploads/pages/event/' . $updateEvent->image);
+            }
             $img = Image::make(request()->file('image'));
             $extension = request()->file('image')->extension();
             $random = Str::random(30);
@@ -134,8 +144,10 @@ class EventController extends Controller
         $code = 400;
         $updateEvent = Event::where('id', $eventId)->first();
         if (!empty($updateEvent)) {
-            unlink(givePath() . '/assets/images/uploads/pages/event/' . $updateEvent->image);
-            RegisterEvent::where('event_id',$updateEvent->id)->delete();
+            if (file_exists(givePath() . '/assets/images/uploads/pages/event/' . $updateEvent->image)) {
+                unlink(givePath() . '/assets/images/uploads/pages/event/' . $updateEvent->image);
+            }
+            RegisterEvent::where('event_id', $updateEvent->id)->delete();
             $updateEvent->delete();
             $msg = "Successfully Delete record!";
             $code = 200;

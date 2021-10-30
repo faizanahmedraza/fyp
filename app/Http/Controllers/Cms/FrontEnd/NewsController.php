@@ -13,6 +13,14 @@ use Intervention\Image\Facades\Image;
 
 class NewsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:news-list|news-create|news-update|news-delete', ['only' => ['index','addNewsData']]);
+        $this->middleware('permission:news-create', ['only' => ['addNews','addNewsData']]);
+        $this->middleware('permission:news-update', ['only' => ['updateNews','updateNewsData']]);
+        $this->middleware('permission:news-delete', ['only' => ['deleteNews']]);
+    }
+
     public function index()
     {
         $resultSet = CMSNews::all();
