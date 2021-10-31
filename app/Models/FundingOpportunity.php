@@ -17,6 +17,7 @@ class FundingOpportunity extends Model
         'funding_agency',
         'department',
         'amount',
+        'is_disabled',
         'created_by',
         'updated_by',
     ];

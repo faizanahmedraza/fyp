@@ -3,6 +3,11 @@
 @push('styles')
     <link rel="stylesheet" type="text/css" href="/assets/css/toggle-switch.css">
     <link rel="stylesheet" href="/assets/vendors/datatable/css/dataTables.bootstrap4.min.css">
+    <style>
+        .pointer-none {
+            pointer-events: none;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -49,29 +54,29 @@
                                     <tbody>
                                     @if (count($resultSet) > 0)
                                         @foreach ($resultSet as $key => $blog)
-                                            <tr>
+                                            <tr class="{{$blog->is_disabled === 1 ? 'disabled-blur' : '' }}">
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $blog->author }}</td>
                                                 <td>{{ $blog->title }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($blog->description, 20) }}
                                                 </td>
                                                 <td>
-                                                    <label class="switch">
+                                                    <label class="switch {{ $blog->is_disabled == 1 ? 'pointer-none' : '' }}">
                                                         <input type="checkbox" name="is_active" class="is_active"
                                                                value="1"
                                                                onchange="changeStatus(this, '{{ $blog->id }}','{{$blog->is_active}}')"
-                                                                {{ empty($blog->is_active) ? 'checked' : '' }}>
+                                                                {{ empty($blog->is_active) ? 'checked' : '' }} {{ $blog->is_disabled == 1 ? 'disabled' : '' }}>
                                                         <span class="slider round"></span>
                                                     </label>
                                                 </td>
                                                 <td>
                                                     @can('blog-update')
                                                         <a href="{{ route('website.page.blog.update', ['blogId' => $blog->id]) }}"
-                                                           class="btn btn-success btn-primary">Update</a>
+                                                           class="btn btn-success btn-primary m-1 {{$blog->is_disabled == 1 ? 'disabled-link' : 'enabled-link'}}">Update</a>
                                                     @endcan
                                                     @can('blog-delete')
                                                         <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                           onclick="deleteRecord(this, '{{ $blog->id }}')">Disable</a>
+                                                           onclick="deleteRecord(this, '{{ $blog->id }}','{{$blog->is_disabled}}')">{{$blog->is_disabled == 1 ? 'Enable' : 'Disable'}}</a>
                                                     @endcan
                                                 </td>
                                             </tr>
@@ -136,10 +141,10 @@
             $(input).prop("checked", input.checked ? false : true);
         }
 
-        function deleteRecord(input, blogId) {
-            let tr = $(input).parent().parent();
+        function deleteRecord(input, blogId, is_disabled) {
+            let status = is_disabled === '1' ? "enabled" : "disabled";
             swal({
-                title: "Are you sure?",
+                title: "Are you sure you want to " + status + "?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -153,7 +158,7 @@
                             icon: "success",
                             closeOnClickOutside: false
                         }).then((btn) => {
-                            tr.remove();
+                            location.reload();
                         });
                     }).catch(function (error) {
                         swal({

@@ -46,7 +46,7 @@
                                     <tbody>
                                     @if (count($resultSet) > 0)
                                         @foreach ($resultSet as $key => $home)
-                                            <tr>
+                                            <tr class="{{$home->is_disabled === 1 ? 'disabled-blur' : '' }}">
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $home->title }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($home->description, 20) }}
@@ -54,11 +54,11 @@
                                                 <td>
                                                     @can('news-update')
                                                         <a href="{{ route('website.page.news.update', ['newsId' => $home->id]) }}"
-                                                           class="btn btn-success btn-primary">Update</a>
+                                                           class="btn btn-success btn-primary m-1 {{$home->is_disabled == 1 ? 'disabled-link' : 'enabled-link'}}">Update</a>
                                                     @endcan
                                                     @can('news-delete')
                                                         <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                           onclick="deleteRecord(this, '{{ $home->id }}')">Disable</a>
+                                                           onclick="deleteRecord(this, '{{ $home->id }}','{{$home->is_disabled}}')">{{$home->is_disabled == 1 ? 'Enable' : 'Disable'}}</a>
                                                     @endcan
                                                 </td>
                                             </tr>
@@ -87,10 +87,10 @@
             $('.table').DataTable();
         });
 
-        function deleteRecord(input, newsId) {
-            let tr = $(input).parent().parent();
+        function deleteRecord(input, newsId, is_disabled) {
+            let status = is_disabled === '1' ? "enabled" : "disabled";
             swal({
-                title: "Are you sure?",
+                title: "Are you sure you want to " + status + "?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,

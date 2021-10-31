@@ -148,12 +148,9 @@ class InternShipController extends Controller
         $updateInternship = InternShip::where('id', $internshipId)->first();
 
         if (!empty($updateInternship)) {
-            if (file_exists(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image)) {
-                unlink(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image);
-            }
-            RegisterIntern::where('internship_id', $updateInternship->id)->delete();
-            $updateInternship->delete();
-            $msg = "Successfully Delete record!";
+            $msgText = $updateInternship->is_disabled ? "enabled" : "disabled";
+            $updateInternship->update(['is_disabled' => $updateInternship->is_disabled ? 0 : 1]);
+            $msg = "Successfully {$msgText}!";
             $code = 200;
         }
 

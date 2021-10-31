@@ -5950,6 +5950,18 @@ path.domain {
     background: linear-gradient(to right, #89253e, #3a6186); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.disabled-blur {
+    user-select: none;
+    text-shadow: 1px 1px 1px #aaa;
+    color: transparent;
+}
+.disabled-link {
+    pointer-events: none;
+}
+.enabled-link {
+    pointer-events: all;
+}
+
 /* Responsive Css */
 @media (max-width: 767px) {
     .card .card-header h4 {

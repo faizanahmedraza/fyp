@@ -47,16 +47,16 @@
                                     <tbody>
                                     @if (count($resultSet) > 0)
                                         @foreach ($resultSet as $key => $home)
-                                            <tr>
+                                            <tr class="{{$home->is_disabled === 1 ? 'disabled-blur' : '' }}">
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($home->vision,10) }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($home->mission,10) }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($home->values,10) }}</td>
                                                 <td>
                                                     <a href="{{ route('website.page.home.aim-intro.update', ['cmsIntroId' => $home->id]) }}"
-                                                       class="btn btn-success btn-primary">Update</a>
-                                                    <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $home->id }}')">Disable</a>
+                                                       class="btn btn-success btn-primary m-1 {{$home->is_disabled == 1 ? 'disabled-link' : 'enabled-link'}}">Update</a>
+                                                    <a href="javascript:void(0)" class="btn btn-danger"
+                                                       onclick="deleteRecord(this, '{{ $home->id }}','{{$home->is_disabled}}')">{{$home->is_disabled == 1 ? 'Enable' : 'Disable'}}</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -84,10 +84,10 @@
             $('.table').DataTable();
         });
 
-        function deleteRecord(input, cmsIntroId) {
-            let tr = $(input).parent().parent();
+        function deleteRecord(input, cmsIntroId, is_disabled) {
+            let status = is_disabled === '1' ? "enabled" : "disabled";
             swal({
-                title: "Are you sure?",
+                title: "Are you sure you want to " + status + "?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -101,8 +101,7 @@
                             icon: "success",
                             closeOnClickOutside: false
                         }).then((btn) => {
-                            window.location.reload()
-                            tr.remove();
+                            location.reload();
                         });
                     }).catch(function (error) {
                         swal({

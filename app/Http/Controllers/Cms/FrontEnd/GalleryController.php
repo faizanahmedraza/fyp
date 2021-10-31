@@ -55,16 +55,16 @@ class GalleryController extends Controller
         }
     }
 
-    public function updateGallery($eventId)
+    public function updateGallery($galleryId)
     {
-        $updateGallery = Gallery::with('getEvent')->where('id', $eventId)->first();
+        $updateGallery = Gallery::with('getEvent')->where('id', $galleryId)->first();
         $events = Event::get();
         return view('cms.website.pages.event.gallery.update', compact('updateGallery', 'events'));
     }
 
-    public function updateGalleryData($eventId)
+    public function updateGalleryData($galleryId)
     {
-        $updateGallery = Gallery::with('getEvent')->where('id', $eventId)->first();
+        $updateGallery = Gallery::with('getEvent')->where('id', $galleryId)->first();
 
         if (empty($updateGallery->image) && empty(request()->image)) {
             return back()->withErrors(['error' => 'The image is required'])->withInput();
@@ -101,17 +101,17 @@ class GalleryController extends Controller
         return redirect()->route('website.page.event.gallery')->with('success', 'Your data is successfully updated!');
     }
 
-    public function deleteGallery($eventId)
+    public function deleteGallery($galleryId)
     {
         $msg = "Some thing went wrong!";
         $code = 400;
         $records = Gallery::all();
-        $updateGallery = Gallery::where('id', $eventId)->first();
+        $updateGallery = Gallery::where('id', $galleryId)->first();
         if (count($records) > 2) {
             if (!empty($updateGallery)) {
-                unlink(givePath() . '/assets/images/uploads/pages/event/gallery/' . $updateGallery->image);
-                $updateGallery->delete();
-                $msg = "Successfully Delete record!";
+                $msgText = $updateGallery->is_disabled ? "enabled" : "disabled";
+                $updateGallery->update(['is_disabled' => $updateGallery->is_disabled ? 0 : 1]);
+                $msg = "Successfully {$msgText}!";
                 $code = 200;
             }
         } else {

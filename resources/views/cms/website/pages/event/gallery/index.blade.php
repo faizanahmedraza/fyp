@@ -26,7 +26,8 @@
                                     <h4 class="card-title">Gallery</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ route('website.page.event.gallery.add') }}" class="btn btn-primary float-right">Add
+                                    <a href="{{ route('website.page.event.gallery.add') }}"
+                                       class="btn btn-primary float-right">Add
                                         +</a>
                                 </div>
                             </div>
@@ -53,15 +54,17 @@
                                     <tbody>
                                     @if (count($resultSet) > 0)
                                         @foreach ($resultSet as $key => $gallery)
-                                            <tr>
+                                            <tr class="{{$gallery->is_disabled === 1 ? 'disabled-blur' : '' }}">
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $gallery->getEvent->title}}</td>
-                                                <td><a href="javascript:void(0);" class="btn btn-primary cstModal" data-img="{{$gallery->image}}" data-toggle="modal" data-target="#viewImage">View Image</a></td>
+                                                <td><a href="javascript:void(0);" class="btn btn-primary cstModal m-1 {{$gallery->is_disabled == 1 ? 'disabled-link' : 'enabled-link'}}"
+                                                       data-img="{{$gallery->image}}" data-toggle="modal"
+                                                       data-target="#viewImage">View Image</a></td>
                                                 <td>
                                                     <a href="{{ route('website.page.event.gallery.update', ['galleryId' => $gallery->id]) }}"
-                                                       class="btn btn-success btn-primary">Update</a>
-                                                    <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $gallery->id }}')">Disable</a>
+                                                       class="btn btn-success btn-primary m-1 {{$gallery->is_disabled == 1 ? 'disabled-link' : 'enabled-link'}}">Update</a>
+                                                    <a href="javascript:void(0)" class="btn btn-danger m-1"
+                                                       onclick="deleteRecord(this, '{{ $gallery->id }}','{{$gallery->is_disabled}}')">{{$gallery->is_disabled == 1 ? 'Enable' : 'Disable'}}</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -83,7 +86,8 @@
     <div class="modal fade" id="viewImage" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; right: -32px; top: -32px;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        style="position: absolute; right: -32px; top: -32px;">
                     <i class="icon-close" style="color:red;"></i>
                 </button>
                 <img class="imgClass" src="" alt="gallery-image"/>
@@ -102,30 +106,30 @@
     <script>
         $(function () {
             $('.table').DataTable();
-            $(".cstModal").on("click",function () {
+            $(".cstModal").on("click", function () {
                 let imgName = $(this).data('img');
-                $(".imgClass").attr('src','/assets/images/uploads/pages/event/gallery/'+imgName);
+                $(".imgClass").attr('src', '/assets/images/uploads/pages/event/gallery/' + imgName);
             });
-        });w
+        });
 
-        function deleteRecord(input, galleryId) {
-            let tr = $(input).parent().parent();
+        function deleteRecord(input, galleryId, is_disabled) {
+            let status = is_disabled === '1' ? "enabled" : "disabled";
             swal({
-                title: "Are you sure?",
+                title: "Are you sure you want to " + status + "?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/event/delete/${galleryId}`).then(function (response) {
+                    axios.get(`/admin/website/pages/event/gallery/delete/${galleryId}`).then(function (response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,
                             icon: "success",
                             closeOnClickOutside: false
                         }).then((btn) => {
-                            tr.remove();
+                            location.reload();
                         });
                     }).catch(function (error) {
                         swal({

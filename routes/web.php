@@ -185,7 +185,7 @@ Route::namespace('Cms')->prefix('admin')->group(function () {
             Route::post('/news/create', 'NewsController@addNewsData')->name('news.add.data');
             Route::get('/news/update/{newsId}', 'NewsController@updateNews')->name('news.update');
             Route::put('/news/update/{newsId}', 'NewsController@updateNewsData')->name('news.update.data');
-            Route::get('/news/delete/{newsId}', 'InvestorController@deleteInvestor');
+            Route::get('/news/delete/{newsId}', 'NewsController@deleteNews')->name('news.delete');
 
             Route::get('/research', 'ResearchController@index')->name('research');
             Route::get('/research/create', 'ResearchController@addResearch')->name('research.add');

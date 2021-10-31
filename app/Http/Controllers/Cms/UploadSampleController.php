@@ -25,8 +25,9 @@ class UploadSampleController extends Controller
         $upload = UploadSample::findOrFail($uploadId);
 
         if (!empty($upload)) {
-            $upload->delete();
-            $msg = "Successfully Deleted!";
+            $msgText = $upload->is_disabled ? "enabled" : "disabled";
+            $upload->update(['is_disabled' => $upload->is_disabled ? 0 : 1]);
+            $msg = "Successfully {$msgText}!";
             $code = 200;
         }
         return response()->json(['msg' => $msg], $code);

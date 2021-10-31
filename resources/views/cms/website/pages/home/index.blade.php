@@ -17,7 +17,8 @@
                                     <h4 class="card-title">Home Page List</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ route('website.page.home.add') }}" class="btn btn-primary float-right">Add +</a>
+                                    <a href="{{ route('website.page.home.add') }}" class="btn btn-primary float-right">Add
+                                        +</a>
                                 </div>
                             </div>
                         </div>
@@ -43,16 +44,16 @@
                                     <tbody>
                                     @if (count($resultSet) > 0)
                                         @foreach ($resultSet as $key => $home)
-                                            <tr>
+                                            <tr class="{{$home->is_disabled === 1 ? 'disabled-blur' : '' }}">
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $home->banner }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($home->description, 10) }}
                                                 </td>
-                                                <td>
+                                                <td class="d-flex flex-row flex-wrap">
                                                     <a href="{{ route('website.page.home.update', ['cmsHomeId' => $home->id]) }}"
-                                                       class="btn btn-success btn-primary">Update</a>
-                                                    <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                       onclick="deleteRecord(this, '{{ $home->id }}')">Disable</a>
+                                                       class="btn btn-success btn-primary m-1 {{$home->is_disabled == 1 ? 'disabled-link' : 'enabled-link'}}">Update</a>
+                                                    <a href="javascript:void(0)" class="btn btn-danger m-1"
+                                                       onclick="deleteRecord(this, '{{ $home->id }}','{{$home->is_disabled}}')">{{$home->is_disabled == 1 ? 'Enable' : 'Disable'}}</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -80,26 +81,26 @@
             $('.table').DataTable();
         });
 
-        function deleteRecord(input, cmsHomeId) {
-            let tr = $(input).parent().parent();
+        function deleteRecord(input, cmsHomeId, is_disabled) {
+            let status = is_disabled === '1' ? "enabled" : "disabled";
             swal({
-                title: "Are you sure?",
+                title: "Are you sure you want to " + status + "?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
                 closeOnClickOutside: false
             }).then((willDelete) => {
                 if (willDelete) {
-                    axios.get(`/admin/website/pages/main-home/delete/${cmsHomeId}`).then(function(response) {
+                    axios.get(`/admin/website/pages/main-home/delete/${cmsHomeId}`).then(function (response) {
                         swal(response.data.msg);
                         swal({
                             title: response.data.msg,
                             icon: "success",
                             closeOnClickOutside: false
                         }).then((btn) => {
-                            tr.remove();
+                            location.reload();
                         });
-                    }).catch(function(error) {
+                    }).catch(function (error) {
                         swal({
                             title: error.response.data.msg,
                             icon: "error",

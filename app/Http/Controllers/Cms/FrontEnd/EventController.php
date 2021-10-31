@@ -144,12 +144,9 @@ class EventController extends Controller
         $code = 400;
         $updateEvent = Event::where('id', $eventId)->first();
         if (!empty($updateEvent)) {
-            if (file_exists(givePath() . '/assets/images/uploads/pages/event/' . $updateEvent->image)) {
-                unlink(givePath() . '/assets/images/uploads/pages/event/' . $updateEvent->image);
-            }
-            RegisterEvent::where('event_id', $updateEvent->id)->delete();
-            $updateEvent->delete();
-            $msg = "Successfully Delete record!";
+            $msgText = $updateEvent->is_disabled ? "enabled" : "disabled";
+            $updateEvent->update(['is_disabled' => $updateEvent->is_disabled ? 0 : 1]);
+            $msg = "Successfully {$msgText}!";
             $code = 200;
         }
         return response()->json(['msg' => $msg], $code);

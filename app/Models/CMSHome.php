@@ -14,6 +14,7 @@ class CMSHome extends Model
     protected $fillable = [
         'banner',
         'description',
+        'is_disabled',
         'created_by',
         'updated_by',
     ];

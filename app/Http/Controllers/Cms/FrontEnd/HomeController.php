@@ -116,9 +116,9 @@ class HomeController extends Controller
         $updateHome = CMSHome::where('id',$cmsHomeId)->first();
         if (count($records) > 2) {
             if (!empty($updateHome)) {
-                unlink(givePath().'/assets/images/uploads/pages/'.$updateHome->banner);
-                $updateHome->delete();
-                $msg = "Successfully Delete record!";
+                $msgText = $updateHome->is_disabled ? "enabled" : "disabled";
+                $updateHome->update(['is_disabled' => $updateHome->is_disabled ? 0 : 1]);
+                $msg = "Successfully {$msgText}!";
                 $code = 200;
             }
         } else {

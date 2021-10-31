@@ -16,7 +16,8 @@
             background: url('{{asset('assets/images/dashboard-pic.jpg')}}');
             object-fit: cover;
             max-width: 100%;
-            height: 100vh;
+            min-height: 100vh;
+            max-height: 100%;
             background-size: cover;
             position: absolute;
             top: 0px;

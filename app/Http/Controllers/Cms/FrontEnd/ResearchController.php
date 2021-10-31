@@ -112,9 +112,9 @@ class ResearchController extends Controller
         $updateResearch = CMSResearch::findOrFail($researchId);
         if (count($records) > 1) {
             if (!empty($updateResearch)) {
-                unlink(givePath() . '/assets/images/uploads/pages/' . $updateResearch->banner);
-                $updateResearch->delete();
-                $msg = "Successfully Delete record!";
+                $msgText = $updateResearch->is_disabled ? "enabled" : "disabled";
+                $updateResearch->update(['is_disabled' => $updateResearch->is_disabled ? 0 : 1]);
+                $msg = "Successfully {$msgText}!";
                 $code = 200;
             }
         } else {

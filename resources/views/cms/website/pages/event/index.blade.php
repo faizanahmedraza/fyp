@@ -47,7 +47,7 @@
                                     <tbody>
                                     @if (count($resultSet) > 0)
                                         @foreach ($resultSet as $key => $event)
-                                            <tr>
+                                            <tr class="{{$event->is_disabled === 1 ? 'disabled-blur' : '' }}">
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $event->title }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($event->description, 20) }}
@@ -55,14 +55,14 @@
                                                 <td>
                                                     {{ \Carbon\Carbon::parse($event->schedule)->format('d-m-Y H:i:s') }}
                                                 </td>
-                                                <td>
+                                                <td class="d-flex flex-row flex-wrap">
                                                     @can('event-update')
                                                         <a href="{{ route('website.page.event.update', ['eventId' => $event->id]) }}"
-                                                           class="btn btn-success btn-primary">Update</a>
+                                                           class="btn btn-success btn-primary m-1 {{$event->is_disabled == 1 ? 'disabled-link' : 'enabled-link'}}">Update</a>
                                                     @endcan
                                                     @can('event-delete')
-                                                        <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                           onclick="deleteRecord(this, '{{ $event->id }}')">Disable</a>
+                                                        <a href="javascript:void(0)" class="btn btn-danger m-1"
+                                                           onclick="deleteRecord(this, '{{ $event->id }}','{{$event->is_disabled}}')">{{$event->is_disabled == 1 ? 'Enable' : 'Disable'}}</a>
                                                     @endcan
                                                 </td>
                                             </tr>
@@ -82,7 +82,6 @@
 @endsection
 
 @push('scripts')
-    <script src="/assets/js/bootstrap4-toggle.min.js"></script>
     <script src="/assets/js/axios.min.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>
     <script src="/assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
@@ -92,10 +91,10 @@
             $('.table').DataTable();
         });
 
-        function deleteRecord(input, eventId) {
-            let tr = $(input).parent().parent();
+        function deleteRecord(input, eventId, is_disabled) {
+            let status = is_disabled === '1' ? "enabled" : "disabled";
             swal({
-                title: "Are you sure?",
+                title: "Are you sure you want to " + status + "?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -109,7 +108,7 @@
                             icon: "success",
                             closeOnClickOutside: false
                         }).then((btn) => {
-                            tr.remove();
+                            location.reload();
                         });
                     }).catch(function (error) {
                         swal({

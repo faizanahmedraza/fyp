@@ -19,6 +19,7 @@ class Event extends Model
         'mode',
         'schedule',
         'location',
+        'is_disabled',
         'created_by',
         'updated_by',
     ];

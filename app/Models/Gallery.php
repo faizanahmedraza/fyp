@@ -14,6 +14,7 @@ class Gallery extends Model
     protected $fillable = [
         'event_id',
         'image',
+        'is_disabled',
         'created_by',
         'updated_by',
     ];

@@ -72,11 +72,11 @@ class FundingOpportunityController extends Controller
     {
         $msg = "Some thing went wrong!";
         $code = 400;
-        $updateResult = FundingOpportunity::findOrFail($fundingOpportunityId)->first();
-
+        $updateResult = FundingOpportunity::findOrFail($fundingOpportunityId);
         if (!empty($updateResult)) {
-            $updateResult->delete();
-            $msg = "Successfully Delete record!";
+            $msgText = $updateResult->is_disabled ? "enabled" : "disabled";
+            $updateResult->update(['is_disabled' => $updateResult->is_disabled ? 0 : 1]);
+            $msg = "Successfully {$msgText}!";
             $code = 200;
         }
 

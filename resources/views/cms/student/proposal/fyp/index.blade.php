@@ -61,22 +61,22 @@
                                                 <td>
                                                     @if($proposal->status === 'pending')
                                                         <a href="javascript:void(0);"
-                                                           class="btn btn-success btn-sm"
+                                                           class="btn btn-success btn-sm m-1"
                                                            onclick="changeStatus(this,'{{$proposal->id}}','approved')">Approved</a>
                                                         <a href="javascript:void(0);"
-                                                           class="btn btn-warning btn-sm"
+                                                           class="btn btn-warning btn-sm m-1"
                                                            onclick="changeStatus(this,'{{$proposal->id}}','rejected')">Rejected</a>
                                                     @else
                                                         <span class="d-flex justify-content-center">-</span>
                                                     @endif
                                                 </td>
-                                                <td>
+                                                <td class="d-flex flex-row flex-wrap">
                                                     <a href="/admin/fyp-proposals/{{$proposal->id}}/detail"
-                                                       class="btn btn-success btn-sm">Detail</a>
+                                                       class="btn btn-success btn-sm m-1">Detail</a>
                                                     @can('fyp-proposal-update')
                                                         @if($proposal->status === 'pending')
                                                             <a href="/admin/fyp-proposals/{{$proposal->id}}/update"
-                                                               class="btn btn-info btn-sm">Update</a>
+                                                               class="btn btn-info btn-sm m-1">Update</a>
                                                         @endif
                                                     @endcan
                                                 </td>

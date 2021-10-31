@@ -151,10 +151,10 @@
                             {{--                                            class="icon-grid fa-fw"></i> Call For Proposal </a></li>--}}
                         </ul>
                     </li>
-                    <li class="{{ getActiveClass(request()->segment(4),['contact']) }}"><a
-                                href="/admin/website/pages/contact"><i class="far fa-address-card fa-fw"></i>
-                            Contact
-                        </a></li>
+{{--                    <li class="{{ getActiveClass(request()->segment(4),['contact']) }}"><a--}}
+{{--                                href="/admin/website/pages/contact"><i class="far fa-address-card fa-fw"></i>--}}
+{{--                            Contact--}}
+{{--                        </a></li>--}}
                     {{--                    <li class="{{ getActiveClass(request()->segment(4),['about-us']) }}"><a--}}
                     {{--                                href="/admin/website/pages/about-us"><i class="fas fa-info fa-fw"></i> About Us </a>--}}
                     {{--                    </li>--}}

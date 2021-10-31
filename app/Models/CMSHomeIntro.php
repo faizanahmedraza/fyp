@@ -15,6 +15,7 @@ class CMSHomeIntro extends Model
         'vision',
         'mission',
         'values',
+        'is_disabled',
         'created_by',
         'updated_by',
     ];

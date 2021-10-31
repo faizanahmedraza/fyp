@@ -83,8 +83,9 @@ class RoleController extends Controller
 
         if (!empty($role)) {
             if (count($role->users) == 0) {
-                $role->delete();
-                $msg = "Successfully Delete record!";
+                $msgText = $role->is_disabled ? "enabled" : "disabled";
+                $role->update(['is_disabled' => $role->is_disabled ? 0 : 1]);
+                $msg = "Successfully {$msgText}!";
                 $code = 200;
             } else {
                 $msg = "Please delete the assigned users!";

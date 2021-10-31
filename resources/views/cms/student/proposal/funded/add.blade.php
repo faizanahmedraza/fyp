@@ -70,26 +70,26 @@
                                                            value="{{ old('title') }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="investigator_details">Principal Details
+                                                    <label for="investigator_details">PI Details
                                                         <span
                                                                 class="required-class">*</span></label>
                                                     <input type="text" class="form-control rounded"
                                                            id="investigator_details"
                                                            name="investigator_details_pi"
-                                                           placeholder="Enter Principal Investigator Details"
+                                                           placeholder="Enter PI Investigator Details"
                                                            value="{{ old('investigator_details_pi') }}">
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="investigator_details">Co-Principal Details
+                                                    <label for="investigator_details">Co-PI Details
                                                         <span
                                                                 class="required-class">*</span></label>
                                                     <input type="text" class="form-control rounded"
                                                            id="investigator_details"
                                                            name="investigator_details_copi"
-                                                           placeholder="Enter Co-Principal Investigator Details"
+                                                           placeholder="Enter Co-PI Investigator Details"
                                                            value="{{ old('investigator_details_copi') }}">
                                                 </div>
                                                 <div class="form-group col-md-6">

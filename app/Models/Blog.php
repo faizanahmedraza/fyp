@@ -22,6 +22,7 @@ class Blog extends Model
         'slug',
         'description',
         'is_active',
+        'is_disabled',
         'created_by',
         'updated_by',
     ];

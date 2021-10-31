@@ -39,14 +39,14 @@
                                     <tbody>
                                     @if(count($uploads) > 0)
                                         @foreach($uploads as $key => $upload)
-                                            <tr>
+                                            <tr class="{{$upload->is_disabled === 1 ? 'disabled-blur' : '' }}">
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>
-                                                    <a href="{{\Illuminate\Support\Facades\Storage::url('uploads/'.$upload->name)}}" target="_blank" class="btn btn-dark btn-lg">View File</a>
+                                                    <a href="{{\Illuminate\Support\Facades\Storage::url('uploads/'.$upload->name)}}" target="_blank" class="btn btn-dark btn-lg {{$upload->is_disabled == 1 ? 'disabled-link' : 'enabled-link'}}">View File</a>
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0);"
-                                                       class="btn btn-info btn-sm" onclick="deleteResearchTemplate(this, '{{$upload->id}}')">Disable</a>
+                                                       class="btn btn-danger btn-sm" onclick="deleteResearchTemplate(this, '{{$upload->id}}','{{$upload->is_disabled}}')" >{{$upload->is_disabled == 1 ? 'Enable' : 'Disable'}}</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -74,9 +74,10 @@
             $('.table').DataTable();
         });
 
-        function deleteResearchTemplate(input,uploadId) {
+        function deleteResearchTemplate(input, uploadId, is_disabled) {
+            let status = is_disabled === '1' ? "enabled" : "disabled";
             swal({
-                title: "Are you sure?",
+                title: "Are you sure you want to " + status + "?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -90,7 +91,7 @@
                             closeOnClickOutside: false
                         }).then((successBtn) => {
                             if (successBtn) {
-                                $(input).parent().parent().remove();
+                                location.reload();
                             }
                         });
                     }).catch(function (error) {

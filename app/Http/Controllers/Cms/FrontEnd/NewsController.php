@@ -121,9 +121,9 @@ class NewsController extends Controller
         $updateNews = CMSNews::findOrFail($newsId);
         if (count($records) > 1) {
             if (!empty($updateNews)) {
-                unlink(givePath() . '/assets/images/uploads/pages/' . $updateNews->banner);
-                $updateNews->delete();
-                $msg = "Successfully Delete record!";
+                $msgText = $updateNews->is_disabled ? "enabled" : "disabled";
+                $updateNews->update(['is_disabled' => $updateNews->is_disabled ? 0 : 1]);
+                $msg = "Successfully {$msgText}!";
                 $code = 200;
             }
         } else {

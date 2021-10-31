@@ -42,17 +42,17 @@
                                     <tbody>
                                     @if(count($roles) > 0)
                                         @foreach($roles as $key => $role)
-                                            <tr>
+                                            <tr class="{{$role->is_disabled === 1 ? 'disabled-blur' : '' }}">
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $role->name }}</td>
-                                                <td>
+                                                <td class="d-flex flex-row flex-wrap">
                                                     @can('role-update')
                                                         <a href="/admin/update-role/{{$role->id}}"
-                                                           class="btn btn-success btn-primary">Update</a>
+                                                           class="btn btn-success btn-primary m-1 {{$role->is_disabled == 1 ? 'disabled-link' : 'enabled-link'}}">Update</a>
                                                     @endcan
                                                     @can('role-delete')
-                                                        <a href="javascript:void(0)" class="btn btn-danger a-btn-custom"
-                                                           onclick="deleteRole(this, '{{ $role->id }}')">Disable</a>
+                                                        <a href="javascript:void(0)" class="btn btn-danger a-btn-custom m-1"
+                                                           onclick="deleteRole(this, '{{ $role->id }}','{{$role->is_disabled}}')">{{$role->is_disabled == 1 ? 'Enable' : 'Disable'}}</a>
                                                     @endcan
                                                 </td>
                                             </tr>
@@ -79,14 +79,14 @@
     <script>
         $(function () {
             $('.table').DataTable({
-                "order": [[ 1, "asc" ]]
+                "order": [[ 0, "asc" ]]
             });
         });
 
-        function deleteRole(input, roleId) {
-            let tr = $(input).parent().parent();
+        function deleteRole(input, roleId, is_disabled) {
+            let status = is_disabled === '1' ? "enabled" : "disabled";
             swal({
-                title: "Are you sure?",
+                title: "Are you sure you want to " + status + "?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -100,7 +100,7 @@
                             icon: "success",
                             closeOnClickOutside: false
                         }).then((btn) => {
-                            tr.remove();
+                            location.reload();
                         });
                     }).catch(function (error) {
                         swal({

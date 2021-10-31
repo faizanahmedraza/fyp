@@ -154,9 +154,9 @@ class BlogController extends Controller
         $updateBlog = Blog::where('id',$blogId)->first();
         if (count($records) > 2) {
             if (!empty($updateBlog)) {
-                unlink(givePath().'/assets/images/uploads/pages/blog/'.$updateBlog->image);
-                $updateBlog->delete();
-                $msg = "Successfully Delete record!";
+                $msgText = $updateBlog->is_disabled ? "enabled" : "disabled";
+                $updateBlog->update(['is_disabled' => $updateBlog->is_disabled ? 0 : 1]);
+                $msg = "Successfully {$msgText}!";
                 $code = 200;
             }
         } else {

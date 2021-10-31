@@ -13,7 +13,8 @@ class UploadSample extends Model
 
     protected $fillable = [
         'name',
-        'type'
+        'type',
+        'is_disabled'
     ];
 
     protected $dates = [

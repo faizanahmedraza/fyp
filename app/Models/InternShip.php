@@ -19,6 +19,7 @@ class InternShip extends Model
         'company',
         'mode',
         'paid',
+        'is_disabled',
         'duration'
     ];
     protected $dates = ['deleted_at'];

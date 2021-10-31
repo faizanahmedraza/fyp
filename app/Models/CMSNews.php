@@ -15,6 +15,7 @@ class CMSNews extends Model
         'title',
         'banner',
         'description',
+        'is_disabled',
         'created_by',
         'updated_by',
     ];

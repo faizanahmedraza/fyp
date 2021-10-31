@@ -67,12 +67,12 @@ class CMSHomeIntroController extends Controller
     {
         $msg = "Some thing went wrong!";
         $code = 400;
-
         $updateIntro = CMSHomeIntro::findOrFail($cmsIntroId)->first();
         if (!empty($updateIntro)) {
-                $updateIntro->delete();
-                $msg = "Successfully Delete record!";
-                $code = 200;
+            $msgText = $updateIntro->is_disabled ? "enabled" : "disabled";
+            $updateIntro->update(['is_disabled' => $updateIntro->is_disabled ? 0 : 1]);
+            $msg = "Successfully {$msgText}!";
+            $code = 200;
         }
         return response()->json(['msg' => $msg], $code);
     }
