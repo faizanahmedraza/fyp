@@ -103,6 +103,7 @@
     <script src="/assets/js/axios.min.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>
     <script>
+        $("#guestModal").modal("show");
         const form = document.querySelector('#form');
 
         if (form) {
