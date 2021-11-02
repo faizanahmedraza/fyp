@@ -39,12 +39,16 @@
                                             $endDate = \Carbon\Carbon::parse(trim($date[1]),'UTC')->isoFormat('ll');
                                         @endphp
 
-                                        {{ $startDate }} <br/> to <br/> {{$endDate}}                                </div>
+                                        {{ $startDate }} <br/> to <br/> {{$endDate}}
+                                    </div>
                                 </div>
                                 <div class="lower-content" style="height: 300px; padding: 10px 15px;">
                                     <ul class="info-box clearfix mt-1">
                                         <li class="d-flex justify-content-between">
-                                            <a href="javascript:;" style="font-size: 20px;">{{ $val->title ?? '' }} <span style="font-size: 13px;">({{ $val->paid == 1 ? 'Paid' : 'UnPaid' }})</span><br/> <span class="pt-0 mt-0" style="font-size: 14px;">{{ $val->company }}</span></a>
+                                            <a href="javascript:;" style="font-size: 20px;">{{ $val->title ?? '' }}
+                                                <span style="font-size: 13px;">({{ $val->paid == 1 ? 'Paid' : 'UnPaid' }})</span><br/>
+                                                <span class="pt-0 mt-0"
+                                                      style="font-size: 14px;">{{ $val->company }}</span></a>
                                             @auth
                                                 @if(in_array(Arr::first(Auth::user()->getRoleNames()),['student','researcher','faculty','focal-person','oric-member']))
                                                     @php
@@ -56,7 +60,7 @@
                                                             $register = 'registered';
                                                         @endphp
                                                     @endif
-                                                    <button class="btn btn-secondary btn-sm"
+                                                    <button class="btn btn-secondary btn-sm" style="height: 35px;"
                                                             onclick="onRegister('{{$val->id}}','{{$register}}')">{{ ucwords(str_replace('-',' ',$register)) }}
                                                     </button>
                                                 @endif
@@ -78,12 +82,11 @@
                                             @endguest
                                         </li>
                                     </ul>
-                                    <p>
+                                    <h4>
                                         <a href="/internships/{{$val->slug}}/internship-detail">{{ Str::limit($val->description,200) ?? '' }}</a>
-                                    </p>
-                                    <div class="link-btn" style="padding-left: 100px;"><a
-                                                href="/internships/{{$val->slug}}/internship-detail"
-                                                style="padding-left:5px;"><i
+                                    </h4>
+                                    <div class="link-btn"><a
+                                                href="/internships/{{$val->slug}}/internship-detail"><i
                                                     class="flaticon-right-arrow"></i></a></div>
                                 </div>
                             </div>

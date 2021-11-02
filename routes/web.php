@@ -278,6 +278,10 @@ Route::namespace('FrontEnd')->group(function () {
         Route::get('/notification-detail/{notificationId}', 'NotificationController@detailNotification');
 
         Route::get('/events', 'EventController@index');
+        Route::get('/events/add', 'EventController@addEvent');
+        Route::post('/events/add', 'EventController@addEventData');
+        Route::get('/events/{eventId}/update', 'EventController@updateEvent');
+        Route::put('/events/{eventId}/update', 'EventController@updateEventData');
         Route::get('/register-event/{eventId}', 'EventController@authUserEventRegister');
         Route::get('/internships', 'InternShipController@index');
         Route::get('/register-intern/{internshipId}', 'InternShipController@authUserInternRegister');

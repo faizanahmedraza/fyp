@@ -16,9 +16,9 @@ class EventController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:event-list|event-create|event-update|event-delete', ['only' => ['index','addEventData']]);
-        $this->middleware('permission:event-create', ['only' => ['addEvent','addEventData']]);
-        $this->middleware('permission:event-update', ['only' => ['updateEvent','updateEventData']]);
+        $this->middleware('permission:event-list|event-create|event-update|event-delete', ['only' => ['index', 'addEventData']]);
+        $this->middleware('permission:event-create', ['only' => ['addEvent', 'addEventData']]);
+        $this->middleware('permission:event-update', ['only' => ['updateEvent', 'updateEventData']]);
         $this->middleware('permission:event-delete', ['only' => ['deleteEvent']]);
     }
 
@@ -72,8 +72,8 @@ class EventController extends Controller
                 'location' => request()->location,
                 'created_by' => Auth::id()
             ]);
-            return redirect()->route('website.page.event')->with('success', 'Your data is successfully added!');
         }
+        return redirect()->route('website.page.event')->with('success', 'Your data is successfully added!');
     }
 
     public function updateEvent($eventId)

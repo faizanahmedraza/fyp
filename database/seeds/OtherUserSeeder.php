@@ -24,10 +24,17 @@ class OtherUserSeeder extends Seeder
             'user-fyp-project-create',
             'user-notification-list',
             'user-notification-detail',
-            'user-event-list'
+            'user-event-list',
         ];
 
-        foreach ($permissions as $permission) {
+        $oricFacultyPermissions = [
+            'user-event-create',
+            'user-event-update',
+        ];
+
+        $allPermissions = array_merge($permissions,$oricFacultyPermissions);
+
+        foreach ($allPermissions as $permission) {
             Permission::create(['name' => $permission]);
         }
 
@@ -38,9 +45,9 @@ class OtherUserSeeder extends Seeder
         $focal_person = Role::findByName('focal-person');
 
         $student->syncPermissions($permissions);
-        $oric_member->syncPermissions($permissions);
+        $oric_member->syncPermissions($allPermissions);
         $researcher->syncPermissions($permissions);
-        $faculty->syncPermissions($permissions);
+        $faculty->syncPermissions($allPermissions);
         $focal_person->syncPermissions($permissions);
     }
 }

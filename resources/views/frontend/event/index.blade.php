@@ -3,11 +3,33 @@
 @section('content')
     <main>
         <div class="container-fluid site-width pl-xl-5 pt-3">
+            @can('user-event-create')
+                <div class="container px-0">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="font-weight-bold">Events</h5>
+                        <a href="/user/events/add" class="btn btn-success">Add Event</a>
+                    </div>
+                </div>
+            @endcan
+            @if (Session::has('success'))
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <strong>{{ Session::get('success') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="row">
                 @if(count($events) > 0)
                     @foreach($events as $key => $event)
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 mt-3">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 my-3">
                             <div class="card">
+                                @can('user-event-update')
+                                    <div class="card-header p-0">
+                                        <a href="/user/events/{{$event->id}}/update"
+                                           class="btn btn-primary btn-block rounded-0 rounded-top">Edit Event</a>
+                                    </div>
+                                @endcan
                                 <div class="card-content">
                                     <div class="card-image business-card">
                                         <div class="background-image-maker"></div>

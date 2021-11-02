@@ -19,24 +19,22 @@
                             <div class="top-text">We’re 24/7 Available</div>
                             <h1>Contact With Us</h1>
                         </div>
-                        <div class="text">Lorem ipsum dolor sit amet, con adipiscing elit. Etiam convallis elit id
-                            impedie. Quisq commodo ornare tortor Quiue bibendu m. magna vitae ex interdum cursus.
-                            imperdiet lacus tempor sit amet. Donec ultrices est nec tellus finibus facilisis.
+                        <div class="text">The aim of ORIC, Jinnah University for women is to promote, cultivate and create community oriented workplaces among specialists, industry accomplices and financing offices.
                         </div>
                         <div class="info-content">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 info-column">
                                     <div class="single-info-box">
                                         <div class="icon-box"><i class="flaticon-location"></i></div>
-                                        <div class="text">70 broklyn street, New York</div>
+                                        <div class="text">First Floor Building Block-F, Jinnah University for Women, 5-C Nazimabad, Karachi</div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 info-column">
                                     <div class="single-info-box">
                                         <div class="icon-box"><i class="flaticon-contact"></i></div>
                                         <div class="text">
-                                            <a href="mailto:info@example.com">info@example.com</a><br/>
-                                            <a href="tel:6668880000">666 888 0000</a>
+                                            <a href="mailto:info@example.com">oric.juw@gmail.com</a><br/>
+                                            <a href="tel:6668880000">(92-21) 36620857-59 EXT: 295, 263</a>
                                         </div>
                                     </div>
                                 </div>

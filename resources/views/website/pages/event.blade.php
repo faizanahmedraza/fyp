@@ -67,9 +67,9 @@
                                             @endguest
                                         </li>
                                     </ul>
-                                    <h2>
+                                    <h4>
                                         <a href="/events/{{$event->slug}}/gallery">{{ Str::limit($event->description,20) ?? '' }}</a>
-                                    </h2>
+                                    </h4>
                                     <div class="link-btn"><a href="/events/{{$event->slug}}/gallery"><i
                                                     class="flaticon-right-arrow"></i></a></div>
                                 </div>
