@@ -25,7 +25,7 @@
                         @can('user-fyp-proposal-list')
                             <li class="{{ (request()->is('user/fyp-proposals*')) ? 'active' : '' }}"><a
                                         class="text-nowrap" href="/user/fyp-proposals"><i
-                                            class="fas fa-scroll fa-fw"></i>Fyp Proposals</a></li>
+                                            class="fas fa-scroll fa-fw"></i>FYP Proposals</a></li>
                         @endcan
                         @can('user-funded-proposal-list')
                             <li class="{{ (request()->is('user/funded-proposals*')) ? 'active' : '' }}"><a
@@ -41,7 +41,7 @@
                         @can('user-fyp-project-list')
                             <li class="{{ (request()->is('user/fyp-projects*')) ? 'active' : '' }}"><a
                                         class="text-nowrap" href="/user/fyp-projects"><i
-                                            class="fas fa-scroll fa-fw"></i>Fyp Projects</a></li>
+                                            class="fas fa-scroll fa-fw"></i>FYP Projects</a></li>
                         @endcan
                         @can('user-funded-project-list')
                             <li class="{{ (request()->is('user/funded-projects*')) ? 'active' : '' }}"><a

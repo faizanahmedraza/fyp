@@ -10,7 +10,7 @@ class InternShipController extends Controller
 {
     public function index()
     {
-        $internships = InternShip::all();
+        $internships = InternShip::where('is_disabled',0)->get();
         return view('website.pages.internship',compact('internships'));
     }
 

@@ -12,8 +12,8 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $resultSet = CMSNews::latest()->first();
-        $blogs = Blog::where('is_active',1)->get();
+        $resultSet = CMSNews::where('is_disabled',0)->latest()->first();
+        $blogs = Blog::where('is_disabled',0)->where('is_active',1)->get();
         return view('website.pages.news',compact('resultSet','blogs'));
     }
 

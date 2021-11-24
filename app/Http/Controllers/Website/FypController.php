@@ -12,9 +12,7 @@ class FypController extends Controller
     public function index()
     {
         $resultSet = CMSResearch::latest()->first();
-        $projects = ResearchProject::with('getProposal')->where('type','fyp')->whereHas('getProposal',function ($query){
-            $query->where('research_proposal_id','!=',null);
-        })->get();
+        $projects = ResearchProject::with('getProposal')->has('getProposal')->where('type','fyp')->get();
         return view('website.pages.fyp-project',compact('resultSet','projects'));
     }
 }

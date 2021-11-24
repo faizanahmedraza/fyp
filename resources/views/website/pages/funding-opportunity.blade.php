@@ -13,10 +13,6 @@
         <div class="container">
             <div class="content-box">
                 <h1>Funding Opportunity</h1>
-                <ul class="bread-crumb clearfix">
-                    <li><a href="/">Home</a></li>
-                    <li>{{ $resultSet->title ?? ' ' }}</li>
-                </ul>
             </div>
         </div>
     </section>

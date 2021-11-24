@@ -9,10 +9,6 @@
         <div class="container">
             <div class="content-box">
                 <h1>{{ $blog->title }}</h1>
-                <ul class="bread-crumb clearfix mt-3">
-                    <li><a href="/">Home</a></li>
-                    <li>News Details</li>
-                </ul>
             </div>
         </div>
     </section>

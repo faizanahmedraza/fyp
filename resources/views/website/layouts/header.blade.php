@@ -45,8 +45,8 @@
                                 <ul>
                                     <li><a href="/events">Events</a></li>
                                     <li><a href="/success-stories">Success Stories</a>
-                                    <li><a href="javascript:;">Timeline</a>
-                                    </li>
+{{--                                    <li><a href="javascript:;">Timeline</a>--}}
+{{--                                    </li>--}}
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="/our-news">Our News</a>

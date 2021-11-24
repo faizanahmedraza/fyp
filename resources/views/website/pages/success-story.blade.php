@@ -9,10 +9,6 @@
         <div class="container">
             <div class="content-box">
                 <h1>Success Stories</h1>
-                <ul class="bread-crumb clearfix">
-                    <li><a href="/">Home</a></li>
-                    <li>Our Success Stories</li>
-                </ul>
             </div>
         </div>
     </section>

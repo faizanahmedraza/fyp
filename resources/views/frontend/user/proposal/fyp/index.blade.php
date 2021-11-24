@@ -15,7 +15,7 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Fyp Proposals</h4>
+                                    <h4 class="card-title">FYP Proposals</h4>
                                 </div>
                                 <div class="col-md-6">
                                     <a href="/user/fyp-proposals/add" class="btn btn-primary float-right">Add

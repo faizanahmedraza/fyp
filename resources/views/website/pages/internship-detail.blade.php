@@ -13,10 +13,6 @@
         <div class="container">
             <div class="content-box">
                 <h1>{{ $internship->title ?? ''}}</h1>
-                <ul class="bread-crumb clearfix mt-2">
-                    <li><a href="/">Home</a></li>
-                    <li>Internship Detail</li>
-                </ul>
             </div>
         </div>
     </section>

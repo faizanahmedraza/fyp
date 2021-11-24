@@ -10,7 +10,7 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Fyp Project Detail</h4>
+                                    <h4 class="card-title">FYP Project Detail</h4>
                                 </div>
                                 <div class="col-md-6">
                                     <a href="/admin/fyp-projects" class="btn btn-primary float-right">←

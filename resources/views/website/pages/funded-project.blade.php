@@ -13,10 +13,6 @@
         <div class="container">
             <div class="content-box">
                 <h1>Funded Projects</h1>
-                <ul class="bread-crumb clearfix">
-                    <li><a href="/">Home</a></li>
-                    <li>{{ $resultSet->title ?? '' }}</li>
-                </ul>
             </div>
         </div>
     </section>
@@ -30,8 +26,8 @@
                     <thead>
                     <tr>
                         <th data-priority="1">S.No.</th>
-                        <th data-priority="3">Project Title</th>
-                        <th data-priority="3">Principle Investigator</th>
+                        <th data-priority="3" style="width: 300px;">Project Title</th>
+                        <th data-priority="3">PI & CO-PI Details</th>
                         <th data-priority="3">Funding Agency</th>
                         <th data-priority="3">Amount</th>
                     </tr>
@@ -42,8 +38,8 @@
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ Str::words($val->getProposal->title,20) ?? '' }}</td>
-                                <td>{{ $val->getProposal->principle_investigator ?? '' }}</td>
-                                <td>{{ $val->getProposal->funding_agency ?? ''}}</td>
+                                <td>{{ $val->getProposal->investigator_details_pi . ($val->getProposal->investigator_details_copi ? ' & '.$val->getProposal->investigator_details_copi : '') }}</td>
+                                <td>{{ $val->getProposal->agency ?? ''}}</td>
                                 <td>{{ $val->getProposal->amount }}</td>
                             </tr>
                         @endforeach

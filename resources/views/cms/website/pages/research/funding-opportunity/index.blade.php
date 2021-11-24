@@ -14,7 +14,7 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Funding Apportunity</h4>
+                                    <h4 class="card-title">Funding Opportunity</h4>
                                 </div>
                                 <div class="col-md-6">
                                     <a href="{{ route('website.page.research.funding-opportunity.add') }}"

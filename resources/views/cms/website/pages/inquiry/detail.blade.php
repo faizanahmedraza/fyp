@@ -68,8 +68,8 @@
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-12">
-                                                                <label for="your_email">Message <span
-                                                                            class="required-modal-class">*</span></label>
+                                                                    <label for="your_email">Message <span
+                                                                                class="required-modal-class">*</span></label>
                                                                 <textarea class="form-control" name="message"
                                                                           placeholder="Write here message" rows="6">{{old('message')}}</textarea>
                                                             </div>

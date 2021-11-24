@@ -52,7 +52,7 @@
                                                             <div class='card-liner-content'>
                                                                 <div class="media-body align-self-center text-white">
                                                                     <span class="mb-0 h5 font-w-600 text-break"
-                                                                          style="font-size: 1rem!important;">Fyp Proposals (Approved)</span><br>
+                                                                          style="font-size: 1rem!important;">FYP Proposals (Approved)</span><br>
                                                                 </div>
                                                                 <h2 class="card-liner-title text-white">{{ $approvedFypProposals }}</h2>
                                                             </div>
@@ -66,7 +66,7 @@
                                                             <div class='card-liner-content'>
                                                                 <div class="media-body align-self-center text-white">
                                                         <span class="mb-0 h5 font-w-600 text-break"
-                                                              style="font-size: 1rem!important;">Fyp Proposals (Rejected)</span><br>
+                                                              style="font-size: 1rem!important;">FYP Proposals (Rejected)</span><br>
                                                                 </div>
                                                                 <h2 class="card-liner-title text-white">{{ $rejectedFundedProposals }}</h2>
                                                             </div>
@@ -119,7 +119,7 @@
                                                             <div class='card-liner-content'>
                                                                 <div class="media-body align-self-center text-white">
                                                                     <span class="mb-0 h5 font-w-600 text-break"
-                                                                          style="font-size: 1rem!important;">Fyp Projects</span><br>
+                                                                          style="font-size: 1rem!important;">FYP Projects</span><br>
                                                                 </div>
                                                                 <h2 class="card-liner-title text-white">{{ $approvedFypProjects }}</h2>
                                                             </div>

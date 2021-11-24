@@ -25,8 +25,8 @@ class HomeController extends Controller
         $projects = ResearchProject::all();
         $approvedFypProjects = $projects->where('type','fyp')->count();
         $approvedFundedProjects = $projects->where('type','funded')->count();
-        $blogs = Blog::where('is_active',1)->orderBy('created_at','desc')->take(2)->get();
-        $events = Event::count();
+        $blogs = Blog::where('is_disabled',0)->where('is_active',1)->orderBy('created_at','desc')->take(2)->get();
+        $events = Event::where('is_disabled',0)->count();
         return view('website.pages.home',compact('resultSet','aim','blogs','users','approvedFundedProjects','approvedFypProjects','events'));
     }
 }

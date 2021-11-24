@@ -10,7 +10,7 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::all();
+        $events = Event::where('is_disabled',0)->get();
         return view('website.pages.event',compact('events'));
     }
 }

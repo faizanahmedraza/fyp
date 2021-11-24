@@ -37,7 +37,7 @@
                         @can('fyp-proposal-list')
                             <li class="{{ (request()->is('admin/fyp-proposals*')) ? 'active' : '' }}"><a
                                         class="text-nowrap" href="/admin/fyp-proposals"><i
-                                            class="fas fa-scroll fa-fw"></i>Fyp Proposals</a></li>
+                                            class="fas fa-scroll fa-fw"></i>FYP Proposals</a></li>
                         @endcan
                         @can('funded-proposal-list')
                             <li class="{{ (request()->is('admin/funded-proposals*')) ? 'active' : '' }}"><a
@@ -53,7 +53,7 @@
                         @can('fyp-project-list')
                             <li class="{{ (request()->is('admin/fyp-projects*')) ? 'active' : '' }}"><a
                                         class="text-nowrap" href="/admin/fyp-projects"><i
-                                            class="fas fa-scroll fa-fw"></i>Fyp Projects</a></li>
+                                            class="fas fa-scroll fa-fw"></i>FYP Projects</a></li>
                         @endcan
                         @can('funded-project-list')
                             <li class="{{ (request()->is('admin/funded-projects*')) ? 'active' : '' }}"><a
@@ -127,7 +127,7 @@
                             @endcan
                             @can('blog-list')
                                 <li class="{{getActiveClass(request()->segment(4),['blog'])}}"><a
-                                            href="/admin/website/pages/blog"><i class="icon-grid fa-fw"></i> BLog </a>
+                                            href="/admin/website/pages/blog"><i class="icon-grid fa-fw"></i> Blog </a>
                                 </li>
                             @endcan
                         </ul>

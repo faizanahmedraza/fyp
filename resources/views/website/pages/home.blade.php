@@ -170,7 +170,7 @@
                             <div class="count-outer count-box">
                                 <span class="count-text" data-speed="1500" data-stop="{{$approvedFypProjects}}">{{$approvedFypProjects}}</span>
                             </div>
-                            <div class="text">Fyp Projects</div>
+                            <div class="text">FYP Projects</div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 counter-column">
