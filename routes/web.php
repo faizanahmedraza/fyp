@@ -13,7 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::namespace('website')->group(function () {
+Route::get('/storage-link',function(){
+    if(!is_dir(public_path('storage')))
+    {
+        File::link(storage_path('app/public'), public_path('storage'));
+    }
+    dd("storage link done");
+});
+
+Route::namespace('Website')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::get('/research/funding-opportunities', 'FundingOpportunityController@index');
     Route::get('/research/fyp-projects', 'FypController@index');

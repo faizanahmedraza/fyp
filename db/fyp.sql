@@ -36,7 +36,7 @@ INSERT INTO `blog` (`id`, `image`, `author`, `title`, `slug`, `description`, `is
 	(12, 'h42mV0GWOcwr8fNpnoiqW4Bw2XJA5K-1624781486.jpg', 'faizan', 'laravel is a best php framework', 'laravel-is-a-best-php-framework', 'dasdsa vdasdas', 0, 0, 1, 1, '2021-06-27 08:11:26', '2021-09-28 13:12:43', NULL),
 	(13, 'XW4oHb7hpJNJIVzR0CvtqjPPD9lhBl-1624781534.jpg', 'SAJJAD', 'laravel is a best php framework TEST', 'laravel-is-a-best-php-framework-test', 'aSASDA EWREWRW EWERQWERQW', 1, 0, 1, 0, '2021-06-27 08:12:14', '2021-09-28 12:38:17', NULL),
 	(14, 'DYpX4ReGGlnAcvP1rxWsJFvGK5N6Fn-1624781565.jpg', 'Umer', 'laravel is a best php framework AST', 'laravel-is-a-best-php-framework-ast', 'ASAS DSADAS EDWAEDWQQ WEQWEWQ', 1, 0, 1, 1, '2021-06-27 08:12:46', '2021-06-27 08:13:45', '2021-06-27 08:13:45'),
-	(15, 'EGEn7g4FbupajPrma1YD6TFMiWc48I-1624781658.jpg', 'Umer', 'laravel is a best php framework AST', 'laravel-is-a-best-php-framework-ast', 'DCADSDASD EDWADASDX EDWQD EWQEWQ', 1, 0, 1, 0, '2021-06-27 08:14:18', '2021-10-31 11:29:16', NULL);
+	(15, 'EGEn7g4FbupajPrma1YD6TFMiWc48I-1624781658.jpg', 'Umer', 'laravel is a best php framework AST', 'laravel-is-a-best-php-framework-ast', 'DCADSDASD EDWADASDX EDWQD EWQEWQ', 1, 0, 1, 0, '2021-06-27 08:14:18', '2021-11-24 17:37:16', NULL);
 /*!40000 ALTER TABLE `blog` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.cms_about_us
@@ -252,17 +252,17 @@ CREATE TABLE IF NOT EXISTS `event` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.event: ~8 rows (approximately)
+-- Dumping data for table fyp.event: ~7 rows (approximately)
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
 INSERT INTO `event` (`id`, `image`, `title`, `slug`, `description`, `schedule`, `mode`, `location`, `is_disabled`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(10, 'c5u0k6zjDqt50hXjNJlGOOUZqOxOeT-1624789842.jpg', 'Event 1', 'event-1', 'dads dada swseqw  dfeasef edwerdweq  rfewrdweq rqewrrdweq', '2021-11-02 02:05:06', 'Online', 'asdasdas', 0, 1, 4, '2021-06-27 10:30:42', '2021-11-02 09:05:08', NULL),
 	(11, 'sJVWgB8fdD5lOMFeUzsKhPyYop9nnl-1626182640.jpg', 'Test', 'test', 'adas dd da dasdas dsdas das dasdasd erqwerqw dedwq weeqwe eqweqweqw ewqeqwe ewe qweqwe eqwqwewq  qweqweqw eqweqweqwe eqweqwewqe eqweqw', '2021-07-13 07:16:37', 'Physical', 'dasddasdas d dasdas adasdasd dadasdas dasdasd', 0, 1, 1, '2021-07-13 13:24:00', '2021-08-18 13:08:47', '2021-08-18 13:08:47'),
 	(12, '3TI3cx1zWukmEku2UexXefVBTRYP6p-1629290435.jpg', 'Event 3', 'event-3', 'ddsa  dasdas d aas', '2021-08-20 05:38:03', 'Online', NULL, 0, 1, 0, '2021-08-18 12:40:35', '2021-09-23 17:34:43', '2021-09-23 17:34:43'),
-	(13, '7hlYGmGsRr57lc0uS9PEmkeVRnfQXq-1632419533.jpg', 'FPCCI visit', 'fpcci-visit', 'A viist to FPPCI', '2021-11-02 02:04:01', 'Physical', 'Jinnah university', 0, 1, 4, '2021-09-23 17:52:13', '2021-11-02 09:04:04', NULL),
+	(13, '7hlYGmGsRr57lc0uS9PEmkeVRnfQXq-1632419533.jpg', 'FPCCI visit', 'fpcci-visit', 'A viist to FPPCI', '2021-11-02 02:04:01', 'Physical', 'Jinnah university', 1, 1, 4, '2021-09-23 17:52:13', '2021-11-24 17:33:27', NULL),
 	(14, '9oBDYGdXy8bARXtfsgykBS0YD4VIoA-1632420116.jpg', 'Cultural Exhibition', 'cultural-exhibition', 'Cultural Exhibition At Marriott Hotel Karachi', '2021-09-23 11:00:56', 'Physical', 'Marriott Hotel', 0, 1, 0, '2021-09-23 18:01:56', '2021-10-31 09:09:56', NULL),
 	(15, 'ZYVjeCtxdIvN9HoqvCKNw43ZQQgCgV-1632420795.jpg', 'From campus to venture', 'from-campus-to-venture', 'Role f social media', '2021-10-07 11:00:00', 'Physical', 'Universirty campus', 0, 1, 0, '2021-09-23 18:13:16', '2021-10-08 19:14:43', '2021-10-08 19:14:43'),
 	(16, 'Xa9uiPgN7e9FzkrRdPWG6xvHrAMU4Y-1632420996.png', 'IBM Workshop', 'ibm-workshop', 'IBM workshop for students', '2021-09-23 11:15:58', 'Online', NULL, 0, 1, 0, '2021-09-23 18:16:36', '2021-10-08 19:10:42', '2021-10-08 19:10:42'),
-	(17, 'qncpVsesINobRNDl5auYRLxsB12z1v-1635842798.jpg', 'Test event', 'test-event', 'dassa dasdasdsa', '2021-11-02 03:06:06', 'Physical', 'Karachi.Pakistan', 0, 4, 4, '2021-11-02 08:46:38', '2021-11-02 10:06:08', NULL);
+	(17, 'OMeTBDQGHCMS1yITwep9xe847yKpIV-1638107148.jpg', 'Test event', 'test-event', 'dassa dasdasdsa', '2021-11-28 06:45:40', 'Physical', 'Karachi.Pakistan', 0, 4, 1, '2021-11-02 08:46:38', '2021-11-28 13:45:49', NULL);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.failed_jobs
@@ -402,7 +402,7 @@ CREATE TABLE IF NOT EXISTS `model_has_roles` (
   CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.model_has_roles: ~12 rows (approximately)
+-- Dumping data for table fyp.model_has_roles: ~13 rows (approximately)
 /*!40000 ALTER TABLE `model_has_roles` DISABLE KEYS */;
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 	(1, 'App\\Models\\User', 1),
@@ -416,7 +416,8 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 	(2, 'App\\Models\\User', 9),
 	(2, 'App\\Models\\User', 10),
 	(2, 'App\\Models\\User', 11),
-	(2, 'App\\Models\\User', 12);
+	(2, 'App\\Models\\User', 12),
+	(2, 'App\\Models\\User', 14);
 /*!40000 ALTER TABLE `model_has_roles` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.notifications
@@ -571,12 +572,13 @@ CREATE TABLE IF NOT EXISTS `research_projects` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table fyp.research_projects: ~0 rows (approximately)
 /*!40000 ALTER TABLE `research_projects` DISABLE KEYS */;
 INSERT INTO `research_projects` (`id`, `user_id`, `research_proposal_id`, `upload_project`, `type`, `submission_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 3, '3', 'research-project-61531f7619700.pdf', 'funded', '2021-09-28', '2021-09-28 13:58:14', '2021-09-28 13:58:14', NULL);
+	(1, 3, '3', 'research-project-61531f7619700.pdf', 'funded', '2021-09-28', '2021-09-28 13:58:14', '2021-09-28 13:58:14', NULL),
+	(2, 3, '6', 'research-project-619e73693a426.pdf', 'fyp', '2021-11-24', '2021-11-24 17:16:25', '2021-11-24 17:16:25', NULL);
 /*!40000 ALTER TABLE `research_projects` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.research_proposals
@@ -602,12 +604,12 @@ CREATE TABLE IF NOT EXISTS `research_proposals` (
 -- Dumping data for table fyp.research_proposals: ~6 rows (approximately)
 /*!40000 ALTER TABLE `research_proposals` DISABLE KEYS */;
 INSERT INTO `research_proposals` (`id`, `user_id`, `title`, `investigator_details_pi`, `investigator_details_copi`, `abstract`, `agency`, `amount`, `submission_date`, `upload_research`, `type`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 7, 'Research Grants Program', 'Ms Ummay Faseeha', '', 'The Research Grants Program provides support for research projects in the following field: Basic and Applied Sciences, Biotechnology and Informatics, Information Technology, Administrative Sciences and Arts.', 'Ignite', 25000, '2021-09-18', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:08:12', '2021-09-23 19:08:12', NULL),
-	(2, 11, 'Micropropagation Of Commercially Important Ornamental Plants', 'Dr. Syeda Kahkashan kazmi', '', 'Micropropagation refers to the in vitro multiplication and/or regeneration of plant material under aseptic and controlled environmental conditions to', 'Higher Education Commission.', 25000, '2021-09-16', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:10:11', '2021-09-23 19:10:11', NULL),
-	(3, 12, 'Synthesis of Dye Intermediates used for the synthesis of industrial dyes', 'Dr. Farzana Naz', '', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Higher Education Commission', 30000, '2021-09-23', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:11:43', '2021-09-23 19:11:43', NULL),
-	(4, 7, 'Impaired Glove', 'Ms. Ummay Faseeha', '', 'converts hand signals into audio output. It helps to reduce the interaction gap between speech impaired', 'Ignite', 76140, '2021-08-03', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:15:15', '2021-09-23 19:15:15', NULL),
-	(5, 3, 'Toddler Track', 'Ms. Saima Amber', '', 'National track and field competitions usually start for primary school-age children aged six and over,', 'Ignite', 78800, '2021-06-11', 'research-project-611e42e5db2e6.pdf', 'funded', 'pending', '2021-09-23 19:17:28', '2021-09-23 19:17:28', NULL),
-	(6, 8, 'From campus to venture', 'Ms Ummay Faseeha', '', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Ignite', 25000, '2021-09-23', 'research-project-611e42e5db2e6.pdf', 'fyp', 'pending', '2021-09-23 21:08:09', '2021-09-23 21:08:09', NULL);
+	(1, 7, 'Research Grants Program', 'Ms Ummay Faseeha', NULL, 'The Research Grants Program provides support for research projects in the following field: Basic and Applied Sciences, Biotechnology and Informatics, Information Technology, Administrative Sciences and Arts.', 'Ignite', 25000, '2021-09-18', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:08:12', '2021-09-23 19:08:12', NULL),
+	(2, 11, 'Micropropagation Of Commercially Important Ornamental Plants', 'Dr. Syeda Kahkashan kazmi', NULL, 'Micropropagation refers to the in vitro multiplication and/or regeneration of plant material under aseptic and controlled environmental conditions to', 'Higher Education Commission.', 25000, '2021-09-16', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:10:11', '2021-09-23 19:10:11', NULL),
+	(3, 12, 'Synthesis of Dye Intermediates used for the synthesis of industrial dyes', 'Dr. Farzana Naz', NULL, 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Higher Education Commission', 30000, '2021-09-23', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:11:43', '2021-09-23 19:11:43', NULL),
+	(4, 7, 'Impaired Glove', 'Ms. Ummay Faseeha', NULL, 'converts hand signals into audio output. It helps to reduce the interaction gap between speech impaired', 'Ignite', 76140, '2021-08-03', 'research-project-611e42e5db2e6.pdf', 'funded', 'approved', '2021-09-23 19:15:15', '2021-09-23 19:15:15', NULL),
+	(5, 3, 'Toddler Track', 'Ms. Saima Amber', NULL, 'National track and field competitions usually start for primary school-age children aged six and over,', 'Ignite', 78800, '2021-06-11', 'research-project-611e42e5db2e6.pdf', 'funded', 'pending', '2021-09-23 19:17:28', '2021-09-23 19:17:28', NULL),
+	(6, 8, 'From campus to venture', 'Ms Ummay Faseeha', 'dsadsa', 'A dye intermediate is the main raw material used for the manufacturing dyestuff. The manufacturing chain of dyes can be traced back to petroleum based products.', 'Ignite', 25000, '2021-09-23', 'research-project-611e42e5db2e6.pdf', 'fyp', 'approved', '2021-09-23 21:08:09', '2021-11-24 17:24:40', NULL);
 /*!40000 ALTER TABLE `research_proposals` ENABLE KEYS */;
 
 -- Dumping structure for table fyp.roles
@@ -629,8 +631,8 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `is_disabled`, `created_at`, `u
 	(1, 'super-admin', 'web', 0, '2021-07-06 13:53:04', '2021-07-06 13:53:04', NULL),
 	(2, 'student', 'web', 0, '2021-07-06 13:53:04', '2021-07-06 13:53:04', NULL),
 	(3, 'oric-member', 'web', 0, '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL),
-	(4, 'researcher', 'web', 0, '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL),
-	(6, 'focal-person', 'web', 0, '2021-07-06 13:53:05', '2021-07-06 13:53:05', NULL),
+	(4, 'researcher', 'web', 0, '2021-07-06 13:53:05', '2021-11-18 06:37:12', NULL),
+	(6, 'focal-person', 'web', 0, '2021-07-06 13:53:05', '2021-11-18 06:31:03', NULL),
 	(7, 'faculty', 'web', 0, '2021-10-31 06:56:05', '2021-10-31 08:52:26', NULL);
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
@@ -800,14 +802,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fyp.users: ~12 rows (approximately)
+-- Dumping data for table fyp.users: ~13 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `father_name`, `cnic`, `email`, `password`, `profile_picture`, `profile_detail`, `student_rollno`, `student_seatno`, `department`, `contact`, `gender`, `dob`, `designation`, `qualification`, `expertise`, `certification`, `joining_date`, `verification_token`, `remember_token`, `is_block`, `is_verified`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-	(1, 'Dr. Rashida R', 'Zohra', NULL, '2342423312312', 'admin@fyp.com', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', '0fnEFnGriQ1632431005.jpg', 'dasdasd', NULL, NULL, NULL, NULL, 'female', '2021-07-06', NULL, NULL, NULL, NULL, '2019-08-21', NULL, '4MRU5NwzZHqJbzHtpRsA5m49Z6c0os7VC6EeyWaE1nvDJNiGScidJxJGJOhn', 0, 1, 0, 1, '2021-07-06 13:53:04', '2021-09-23 21:03:53'),
+	(1, 'Dr. Rashida R', 'Zohra', NULL, '2342423312312', 'admin@fyp.com', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', '0fnEFnGriQ1632431005.jpg', 'dasdasd', NULL, NULL, NULL, NULL, 'female', '2021-07-06', NULL, NULL, NULL, NULL, '2019-08-21', NULL, 'wNKbkpozHzON9KsqZbFjuzb8kGGgEWXPmAeD9oXFTaE7jW0IhrN5a8S1UF4r', 0, 1, 0, 1, '2021-07-06 13:53:04', '2021-09-23 21:03:53'),
 	(2, 'Aisha', 'Khan', NULL, '2342423442342', 'sajjad.ali@viftech.com.pk', '$2y$10$tqDpuOhJ.4kdiNM.qs0h6.5u1xCNnOdseceE0Z1ZZ4M6Wi4LnUvbK', NULL, 'asa', NULL, NULL, NULL, NULL, 'female', '2021-07-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 1, '2021-07-07 06:10:32', '2021-09-28 12:17:54'),
-	(3, 'Affan', 'Ali', NULL, '1323123123123', 'affan@viftech.com.pk', '$2y$10$wD3DgVlac9LlJrPO0UpgVuOoSdqyFB3Vkbc7ajXePJmBnnlYR5EhG', NULL, 'dasdasd', 24234, '312f', NULL, NULL, 'male', '2021-08-02', NULL, NULL, NULL, NULL, '2021-08-19', NULL, 'BL73Zxx51HaOHDaZnwG6oBKl4Vbq3F1GwVGEmdpkJuI5va1NW5vuXANpEXSr', 0, 1, 1, 1, '2020-07-07 06:38:30', '2021-09-23 17:36:26'),
+	(3, 'Affan', 'Ali', NULL, '1323123123123', 'affan@viftech.com.pk', '$2y$10$wD3DgVlac9LlJrPO0UpgVuOoSdqyFB3Vkbc7ajXePJmBnnlYR5EhG', NULL, 'dasdasd', 24234, '312f', NULL, NULL, 'male', '2021-08-02', NULL, NULL, NULL, NULL, '2021-08-19', NULL, '7vHIo5Z5GYgQvbsy96pqeuur9xaTBc7Bq0iVLCv3TPQhRgXqtgHI4hPO5uDs', 0, 1, 1, 1, '2020-07-07 06:38:30', '2021-09-23 17:36:26'),
 	(4, 'Faizan', 'AHMED RAZA', NULL, '3412312312312', 'faizan@viftech.com.pk', '$2y$10$5lczYJxP6Cpj/ydTFDN0Nuv5ut3QBfFgbQSMlBdXYA/GmD2ufi8Ky', NULL, NULL, NULL, NULL, NULL, NULL, 'male', '2021-09-23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 1, '2021-07-07 06:57:17', '2021-09-23 19:45:18'),
 	(5, 'fariha', 'sheikh', 'sheikh', NULL, 'test1@email.com', '$2y$10$QTfxdzZSvum20TEwkMy8BODv2iDD21WQn1/ByMcr63KAFRVDevFde', NULL, NULL, NULL, NULL, NULL, NULL, 'male', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, 0, '2021-08-03 11:00:08', '2021-08-03 11:00:33'),
 	(6, 'aqsa', 'Khan', NULL, NULL, 'aqsa@fyp.com', '$2y$10$rhhv.QnHmew2PseozhbdiuDoBSqpC2bCER04WnCizs6NV8qfKVv/2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uUWXyITdvfJpEupTIPTi7uRvkJgNLoHWmIwZKeOkLlAYCb2UsU', NULL, 0, 1, NULL, 0, '2021-09-23 17:29:40', '2021-09-23 18:21:05'),
@@ -816,7 +818,8 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `father_name`, `cnic`, `em
 	(9, 'Aqsa', 'Khan', NULL, NULL, 'aqsa00@fyp.com', '$2y$10$Oc7WCGXdN2GrJd.lZmZ/PeQbDo9si6RuwjgPNipbgH.nl1JbwNKV.', NULL, NULL, NULL, NULL, NULL, NULL, 'female', '2021-09-23', NULL, NULL, NULL, NULL, NULL, 'UgvDGA51EaYLJedf7OuEtSUsoeyc4Jyy09qY5zL6dZjbMek8B5', NULL, 0, 1, NULL, 1, '2021-09-23 18:17:50', '2021-09-23 18:28:48'),
 	(10, 'mahnoor', 'Khan', NULL, NULL, 'mahnoor00@fyp.com', '$2y$10$Hhhzt.uCWoS.ZConMzp6HO6SwSF6LMslllC5NhbfgRlMV0lbRUxyu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'JEubsvDeoj2qMcZWaA7qPyq6goab6aSqYnqJXe1VxCcYbOfbyE', NULL, 0, 1, NULL, 0, '2021-09-23 18:18:40', '2021-09-23 18:18:40'),
 	(11, 'Jaweria', 'arif', NULL, NULL, 'jaweria00@fyp.com', '$2y$10$gjoyzt6uyXVhP6xvScxPx.mDNeKc6rp9WJc.iQFIlM9g0CR/izezu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'xlnQ05PUQndLswAPXOMa8DLY2XZBqHjCO3L3tKq9cS5ijO95gY', NULL, 0, 1, NULL, 0, '2021-09-23 18:19:24', '2021-09-23 18:19:24'),
-	(12, 'khadija', 'zulfikar', NULL, '6433468997657', 'khadija@fyp.com', '$2y$10$1dQsTE60uXf5L.9KNlC0wOnyVrdS4OIwhLyJFCw/ZFzk1Wm4xtN1a', NULL, NULL, NULL, NULL, 'Computer Science', 98546789976, 'female', '2021-09-23', 'Student', NULL, NULL, NULL, NULL, 'USLFNxWAHXTZCoUQk3YU1rMzh5TSJFQMXGWuf2iYiwUdgs67kp', NULL, 0, 1, 1, 0, '2021-09-23 18:25:32', '2021-09-23 18:25:32');
+	(12, 'khadija', 'zulfikar', NULL, '6433468997657', 'khadija@fyp.com', '$2y$10$1dQsTE60uXf5L.9KNlC0wOnyVrdS4OIwhLyJFCw/ZFzk1Wm4xtN1a', NULL, NULL, NULL, NULL, 'Computer Science', 98546789976, 'female', '2021-09-23', 'Student', NULL, NULL, NULL, NULL, 'USLFNxWAHXTZCoUQk3YU1rMzh5TSJFQMXGWuf2iYiwUdgs67kp', NULL, 0, 1, 1, 0, '2021-09-23 18:25:32', '2021-09-23 18:25:32'),
+	(14, 'Abbas', 'Hur', NULL, NULL, 'hurabbas@gmail.com', '$2y$10$pyho/F7eUjm1eIbJ1kfMJuX3y2jTy0O8SL9QuRMrsO60d9T207dQO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, NULL, 0, '2021-11-18 06:48:46', '2021-11-18 06:49:08');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
