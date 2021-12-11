@@ -39,8 +39,8 @@ class TestimonialController extends Controller
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/images/uploads/pages';
-            $destination = givePath() . '/assets/images/uploads/pages/' . $newFileName;
+            $purposePath = public_path() . '/assets/images/uploads/pages';
+            $destination = public_path() . '/assets/images/uploads/pages/' . $newFileName;
 
             if (!File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -80,14 +80,14 @@ class TestimonialController extends Controller
         ]);
 
         if (!empty(request()->file('profile_picture'))) {
-            unlink(givePath() . '/assets/images/uploads/pages/' . $updateTestimonial->profile_picture);
+            unlink(public_path() . '/assets/images/uploads/pages/' . $updateTestimonial->profile_picture);
             $img = Image::make(request()->file('profile_picture'));
             $extension = request()->file('profile_picture')->extension();
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/images/uploads/pages';
-            $destination = givePath() . '/assets/images/uploads/pages/' . $newFileName;
+            $purposePath = public_path() . '/assets/images/uploads/pages';
+            $destination = public_path() . '/assets/images/uploads/pages/' . $newFileName;
 
             if (!File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -115,7 +115,7 @@ class TestimonialController extends Controller
         $updateTestimonial = CMSTestimonial::findOrFail($cmsTestimonialId)->first();
         if (count($records) > 3) {
             if (!empty($updateTestimonial)) {
-                unlink(givePath() . '/assets/images/uploads/pages/' . $updateTestimonial->profile_picture);
+                unlink(public_path() . '/assets/images/uploads/pages/' . $updateTestimonial->profile_picture);
                 $updateTestimonial->delete();
                 $msg = "Successfully Delete record!";
                 $code = 200;

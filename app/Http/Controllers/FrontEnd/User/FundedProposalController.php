@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Notification;
 use App\Models\ResearchProposal;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -21,9 +22,8 @@ class FundedProposalController extends Controller
 
     public function index()
     {
-        $proposals = ResearchProposal::with('getUser')->where('type','funded')->where('user_id',Auth::id())->get();
-        if(session()->has('notification'))
-        {
+        $proposals = ResearchProposal::with('getUser')->where('type', 'funded')->where('user_id', Auth::id())->get();
+        if (session()->has('notification')) {
             $notify = session()->get('notification');
             $notify->update([
                 'is_read' => 1
@@ -35,7 +35,7 @@ class FundedProposalController extends Controller
     public function addProposal()
     {
         $user = Auth::user();
-        return view('frontend.user.proposal.funded.add',compact('user'));
+        return view('frontend.user.proposal.funded.add', compact('user'));
     }
 
     public function addProposalData()
@@ -50,7 +50,7 @@ class FundedProposalController extends Controller
             'amount' => 'required|max:250',
             'submission_date' => 'required|date',
             'upload_research' => 'required|file|mimes:doc,pdf,docx'
-        ],[
+        ], [
             'investigator_details_pi.required' => 'The investigator principal details is required.',
             'investigator_details_pi.max' => 'The investigator principal details may not be greater than 150 characters.',
             'investigator_details_copi.required' => 'The investigator co-principal details is required.',
@@ -65,16 +65,16 @@ class FundedProposalController extends Controller
         $studentData['agency'] = request()->agency;
         $studentData['amount'] = request()->amount;
         $studentData['submission_date'] = Carbon::parse(request()->submission_date)->format('Y-m-d');
-        $studentData['status'] = 'approved';
+        $studentData['status'] = 'pending';
         $studentData['type'] = 'funded';
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
             $newResearchName = uniqid('research-project-') . '.' . $upload_research->getClientOriginalExtension();
-            if(!File::isDirectory(storage_path('app/public/uploads'))){
-                File::makeDirectory(storage_path('app/public/uploads'),0755, true);
+            if (!File::isDirectory(storage_path('app/public/uploads'))) {
+                File::makeDirectory(storage_path('app/public/uploads'), 0755, true);
             }
-            Storage::putFileAs('public/uploads',$upload_research,$newResearchName);
+            Storage::putFileAs('public/uploads', $upload_research, $newResearchName);
             $studentData['upload_research'] = $newResearchName;
         }
 
@@ -88,13 +88,18 @@ class FundedProposalController extends Controller
             'message' => ' is send approval request of funded proposal.'
         ]);
 
-        event(new \App\Events\FormSubmitted('funded-project-proposal', $admin));
+        try {
+            event(new \App\Events\FormSubmitted('funded-project-proposal', $admin));
+        } catch (\Exception $exception) {
+            $exception->getMessage();
+        }
 
-        return redirect('/admin/funded-proposals')->with('success','Successfully submitted.');
+        return redirect('/user/funded-proposals')->with('success', 'Successfully submitted.');
     }
 
-    public function proposalDetail($proposalId){
-        $proposal = ResearchProposal::with('getUser')->where('id',$proposalId)->whereHas('getUser')->first();
+    public function proposalDetail($proposalId)
+    {
+        $proposal = ResearchProposal::with('getUser')->where('id', $proposalId)->whereHas('getUser')->first();
         return view('frontend.user.proposal.funded.detail', compact('proposal'));
     }
 }

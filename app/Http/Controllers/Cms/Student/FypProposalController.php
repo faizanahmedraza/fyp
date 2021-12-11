@@ -9,6 +9,7 @@ use App\Models\ResearchProposal;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use mysql_xdevapi\Exception;
 
 class FypProposalController extends Controller
 {
@@ -21,9 +22,8 @@ class FypProposalController extends Controller
 
     public function index()
     {
-        $proposals = ResearchProposal::where('type','fyp')->get();
-        if(session()->has('notification'))
-        {
+        $proposals = ResearchProposal::where('type', 'fyp')->get();
+        if (session()->has('notification')) {
             $notify = session()->get('notification');
             $notify->update([
                 'is_read' => 1
@@ -35,14 +35,14 @@ class FypProposalController extends Controller
     public function addProposal()
     {
         $students = User::role('student')->get();
-        return view('cms.student.proposal.fyp.add',compact('students'));
+        return view('cms.student.proposal.fyp.add', compact('students'));
     }
 
     public function addProposalData()
     {
         $studentData = array();
         request()->validate([
-            'student_name' => 'required|in:'.implode(',',User::role('student')->pluck('id')->toArray()),
+            'student_name' => 'required|in:' . implode(',', User::role('student')->pluck('wid')->toArray()),
             'title' => 'required|max:150',
             'investigator_details_pi' => 'required|max:150',
             'investigator_details_copi' => 'required|max:150',
@@ -50,7 +50,7 @@ class FypProposalController extends Controller
             'agency' => 'required|max:250',
             'submission_date' => 'required|date',
             'upload_research' => 'required|file|mimes:doc,pdf,docx'
-        ],[
+        ], [
             'investigator_details_pi.required' => 'The investigator principal details is required.',
             'investigator_details_pi.max' => 'The investigator principal details may not be greater than 150 characters.',
             'investigator_details_copi.required' => 'The investigator co-principal details is required.',
@@ -70,25 +70,27 @@ class FypProposalController extends Controller
 
         if (!empty($upload_research)) {
             $newResearchName = uniqid('research-proposal-') . '.' . $upload_research->getClientOriginalExtension();
-            if(!File::isDirectory(storage_path('app/public/uploads'))){
-                File::makeDirectory(storage_path('app/public/uploads'),0755, true);
+            if (!File::isDirectory(storage_path('app/public/uploads'))) {
+                File::makeDirectory(storage_path('app/public/uploads'), 0755, true);
             }
-            Storage::putFileAs('public/uploads',$upload_research,$newResearchName);
+            Storage::putFileAs('public/uploads', $upload_research, $newResearchName);
             $studentData['upload_research'] = $newResearchName;
         }
 
         ResearchProposal::create($studentData);
 
-        return redirect('/admin/fyp-proposals')->with('success','Successfully submitted.');
+        return redirect('/admin/fyp-proposals')->with('success', 'Successfully submitted.');
     }
 
-    public function updateProposal($proposalId){
-        $proposal = ResearchProposal::with('getUser')->where('type','fyp')->where('id',$proposalId)->first();
+    public function updateProposal($proposalId)
+    {
+        $proposal = ResearchProposal::with('getUser')->where('type', 'fyp')->where('id', $proposalId)->first();
         return view('cms.student.proposal.fyp.update', compact('proposal'));
     }
 
-    public function updateProposalData($proposalId){
-        $proposal = ResearchProposal::where('type','fyp')->where('id',$proposalId)->first();
+    public function updateProposalData($proposalId)
+    {
+        $proposal = ResearchProposal::where('type', 'fyp')->where('id', $proposalId)->first();
         $studentData = array();
         request()->validate([
             'title' => 'required|max:150',
@@ -98,7 +100,7 @@ class FypProposalController extends Controller
             'agency' => 'required|max:250',
             'submission_date' => 'required|date',
             'upload_research' => 'sometimes|nullable|file|mimes:doc,pdf,docx',
-        ],[
+        ], [
             'investigator_details_pi.required' => 'The investigator principal details is required.',
             'investigator_details_pi.max' => 'The investigator principal details may not be greater than 150 characters.',
             'investigator_details_copi.required' => 'The investigator co-principal details is required.',
@@ -117,12 +119,12 @@ class FypProposalController extends Controller
         $upload_research = request()->file('upload_research');
 
         if (!empty($upload_research)) {
-            Storage::disk('local')->delete('public/uploads/'.$proposal->upload_research);
+            Storage::disk('local')->delete('public/uploads/' . $proposal->upload_research);
             $newResearchName = uniqid('research-proposal-') . '.' . $upload_research->getClientOriginalExtension();
-            if(!File::isDirectory(storage_path('app/public/uploads'))){
-                File::makeDirectory(storage_path('app/public/uploads'),0755, true);
+            if (!File::isDirectory(storage_path('app/public/uploads'))) {
+                File::makeDirectory(storage_path('app/public/uploads'), 0755, true);
             }
-            Storage::putFileAs('public/uploads',$upload_research,$newResearchName);
+            Storage::putFileAs('public/uploads', $upload_research, $newResearchName);
             $studentData['upload_research'] = $newResearchName;
         } else {
             $studentData['upload_research'] = $proposal->upload_research;
@@ -130,11 +132,12 @@ class FypProposalController extends Controller
 
         $proposal->update($studentData);
 
-        return redirect('/admin/fyp-proposals')->with('success','Successfully updated.');
+        return redirect('/admin/fyp-proposals')->with('success', 'Successfully updated.');
     }
 
-    public function proposalDetail($proposalId){
-        $proposal = ResearchProposal::with('getUser')->where('id',$proposalId)->whereHas('getUser')->first();
+    public function proposalDetail($proposalId)
+    {
+        $proposal = ResearchProposal::with('getUser')->where('id', $proposalId)->whereHas('getUser')->first();
         return view('cms.student.proposal.fyp.detail', compact('proposal'));
     }
 
@@ -154,7 +157,11 @@ class FypProposalController extends Controller
             'message' => " fyp proposal request has been {$flag}."
         ]);
 
-        event(new StatusChanged('fyp-proposal',$research));
+        try {
+            event(new StatusChanged('fyp-proposal', $research));
+        } catch (\Exception $exception) {
+            $exception->getMessage();
+        }
         return response()->json(['msg' => "Successfully status updated", 'status' => ucfirst($flag)]);
     }
 }

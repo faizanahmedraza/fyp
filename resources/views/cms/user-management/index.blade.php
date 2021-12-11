@@ -68,7 +68,7 @@
                                                     </label>
                                                 </td>
                                                 <td>
-                                                    @if($user->is_block === 0)
+                                                    @if($user->is_block == 0)
                                                         <a href="/admin/update-user/{{$user->id}}"
                                                            class="btn btn-info btn-sm">Update</a>
                                                     @else

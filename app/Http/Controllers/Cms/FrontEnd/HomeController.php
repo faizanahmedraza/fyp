@@ -38,8 +38,8 @@ class HomeController extends Controller
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random.'-'.$dt.'.'.$extension;
-            $purposePath = givePath().'/assets/images/uploads/pages';
-            $destination = givePath().'/assets/images/uploads/pages/'.$newFileName;
+            $purposePath = public_path().'/assets/images/uploads/pages';
+            $destination = public_path().'/assets/images/uploads/pages/'.$newFileName;
 
             if(!File::isDirectory($purposePath)){
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -72,14 +72,14 @@ class HomeController extends Controller
                 'banner' => ['required','image','mimes:jpeg,jpg,png,svg','max:2048'],
                 'description' => ['required']
             ]);
-//            unlink(givePath() . '/assets/images/uploads/pages/' . $updateHome->banner);
+//            unlink(public_path() . '/assets/images/uploads/pages/' . $updateHome->banner);
             $img = Image::make(request()->file('banner'));
             $extension = request()->file('banner')->extension();
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random.'-'.$dt.'.'.$extension;
-            $purposePath = givePath().'/assets/images/uploads/pages';
-            $destination = givePath().'/assets/images/uploads/pages/'.$newFileName;
+            $purposePath = public_path().'/assets/images/uploads/pages';
+            $destination = public_path().'/assets/images/uploads/pages/'.$newFileName;
 
             if(!File::isDirectory($purposePath)){
                 File::makeDirectory($purposePath, 0777, true, true);

@@ -46,8 +46,8 @@ class BlogController extends Controller
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random.'-'.$dt.'.'.$extension;
-            $purposePath = givePath().'/assets/images/uploads/pages/blog';
-            $destination = givePath().'/assets/images/uploads/pages/blog/'.$newFileName;
+            $purposePath = public_path().'/assets/images/uploads/pages/blog';
+            $destination = public_path().'/assets/images/uploads/pages/blog/'.$newFileName;
 
             if(!File::isDirectory($purposePath)){
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -91,14 +91,14 @@ class BlogController extends Controller
         ]);
 
         if(!empty(request()->file('image'))){
-            unlink(givePath() . '/assets/images/uploads/pages/blog/' . $updateBlog->image);
+            unlink(public_path() . '/assets/images/uploads/pages/blog/' . $updateBlog->image);
             $img = Image::make(request()->file('image'));
             $extension = request()->file('image')->extension();
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random.'-'.$dt.'.'.$extension;
-            $purposePath = givePath().'/assets/images/uploads/pages/blog';
-            $destination = givePath().'/assets/images/uploads/pages/blog/'.$newFileName;
+            $purposePath = public_path().'/assets/images/uploads/pages/blog';
+            $destination = public_path().'/assets/images/uploads/pages/blog/'.$newFileName;
 
             if(!File::isDirectory($purposePath)){
                 File::makeDirectory($purposePath, 0777, true, true);

@@ -39,8 +39,8 @@ class GalleryController extends Controller
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/images/uploads/pages/event/gallery';
-            $destination = givePath() . '/assets/images/uploads/pages/event/gallery/' . $newFileName;
+            $purposePath = public_path() . '/assets/images/uploads/pages/event/gallery';
+            $destination = public_path() . '/assets/images/uploads/pages/event/gallery/' . $newFileName;
 
             if (!File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -76,14 +76,14 @@ class GalleryController extends Controller
         ]);
 
         if (!empty(request()->file('image'))) {
-            unlink(givePath() . '/assets/images/uploads/pages/event/gallery/' . $updateGallery->image);
+            unlink(public_path() . '/assets/images/uploads/pages/event/gallery/' . $updateGallery->image);
             $img = Image::make(request()->file('image'));
             $extension = request()->file('image')->extension();
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/images/uploads/pages/event/gallery';
-            $destination = givePath() . '/assets/images/uploads/pages/event/gallery/' . $newFileName;
+            $purposePath = public_path() . '/assets/images/uploads/pages/event/gallery';
+            $destination = public_path() . '/assets/images/uploads/pages/event/gallery/' . $newFileName;
 
             if (!File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);

@@ -65,7 +65,7 @@ class FypProposalController extends Controller
         $studentData['agency'] = request()->agency;
         $studentData['amount'] = request()->amount;
         $studentData['submission_date'] = Carbon::parse(request()->submission_date)->format('Y-m-d');
-        $studentData['status'] = 'approved';
+        $studentData['status'] = 'pending';
         $studentData['type'] = 'fyp';
         $upload_research = request()->file('upload_research');
 
@@ -88,9 +88,13 @@ class FypProposalController extends Controller
             'message' => ' is send approval request of fyp proposal.'
         ]);
 
-        event(new \App\Events\FormSubmitted('fyp-project-proposal', $admin));
+        try {
+            event(new \App\Events\FormSubmitted('fyp-project-proposal', $admin));
+        } catch (\Exception $exception) {
+            $exception->getMessage();
+        }
 
-        return redirect('/admin/fyp-proposals')->with('success','Successfully submitted.');
+        return redirect('/user/fyp-proposals')->with('success','Successfully submitted.');
     }
 
     public function proposalDetail($proposalId){

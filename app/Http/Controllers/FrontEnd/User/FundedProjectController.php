@@ -8,6 +8,7 @@ use App\Models\Notification;
 use App\Models\ResearchProject;
 use App\Models\ResearchProposal;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -50,7 +51,7 @@ class FundedProjectController extends Controller
         ]);
 
         $studentData['user_id'] = Auth::id();
-        $studentData['title'] = (int)request()->proposal_title;
+        $studentData['research_proposal_id'] = (int)request()->proposal_title;
         $studentData['submission_date'] = Carbon::parse(request()->submission_date)->format('Y-m-d');
         $studentData['type'] = 'funded';
         $upload_project = request()->file('upload_project');
@@ -66,7 +67,7 @@ class FundedProjectController extends Controller
 
         ResearchProject::create($studentData);
 
-        return redirect('/admin/funded-projects')->with('success','Successfully submitted.');
+        return redirect('/user/funded-projects')->with('success','Successfully submitted.');
     }
 
     public function projectDetail($projectId){

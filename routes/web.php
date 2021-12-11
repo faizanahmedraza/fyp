@@ -21,6 +21,11 @@ Route::get('/storage-link',function(){
     dd("storage link done");
 });
 
+Route::get('/queues-work',function(){
+    \Illuminate\Support\Facades\Artisan::call('queue:work', ['--tries' => 3]);
+    dd("Queues working");
+});
+
 Route::namespace('Website')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::get('/research/funding-opportunities', 'FundingOpportunityController@index');

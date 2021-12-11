@@ -56,8 +56,8 @@ class InternShipController extends Controller
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/images/uploads/pages/internship';
-            $destination = givePath() . '/assets/images/uploads/pages/internship/' . $newFileName;
+            $purposePath = public_path() . '/assets/images/uploads/pages/internship';
+            $destination = public_path() . '/assets/images/uploads/pages/internship/' . $newFileName;
 
             if (!File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -107,16 +107,16 @@ class InternShipController extends Controller
         ]);
 
         if (!empty(request()->file('image'))) {
-            if (file_exists(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image)) {
-                unlink(givePath() . '/assets/images/uploads/pages/internship/' . $updateInternship->image);
+            if (file_exists(public_path() . '/assets/images/uploads/pages/internship/' . $updateInternship->image)) {
+                unlink(public_path() . '/assets/images/uploads/pages/internship/' . $updateInternship->image);
             }
             $img = Image::make(request()->file('image'));
             $extension = request()->file('image')->extension();
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/images/uploads/pages/internship';
-            $destination = givePath() . '/assets/images/uploads/pages/internship/' . $newFileName;
+            $purposePath = public_path() . '/assets/images/uploads/pages/internship';
+            $destination = public_path() . '/assets/images/uploads/pages/internship/' . $newFileName;
 
             if (!File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);

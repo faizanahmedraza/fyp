@@ -60,7 +60,7 @@ class FypProjectController extends Controller
         if (!empty($upload_project)) {
             $newResearchName = uniqid('research-project-') . '.' . $upload_project->getClientOriginalExtension();
             if(!File::isDirectory(storage_path('app/public/uploads'))){
-                File::makeDirectory(storage_path('app/public/uploads'),0755, true);
+                File::makeDirectory(storage_path('app/public/uploads'),0777, true);
             }
             Storage::putFileAs('public/uploads',$upload_project,$newResearchName);
             $studentData['upload_project'] = $newResearchName;

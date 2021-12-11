@@ -35,8 +35,8 @@ class AboutController extends Controller
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/frontend/uploads/pages';
-            $destination = givePath() . '/assets/frontend/uploads/pages/' . $newFileName;
+            $purposePath = public_path() . '/assets/frontend/uploads/pages';
+            $destination = public_path() . '/assets/frontend/uploads/pages/' . $newFileName;
 
             if (File::isDirectory($purposePath)) {
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -84,8 +84,8 @@ class AboutController extends Controller
             $random = Str::random(30);
             $dt = Carbon::now()->timestamp;
             $newFileName = $random . '-' . $dt . '.' . $extension;
-            $purposePath = givePath() . '/assets/frontend/uploads/pages';
-            $destination = givePath() . '/assets/frontend/uploads/pages/' . $newFileName;
+            $purposePath = public_path() . '/assets/frontend/uploads/pages';
+            $destination = public_path() . '/assets/frontend/uploads/pages/' . $newFileName;
 
             if(File::isDirectory($purposePath)){
                 File::makeDirectory($purposePath, 0777, true, true);
@@ -129,7 +129,7 @@ class AboutController extends Controller
         $updateContact = CMSAboutUs::findOrFail($cmsAboutUsId);
         if (count($records) > 1) {
             if (!empty($updateContact)) {
-                unlink(givePath() .'/assets/frontend/uploads/pages/'. $updateContact->banner);
+                unlink(public_path() .'/assets/frontend/uploads/pages/'. $updateContact->banner);
                 $updateContact->delete();
                 $msg = "Successfully Delete record!";
                 $code = 200;

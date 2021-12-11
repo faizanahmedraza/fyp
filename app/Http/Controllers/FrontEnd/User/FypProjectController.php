@@ -8,6 +8,7 @@ use App\Models\Notification;
 use App\Models\ResearchProject;
 use App\Models\ResearchProposal;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -51,7 +52,7 @@ class FypProjectController extends Controller
         ]);
 
         $studentData['user_id'] = Auth::id();
-        $studentData['title'] = (int)request()->proposal_title;
+        $studentData['research_proposal_id'] = (int)request()->proposal_title;
         $studentData['submission_date'] = Carbon::parse(request()->submission_date)->format('Y-m-d');
         $studentData['type'] = 'fyp';
         $upload_project = request()->file('upload_project');
@@ -67,7 +68,7 @@ class FypProjectController extends Controller
 
         ResearchProject::create($studentData);
 
-        return redirect('/admin/fyp-projects')->with('success','Successfully submitted.');
+        return redirect('/user/fyp-projects')->with('success','Successfully submitted.');
     }
 
     public function projectDetail($projectId){
