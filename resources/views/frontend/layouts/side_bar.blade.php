@@ -61,14 +61,16 @@
                     </ul>
                 </li>
             @endcan
-            <li class="dropdown"><a href="javascript:void(0);">Internships</a>
-                <ul>
-                    <li class="{{ getActiveClass(request()->segment(2),['internships']) }}">
-                        <a href="/user/internships">
-                            <i class="far fa-book"></i> Internships</a>
-                    </li>
-                </ul>
-            </li>
+            @can('user-internship-list')
+                <li class="dropdown"><a href="javascript:void(0);">Internships</a>
+                    <ul>
+                        <li class="{{ getActiveClass(request()->segment(2),['internships']) }}">
+                            <a href="/user/internships">
+                                <i class="far fa-book"></i> Internships</a>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
         </ul>
         <!-- END: Menu-->
     </div>

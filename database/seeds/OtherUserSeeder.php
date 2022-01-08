@@ -25,6 +25,7 @@ class OtherUserSeeder extends Seeder
             'user-notification-list',
             'user-notification-detail',
             'user-event-list',
+            'user-internship-list',
         ];
 
         $oricFacultyPermissions = [

@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class InternShipController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:user-internship-list', ['only' => 'index']);
+    }
+
     public function index()
     {
         $internships = InternShip::with(['getRegisteredInterns' => function ($query) {
@@ -24,7 +29,7 @@ class InternShipController extends Controller
         $intern = InternShip::firstOrFail(request()->internId);
         $internDate = explode(' - ', $intern->duration);
         if ($internDate[0] == now()->format('Y-m-d')) {
-            $msg = "Intern ship program date is expired. We will start back soon!";
+            $msg = "Whoops! Registrations are closed now. We will start back soon!";
             $code = 422;
         } else {
             $code = 200;
@@ -53,7 +58,7 @@ class InternShipController extends Controller
         $intern = InternShip::where('id',request()->internId)->firstOrFail();
         $internDate = explode(' - ', $intern->duration);
         if ($internDate[0] == now()->format('Y-m-d')) {
-            $msg = "Intern ship program date is expired. We will start back soon!";
+            $msg = "Whoops! Registrations are closed now. We will start back soon!";
             $code = 422;
         } else {
             $msg = "You successfully applied \n We are excited to see you here!";

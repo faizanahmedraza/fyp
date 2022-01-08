@@ -26,7 +26,6 @@ class ProfileController extends Controller
             'first_name' => 'required|max:55',
             'last_name' => 'required|max:55',
             'father_name' => 'sometimes|nullable|max:55',
-            'email' => 'required|email:rfc|max:255|unique:users,email,' . $profile->id,
             'cnic' => 'sometimes|nullable|digits:13',
             'contact' => 'sometimes|nullable|regex:/^[\+]?[(]?[0-9]{4}[)]?[-\s\.]?[0-9]{7}$/',
             'gender' => 'sometimes|nullable|in:male,female,other|max:10',
@@ -71,7 +70,6 @@ class ProfileController extends Controller
         $profile->update([
             'first_name' => request()->first_name,
             'last_name' => request()->last_name,
-            'email' => request()->email,
             'cnic' => request()->cnic,
             'gender' => request()->gender,
             'dob' => \Carbon\Carbon::parse(request()->dob)->format('Y-m-d'),

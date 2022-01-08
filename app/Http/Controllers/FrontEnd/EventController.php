@@ -35,7 +35,7 @@ class EventController extends Controller
         $event = Event::where('id',request()->eventId)->firstOrFail();
         $eventDate = explode(' ', $event->schedule);
         if ($eventDate[0] == now()->format('Y-m-d')) {
-            $msg = "Sorry! Event is closed. Stay tuned for upcoming events!";
+            $msg = "Whoops! Event registration is closed. Stay tuned for upcoming events!";
             $code = 422;
         } else {
             $code = 200;
@@ -64,7 +64,7 @@ class EventController extends Controller
         $event = Event::where('id',request()->eventId)->firstOrFail();
         $eventDate = explode(' ', $event->schedule);
         if ($eventDate[0] == now()->format('Y-m-d')) {
-            $msg = "Sorry! Event is closed. Stay tuned for upcoming events!";
+            $msg = "Whoops! Event registration is closed. Stay tuned for upcoming events!";
             $code = 422;
         } else {
             $msg = "You successfully registered \n Thanks For Registering an Event!";
