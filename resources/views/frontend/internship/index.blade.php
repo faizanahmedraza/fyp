@@ -29,25 +29,27 @@
                                     </div>
                                     <div class="card-body"
                                          style="min-height: 270px!important; max-height: 270px!important;">
-                                        <h5 class="card-title mb-3 mt-2">{{$val->title}} <span style="font-size: 13px;">({{ $val->paid == 1 ? 'Paid' : 'UnPaid' }})</span></h5>
+                                        <a href="/internships/{{$val->slug}}/internship-detail" class="d-flex text-decoration-none"><h5 class="card-title text-truncate" style="max-width: 160px;">{{$val->title}}</h5> <span class="ml-1" style="font-size: 13px;">({{ $val->paid == 1 ? 'Paid' : 'UnPaid' }})</span></a>
                                         <p class="card-text text-justify"
-                                           style="min-height: 60px!important; max-height: 60px!important;">{{Str::limit($val->description,100)}}</p>
+                                           style="min-height: 60px!important; max-height: 60px!important;">{{Str::limit($val->description,70)}}</p>
                                         <div class="row pt-2"
                                              style="min-height: 76px!important; max-height: 76px!important;">
                                             @if($val->mode === 'Online')
-                                                <div class="col-7">
+                                                <div class="col-4">
                                                     <b><i class="ion ion-android-pin"></i>{{ $val->company }}</b> <span style="font-size: 13px;">({{$val->mode}})</span>
+                                                </div>
+                                                <div class="col-8 text-right text-success">
+                                                    <b><i class="ion ion-android-pin"></i>Applied: {{$val->getRegisteredInterns->count()}}</b>
                                                 </div>
                                             @else
                                                 <div class="col-7">
                                                     <b><i class="ion ion-android-pin"></i>{{ $val->company }}</b> <span style="font-size: 13px;">(Physical)</span><br>
                                                     {{$val->location}}
                                                 </div>
+                                                <div class="col-5 text-right text-success">
+                                                    <b><i class="ion ion-android-pin"></i>Applied: {{$val->getRegisteredInterns->count()}}</b>
+                                                </div>
                                             @endif
-                                            <div class="col-5 text-right text-success">
-                                                <b><i class="ion ion-android-pin"></i>{{$val->getRegisteredInterns->count()}}
-                                                    are Applied</b>
-                                            </div>
                                         </div>
                                         <div class="pt-3">
                                             @if(!empty($val->getRegisteredInterns) &&

@@ -44,25 +44,27 @@
                                     </div>
                                     <div class="card-body"
                                          style="min-height: 270px!important; max-height: 270px!important;">
-                                        <h5 class="card-title mb-3 mt-2">{{$event->title}}</h5>
+                                        <a href="/events/{{$event->slug}}/gallery" class="text-decoration-none"><h5 class="card-title text-truncate">{{$event->title}}</h5></a>
                                         <p class="card-text text-justify"
-                                           style="min-height: 60px!important; max-height: 60px!important;">{{Str::limit($event->description,100)}}</p>
+                                           style="min-height: 60px!important; max-height: 60px!important;">{{Str::limit($event->description,70)}}</p>
                                         <div class="row pt-2"
                                              style="min-height: 76px!important; max-height: 76px!important;">
                                             @if($event->mode === 'Online')
-                                                <div class="col-7">
+                                                <div class="col-4">
                                                     <b><i class="ion ion-android-pin"></i>{{$event->mode}}</b>
                                                 </div>
+                                                <div class="col-8 text-right text-success">
+                                                    <b><i class="ion ion-android-pin"></i>Participated: {{$event->getRegisteredEvents->count()}}</b>
+                                                </div>
                                             @else
-                                                <div class="col-7 text-justify">
+                                                <div class="col-6 text-justify pr-0 m-0">
                                                     <b><i class="ion ion-android-pin"></i> Location</b><br>
                                                     {{$event->location}}
                                                 </div>
+                                                <div class="col-6 text-right text-success">
+                                                    <b><i class="ion ion-android-pin"></i>Participated: {{$event->getRegisteredEvents->count()}}</b>
+                                                </div>
                                             @endif
-                                            <div class="col-5 text-right text-success">
-                                                <b><i class="ion ion-android-pin"></i>{{$event->getRegisteredEvents->count()}}
-                                                    are Participated</b>
-                                            </div>
                                         </div>
                                         <div class="pt-3">
                                             @if(!empty($event->getRegisteredEvents) &&

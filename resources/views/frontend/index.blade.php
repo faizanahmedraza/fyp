@@ -2,8 +2,12 @@
 
 @push('styles')
     <style>
+        .heading-font {
+            font-size: 18px;
+        }
+
         .cstRedColor {
-            min-width: 350px;
+            width: 100%;
             height: 80px;
         }
 
@@ -42,7 +46,7 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                                     <div class="card rounded-0 cstm-opacity">
-                                        <div class="card-header p-4">PROPOSALS</div>
+                                        <div class="card-header p-4 font-weight-bold heading-font">PROPOSALS</div>
                                         <div class="card-body">
                                             <div class="d-flex justify-content-start flex-wrap">
                                                 <div class="card cstRedColor border-bottom border-success border-w-5 border-bottom m-2 zoom">
@@ -109,7 +113,7 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                                     <div class="card rounded-0 cstm-opacity">
-                                        <div class="card-header p-4">PROJECTS</div>
+                                        <div class="card-header p-4 font-weight-bold heading-font">PROJECTS</div>
                                         <div class="card-body">
                                             <div class="d-flex justify-content-start flex-wrap">
                                                 <div class="card cstRedColor border-bottom border-success border-w-5 border-bottom m-2 zoom">
@@ -147,7 +151,7 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 mt-lg-4">
                                     <div class="card rounded-0 cstm-opacity">
-                                        <div class="card-header p-4">ACTIVITIES</div>
+                                        <div class="card-header p-4 font-weight-bold heading-font">ACTIVITIES</div>
                                         <div class="card-body">
                                             <div class="d-flex justify-content-start flex-wrap">
                                                 <div class="card cstRedColor border-bottom border-success border-w-5 border-bottom m-2 zoom">

@@ -58,7 +58,7 @@ class User extends Authenticatable
 
     public function getProfilePictureAttribute($value)
     {
-        return !empty($value)?$value:"not_available.jpg";
+        return !empty($value) ? $value : "not_available.jpg";
     }
 
     public function setPasswordAttribute($value)
@@ -66,8 +66,13 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function  getFullNameAttribute()
+    public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function proposals()
+    {
+        return $this->hasMany(ResearchProposal::class, 'user_id', 'id');
     }
 }

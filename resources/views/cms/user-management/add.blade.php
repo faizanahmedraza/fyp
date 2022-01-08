@@ -78,7 +78,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="contact">Contact</label>
-                                                    <input type="text" class="form-control rounded allowNumberOnly"
+                                                    <input type="text" class="form-control rounded"
                                                            id="contact" name="contact" placeholder="Enter Contact"
                                                            value="{{ old('contact') }}" maxlength="13" minlength="11">
                                                 </div>

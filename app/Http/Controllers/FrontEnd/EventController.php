@@ -32,33 +32,50 @@ class EventController extends Controller
 
     public function authUserEventRegister($eventId = '')
     {
-        $user = RegisterEvent::where('event_id', $eventId)->where('user_id', Auth::id())->first();
-        $msgTxt = "registered";
-        if (!empty($user)) {
-            if ($user->status === "un-registered") {
-                $status = "registered";
-            } else {
-                $status = "un-registered";
-            }
-            $user->update(['status' => $status]);
-            $msgTxt = str_replace('-', '', $status);
+        $event = Event::where('id',request()->eventId)->firstOrFail();
+        $eventDate = explode(' ', $event->schedule);
+        if ($eventDate[0] == now()->format('Y-m-d')) {
+            $msg = "Sorry! Event is closed. Stay tuned for upcoming events!";
+            $code = 422;
         } else {
-            $data['event_id'] = (int)request()->eventId;
-            $data['user_id'] = Auth::id();
-            $data['status'] = "registered";
-            RegisterEvent::create($data);
+            $code = 200;
+            $user = RegisterEvent::where('event_id', $eventId)->where('user_id', Auth::id())->first();
+            if (!empty($user)) {
+                if ($user->status === "un-registered") {
+                    $status = "registered";
+                } else {
+                    $status = "un-registered";
+                }
+                $user->update(['status' => $status]);
+                $msg = "You successfully " . str_replace('-', '', $status);
+            } else {
+                $msg = "You successfully registered!";
+                $data['event_id'] = (int)request()->eventId;
+                $data['user_id'] = Auth::id();
+                $data['status'] = "registered";
+                RegisterEvent::create($data);
+            }
         }
-        return response()->json(['msg' => "You successfully {$msgTxt}!"], 200);
+        return response()->json(['msg' => $msg], $code);
     }
 
     public function guestUserEventRegister()
     {
-        RegisterEvent::updateOrCreate([
-            'event_id' => request()->eventId,
-            'guest_email' => request()->guestEmail,
-            'visitor_ip' => request()->ip()
-        ],[ 'guest_name' => request()->guestName,'status' => 'registered']);
-        return response()->json(['msg' => "You successfully registered \n Thanks For Registering an Event!"], 200);
+        $event = Event::where('id',request()->eventId)->firstOrFail();
+        $eventDate = explode(' ', $event->schedule);
+        if ($eventDate[0] == now()->format('Y-m-d')) {
+            $msg = "Sorry! Event is closed. Stay tuned for upcoming events!";
+            $code = 422;
+        } else {
+            $msg = "You successfully registered \n Thanks For Registering an Event!";
+            $code = 200;
+            RegisterEvent::updateOrCreate([
+                'event_id' => request()->eventId,
+                'guest_email' => request()->guestEmail,
+                'visitor_ip' => request()->ip()
+            ], ['guest_name' => request()->guestName, 'status' => 'registered']);
+        }
+        return response()->json(['msg' => $msg], $code);
     }
 
     public function addEvent()

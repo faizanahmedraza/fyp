@@ -85,14 +85,7 @@
 
                                             @if(Auth::user()->roles()->first()->name == 'student')
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="email">Email <span
-                                                                    class="required-class">*</span></label>
-                                                        <input type="email" class="form-control rounded" id="email"
-                                                               name="email" placeholder="Enter Email"
-                                                               value="{{ old('email',$profile->email) }}">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-12">
                                                         <label for="event_name">Department </label>
                                                         <input type="text" class="form-control rounded"
                                                                id="department" name="department"
@@ -117,15 +110,6 @@
                                                     </div>
                                                 </div>
                                             @else
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="email">Email <span
-                                                                    class="required-class">*</span></label>
-                                                        <input type="email" class="form-control rounded" id="email"
-                                                               name="email" placeholder="Enter Email"
-                                                               value="{{ old('email',$profile->email) }}">
-                                                    </div>
-                                                </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="event_name">Department </label>
@@ -153,7 +137,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="contact">Contact</label>
-                                                    <input type="text" class="form-control rounded allowNumberOnly"
+                                                    <input type="text" class="form-control rounded"
                                                            id="contact" name="contact" placeholder="Enter Contact"
                                                            value="{{ old('contact',$profile->contact) }}"
                                                            maxlength="13">

@@ -8,6 +8,7 @@ use App\Models\Notification;
 use App\Models\ResearchProject;
 use App\Models\ResearchProposal;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -36,8 +37,14 @@ class FypProjectController extends Controller
 
     public function addProject()
     {
-        $students = User::role('student')->get();
-        $proposals = ResearchProposal::where('type','fyp')->get();
+        $students = User::role('student')->with('proposals')->whereHas('proposals',function ($q){
+            $q->where('type','fyp')
+                ->where('status','approved');
+        })->get();
+        $proposals = ResearchProposal::where(function (Builder $query) {
+            return $query->where('type', 'fyp')
+                ->where('status', 'approved');
+        })->get();
         return view('cms.student.project.fyp.add',compact('students','proposals'));
     }
 
@@ -73,7 +80,10 @@ class FypProjectController extends Controller
 
     public function updateProject($projectId){
         $project = ResearchProject::with(['getUser','getProposal'])->where('type','fyp')->where('id',$projectId)->first();
-        $proposals = ResearchProposal::where('type','fyp')->get();
+        $proposals = ResearchProposal::where(function (Builder $query) {
+            return $query->where('type', 'fyp')
+                ->where('status', 'approved');
+        })->get();
         return view('cms.student.project.fyp.update', compact('project','proposals'));
     }
 

@@ -27,18 +27,22 @@ class ProfileController extends Controller
             'last_name' => 'required|max:55',
             'father_name' => 'sometimes|nullable|max:55',
             'email' => 'required|email:rfc|max:255|unique:users,email,' . $profile->id,
-            'cnic' => 'sometimes|nullable|digits_between:13,13',
-            'contact' => 'sometimes|nullable|digits_between:11,13',
+            'cnic' => 'sometimes|nullable|digits:13',
+            'contact' => 'sometimes|nullable|regex:/^[\+]?[(]?[0-9]{4}[)]?[-\s\.]?[0-9]{7}$/',
             'gender' => 'sometimes|nullable|in:male,female,other|max:10',
             'dob' => 'sometimes|nullable|date',
             'student_rollno' => 'sometimes|nullable|numeric',
             'student_seatno' => 'sometimes|nullable|max:55',
             'department' => 'sometimes|nullable|max:55',
             'expertise' => 'sometimes|nullable|max:255',
-            'qualification' => 'sometimes|nullable|',
+            'qualification' => 'sometimes|nullable|max:255',
             'profile_picture' => 'sometimes|nullable|mimes:jpeg,jpg,png|max:2048',
             'profile_detail' => 'sometimes|nullable|string|max:400',
-            'joining_date' => 'sometimes|nullable|date',
+            'joining_date' => 'sometimes|nullable|date|after:dob',
+        ],[
+            'contact.regex' => 'The contact format is invalid. ex: (AAAA-BBBBBBB)'
+        ],[
+            'dob' => 'date of birth'
         ]);
 
         if (\request()->hasFile('profile_picture')) {
@@ -88,6 +92,6 @@ class ProfileController extends Controller
     public function viewProfile()
     {
         $profile = Auth::user();
-        return view('frontend.user.profile', compact('profile'));
+        return view('frontend.user.view-profile', compact('profile'));
     }
 }

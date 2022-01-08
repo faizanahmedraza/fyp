@@ -57,13 +57,20 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label>Profile Picture <span class="required-class">*</span> @if(!empty($profile->profile_picture)) <a href="/assets/images/user_profile/{{ $profile->profile_picture }}" target="_blank">{{ env('APP_URL') }}/assets/images/user_profile/{{$profile->profile_picture}}</a> @endif</label>
+                                                    <label>Profile Picture <span
+                                                                class="required-class">*</span> @if(!empty($profile->profile_picture))
+                                                            <a href="/assets/images/user_profile/{{ $profile->profile_picture }}"
+                                                               target="_blank">{{ env('APP_URL') }}
+                                                                /assets/images/user_profile/{{$profile->profile_picture}}</a> @endif
+                                                    </label>
                                                     <div class="input-group">
                                                         <input type="file" name="profile_picture" class="form-control"
                                                                accept=".jpg, .jpeg, .png"
                                                                value="{{ old('profile_picture',$profile->profile_picture) }}">
                                                     </div>
-                                                    <div class="text-danger" style="font-weight: initial;">Supported formats are jpg,jpeg and png.</div>
+                                                    <div class="text-danger" style="font-weight: initial;">Supported
+                                                        formats are jpg,jpeg and png.
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -84,43 +91,22 @@
                                                 </div>
                                             </div>
 
-                                            @if(Auth::user()->roles()->first()->name == 'super-admin')
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="email">Email <span
-                                                                    class="required-class">*</span></label>
-                                                        <input type="email" class="form-control rounded" id="email"
-                                                               name="email" placeholder="Enter Email"
-                                                               value="{{ old('email',$profile->email) }}">
-                                                    </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="event_name">Department </label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="department" name="department"
+                                                           placeholder="Enter Department"
+                                                           value="{{ old('department',$profile->department) }}">
                                                 </div>
-                                            @else
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="email">Email <span
-                                                                    class="required-class">*</span></label>
-                                                        <input type="email" class="form-control rounded" id="email"
-                                                               name="email" placeholder="Enter Email"
-                                                               value="{{ old('email',$profile->email) }}">
-                                                    </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="dob">Designation</label>
+                                                    <input type="text" class="form-control rounded"
+                                                           id="designation" name="designation"
+                                                           placeholder="Enter Designation"
+                                                           value="{{ old('designation',$profile->designation) }}">
                                                 </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="event_name">Department </label>
-                                                        <input type="text" class="form-control rounded"
-                                                               id="department" name="department"
-                                                               placeholder="Enter Department"
-                                                               value="{{ old('department',$profile->department) }}">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="dob">Designation</label>
-                                                        <input type="text" class="form-control rounded"
-                                                               id="designation" name="designation"
-                                                               placeholder="Enter Designation"
-                                                               value="{{ old('designation',$profile->designation) }}">
-                                                    </div>
-                                                </div>
-                                            @endif
+                                            </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
@@ -131,7 +117,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="contact">Contact</label>
-                                                    <input type="text" class="form-control rounded allowNumberOnly"
+                                                    <input type="text" class="form-control rounded"
                                                            id="contact" name="contact" placeholder="Enter Contact"
                                                            value="{{ old('contact',$profile->contact) }}">
                                                 </div>
@@ -160,7 +146,8 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="dob">Date of Birth</label>
                                                     <input type="text" class="form-control rounded"
-                                                           id="dob" name="dob" value="{{ old('dob',\Carbon\Carbon::parse($profile->dob)->format('d-m-Y')) }}"
+                                                           id="dob" name="dob"
+                                                           value="{{ old('dob',\Carbon\Carbon::parse($profile->dob)->format('d-m-Y')) }}"
                                                            readonly>
                                                 </div>
                                             </div>
@@ -168,7 +155,8 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label>Date of Joining</label>
-                                                    <input type="text" name="joining_date" class="form-control rounded" value="{{old('joining_date',\Carbon\Carbon::parse($profile->joining_date)->format('d-m-Y'))}}"
+                                                    <input type="text" name="joining_date" class="form-control rounded"
+                                                           value="{{old('joining_date',\Carbon\Carbon::parse($profile->joining_date)->format('d-m-Y'))}}"
                                                            readonly>
                                                 </div>
                                                 <div class="form-group col-md-6">

@@ -209,7 +209,11 @@
                         }
                     });
                 }).catch(error => {
-                    console.clear();
+                    swal({
+                        title: error.response.data.msg,
+                        icon: "error",
+                        dangerMode: true
+                    });
                 });
             });
         }

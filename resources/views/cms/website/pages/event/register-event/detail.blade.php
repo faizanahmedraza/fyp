@@ -33,7 +33,6 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">Participant Name</th>
-                                    <th scope="col">Student Rollno#</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Contact Number</th>
                                     <th scope="col">Action</th>
@@ -44,7 +43,6 @@
                                     @foreach($registeredUsers->getRegisteredEvents as $key => $val)
                                         <tr>
                                             <td>{{!empty($val->getUser) ? $val->getUser->full_name : $val->guest_name}}</td>
-                                            <td>{{!empty($val->getUser) ? $val->getUser->student_rollno : ''}}</td>
                                             <td>{{!empty($val->getUser) ? $val->getUser->email : $val->guest_email}}</td>
                                             <td>{{!empty($val->getUser) ? $val->getUser->contact : ''}}</td>
                                             <td>

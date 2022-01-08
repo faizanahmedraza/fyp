@@ -8,6 +8,7 @@ use App\Models\Notification;
 use App\Models\ResearchProject;
 use App\Models\ResearchProposal;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,8 +35,14 @@ class FundedProjectController extends Controller
 
     public function addProject()
     {
-        $students = User::role('student')->get();
-        $proposals = ResearchProposal::where('type', 'funded')->get();
+        $students = User::role('student')->with('proposals')->whereHas('proposals',function ($q){
+            $q->where('type','funded')
+                ->where('status','approved');
+        })->get();
+        $proposals = ResearchProposal::where(function (Builder $query) {
+            return $query->where('type', 'funded')
+                ->where('status', 'approved');
+        })->get();
         return view('cms.student.project.funded.add', compact('students', 'proposals'));
     }
 
@@ -72,7 +79,10 @@ class FundedProjectController extends Controller
     public function updateProject($projectId)
     {
         $project = ResearchProject::with(['getUser', 'getProposal'])->where('type', 'funded')->where('id', $projectId)->first();
-        $proposals = ResearchProposal::where('type', 'funded')->get();
+        $proposals = ResearchProposal::where(function (Builder $query) {
+            return $query->where('type', 'funded')
+                ->where('status', 'approved');
+        })->get();
         return view('cms.student.project.funded.update', compact('project', 'proposals'));
     }
 

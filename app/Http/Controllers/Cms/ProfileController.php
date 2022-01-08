@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -26,17 +25,19 @@ class ProfileController extends Controller
             'last_name' => 'required|max:55',
             'father_name' => 'sometimes|nullable|max:55',
             'email' => 'required|email:rfc|max:255|unique:users,email,' . Auth::id(),
-            'cnic' => 'sometimes|nullable|digits_between:13,13',
-            'contact' => 'sometimes|nullable|digits_between:11,13',
+            'cnic' => 'sometimes|nullable|digits:13',
+            'contact' => 'sometimes|nullable|regex:/^[\+]?[(]?[0-9]{4}[)]?[-\s\.]?[0-9]{7}$/',
             'gender' => 'sometimes|nullable|in:male,female,other|max:10',
             'dob' => 'sometimes|nullable|date',
             'department' => 'sometimes|nullable|max:55',
             'designation' => 'sometimes|nullable|max:55',
             'expertise' => 'sometimes|nullable|max:255',
-            'qualification' => 'sometimes|nullable|',
+            'qualification' => 'sometimes|nullable|max:255',
             'profile_picture' => 'sometimes|nullable|mimes:jpeg,jpg,png|max:2048',
             'profile_detail' => 'sometimes|nullable|string|max:400',
-            'joining_date' => 'sometimes|nullable|date',
+            'joining_date' => 'sometimes|nullable|date|after:dob',
+        ],[
+          'contact.regex' => 'The contact format is invalid. ex: (AAAA-BBBBBBB)'
         ]);
 
         if (request()->hasFile('profile_picture')) {
@@ -70,13 +71,13 @@ class ProfileController extends Controller
             'email' => request()->email,
             'cnic' => request()->cnic,
             'gender' => request()->gender,
-            'dob' => \Carbon\Carbon::parse(request()->dob)->format('Y-m-d'),
+            'dob' => Carbon::parse(request()->dob)->format('Y-m-d'),
             'department' => request()->department,
             'designation' => request()->designation,
             'qualification' => request()->qualification,
             'contact' => request()->contact,
             'profile_detail' => request()->profile_detail,
-            'joining_date' => \Carbon\Carbon::parse(request()->joining_date)->format('Y-m-d'),
+            'joining_date' => Carbon::parse(request()->joining_date)->format('Y-m-d'),
             'updated_by' => Auth::id()
         ]);
 

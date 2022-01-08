@@ -27,7 +27,7 @@
                                                     src="/assets/images/uploads/pages/event/{{$event->image}}"
                                                     alt=""></a></figure>
                                     <div class="date-box">
-                                        <span>{{\Carbon\Carbon::parse($event->created_at,'UTC')->isoFormat('Do') }}</span>{{ Str::upper(\Carbon\Carbon::parse($event->created_at,'UTC')->isoFormat('MMM')) }}
+                                        <span>{{\Carbon\Carbon::parse($event->schedule,'UTC')->isoFormat('ll') }}</span>
                                     </div>
                                 </div>
                                 <div class="lower-content">
@@ -189,11 +189,14 @@
                             $("#event_id,#your_name,#your_email").val('');
                             $("#guestModal").removeClass("fade").modal("hide");
                             location.reload();
-                            // window.history.pushState({}, document.title, '/events');
                         }
                     });
                 }).catch(error => {
-                    console.clear();
+                    swal({
+                        title: error.response.data.msg,
+                        icon: "error",
+                        dangerMode: true
+                    });
                 });
             });
         }

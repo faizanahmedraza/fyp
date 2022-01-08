@@ -10,7 +10,7 @@
                         <div class="card-header  justify-content-between align-items-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title">Register Event Details</h4>
+                                    <h4 class="card-title">Register Intern Details</h4>
                                 </div>
                                 <div class="col-md-6">
                                     <a href="{{ route('website.page.register-intern') }}"
@@ -29,7 +29,6 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">Applicant Name</th>
-                                    <th scope="col">Student Rollno#</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Contact Number</th>
                                 </tr>
@@ -39,7 +38,6 @@
                                     @foreach($registeredUsers->getRegisteredInterns as $key => $val)
                                         <tr>
                                             <td>{{!empty($val->getUser) ? $val->getUser->full_name : $val->guest_name}}</td>
-                                            <td>{{!empty($val->getUser) ? $val->getUser->student_rollno : ''}}</td>
                                             <td>{{!empty($val->getUser) ? $val->getUser->email : $val->guest_email}}</td>
                                             <td>{{!empty($val->getUser) ? $val->getUser->contact : ''}}</td>
                                         </tr>
