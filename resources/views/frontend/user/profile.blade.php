@@ -180,10 +180,8 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Description </label>
-                                                    <div class="input-group">
-                                                        <textarea name="profile_detail" class="form-control"
-                                                                  rows="3">{{ old('profile_detail',$profile->profile_detail) }}</textarea>
-                                                    </div>
+                                                    <input type="text" name="profile_detail" class="form-control rounded" value="{{ old('profile_detail',$profile->profile_detail) }}"
+                                                           >
                                                 </div>
                                             </div>
 

@@ -6,6 +6,7 @@ use App\Events\StatusChanged;
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
 use App\Models\ResearchProposal;
+use App\Models\UploadSample;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class FypProposalController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:user-fyp-proposal-list|user-fyp-proposal-create', ['only' => ['index', 'addProposalData']]);
+        $this->middleware('permission:user-fyp-proposal-list|user-fyp-proposal-create', ['only' => ['index', 'addProposalData','downloadTemplate']]);
         $this->middleware('permission:user-fyp-proposal-create', ['only' => ['addProposal', 'addProposalData']]);
     }
 
@@ -100,5 +101,15 @@ class FypProposalController extends Controller
     public function proposalDetail($proposalId){
         $proposal = ResearchProposal::with('getUser')->where('id',$proposalId)->whereHas('getUser')->first();
         return view('frontend.user.proposal.fyp.detail', compact('proposal'));
+    }
+
+    public function downloadTemplate()
+    {
+        $query = UploadSample::select('name')->where('type','project-proposal-form')->latest()->first();
+        if (!empty($query) && file_exists(public_path('storage/uploads/'. $query->name))) {
+            return response()->download(public_path('storage/uploads/'. $query->name));
+        } else {
+            abort(404);
+        }
     }
 }

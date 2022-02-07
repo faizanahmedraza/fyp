@@ -18,6 +18,9 @@
                                     <h4 class="card-title">Add Fyp Proposal</h4>
                                 </div>
                                 <div class="col-md-6">
+                                    <form action="/user/fyp-proposals/template" method="GET">
+                                        <button type="submit" class="btn btn-success float-right mr-2">← Back</button>
+                                    </form>
                                     <a href="/user/fyp-proposals" class="btn btn-primary float-right">← Back</a>
                                 </div>
                             </div>
@@ -139,6 +142,7 @@
 @endsection
 
 @push('scripts')
+    <script src="/assets/js/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
     <script>
         oldSubmissionDate = '{{ old('submission_date') }}';
@@ -159,6 +163,22 @@
                 clearBtn: true,
             }).on('changeDate', function () {
                 $(".child-div").show();
+            });
+
+            $("#fileDownload").click(function () {
+                axios({
+                    url: '/user/fyp-proposals/template',
+                    method: 'GET',
+                    responseType: 'blob', // important
+                }).then((response) => {
+                    console.log(response);
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', 'file.pdf');
+                    document.body.appendChild(link);
+                    link.click();
+                });
             });
         });
     </script>

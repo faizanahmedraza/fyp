@@ -161,11 +161,9 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Description</label>
-                                                    <div class="input-group">
-                                                        <textarea name="profile_detail" class="form-control"
-                                                                  rows="3">{{ old('profile_detail',$profile->profile_detail) }}</textarea>
+                                                        <input type="text" name="profile_detail" class="form-control rounded" value="{{ old('profile_detail',$profile->profile_detail) }}"
+                                                        >
                                                     </div>
-                                                </div>
                                             </div>
 
                                             <button type="submit" class="btn btn-primary">Save</button>

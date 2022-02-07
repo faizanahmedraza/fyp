@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\FrontEnd\User;
 
-use App\Events\StatusChanged;
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
 use App\Models\ResearchProposal;
+use App\Models\UploadSample;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -101,5 +101,15 @@ class FundedProposalController extends Controller
     {
         $proposal = ResearchProposal::with('getUser')->where('id', $proposalId)->whereHas('getUser')->first();
         return view('frontend.user.proposal.funded.detail', compact('proposal'));
+    }
+
+    public function downloadTemplate()
+    {
+        $query = UploadSample::select('name')->where('type','project-proposal-form')->latest()->first();
+        if (!empty($query) && file_exists(public_path('storage/uploads/'. $query->name))) {
+            return response()->download(public_path('storage/uploads/'. $query->name));
+        } else {
+            abort(404);
+        }
     }
 }
